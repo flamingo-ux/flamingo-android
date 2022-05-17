@@ -1,0 +1,19 @@
+<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <com.flamingo.demoapi.DemoPreference app:key="component" />
+
+    <DropDownPreference
+        app:iconSpaceReserved="false"
+        app:key="color"
+        app:persistent="false"
+        app:summary="%s"
+        app:title="Color" />
+
+    <DropDownPreference
+        app:iconSpaceReserved="false"
+        app:key="size"
+        app:persistent="false"
+        app:summary="%s"
+        app:title="Size" />
+
+</PreferenceScreen>

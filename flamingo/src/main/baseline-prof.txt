@@ -1,0 +1,3 @@
+Lcom/flamingo/Flamingo;
+HSPLcom/flamingo/theme/**->**(**)**
+HSPLcom/flamingo/components/**->**(**)**

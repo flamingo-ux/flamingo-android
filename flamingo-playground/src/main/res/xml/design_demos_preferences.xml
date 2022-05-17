@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:key="design_demos">
+
+    <Preference
+        app:icon="@drawable/ic_baseline_colorize_24"
+        app:key="design_demo_tools_download_designer_tools"
+        app:persistent="false"
+        app:summary="@string/design_demos_tools_download_designer_tools_summary"
+        app:title="@string/design_demos_tools_download_designer_tools_title" />
+
+    <com.flamingo.demoapi.LongSummaryCategoryPreference
+        app:initialExpandedChildrenCount="1"
+        app:summary="@string/labs_summary"
+        app:title="@string/labs_title">
+
+        <Preference
+            app:fragment="com.flamingo.playground.ComposeSandboxFragment"
+            app:key="compose_sandbox"
+            app:title="@string/lab_compose_demo_title" />
+
+        <Preference
+            app:fragment="com.flamingo.playground.AccessibilityAndUiTestingLabFragment"
+            app:icon="@drawable/ic_accessible_24"
+            app:summary="@string/lab_accessibility_and_testing_summary"
+            app:title="@string/lab_accessibility_and_testing_title" />
+
+        <Preference
+            app:fragment="com.flamingo.playground.fontconfig.compose.ComposeFontConfiguratorFragment"
+            app:icon="@drawable/ic_format_font"
+            app:summary="@string/lab_compose_font_configurator_summary"
+            app:title="@string/lab_compose_font_configurator_title" />
+
+        <Preference
+            app:fragment="com.flamingo.playground.ComposeShadowLabFragment"
+            app:icon="@drawable/ic_box_shadow"
+            app:summary="@string/lab_compose_shadow_summary"
+            app:title="@string/lab_compose_shadow_title" />
+
+    </com.flamingo.demoapi.LongSummaryCategoryPreference>
+
+    <com.flamingo.demoapi.LongSummaryCategoryPreference
+        app:summary="@string/design_demos_summary"
+        app:title="@string/design_demos_title">
+
+        <Preference
+            app:fragment="com.flamingo.playground.gallery.GalleryFragment"
+            app:icon="@drawable/ic_apps_box"
+            app:summary="@string/design_demo_components_gallery_summary"
+            app:title="@string/design_demo_components_gallery_title" />
+
+        <Preference
+            app:fragment="com.flamingo.playground.ThemeColorsDemoFragment"
+            app:icon="@drawable/ic_baseline_palette_24"
+            app:title="@string/design_demo_theme_colors_title" />
+
+        <Preference
+            app:fragment="com.flamingo.playground.PaletteColorsDemoFragment"
+            app:icon="@drawable/ic_baseline_palette_24"
+            app:title="@string/design_demo_palette_colors_title" />
+
+        <Preference
+            app:fragment="com.flamingo.playground.IconsDemoFragment"
+            app:icon="@drawable/ic_alpha_i_circle"
+            app:title="@string/design_demo_icons_title" />
+
+        <Preference
+            app:fragment="com.flamingo.playground.IllustrationsDemoFragment"
+            app:icon="@drawable/ic_baseline_image_24"
+            app:title="@string/design_demo_illustrations_title" />
+
+    </com.flamingo.demoapi.LongSummaryCategoryPreference>
+
+    <com.flamingo.demoapi.LongSummaryCategoryPreference
+        app:initialExpandedChildrenCount="0"
+        app:summary="@string/design_demo_android_view_summary"
+        app:title="@string/design_demo_android_view_title">
+
+        <Preference
+            app:fragment="com.flamingo.playground.gallery.GalleryFragment"
+            app:icon="@drawable/ic_apps_box"
+            app:summary="@string/design_demo_components_gallery_summary"
+            app:title="@string/design_demo_components_gallery_title" />
+
+        <Preference
+            app:fragment="com.flamingo.playground.view.theme.ThemeDemoFragment"
+            app:icon="@drawable/ds_ic_book"
+            app:summary="@string/design_demo_theme_demo_summary"
+            app:title="@string/design_demo_theme_demo_title" />
+
+        <Preference
+            app:fragment="com.flamingo.playground.view.FontsDemoFragment"
+            app:icon="@drawable/ic_baseline_format_size_24"
+            app:title="@string/design_demo_fonts_title" />
+
+        <Preference
+            app:fragment="com.flamingo.playground.view.GradientsDemoFragment"
+            app:icon="@drawable/ic_baseline_gradient_24"
+            app:title="@string/design_demo_gradients_title" />
+
+        <Preference
+            app:fragment="com.flamingo.playground.view.CardElevationDemoFragment"
+            app:icon="@drawable/ds_ic_layers"
+            app:title="@string/design_demo_card_elevation_title" />
+
+    </com.flamingo.demoapi.LongSummaryCategoryPreference>
+
+    <PreferenceCategory
+        app:initialExpandedChildrenCount="0"
+        app:title="@string/design_demos_tools_debug_overlay_title">
+
+        <SwitchPreferenceCompat
+            app:defaultValue="false"
+            app:icon="@drawable/ic_animation_24"
+            app:key="debug_overlay_toggle"
+            app:summary="@string/design_demos_tools_debug_overlay_summary"
+            app:title="@string/design_demos_tools_debug_overlay_title" />
+
+        <Preference
+            app:key="debug_overlay_tile_tutorial"
+            app:summary="@string/design_demos_tools_debug_overlay_tile_summary"
+            app:title="@string/design_demos_tools_debug_overlay_tile_title" />
+
+    </PreferenceCategory>
+
+
+    <Preference
+        app:fragment="com.flamingo.playground.license.LicensesFragment"
+        app:icon="@drawable/ds_ic_book_open"
+        app:title="@string/licenses_title" />
+</PreferenceScreen>

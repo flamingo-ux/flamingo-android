@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="IconButton">
+        <attr name="ds_ib_size" format="enum">
+            <enum name="medium" value="40" />
+            <enum name="small" value="32" />
+        </attr>
+        <attr name="ds_ib_color" format="enum">
+            <enum name="defaultColor" value="0" />
+            <enum name="primary" value="1" />
+            <enum name="warning" value="2" />
+            <enum name="error" value="3" />
+        </attr>
+        <attr name="ds_ib_icon" format="reference" />
+        <attr name="ds_ib_disabled" format="boolean" />
+        <attr name="ds_ib_loading" format="boolean" />
+        <attr name="ds_ib_variant" format="enum">
+            <enum name="text" value="0" />
+            <enum name="contained" value="1" />
+        </attr>
+    </declare-styleable>
+</resources>

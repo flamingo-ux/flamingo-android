@@ -1,0 +1,66 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+
+android {
+    compileSdkVersion deps.android.build.compileSdkVersion
+
+    defaultConfig {
+        minSdkVersion deps.android.build.minSdkVersion
+        targetSdkVersion deps.android.build.targetSdkVersion
+        versionCode 1
+        versionName versions.flamingo
+        vectorDrawables.useSupportLibrary = true
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    composeOptions {
+        kotlinCompilerExtensionVersion versions.compose
+    }
+
+    packagingOptions {
+        exclude 'META-INF/AL2.0'
+        exclude 'META-INF/LGPL2.1'
+    }
+
+    libraryVariants.all { variant ->
+        variant.outputs.all {
+            outputFileName = "${project.name}-${versions.flamingo}.aar"
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    kotlinOptions.freeCompilerArgs += [
+            "-Xexplicit-api=strict",
+            "-Xopt-in=com.flamingo.annotations.DelicateFlamingoApi"
+    ]
+
+    buildFeatures {
+        viewBinding false
+        compose true
+    }
+}
+
+dependencies {
+    implementation project(":flamingo")
+    implementation deps.arch.fragmentKtx
+
+    implementation deps.kotlin.stdlib
+    implementation deps.android.support.appCompat
+    implementation deps.android.ktx.core
+    implementation deps.timber
+
+    // compose
+    implementation deps.compose.ui
+    implementation deps.compose.uiTooling
+    implementation deps.compose.foundation
+    implementation deps.compose.material
+    implementation deps.compose.runtime
+    implementation deps.compose.compiler
+    implementation deps.compose.foundationLayout
+}

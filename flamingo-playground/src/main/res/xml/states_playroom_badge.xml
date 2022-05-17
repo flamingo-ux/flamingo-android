@@ -1,0 +1,32 @@
+<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <com.flamingo.demoapi.DemoPreference app:key="component" />
+
+    <EditTextPreference
+        app:iconSpaceReserved="false"
+        app:key="label"
+        app:persistent="false"
+        app:title="Label" />
+
+    <DropDownPreference
+        app:iconSpaceReserved="false"
+        app:key="size"
+        app:persistent="false"
+        app:summary="%s"
+        app:title="Size" />
+
+    <DropDownPreference
+        app:iconSpaceReserved="false"
+        app:key="color"
+        app:persistent="false"
+        app:summary="%s"
+        app:title="Color" />
+
+    <SwitchPreferenceCompat
+        app:iconSpaceReserved="false"
+        app:key="white"
+        app:persistent="false"
+        app:summary="@string/component_demo_manual_white_setting_required"
+        app:title="White" />
+
+</PreferenceScreen>

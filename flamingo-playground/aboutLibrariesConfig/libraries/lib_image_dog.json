@@ -1,0 +1,9 @@
+{
+  "website": "https://unsplash.com/photos/urs_y9NwFcc",
+  "description": "Photo from Unsplash",
+  "name": "Photo of a Dog",
+  "uniqueId": "dog-photo",
+  "licenses": [
+    "unsplash"
+  ]
+}

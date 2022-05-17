@@ -1,0 +1,40 @@
+<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <com.flamingo.demoapi.DemoPreference app:key="component" />
+
+    <Preference
+        app:iconSpaceReserved="false"
+        app:persistent="false"
+        app:summary="@string/states_playroom_search_null_in_text" />
+
+    <SwitchPreferenceCompat
+        app:iconSpaceReserved="false"
+        app:key="onClick"
+        app:persistent="false"
+        app:title="Has onClick" />
+
+    <EditTextPreference
+        app:iconSpaceReserved="false"
+        app:key="placeholder"
+        app:persistent="false"
+        app:title="Placeholder" />
+
+    <SwitchPreferenceCompat
+        app:iconSpaceReserved="false"
+        app:key="loading"
+        app:persistent="false"
+        app:title="Loading" />
+
+    <SwitchPreferenceCompat
+        app:iconSpaceReserved="false"
+        app:key="disabled"
+        app:persistent="false"
+        app:title="Disabled" />
+
+    <SwitchPreferenceCompat
+        app:iconSpaceReserved="false"
+        app:key="white"
+        app:persistent="false"
+        app:title="White" />
+
+</PreferenceScreen>

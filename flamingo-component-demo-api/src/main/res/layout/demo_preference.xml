@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <FrameLayout
+        android:id="@+id/design_component_frame"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/x3"
+        android:background="@drawable/preview_border_rounded"
+        android:paddingHorizontal="@dimen/x6"
+        android:paddingVertical="@dimen/x6"
+        android:theme="@style/Theme.Flamingo"
+        tools:layout_height="150dp" />
+</LinearLayout>

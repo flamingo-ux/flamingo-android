@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- For the documentation, see the theme demo in the staging settings -->
+    <attr name="colorPrimaryLight" format="color" />
+    <attr name="colorSecondaryLight" format="color" />
+
+    <attr name="colorInfo" format="color" />
+    <attr name="colorWarning" format="color" />
+    <attr name="colorSuccess" format="color" />
+    <attr name="colorRating" format="color" />
+
+    <attr name="colorSeparator" format="color" />
+    <attr name="colorOutline" format="color" />
+    <attr name="colorOutlineDark" format="color" />
+
+    <attr name="colorDark" format="color" />
+    <attr name="colorBright" format="color" />
+
+    <attr name="colorBackgroundSecondary" format="color" />
+    <attr name="colorBackgroundTertiary" format="color" />
+    <attr name="colorBackgroundTextField" format="color" />
+    <attr name="colorBackgroundQuaternary" format="color" />
+
+    <attr name="colorBackgroundTextFieldDeprecated" format="color" />
+    <attr name="colorBackgroundTextFieldError" format="color" />
+    <attr name="colorStrokeTextField" format="color" />
+    <attr name="colorStrokeTextFieldHighlight" format="color" />
+</resources>

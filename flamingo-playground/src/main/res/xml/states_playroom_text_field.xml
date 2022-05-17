@@ -1,0 +1,115 @@
+<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <com.flamingo.demoapi.DemoPreference app:key="component" />
+
+    <Preference
+        app:iconSpaceReserved="false"
+        app:persistent="false"
+        app:summary="@string/states_playroom_text_filed_null_in_text" />
+
+    <SwitchPreferenceCompat
+        app:iconSpaceReserved="false"
+        app:key="disabled"
+        app:persistent="false"
+        app:title="Disabled" />
+
+    <SwitchPreferenceCompat
+        app:iconSpaceReserved="false"
+        app:key="loading"
+        app:persistent="false"
+        app:title="Loading" />
+
+    <DropDownPreference
+        app:iconSpaceReserved="false"
+        app:key="icon"
+        app:persistent="false"
+        app:summary="%s"
+        app:title="Icon" />
+
+    <SwitchPreferenceCompat
+        app:iconSpaceReserved="false"
+        app:key="iconHasOnClick"
+        app:persistent="false"
+        app:title="Icon has onClick" />
+
+    <DropDownPreference
+        app:iconSpaceReserved="false"
+        app:key="iconAreaAlignment"
+        app:persistent="false"
+        app:summary="%s"
+        app:title="Icon area alignment" />
+
+    <EditTextPreference
+        app:iconSpaceReserved="false"
+        app:key="placeholder"
+        app:persistent="false"
+        app:title="Placeholder" />
+
+    <EditTextPreference
+        app:iconSpaceReserved="false"
+        app:key="label"
+        app:persistent="false"
+        app:title="Label" />
+
+    <SwitchPreferenceCompat
+        app:iconSpaceReserved="false"
+        app:key="required"
+        app:persistent="false"
+        app:title="Required" />
+
+    <DropDownPreference
+        app:iconSpaceReserved="false"
+        app:key="size"
+        app:persistent="false"
+        app:summary="%s"
+        app:title="Size" />
+
+    <SwitchPreferenceCompat
+        app:iconSpaceReserved="false"
+        app:key="error"
+        app:persistent="false"
+        app:title="Error" />
+
+    <EditTextPreference
+        app:iconSpaceReserved="false"
+        app:key="errorText"
+        app:persistent="false"
+        app:title="Error text" />
+
+    <EditTextPreference
+        app:iconSpaceReserved="false"
+        app:key="helperText"
+        app:persistent="false"
+        app:title="Helper text" />
+
+    <EditTextPreference
+        app:iconSpaceReserved="false"
+        app:key="maxCharNumber"
+        app:persistent="false"
+        app:title="Max char number (limit on the number of characters)" />
+
+    <SwitchPreferenceCompat
+        app:iconSpaceReserved="false"
+        app:key="multiline"
+        app:persistent="false"
+        app:title="Multiline" />
+
+    <EditTextPreference
+        app:iconSpaceReserved="false"
+        app:key="maxVisibleLines"
+        app:persistent="false"
+        app:title="Max visible lines" />
+
+    <SwitchPreferenceCompat
+        app:iconSpaceReserved="false"
+        app:key="hasOnClick"
+        app:persistent="false"
+        app:title="Has onClick" />
+
+    <SwitchPreferenceCompat
+        app:iconSpaceReserved="false"
+        app:key="white"
+        app:persistent="false"
+        app:title="White" />
+
+</PreferenceScreen>

@@ -1,0 +1,70 @@
+<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <com.flamingo.demoapi.DemoPreference app:key="component" />
+
+    <EditTextPreference
+        app:iconSpaceReserved="false"
+        app:key="label"
+        app:persistent="false"
+        app:title="Label" />
+
+    <SwitchPreferenceCompat
+        app:iconSpaceReserved="false"
+        app:key="loading"
+        app:persistent="false"
+        app:title="Loading" />
+
+    <DropDownPreference
+        app:iconSpaceReserved="false"
+        app:key="size"
+        app:persistent="false"
+        app:summary="%s"
+        app:title="Size" />
+
+    <DropDownPreference
+        app:iconSpaceReserved="false"
+        app:key="color"
+        app:persistent="false"
+        app:summary="%s"
+        app:title="Color" />
+
+    <DropDownPreference
+        app:iconSpaceReserved="false"
+        app:key="variant"
+        app:persistent="false"
+        app:summary="%s"
+        app:title="Variant" />
+
+    <DropDownPreference
+        app:iconSpaceReserved="false"
+        app:key="icon"
+        app:persistent="false"
+        app:summary="%s"
+        app:title="Icon" />
+
+    <DropDownPreference
+        app:iconSpaceReserved="false"
+        app:key="iconPosition"
+        app:persistent="false"
+        app:summary="%s"
+        app:title="Icon position" />
+
+    <SwitchPreferenceCompat
+        app:iconSpaceReserved="false"
+        app:key="disabled"
+        app:persistent="false"
+        app:title="Disabled" />
+
+    <SwitchPreferenceCompat
+        app:iconSpaceReserved="false"
+        app:key="singleLine"
+        app:persistent="false"
+        app:title="Single line" />
+
+    <SwitchPreferenceCompat
+        app:iconSpaceReserved="false"
+        app:key="hasOnClickListener"
+        app:persistent="false"
+        app:title="Has onClickListener" />
+
+</PreferenceScreen>

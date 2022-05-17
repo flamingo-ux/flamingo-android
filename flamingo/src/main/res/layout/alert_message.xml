@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:elevation="0dp"
+    android:theme="@style/Theme.Flamingo"
+    tools:layout_width="328dp"
+    tools:parentTag="FrameLayout">
+
+    <ImageView
+        android:id="@+id/icon"
+        android:layout_width="@dimen/x5"
+        android:layout_height="@dimen/x5"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="18dp"
+        android:clickable="false"
+        android:focusable="false"
+        tools:ignore="ContentDescription"
+        tools:src="@drawable/ds_ic_alert_circle" />
+
+    <TextView
+        android:id="@+id/message"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="@dimen/x4"
+        android:layout_marginEnd="50dp"
+        android:layout_marginBottom="@dimen/x4"
+        tools:text="Шаблон временно не работает: ежегодная инвентаризация. Попробуйте обратиться позднее." />
+
+
+    <ImageView
+        android:id="@+id/btn_close"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_gravity="end"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:background="?selectableItemBackgroundBorderless"
+        android:clickable="true"
+        android:focusable="true"
+        android:scaleType="centerInside"
+        android:src="@drawable/ds_ic_x"
+        android:visibility="gone"
+        app:tint="?colorControlNormal"
+        tools:ignore="ContentDescription"
+        tools:visibility="visible" />
+
+</merge>

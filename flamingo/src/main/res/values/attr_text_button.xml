@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="TextButton">
+        <attr name="ds_tb_label" format="string" />
+        <attr name="ds_tb_size" format="enum">
+            <enum name="medium" value="0" />
+            <enum name="small" value="1" />
+        </attr>
+        <attr name="ds_tb_color" format="enum">
+            <enum name="opaque_primary" value="3" />
+            <enum name="opaque" value="4" />
+        </attr>
+        <attr name="ds_tb_left_icon" format="reference" />
+        <attr name="ds_tb_disabled" format="boolean" />
+        <attr name="ds_tb_dropdown" format="enum">
+            <enum name="hide" value="0" />
+            <enum name="collapse" value="1" />
+            <enum name="expand" value="2" />
+        </attr>
+    </declare-styleable>
+</resources>

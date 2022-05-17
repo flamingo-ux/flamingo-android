@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="EmptyState">
+        <attr name="ds_es_title" format="string" />
+        <attr name="ds_es_description" format="string" />
+        <attr name="ds_es_buttonText" format="string" />
+        <attr name="ds_es_icon" format="reference" />
+        <attr name="ds_es_imageType" format="enum">
+            <enum name="no_image" value="0" />
+            <enum name="notification" value="1" />
+            <enum name="feed" value="2" />
+            <enum name="empty" value="3" />
+            <enum name="calendar" value="4" />
+            <enum name="community" value="5" />
+            <enum name="web" value="6" />
+            <enum name="crash" value="7" />
+            <enum name="people" value="8" />
+            <enum name="shield" value="9" />
+            <enum name="lock" value="10" />
+            <enum name="search" value="11" />
+        </attr>
+    </declare-styleable>
+</resources>

@@ -1,0 +1,19 @@
+<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <com.flamingo.demoapi.DemoPreference app:key="component" />
+
+    <DropDownPreference
+        app:iconSpaceReserved="false"
+        app:key="elevation"
+        app:persistent="false"
+        app:summary="%s"
+        app:title="Elevation" />
+
+    <DropDownPreference
+        app:iconSpaceReserved="false"
+        app:key="cornerRadius"
+        app:persistent="false"
+        app:summary="%s"
+        app:title="Corner radius" />
+
+</PreferenceScreen>

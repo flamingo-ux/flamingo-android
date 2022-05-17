@@ -1,0 +1,150 @@
+def versions = [
+        theater    : '0.0.1',
+        flamingo   : '0.0.1',
+        ksp        : '1.6.10-1.0.4',
+        compose    : '1.1.1',
+        androidx   : '1.0.0',
+        appcompat  : '1.4.0-rc01',
+        archCore   : '2.1.0',
+        lifecycle  : '2.3.1',
+        coroutines : '1.4.3',
+        lint       : '30.0.2',
+        kotlin     : '1.6.10',
+        accompanist: '0.17.0',
+        junit5     : '5.8.0',
+        material   : '1.1.0',
+        coil       : '1.3.2',
+]
+
+ext.versions = versions
+
+ext.deps = [
+        android: [
+                build       : [
+                        compileSdkVersion: 31,
+                        minSdkVersion    : 21,
+                        awMinSdkVersion  : 26,
+                        targetSdkVersion : 30
+                ],
+                // also must change lint version using the formula:
+                // If the Gradle plugin version is X.Y.Z, then the Lint library version is X+23.Y.Z
+                gradlePlugin: 'com.android.tools.build:gradle:7.0.4',
+                support     : [
+                        annotations       : "androidx.annotation:annotation:${versions.androidx}",
+                        appCompat         : "androidx.appcompat:appcompat:${versions.appcompat}",
+                        appCompatResources: "androidx.appcompat:appcompat-resources:${versions.appcompat}",
+                        cardView          : "androidx.cardview:cardview:${versions.androidx}",
+                        constraintLayout  : "androidx.constraintlayout:constraintlayout:2.0.0-beta4",
+                        coordinatorLayout : 'androidx.coordinatorlayout:coordinatorlayout:1.1.0',
+                        customView        : 'androidx.customview:customview:1.1.0',
+                        material          : "com.google.android.material:material:${versions.material}",
+                        legacyPrefs       : "androidx.legacy:legacy-preference-v14:1.0.0",
+                        exifinterface     : "androidx.exifinterface:exifinterface:${versions.androidx}",
+                        percent           : "androidx.percentlayout:percentlayout:${versions.androidx}",
+                        recyclerView      : "androidx.recyclerview:recyclerview:1.2.0-alpha04", // aw sdk v21.5.1 requires 1.1.0
+                        securityCrypto    : 'androidx.security:security-crypto:1.1.0-alpha03', // aw sdk v21.5.1 requires 1.1.0
+                        transition        : 'androidx.transition:transition:1.2.0',
+                        swiperefreshlayout: "androidx.swiperefreshlayout:swiperefreshlayout:1.1.0-alpha03",
+                        vectorDrawable    : 'androidx.vectordrawable:vectordrawable:1.1.0',
+                        viewPager         : 'androidx.viewpager:viewpager:1.0.0',
+                        viewPager2        : 'androidx.viewpager2:viewpager2:1.0.0',
+                        webkit            : 'androidx.webkit:webkit:1.2.0'
+                ],
+                ktx         : [
+                        collection: "androidx.collection:collection-ktx:1.1.0",
+                        core      : "androidx.core:core-ktx:1.6.0",
+                        preference: "androidx.preference:preference:1.0.0"
+                ],
+                junit4      : 'androidx.test.ext:junit:1.1.1',
+        ],
+        compose: [
+                ui                           : "androidx.compose.ui:ui:${versions.compose}",
+                // Tooling support (Previews, etc.)
+                uiTooling                    : "androidx.compose.ui:ui-tooling:${versions.compose}",
+                // Foundation (Border, Background, Box, Image, Scroll, shapes, animations, etc.)
+                foundation                   : "androidx.compose.foundation:foundation:${versions.compose}",
+                // Material Design
+                material                     : "androidx.compose.material:material:${versions.compose}",
+                // Material design icons
+                materialIconsCore            : "androidx.compose.material:material-icons-core:${versions.compose}",
+                materialIconsExtended        : "androidx.compose.material:material-icons-extended:${versions.compose}",
+                materialRipple               : "androidx.compose.material:material-ripple:${versions.compose}",
+                runtime                      : "androidx.compose.runtime:runtime:${versions.compose}",
+                runtimeSaveable              : "androidx.compose.runtime:runtime-saveable:${versions.compose}",
+                animation                    : "androidx.compose.animation:animation:${versions.compose}",
+                animationCore                : "androidx.compose.animation:animation-core:${versions.compose}",
+                // Integration with observables
+                livedata                     : "androidx.compose.runtime:runtime-livedata:${versions.compose}",
+                rxjava2                      : "androidx.compose.runtime:runtime-rxjava2:${versions.compose}",
+                // Integration with activities
+                activity                     : "androidx.activity:activity-compose:1.3.0",
+                // Integration with ViewModels
+                viewmodel                    : "androidx.lifecycle:lifecycle-viewmodel-compose:2.4.0",
+                compiler                     : "androidx.compose.compiler:compiler:${versions.compose}",
+                uiTest                       : "androidx.compose.ui:ui-test-junit4:${versions.compose}",
+                uiGraphics                   : "androidx.compose.ui:ui-graphics:${versions.compose}",
+                uiText                       : "androidx.compose.ui:ui-text:${versions.compose}",
+                uiUnit                       : "androidx.compose.ui:ui-unit:${versions.compose}",
+                uiUtil                       : "androidx.compose.ui:ui-util:${versions.compose}",
+                constraintLayout             : "androidx.constraintlayout:constraintlayout-compose:1.0.0-rc01",
+                foundationLayout             : "androidx.compose.foundation:foundation-layout:${versions.compose}",
+                accompanistPager             : "com.google.accompanist:accompanist-pager:${versions.accompanist}",
+                accompanistDrawablePainter   : "com.google.accompanist:accompanist-drawablepainter:${versions.accompanist}",
+                accompanistSystemUiController: "com.google.accompanist:accompanist-systemuicontroller:${versions.accompanist}",
+                accompanistSwipeRefresh      : "com.google.accompanist:accompanist-swiperefresh:0.18.0"
+        ],
+        lint   : [
+                lint  : "com.android.tools.lint:lint:${versions.lint}",
+                checks: "com.android.tools.lint:lint-checks:${versions.lint}",
+                api   : "com.android.tools.lint:lint-api:${versions.lint}",
+                tests : "com.android.tools.lint:lint-tests:${versions.lint}",
+        ],
+        kotlin : [
+                stdlib           : "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${versions.kotlin}",
+                reflect          : "org.jetbrains.kotlin:kotlin-reflect:${versions.kotlin}",
+                androidExtensions: "org.jetbrains.kotlin:kotlin-android-extensions-runtime:${versions.kotlin}",
+                coroutines       : [
+                        core     : "org.jetbrains.kotlinx:kotlinx-coroutines-core-jvm:${versions.coroutines}",
+                        android  : "org.jetbrains.kotlinx:kotlinx-coroutines-android:${versions.coroutines}",
+                        testing  : "org.jetbrains.kotlinx:kotlinx-coroutines-test:${versions.coroutines}",
+                        rxInterop: "org.jetbrains.kotlinx:kotlinx-coroutines-rx2:${versions.coroutines}",
+                ]
+        ],
+        junit5 : [
+                api   : "org.junit.jupiter:junit-jupiter-api:${versions.junit5}",
+                engine: "org.junit.jupiter:junit-jupiter-engine:${versions.junit5}",
+                params: "org.junit.jupiter:junit-jupiter-params:${versions.junit5}"
+        ],
+        kotlinx: [
+                serialization: [
+                        runtime : "org.jetbrains.kotlinx:kotlinx-serialization-runtime:0.20.0",
+                        protobuf: "org.jetbrains.kotlinx:kotlinx-serialization-protobuf:1.3.0"
+                ]
+        ],
+        timber : 'com.jakewharton.timber:timber:5.0.1',
+        arch   : [
+                lifecycle  : [
+                        common            : "androidx.lifecycle:lifecycle-common-java8:${versions.lifecycle}",
+                        extensions        : "androidx.lifecycle:lifecycle-extensions:2.2.0",
+                        liveData          : "androidx.lifecycle:lifecycle-livedata-ktx:${versions.lifecycle}",
+                        liveDataCore      : "androidx.lifecycle:lifecycle-livedata-core-ktx:${versions.lifecycle}",
+                        runtime           : "androidx.lifecycle:lifecycle-runtime-ktx:${versions.lifecycle}",
+                        viewModel         : "androidx.lifecycle:lifecycle-viewmodel-ktx:${versions.lifecycle}",
+                        viewmodellifecycle: "androidx.lifecycle:lifecycle-viewmodel-savedstate:${versions.lifecycle}"
+                ],
+                activityKtx: 'androidx.activity:activity-ktx:1.2.3',
+                fragmentKtx: "androidx.fragment:fragment-ktx:1.3.4",
+                core       : [
+                        core  : "androidx.arch.core:core-runtime:${versions.archCore}",
+                        common: "androidx.arch.core:core-common:${versions.archCore}"
+                ],
+                datastore  : "androidx.datastore:datastore-preferences:1.0.0"
+        ],
+        coil   : [
+                coil   : "io.coil-kt:coil:${versions.coil}",
+                base   : "io.coil-kt:coil-base:${versions.coil}",
+                compose: "io.coil-kt:coil-compose:${versions.coil}"
+        ],
+        junit4 : 'junit:junit:4.13.2',
+        truth  : 'com.google.truth:truth:0.42',
+]

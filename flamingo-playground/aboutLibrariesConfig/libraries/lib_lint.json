@@ -1,0 +1,9 @@
+{
+  "uniqueId": "com.android.tools.lint:lint",
+  "website": "https://mvnrepository.com/artifact/com.android.tools.lint/lint",
+  "description": "Android Lint is a new tool introduced in ADT 16 (and Tools 16) which scans Android project sources for potential bugs.",
+  "name": "Android Lint",
+  "licenses": [
+    "Apache-2.0"
+  ]
+}

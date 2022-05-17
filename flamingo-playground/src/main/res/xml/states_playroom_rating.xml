@@ -1,0 +1,42 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <com.flamingo.demoapi.DemoPreference app:key="component" />
+
+    <EditTextPreference
+        app:iconSpaceReserved="false"
+        app:key="wholeSteps"
+        app:persistent="false"
+        app:title="Whole steps (positive non-fractional number)" />
+
+    <SwitchPreferenceCompat
+        app:iconSpaceReserved="false"
+        app:key="onSelected"
+        app:persistent="false"
+        app:title="Has onSelected" />
+
+    <SwitchPreferenceCompat
+        app:iconSpaceReserved="false"
+        app:key="halves"
+        app:persistent="false"
+        app:title="Halves" />
+
+    <SwitchPreferenceCompat
+        app:iconSpaceReserved="false"
+        app:key="dragEnabled"
+        app:persistent="false"
+        app:title="Drag" />
+
+    <SwitchPreferenceCompat
+        app:iconSpaceReserved="false"
+        app:key="vibrationEnabled"
+        app:persistent="false"
+        app:title="Vibration" />
+
+    <DropDownPreference
+        app:iconSpaceReserved="false"
+        app:key="size"
+        app:persistent="false"
+        app:summary="%s"
+        app:title="Size" />
+</PreferenceScreen>

@@ -1,0 +1,16 @@
+apply plugin: 'kotlin'
+
+compileKotlin {
+    kotlinOptions.freeCompilerArgs += ["-Xexplicit-api=strict"]
+}
+
+dependencies {
+    implementation deps.kotlin.stdlib
+    implementation "com.google.devtools.ksp:symbol-processing-api:${versions.ksp}"
+
+    //testRuntimeOnly deps.junit5.engine
+}
+
+test {
+    useJUnitPlatform()
+}

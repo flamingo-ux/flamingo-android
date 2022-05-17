@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Theme.Flamingo" parent="Base.Theme.Flamingo">
+        <item name="colorPrimaryLight">@color/orchid_600</item>
+        <item name="colorPrimary">@color/green_400</item>
+        <item name="colorPrimaryVariant">?colorPrimary</item>
+        <item name="colorOnPrimary">@color/grey_100</item>
+
+        <item name="colorSecondaryLight">@color/orchid_600</item>
+        <item name="colorSecondary">@color/blue_400</item>
+        <item name="colorSecondaryVariant">?colorSecondary</item>
+        <item name="colorOnSecondary">@color/grey_100</item>
+
+        <item name="colorInfo">@color/blue_500</item>
+        <item name="colorWarning">@color/orange_500</item>
+        <item name="colorSuccess">@color/green_500</item>
+        <item name="colorRating">@color/yellow_200</item>
+
+        <item name="colorError">@color/red_500</item>
+        <item name="colorOnError">@color/grey_100</item>
+
+        <item name="colorSeparator">#14FFFFFF</item>
+        <item name="colorOutline">#29FFFFFF</item>
+        <item name="colorOutlineDark">#52FFFFFF</item>
+
+        <item name="colorDark">@color/white</item>
+        <item name="colorBright">@color/black</item>
+
+        <item name="colorControlNormal">?android:textColorSecondary</item>
+
+        <item name="android:colorBackground">@color/grey_1000</item>
+        <item name="colorBackgroundSecondary">@color/grey_900</item>
+        <item name="colorBackgroundTertiary">@color/grey_850</item>
+        <item name="colorBackgroundTextField">#1FFFFFFF</item>
+        <item name="colorBackgroundQuaternary">#52FFFFFF</item>
+
+        <item name="colorControlHighlight">#1FFFFFFF</item>
+        <item name="colorBackgroundTextFieldDeprecated">@color/orchid_600</item>
+        <item name="colorBackgroundTextFieldError">@color/orchid_600</item>
+        <item name="colorStrokeTextField">@color/orchid_600</item>
+        <item name="colorStrokeTextFieldHighlight">@color/orchid_600</item>
+    </style>
+</resources>

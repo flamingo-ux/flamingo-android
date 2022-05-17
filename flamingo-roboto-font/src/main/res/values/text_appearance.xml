@@ -1,0 +1,333 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- external asset @font/roboto_bold is used because sans-serif-bold fontFamily is absent -->
+    <!-- https://unicorn-utterances.com/posts/hard-grids-and-baselines-android-design-fidelity/ -->
+    <!-- view source code of the file in chrome to see it
+    https://unicorn-utterances.com/posts/hard-grids-and-baselines-android-design-fideli
+    ty/styles.xml -->
+
+    <style name="TextStyle" />
+
+    <style name="TextStyle.Flamingo" />
+
+    <style name="TextStyle.Flamingo.Headline1">
+        <!-- from text appearance -->
+        <item name="fontFamily">@font/roboto_bold</item>
+        <item name="android:fontFamily">@font/roboto_bold</item>
+        <item name="android:textSize">34sp</item>
+        <item name="android:lineSpacingMultiplier">0.9960855</item>
+        <item name="android:letterSpacing">0.00735294117</item>
+        <item name="android:textColor">?android:attr/textColorPrimary</item>
+
+        <!-- additional -->
+        <item name="android:textAppearance">@style/TextAppearance.Flamingo.Headline1</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="firstBaselineToTopHeight">32sp</item>
+    </style>
+
+    <style name="TextStyle.Flamingo.Headline2">
+        <!-- from text appearance -->
+        <item name="fontFamily">@font/roboto_bold</item>
+        <item name="android:fontFamily">@font/roboto_bold</item>
+        <item name="android:textSize">28sp</item>
+        <item name="android:lineSpacingMultiplier">0.97</item>
+        <item name="android:letterSpacing">0.00892857142</item>
+        <item name="android:textColor">?android:attr/textColorPrimary</item>
+
+        <!-- additional -->
+        <item name="android:textAppearance">@style/TextAppearance.Flamingo.Headline2</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+
+    <style name="TextStyle.Flamingo.Headline3">
+        <!-- from text appearance -->
+        <item name="fontFamily">sans-serif-black</item>
+        <item name="android:fontFamily">sans-serif-black</item>
+        <item name="android:textSize">22sp</item>
+        <item name="android:lineSpacingMultiplier">1.08606951</item>
+        <item name="android:letterSpacing">0</item>
+        <item name="android:textColor">?android:attr/textColorPrimary</item>
+
+        <!-- additional -->
+        <item name="android:textAppearance">@style/TextAppearance.Flamingo.Headline3</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="firstBaselineToTopHeight">22sp</item>
+    </style>
+
+    <style name="TextStyle.Flamingo.Headline4">
+        <!-- from text appearance -->
+        <item name="fontFamily">@font/roboto_bold</item>
+        <item name="android:fontFamily">@font/roboto_bold</item>
+        <item name="android:textSize">22sp</item>
+        <item name="android:lineSpacingMultiplier">1.08606951</item>
+        <item name="android:letterSpacing">0</item>
+        <item name="android:textColor">?android:attr/textColorPrimary</item>
+
+        <!-- additional -->
+        <item name="android:textAppearance">@style/TextAppearance.Flamingo.Headline4</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="firstBaselineToTopHeight">22sp</item>
+    </style>
+
+    <style name="TextStyle.Flamingo.Headline5">
+        <!-- from text appearance -->
+        <item name="fontFamily">@font/roboto_bold</item>
+        <item name="android:fontFamily">@font/roboto_bold</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:lineSpacingMultiplier">1.02</item>
+        <item name="android:letterSpacing">0.0075</item>
+        <item name="android:textColor">?android:attr/textColorPrimary</item>
+
+        <!-- additional -->
+        <item name="android:textAppearance">@style/TextAppearance.Flamingo.Headline5</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="firstBaselineToTopHeight">19sp</item>
+    </style>
+
+    <style name="TextStyle.Flamingo.Headline6">
+        <!-- from text appearance -->
+        <item name="fontFamily">@font/roboto_bold</item>
+        <item name="android:fontFamily">@font/roboto_bold</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:lineSpacingMultiplier">1.06</item>
+        <item name="android:letterSpacing">0.015625</item>
+        <item name="android:textColor">?android:attr/textColorPrimary</item>
+
+        <!-- additional -->
+        <item name="android:textAppearance">@style/TextAppearance.Flamingo.Headline6</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="lastBaselineToBottomHeight">5sp</item>
+    </style>
+
+    <style name="TextStyle.Flamingo.Body1">
+        <!-- from text appearance -->
+        <item name="fontFamily">sans-serif</item>
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textSize">17sp</item>
+        <item name="android:lineSpacingMultiplier">1.22</item>
+        <item name="android:letterSpacing">0.0294117647</item>
+        <item name="android:textColor">?android:attr/textColorSecondary</item>
+
+        <!-- additional -->
+        <item name="android:textAppearance">@style/TextAppearance.Flamingo.Body1</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="firstBaselineToTopHeight">18sp</item>
+        <item name="lastBaselineToBottomHeight">6sp</item>
+    </style>
+
+    <style name="TextStyle.Flamingo.Body2">
+        <!-- from text appearance -->
+        <item name="fontFamily">sans-serif</item>
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:lineSpacingMultiplier">1.13778711</item>
+        <item name="android:letterSpacing">0.01666666666</item>
+        <item name="android:textColor">?android:attr/textColorSecondary</item>
+
+        <!-- additional -->
+        <item name="android:textAppearance">@style/TextAppearance.Flamingo.Body2</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="firstBaselineToTopHeight">15sp</item>
+        <item name="lastBaselineToBottomHeight">5sp</item>
+    </style>
+
+    <style name="TextStyle.Flamingo.Subtitle1">
+        <!-- from text appearance -->
+        <item name="fontFamily">sans-serif</item>
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:lineSpacingMultiplier">1.27</item>
+        <item name="android:letterSpacing">0.009375</item>
+        <item name="android:textColor">?android:attr/textColorPrimary</item>
+
+        <!-- additional -->
+        <item name="android:textAppearance">@style/TextAppearance.Flamingo.Subtitle1</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="firstBaselineToTopHeight">17sp</item>
+        <item name="lastBaselineToBottomHeight">7sp</item>
+    </style>
+
+    <style name="TextStyle.Flamingo.Subtitle2">
+        <!-- from text appearance -->
+        <item name="fontFamily">sans-serif-medium</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:lineSpacingMultiplier">1.13778711</item>
+        <item name="android:letterSpacing">0.00666666666</item>
+        <item name="android:textColor">?android:attr/textColorPrimary</item>
+
+        <!-- additional -->
+        <item name="android:textAppearance">@style/TextAppearance.Flamingo.Subtitle2</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="firstBaselineToTopHeight">15sp</item>
+        <item name="lastBaselineToBottomHeight">5sp</item>
+    </style>
+
+    <style name="TextStyle.Flamingo.Caption">
+        <!-- from text appearance -->
+        <item name="fontFamily">sans-serif</item>
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:lineSpacingMultiplier">1.13778711</item>
+        <item name="android:letterSpacing">0.03333333333</item>
+        <item name="android:textColor">?android:attr/textColorPrimary</item>
+
+        <!-- additional -->
+        <item name="android:textAppearance">@style/TextAppearance.Flamingo.Caption</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="firstBaselineToTopHeight">12sp</item>
+        <item name="lastBaselineToBottomHeight">4sp</item>
+    </style>
+
+    <style name="TextStyle.Flamingo.Overline">
+        <!-- from text appearance -->
+        <item name="fontFamily">sans-serif</item>
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textSize">11sp</item>
+        <item name="android:lineSpacingMultiplier">1.2412223</item>
+        <item name="android:letterSpacing">0.03636363636</item>
+        <item name="android:textColor">?android:attr/textColorPrimary</item>
+        <item name="android:textAllCaps">false</item>
+
+        <!-- additional -->
+        <item name="android:textAppearance">@style/TextAppearance.Flamingo.Overline</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="firstBaselineToTopHeight">12sp</item>
+        <item name="lastBaselineToBottomHeight">4sp</item>
+    </style>
+
+    <style name="TextStyle.Flamingo.Button">
+        <!-- from text appearance -->
+        <item name="fontFamily">sans-serif-medium</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:lineSpacingMultiplier">0.97524609</item>
+        <item name="android:letterSpacing">0.01071428571</item>
+        <item name="android:textColor">?android:attr/textColorPrimary</item>
+        <item name="android:textAllCaps">false</item>
+
+        <!-- additional -->
+        <item name="android:textAppearance">@style/TextAppearance.Flamingo.Button</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+
+
+    <style name="TextAppearance.Flamingo.Headline1" parent="TextAppearance.MaterialComponents.Headline1">
+        <item name="fontFamily">@font/roboto_bold</item>
+        <item name="android:fontFamily">@font/roboto_bold</item>
+        <item name="android:textSize">34sp</item>
+        <item name="android:lineSpacingMultiplier">0.9960855</item>
+        <item name="android:letterSpacing">0.00735294117</item>
+        <item name="android:textColor">?android:attr/textColorPrimary</item>
+    </style>
+
+    <style name="TextAppearance.Flamingo.Headline2" parent="TextAppearance.MaterialComponents.Headline2">
+        <item name="fontFamily">@font/roboto_bold</item>
+        <item name="android:fontFamily">@font/roboto_bold</item>
+        <item name="android:textSize">28sp</item>
+        <item name="android:lineSpacingMultiplier">0.97</item>
+        <item name="android:letterSpacing">0.00892857142</item>
+        <item name="android:textColor">?android:attr/textColorPrimary</item>
+    </style>
+
+    <style name="TextAppearance.Flamingo.Headline3" parent="TextAppearance.MaterialComponents.Headline3">
+        <item name="fontFamily">sans-serif-black</item>
+        <item name="android:fontFamily">sans-serif-black</item>
+        <item name="android:textSize">22sp</item>
+        <item name="android:lineSpacingMultiplier">1.08606951</item>
+        <item name="android:letterSpacing">0</item>
+        <item name="android:textColor">?android:attr/textColorPrimary</item>
+    </style>
+
+    <style name="TextAppearance.Flamingo.Headline4" parent="TextAppearance.MaterialComponents.Headline5">
+        <item name="fontFamily">@font/roboto_bold</item>
+        <item name="android:fontFamily">@font/roboto_bold</item>
+        <item name="android:textSize">22sp</item>
+        <item name="android:lineSpacingMultiplier">1.08606951</item>
+        <item name="android:letterSpacing">0</item>
+        <item name="android:textColor">?android:attr/textColorPrimary</item>
+    </style>
+
+    <style name="TextAppearance.Flamingo.Headline5" parent="TextAppearance.MaterialComponents.Headline5">
+        <item name="fontFamily">@font/roboto_bold</item>
+        <item name="android:fontFamily">@font/roboto_bold</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:lineSpacingMultiplier">1.02</item>
+        <item name="android:letterSpacing">0.0075</item>
+        <item name="android:textColor">?android:attr/textColorPrimary</item>
+    </style>
+
+    <style name="TextAppearance.Flamingo.Headline6" parent="TextAppearance.MaterialComponents.Headline6">
+        <item name="fontFamily">@font/roboto_bold</item>
+        <item name="android:fontFamily">@font/roboto_bold</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:lineSpacingMultiplier">1.06</item>
+        <item name="android:letterSpacing">0.015625</item>
+        <item name="android:textColor">?android:attr/textColorPrimary</item>
+    </style>
+
+    <style name="TextAppearance.Flamingo.Body1" parent="TextAppearance.MaterialComponents.Body1">
+        <item name="fontFamily">sans-serif</item>
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textSize">17sp</item>
+        <item name="android:lineSpacingMultiplier">1.22</item>
+        <item name="android:letterSpacing">0.0294117647</item>
+        <item name="android:textColor">?android:attr/textColorSecondary</item>
+    </style>
+
+    <style name="TextAppearance.Flamingo.Body2" parent="TextAppearance.MaterialComponents.Body2">
+        <item name="fontFamily">sans-serif</item>
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:lineSpacingMultiplier">1.13778711</item>
+        <item name="android:letterSpacing">0.01666666666</item>
+        <item name="android:textColor">?android:attr/textColorSecondary</item>
+    </style>
+
+    <style name="TextAppearance.Flamingo.Subtitle1" parent="TextAppearance.MaterialComponents.Subtitle1">
+        <item name="fontFamily">sans-serif</item>
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:lineSpacingMultiplier">1.27</item>
+        <item name="android:letterSpacing">0.009375</item>
+        <item name="android:textColor">?android:attr/textColorPrimary</item>
+    </style>
+
+    <style name="TextAppearance.Flamingo.Subtitle2" parent="TextAppearance.MaterialComponents.Subtitle2">
+        <item name="fontFamily">sans-serif-medium</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:lineSpacingMultiplier">1.13778711</item>
+        <item name="android:letterSpacing">0.00666666666</item>
+        <item name="android:textColor">?android:attr/textColorPrimary</item>
+    </style>
+
+    <style name="TextAppearance.Flamingo.Caption" parent="TextAppearance.MaterialComponents.Caption">
+        <item name="fontFamily">sans-serif</item>
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:lineSpacingMultiplier">1.13778711</item>
+        <item name="android:letterSpacing">0.03333333333</item>
+        <item name="android:textColor">?android:attr/textColorPrimary</item>
+    </style>
+
+    <style name="TextAppearance.Flamingo.Overline" parent="TextAppearance.MaterialComponents.Overline">
+        <item name="fontFamily">sans-serif</item>
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textSize">11sp</item>
+        <item name="android:lineSpacingMultiplier">1.2412223</item>
+        <item name="android:letterSpacing">0.03636363636</item>
+        <item name="android:textColor">?android:attr/textColorPrimary</item>
+        <item name="android:textAllCaps">false</item>
+    </style>
+
+    <style name="TextAppearance.Flamingo.Button" parent="TextAppearance.MaterialComponents.Button">
+        <item name="fontFamily">sans-serif-medium</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:lineSpacingMultiplier">0.97524609</item>
+        <item name="android:letterSpacing">0.01071428571</item>
+        <item name="android:textColor">?android:attr/textColorPrimary</item>
+        <item name="android:textAllCaps">false</item>
+    </style>
+</resources>

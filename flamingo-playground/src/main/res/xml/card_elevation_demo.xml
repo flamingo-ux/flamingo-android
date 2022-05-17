@@ -1,0 +1,25 @@
+<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <com.flamingo.demoapi.DemoPreference app:key="component" />
+
+    <DropDownPreference
+        app:iconSpaceReserved="false"
+        app:key="elevation"
+        app:persistent="false"
+        app:summary="%s"
+        app:title="Elevation (dp)" />
+
+    <Preference
+        app:icon="@drawable/ds_ic_figma"
+        app:key="figma"
+        app:persistent="false"
+        app:summary="Цвета фона CardView для разных elevation в тёмной теме"
+        app:title="Figma" />
+
+    <com.flamingo.demoapi.LongSummaryPreference
+        app:iconSpaceReserved="false"
+        app:persistent="false"
+        app:summary="@string/card_demo_docs"
+        app:title="Описание" />
+
+</PreferenceScreen>

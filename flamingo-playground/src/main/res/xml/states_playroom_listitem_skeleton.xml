@@ -1,0 +1,38 @@
+<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <com.flamingo.demoapi.DemoPreference app:key="component" />
+
+    <DropDownPreference
+        app:iconSpaceReserved="false"
+        app:key="textBlocks"
+        app:persistent="false"
+        app:summary="%s"
+        app:title="Text blocks" />
+
+    <SwitchPreferenceCompat
+        app:iconSpaceReserved="false"
+        app:key="avatarSkeleton"
+        app:persistent="false"
+        app:title="Avatar skeleton" />
+
+    <DropDownPreference
+        app:iconSpaceReserved="false"
+        app:key="avatarSize"
+        app:persistent="false"
+        app:summary="%s"
+        app:title="Avatar size" />
+
+    <DropDownPreference
+        app:iconSpaceReserved="false"
+        app:key="avatarShape"
+        app:persistent="false"
+        app:summary="%s"
+        app:title="Avatar shape" />
+
+    <SwitchPreferenceCompat
+        app:iconSpaceReserved="false"
+        app:key="white"
+        app:persistent="false"
+        app:title="White" />
+
+</PreferenceScreen>

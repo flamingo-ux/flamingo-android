@@ -1,0 +1,29 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.flamingo.playground.app">
+
+    <uses-permission android:name="android.permission.VIBRATE" />
+
+    <application
+        android:allowBackup="false"
+        android:icon="@mipmap/ic_launcher"
+        android:label="Flamingo">
+
+        <activity
+            android:name="com.flamingo.playground.FlamingoPlaygroundActivity"
+            android:documentLaunchMode="intoExisting"
+            android:exported="true"
+            android:icon="@mipmap/ic_launcher"
+            android:label="@string/flamingo_main_activity_title"
+            android:resizeableActivity="true"
+            android:theme="@style/Theme.Flamingo"
+            tools:ignore="Instantiatable"
+            tools:targetApi="n">
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+</manifest>

@@ -1,0 +1,91 @@
+<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <com.flamingo.demoapi.DemoPreference app:key="component" />
+
+    <Preference
+        app:iconSpaceReserved="false"
+        app:persistent="false"
+        app:summary="@string/states_playroom_text_filed_null_in_text" />
+
+    <DropDownPreference
+        app:iconSpaceReserved="false"
+        app:key="start"
+        app:persistent="false"
+        app:summary="%s"
+        app:title="Start slot" />
+
+    <DropDownPreference
+        app:iconSpaceReserved="false"
+        app:key="center"
+        app:persistent="false"
+        app:summary="%s"
+        app:title="Center slot" />
+
+    <SwitchPreferenceCompat
+        app:iconSpaceReserved="false"
+        app:key="searchHasOnClick"
+        app:persistent="false"
+        app:title="Search has onClick" />
+
+    <SwitchPreferenceCompat
+        app:iconSpaceReserved="false"
+        app:key="avatarInCenter"
+        app:persistent="false"
+        app:title="Avatar in center slot" />
+
+    <EditTextPreference
+        app:iconSpaceReserved="false"
+        app:key="title"
+        app:persistent="false"
+        app:title="Title" />
+
+    <EditTextPreference
+        app:iconSpaceReserved="false"
+        app:key="subtitle"
+        app:persistent="false"
+        app:title="Subtitle" />
+
+    <SwitchPreferenceCompat
+        app:iconSpaceReserved="false"
+        app:key="action1"
+        app:persistent="false"
+        app:title="First action" />
+
+    <SwitchPreferenceCompat
+        app:iconSpaceReserved="false"
+        app:key="action2"
+        app:persistent="false"
+        app:title="Second action" />
+
+    <DropDownPreference
+        app:iconSpaceReserved="false"
+        app:key="end"
+        app:persistent="false"
+        app:summary="%s"
+        app:title="End slot" />
+
+    <SwitchPreferenceCompat
+        app:iconSpaceReserved="false"
+        app:key="showBackground"
+        app:persistent="false"
+        app:title="Show background" />
+
+    <SwitchPreferenceCompat
+        app:iconSpaceReserved="false"
+        app:key="shadow"
+        app:persistent="false"
+        app:title="Shadow" />
+
+    <SwitchPreferenceCompat
+        app:iconSpaceReserved="false"
+        app:key="white"
+        app:persistent="false"
+        app:title="White" />
+
+    <SwitchPreferenceCompat
+        app:iconSpaceReserved="false"
+        app:key="debugMode"
+        app:persistent="false"
+        app:title="Debug Mode" />
+
+</PreferenceScreen>

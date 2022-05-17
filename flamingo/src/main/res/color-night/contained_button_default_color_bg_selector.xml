@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- in night mode intended colorBackgroundTertiaryOpacity can be used -->
+    <item android:color="?attr/colorBackgroundTextField" android:state_enabled="true" />
+    <item android:alpha="0.38" android:color="?attr/colorBackgroundTertiary" />
+</selector>

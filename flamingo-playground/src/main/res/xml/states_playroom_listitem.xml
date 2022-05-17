@@ -1,0 +1,104 @@
+<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <com.flamingo.demoapi.DemoPreference app:key="component" />
+
+    <DropDownPreference
+        app:iconSpaceReserved="false"
+        app:key="startSlot"
+        app:persistent="false"
+        app:summary="%s"
+        app:title="Start slot" />
+
+    <DropDownPreference
+        app:iconSpaceReserved="false"
+        app:key="title"
+        app:persistent="false"
+        app:summary="%s"
+        app:title="Title" />
+
+    <DropDownPreference
+        app:iconSpaceReserved="false"
+        app:key="subtitle"
+        app:persistent="false"
+        app:summary="%s"
+        app:title="Subtitle" />
+
+    <DropDownPreference
+        app:iconSpaceReserved="false"
+        app:key="description"
+        app:persistent="false"
+        app:summary="%s"
+        app:title="Description" />
+
+    <DropDownPreference
+        app:iconSpaceReserved="false"
+        app:key="date"
+        app:persistent="false"
+        app:summary="%s"
+        app:title="Date" />
+
+    <DropDownPreference
+        app:iconSpaceReserved="false"
+        app:key="endSlot"
+        app:persistent="false"
+        app:summary="%s"
+        app:title="End slot" />
+
+    <SwitchPreferenceCompat
+        app:iconSpaceReserved="false"
+        app:key="isEndSlotClickableWhenDisabled"
+        app:persistent="false"
+        app:title="Is end slot clickable when disabled" />
+
+    <DropDownPreference
+        app:iconSpaceReserved="false"
+        app:key="titleMaxLines"
+        app:persistent="false"
+        app:summary="%s"
+        app:title="Title max lines" />
+
+    <DropDownPreference
+        app:iconSpaceReserved="false"
+        app:key="sideSlotsAlignment"
+        app:persistent="false"
+        app:summary="%s"
+        app:title="Side slots alignment" />
+
+    <DropDownPreference
+        app:iconSpaceReserved="false"
+        app:key="actions"
+        app:persistent="false"
+        app:summary="%s"
+        app:title="Actions" />
+
+    <SwitchPreferenceCompat
+        app:iconSpaceReserved="false"
+        app:key="onClick"
+        app:persistent="false"
+        app:title="OnClick" />
+
+    <SwitchPreferenceCompat
+        app:iconSpaceReserved="false"
+        app:key="showDivider"
+        app:persistent="false"
+        app:title="Show divider" />
+
+    <SwitchPreferenceCompat
+        app:iconSpaceReserved="false"
+        app:key="invertTitleAndSubtitle"
+        app:persistent="false"
+        app:title="Invert title and subtitle" />
+
+    <SwitchPreferenceCompat
+        app:iconSpaceReserved="false"
+        app:key="disabled"
+        app:persistent="false"
+        app:title="Disabled" />
+
+    <SwitchPreferenceCompat
+        app:iconSpaceReserved="false"
+        app:key="white"
+        app:persistent="false"
+        app:title="White" />
+
+</PreferenceScreen>
