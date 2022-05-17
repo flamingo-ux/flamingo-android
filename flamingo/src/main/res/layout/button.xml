@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:theme="@style/Theme.Flamingo"
+    tools:parentTag="android.widget.FrameLayout">
+
+    <LinearLayout
+        android:id="@+id/nonLoadingContainer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center_vertical">
+
+        <View
+            android:id="@+id/iconView"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            tools:background="@drawable/ds_ic_info" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            tools:text="Button" />
+
+        <View
+            android:id="@+id/dropdownView"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            tools:background="@drawable/ds_ic_arrow_drop_down" />
+    </LinearLayout>
+
+    <ProgressBar
+        android:id="@+id/progressView"
+        android:layout_width="16dp"
+        android:layout_height="16dp"
+        android:layout_gravity="center"
+        android:layout_marginHorizontal="16dp"
+        android:indeterminate="true"
+        android:indeterminateOnly="true"
+        tools:indeterminateTint="?colorPrimary" />
+
+</merge>

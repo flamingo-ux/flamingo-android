@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+    <string name="labs_title">Лаборатории</string>
+    <string name="labs_summary">Эксперименты для исследования и апробации идей. Инструменты для разработки ДС</string>
+
+    <string name="design_demos_tools_download_designer_tools_title">Скачать Designer Tools</string>
+    <string name="design_demos_tools_download_designer_tools_summary">Для использования Color Picker</string>
+
+    <string name="lab_compose_demo_title">Jetpack Compose Sandbox</string>
+
+    <string name="lab_compose_font_configurator_title">Конфигуратор шрифтов для Jetpack Compose</string>
+    <string name="lab_compose_font_configurator_summary">Просматривать отображение шрифтов с различными параметрами</string>
+
+    <string name="lab_compose_shadow_title">Shadow Lab</string>
+    <string name="lab_compose_shadow_summary">Демонстрация визуального отображения теней для различных elevations</string>
+
+    <string name="lab_accessibility_and_testing_title">Accessibility and testing lab</string>
+    <string name="lab_accessibility_and_testing_summary">Песочница для изучения возможноcтей Compose на предмет доступности людям с ограниченными возможностями и тестирования</string>
+
+    <string name="design_demos_tools_debug_overlay_title">Debug Overlay</string>
+    <string name="design_demos_tools_debug_overlay_summary">Режим ДС, в котором все компоненты отображают отладочную информацию внутри себя</string>
+    <string name="design_demos_tools_debug_overlay_tile_title">Quick settings tile</string>
+    <string name="design_demos_tools_debug_overlay_tile_summary">Добавить quick settings tile в быстрые настройки в шторке уведомлений, чтобы мгновенно управлять overlay\'ем с любого экрана системы</string>
+    <string name="add_tile_tutorial_url">https://todoist.com/ru/help/articles/add-an-add-task-quick-setting-tile-on-android</string>
+
+    <string name="design_demos_title">Демо дизайн-системы</string>
+    <string name="design_demos_summary">Тестовые экраны дизайн-системы. Разработчикам 👨‍💻 рекомендуется
+        ознакомиться со <b>всеми</b> демо перед началом использования дизайн-системы.</string>
+
+    <string name="design_demo_android_view_title">Android View</string>
+    <string name="design_demo_android_view_summary">Демо экраны, демонстрирующие устаревшую Android View реализацию ДС. Её не рекомендуется использовать, поддержка сильно ограничена</string>
+
+    <string name="design_demo_palette_colors_title">Палитра цветов</string>
+    <string name="design_demo_theme_colors_title">Цвета темы</string>
+    <string name="design_demo_fonts_title">Шрифты</string>
+    <string name="design_demo_icons_title">Иконки</string>
+    <string name="design_demo_illustrations_title">Иллюстрации</string>
+    <string name="design_demo_gradients_title">Градиенты</string>
+    <string name="design_demo_card_elevation_title">Демо card elevation</string>
+    <string name="design_demo_components_gallery_title">Галерея компонентов</string>
+    <string name="design_demo_components_gallery_summary">Список всех компонентов дизайн-системы с подробной документацией и демо для каждого компонента</string>
+    <string name="design_demo_theme_demo_title">Тема Theme.Flamingo</string>
+    <string name="design_demo_theme_demo_summary">Описание нюансов применения темы ДС и всех атрибутов</string>
+
+    <string name="theme_demo_attr_type">Тип: %s</string>
+    <string name="theme_demo_attr_type_and_value">Тип: %s, значение: %s</string>
+    <string name="theme_demo_attr_type_color">цвет</string>
+    <string name="theme_demo_attr_type_other">другой</string>
+
+    <string name="no_demos_found_for_component">🚫 Демо не найдены!\nBuild завершится неуспешно</string>
+    <string name="no_demos_found_for_component_with_view_impl">Компонент имеет Android View реализацию, содержащую демо. Демо для compose реализации появится в скором будущем</string>
+    <string name="error_while_loading_demos_for_component">Произошла ошибка при загрузке демо.\nСм. logcat</string>
+    <string name="palette_color_demo_introduction">\t\tЭто живая демонстрация цветовых палитр, реализованных в Compose-based
+        части дизайн системы Flamingo.\n\t\tЦветовую палитру Android View части ДС можно просмотреть только в исходном коде
+        библиотеки.\n\nНажмите на текст для копирования hex.</string>
+    <string name="palette_color_demo_hex_copied">скопирвано в буффер обмена</string>
+    <string name="theme_color_demo_introduction">\t\Это список цветов темы — цветов, которые нужно использовать для построения UI.\n\t\tЗАПРЕЩЕНО использовать цвета из палитры вместо цветов темы (за исключением случаев, когда фон не менятеся при смене темы (градиенты, картинки, видео, др.)</string>
+    <string name="accessibility_and_ui_testing_lab_text">У этого ui элемента есть\nsemantic properties:</string>
+    <string name="lab_fonts_configurator_letter_spacing_helper_text">Например, 0.02 или -0.04</string>
+    <string name="lab_fonts_configurator_line_spacing_miltiplier_helper_text">Например, 1.17 (line height / font size) (40/34)</string>
+    <string name="lab_compose_fonts_configurator_config_copied_msg">Конфигурация шрифта скопирована в буфер обмена</string>
+    <string name="lab_compose_fonts_configurator_config_copied_in_emulator_msg">. Можно вставить в ПК из эмулятора, нажав Command/Ctrl + V</string>
+    <string name="download_designer_tools_explanation">Скачать мобильное приложение Designer Tools. В нём есть функция \"Color Picker\", позволяющая извлекать hex-значения цветов в любом месте на экране.</string>
+    <string name="lab_compose_shadow_exact_values">Точные значения</string>
+    <string name="design_demo_components_gallery_no_view_components">Не найдено ни одного компонента</string>
+    <string name="design_demo_components_gallery_no_compose_components">Не найдено ни одного компонента в FlamingoRegistry.kt. Попробуйте выполнить <i>clean build</i></string>
+    <string name="design_demo_components_gallery_dots_meaning">Компоненты с точками имеют Android View реализацию</string>
+    <string name="design_demo_components_gallery_no_components_empty_state_title">Нет компонентов</string>
+    <string name="component_details_internal_component">Недоступен для использования вне библиотеки дизайн-системы</string>
+    <string name="component_details_theater_title">Видео-тизер</string>
+    <string name="component_details_theater_subtitle">Смотреть 🎬</string>
+    <string name="component_details_demo_section">Демо</string>
+    <string name="component_details_spec_section">Спецификация</string>
+    <string name="component_details_figma_section">Figma</string>
+    <string name="component_details_white_mode_section">"Поддержка white mode: "</string>
+    <string name="component_details_used_instead_of_section">Должен использоваться вместо:</string>
+    <string name="component_details_yes">Да</string>
+    <string name="component_details_no">Нет</string>
+    <string name="component_details_android_view_impl_section">Android View реализация</string>
+    <string name="component_details_open_android_impl">Есть, открыть её</string>
+    <string name="component_details_docs_section">Описание</string>
+    <string name="component_details_demo_item">Демо %d</string>
+    <string name="list_loading_typical_usage_refresh">Обновить</string>
+    <string name="list_loading_typical_usage_loading_error_title">Ошибка загрузки</string>
+    <string name="list_loading_typical_usage_loading_error_description">Во время загрузки списка фильмов произошла ошибка. Пожалуйста, попробуйте загрузить его снова</string>
+    <string name="component_demo_manual_white_setting_required">Нужно установить цвет white вручную</string>
+    <string name="states_playroom_button_compose_fill_max_width_summary">Заполняет ли кнопка всё доступное горизонтальное пространство</string>
+    <string name="states_playroom_text_filed_null_in_text">В некоторые текстовые поля можно вписывать null, и это будет интерпретироваться не как строковые символы, а как пустое значение</string>
+    <string name="states_playroom_search_null_in_text">В Placeholder можно вписывать null, и это будет интерпретироваться не как строковые символы, а как пустое значение</string>
+    <string name="button_typical_usage_large_text_title">Когда много текста</string>
+    <string name="lab_compose_shadow_wrong_elevation">Введённый текст не является числом или это число меньше 0</string>
+    <string name="lab_compose_shadow_wrong_alpha">Введённый текст не является числом или это число не в диапазоне [0..1]</string>
+    <string name="tab_sample_very_long_tab_label">Тысяче-восьмисот-восьми-десяти-девяти-микро-метровый кусок металла</string>
+    <string name="theater_director_anton_popov">Антон Попов</string>
+    <string name="theater_director_subtitle">Режиссёр: %s</string>
+    <string-array name="theater_chip_labels">
+        <item>Сервисы</item>
+        <item>Заявки</item>
+        <item>Медиа</item>
+        <item>Люди</item>
+        <item>Подписки</item>
+    </string-array>
+    <string name="design_demo_components_gallery_number_of_components">комопнентов —</string>
+    <string name="licenses_title">Open source лицензии</string>
+    <string name="licenses_report_create">Создать Отчёт</string>
+    <string name="licenses_report_website">Веб-сайт</string>
+    <string name="licenses_report_description">Описание</string>
+    <string name="licenses_report_identifier">Идентификатор</string>
+    <string name="licenses_report_license">Лицензия</string>
+    <string name="licenses_report_copied_to_clipboard">Отчёт скопирован в буффер обмена</string>
+    <string name="licenses_no_libraries">Нет бибилиотек</string>
+    <string name="licenses_report_linking">Линковка: статическая</string>
+    <string name="licenses_report_no_source_code_modification">Исходный код: не изменён</string>
+    <string name="design_demo_components_gallery_show_previews">Показать превью (только для compose компонентов)</string>
+    <string name="design_demo_icons_no_icons">Иконок не найдено</string>
+</resources>

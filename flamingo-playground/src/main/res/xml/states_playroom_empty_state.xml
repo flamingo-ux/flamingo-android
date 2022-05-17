@@ -1,0 +1,43 @@
+<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <com.flamingo.demoapi.DemoPreference app:key="component" />
+
+    <DropDownPreference
+        app:iconSpaceReserved="false"
+        app:key="imageType"
+        app:persistent="false"
+        app:summary="%s"
+        app:title="Image type" />
+
+    <DropDownPreference
+        app:iconSpaceReserved="false"
+        app:key="icon"
+        app:persistent="false"
+        app:summary="%s"
+        app:title="Icon" />
+
+    <EditTextPreference
+        app:iconSpaceReserved="false"
+        app:key="title"
+        app:persistent="false"
+        app:title="Title" />
+
+    <EditTextPreference
+        app:iconSpaceReserved="false"
+        app:key="description"
+        app:persistent="false"
+        app:title="Description" />
+
+    <EditTextPreference
+        app:iconSpaceReserved="false"
+        app:key="buttonText"
+        app:persistent="false"
+        app:title="Button text" />
+
+    <SwitchPreferenceCompat
+        app:iconSpaceReserved="false"
+        app:key="hasOnButtonClickListener"
+        app:persistent="false"
+        app:title="Has onButtonClick listener" />
+
+</PreferenceScreen>

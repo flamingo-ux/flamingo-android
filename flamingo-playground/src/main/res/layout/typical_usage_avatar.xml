@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="?android:colorBackground"
+    android:theme="@style/Theme.Flamingo">
+
+    <LinearLayout
+        android:id="@+id/list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:animateLayoutChanges="true"
+        android:orientation="vertical"
+        android:padding="@dimen/x4">
+
+        <com.flamingo.view.components.Avatar
+            android:id="@+id/avatar1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/x4"
+            app:ds_a_background="@drawable/ds_gradient_orange"
+            app:ds_a_letters="AA"
+            app:ds_a_shape="roundedCornersSmall"
+            app:ds_a_size="size_88" />
+
+        <com.flamingo.view.components.Avatar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/x4"
+            app:ds_a_background="@drawable/ds_gradient_orange"
+            app:ds_a_icon="@drawable/ds_ic_check"
+            app:ds_a_shape="roundedCornersMedium"
+            app:ds_a_size="size_88" />
+
+        <com.flamingo.view.components.Avatar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/x4"
+            app:ds_a_drawable="@drawable/example_human"
+            app:ds_a_shape="roundedCornersBig"
+            app:ds_a_size="size_88" />
+
+        <com.flamingo.view.components.Avatar
+            android:id="@+id/coil_avatar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/x4"
+            tools:ds_a_drawable="@drawable/example_dog"
+            tools:ds_a_shape="roundedCornersMedium"
+            tools:ds_a_size="size_88" />
+
+    </LinearLayout>
+</ScrollView>

@@ -1,0 +1,27 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.flamingo.playground">
+
+    <application>
+        <service
+            android:name=".overlay.DebugOverlayTileService"
+            android:exported="true"
+            android:icon="@drawable/ic_animation_24"
+            android:label="Debug Overlay 🦩"
+            android:permission="android.permission.BIND_QUICK_SETTINGS_TILE">
+            <intent-filter>
+                <action android:name="android.service.quicksettings.action.QS_TILE" />
+            </intent-filter>
+        </service>
+
+        <activity
+            android:name="com.flamingo.playground.FlamingoPlaygroundActivity"
+            android:documentLaunchMode="intoExisting"
+            android:exported="true"
+            android:icon="@mipmap/ic_launcher"
+            android:label="@string/flamingo_main_activity_title"
+            android:resizeableActivity="true"
+            android:theme="@style/Theme.Flamingo"
+            tools:targetApi="n" />
+    </application>
+</manifest>

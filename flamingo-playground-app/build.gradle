@@ -1,0 +1,55 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'com.google.firebase.appdistribution'
+
+def keystorePropertiesFile = rootProject.file("$rootDir/keystore.properties")
+def keystoreProperties = new Properties()
+keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+
+android {
+    compileSdkVersion deps.android.build.compileSdkVersion
+
+    defaultConfig {
+        minSdkVersion deps.android.build.minSdkVersion
+        targetSdkVersion deps.android.build.targetSdkVersion
+        versionCode 1
+        versionName versions.flamingo
+        vectorDrawables.useSupportLibrary = true
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    packagingOptions {
+        exclude 'META-INF/core.kotlin_module'
+
+        // MUST be present to remove enormous amount of metadata files (with source code in them)
+        // from the build artifact
+        exclude '**/com/flamingo/crab/generated/**'
+    }
+
+    signingConfigs {
+        release {
+            keyAlias = keystoreProperties["keyAlias"]
+            keyPassword = keystoreProperties["keyPassword"]
+            storeFile = file("../" + keystoreProperties["storeFile"])
+            storePassword = keystoreProperties["storePassword"]
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+
+            android.applicationVariants.all { variant ->
+                variant.outputs.all {
+                    outputFileName = "${project.name}-${variant.versionName}.apk"
+                }
+            }
+        }
+    }
+}
+
+dependencies {
+    implementation project(':flamingo-playground')
+}

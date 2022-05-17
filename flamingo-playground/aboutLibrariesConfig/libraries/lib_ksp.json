@@ -1,0 +1,9 @@
+{
+  "uniqueId": "com.google.devtools.ksp:symbol-processing-api",
+  "website": "https://github.com/google/ksp",
+  "description": "Kotlin Symbol Processing (KSP) is an API that you can use to develop lightweight compiler plugins.",
+  "name": "Kotlin Symbol Processing API",
+  "licenses": [
+    "Apache-2.0"
+  ]
+}

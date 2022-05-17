@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="search_placeholder">Найти</string>
+    <string name="attachment_file_picker_button_text">Выберите файл</string>
+    <string name="attachment_long_description_expand">Подробнее</string>
+    <string name="attachment_long_description_collapse">Скрыть</string>
+</resources>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="?android:attr/selectableItemBackground"
+    android:clickable="true"
+    android:focusable="true"
+    android:orientation="horizontal"
+    android:theme="@style/Theme.Flamingo">
+
+    <TextView
+        android:id="@+id/icon_name"
+        style="@style/TextStyle.Flamingo.Subtitle1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/x4"
+        android:layout_weight="1"
+        tools:text="1. Title" />
+
+    <View
+        android:id="@+id/icon_view"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_gravity="center"
+        android:layout_marginEnd="@dimen/x3"
+        android:backgroundTint="?colorControlNormal"
+        tools:background="@drawable/ds_ic_aperture" />
+
+</LinearLayout>

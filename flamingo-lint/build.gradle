@@ -1,0 +1,28 @@
+apply plugin: 'java-library'
+apply plugin: 'kotlin'
+
+/**
+ * See [com.flamingo.annotations.UsedInsteadOf] and
+ * [com.flamingo.lint.WrongComponentAlternativeDetector] for more info
+ */
+task copyConfigIntoResourcesDebug(type: Copy) {
+    dependsOn(':flamingo-playground:kspDebugKotlin')
+
+    from file("${rootDir}/flamingo-playground/build/generated/ksp/debug/resources/com/flamingo/crab/generated/KspWrongComponentAlternatives.csv")
+    into file("${projectDir}/src/main/resources/")
+}
+
+processResources.dependsOn(copyConfigIntoResourcesDebug)
+
+clean {
+    delete "${projectDir}/src/main/resources/KspWrongComponentAlternatives.csv"
+}
+
+dependencies {
+    compileOnly deps.kotlin.stdlib
+    compileOnly deps.lint.checks
+
+    testImplementation deps.lint.api
+    testImplementation deps.lint.tests
+    testImplementation deps.android.junit4
+}

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="AlertMessageView">
+        <attr name="ds_variant" format="enum">
+            <enum name="info" value="0" />
+            <enum name="warning" value="1" />
+            <enum name="success" value="2" />
+            <enum name="error" value="3" />
+        </attr>
+        <attr name="ds_message" format="string" />
+    </declare-styleable>
+</resources>

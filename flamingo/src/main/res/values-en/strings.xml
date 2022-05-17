@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="search_placeholder">Search</string>
+    <string name="attachment_file_picker_button_text">Choose a file</string>
+    <string name="attachment_long_description_expand">Expand</string>
+    <string name="attachment_long_description_collapse">Collapse</string>
+</resources>

@@ -1,0 +1,9 @@
+{
+  "uniqueId": "plant-photo",
+  "website": "https://unsplash.com/photos/UwooAVFu6SI",
+  "description": "Photo from Unsplash",
+  "name": "Photo of a Plant",
+  "licenses": [
+    "unsplash"
+  ]
+}

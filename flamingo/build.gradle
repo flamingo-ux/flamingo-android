@@ -1,0 +1,117 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'com.google.devtools.ksp'
+apply plugin: 'kotlinx-serialization'
+apply plugin: 'maven-publish'
+
+android {
+    compileSdkVersion deps.android.build.compileSdkVersion
+
+    defaultConfig {
+        minSdkVersion deps.android.build.minSdkVersion
+        targetSdkVersion deps.android.build.targetSdkVersion
+        versionCode 1
+        versionName versions.flamingo
+        vectorDrawables.useSupportLibrary = true
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    libraryVariants.all { variant ->
+        variant.outputs.all {
+            outputFileName = "${project.name}-${versions.flamingo}.aar"
+        }
+    }
+
+    composeOptions {
+        kotlinCompilerExtensionVersion versions.compose
+    }
+
+    packagingOptions {
+        exclude 'META-INF/AL2.0'
+        exclude 'META-INF/LGPL2.1'
+
+        // MUST be present to remove enormous amount of metadata files (with source code in them)
+        // from the build artifact
+        exclude '**/com/flamingo/crab/generated/**'
+    }
+
+    android {
+        testOptions {
+            unitTests.all {
+                useJUnitPlatform()
+            }
+        }
+    }
+
+    buildFeatures {
+        viewBinding false
+        compose true
+    }
+
+    kotlinOptions.freeCompilerArgs += [
+            "-Xexplicit-api=strict",
+            "-Xopt-in=com.flamingo.annotations.DelicateFlamingoApi"
+    ]
+
+    lintOptions {
+        checkReleaseBuilds true
+        noLines true
+        showAll true
+        warningsAsErrors false
+        abortOnError project.getProperties().getOrDefault("abortOnLintError", true).toBoolean()
+        disable 'RtlSymmetry', 'RtlEnabled', 'RtlHardcoded', 'ParcelCreator', "NullSafeMutableLiveData"
+        baseline file("lint-baseline.xml")
+    }
+}
+
+ksp {
+    arg("crab.rootProjectDir", rootProject.projectDir.absolutePath)
+    arg("crab.moduleName", project.name)
+}
+
+dependencies {
+    ksp project(":crab")
+    lintPublish project(":flamingo-lint")
+
+    implementation deps.kotlin.stdlib
+    implementation deps.android.support.appCompat
+    implementation deps.android.support.material
+    implementation deps.android.support.recyclerView
+    implementation deps.android.support.swiperefreshlayout
+    implementation deps.android.ktx.core
+    implementation deps.kotlin.coroutines.core
+    implementation deps.kotlin.coroutines.android
+    implementation deps.coil.coil
+    implementation deps.timber
+    implementation deps.kotlinx.serialization.protobuf
+
+    // compose
+    implementation deps.compose.ui
+    implementation deps.compose.uiUtil
+    implementation deps.compose.uiTooling
+    implementation deps.compose.foundation
+    implementation deps.compose.material
+    implementation deps.compose.runtime
+    implementation deps.compose.animation
+    implementation deps.compose.compiler
+    implementation deps.compose.constraintLayout
+
+
+    testImplementation deps.truth
+    testImplementation deps.junit5.api
+    testRuntimeOnly deps.junit5.engine
+    androidTestImplementation deps.compose.uiTest
+}
+
+afterEvaluate {
+    publishing {
+        publications {
+            release(MavenPublication) {
+                from components.release
+                groupId = 'com.flamingo'
+                artifactId = 'flamingo'
+                version = versions.flamingo
+            }
+        }
+    }
+}

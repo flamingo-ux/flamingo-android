@@ -1,0 +1,90 @@
+<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <com.flamingo.demoapi.DemoPreference app:key="component" />
+
+    <PreferenceCategory
+        app:iconSpaceReserved="false"
+        app:title="Call functions">
+
+        <DropDownPreference
+            app:icon="@drawable/ic_function"
+            app:key="function"
+            app:persistent="false"
+            app:summary="%s"
+            app:title="Function" />
+
+        <EditTextPreference
+            app:iconSpaceReserved="false"
+            app:key="letters"
+            app:persistent="false"
+            app:summary="%s"
+            app:title="Letters" />
+
+        <DropDownPreference
+            app:iconSpaceReserved="false"
+            app:key="icon"
+            app:persistent="false"
+            app:summary="%s"
+            app:title="Icon" />
+
+        <DropDownPreference
+            app:iconSpaceReserved="false"
+            app:key="drawable"
+            app:persistent="false"
+            app:summary="%s"
+            app:title="Drawable" />
+
+        <DropDownPreference
+            app:iconSpaceReserved="false"
+            app:key="background"
+            app:persistent="false"
+            app:summary="%s"
+            app:title="Background" />
+
+        <DropDownPreference
+            app:iconSpaceReserved="false"
+            app:key="shape"
+            app:persistent="false"
+            app:summary="%s"
+            app:title="Shape" />
+
+        <DropDownPreference
+            app:iconSpaceReserved="false"
+            app:key="size"
+            app:persistent="false"
+            app:summary="%s"
+            app:title="Size" />
+
+        <DropDownPreference
+            app:iconSpaceReserved="false"
+            app:key="indicatorColor"
+            app:persistent="false"
+            app:summary="%s"
+            app:title="Indicator color" />
+
+        <Preference
+            app:icon="@drawable/ds_ic_check"
+            app:key="call_function"
+            app:persistent="false"
+            app:title="Call a function" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        app:iconSpaceReserved="false"
+        app:title="Other">
+
+        <SwitchPreferenceCompat
+            app:iconSpaceReserved="false"
+            app:key="disabled"
+            app:persistent="false"
+            app:title="Disabled" />
+
+        <SwitchPreferenceCompat
+            app:iconSpaceReserved="false"
+            app:key="hasOnClickListener"
+            app:persistent="false"
+            app:title="Has onClickListener" />
+    </PreferenceCategory>
+
+</PreferenceScreen>
