@@ -2,7 +2,6 @@ apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'com.google.devtools.ksp'
 apply plugin: 'kotlinx-serialization'
-apply plugin: 'maven-publish'
 
 android {
     compileSdkVersion deps.android.build.compileSdkVersion
@@ -101,17 +100,4 @@ dependencies {
     testImplementation deps.junit5.api
     testRuntimeOnly deps.junit5.engine
     androidTestImplementation deps.compose.uiTest
-}
-
-afterEvaluate {
-    publishing {
-        publications {
-            release(MavenPublication) {
-                from components.release
-                groupId = 'com.flamingo'
-                artifactId = 'flamingo'
-                version = versions.flamingo
-            }
-        }
-    }
 }
