@@ -1,0 +1,2920 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<issues format="6" by="lint 7.2.0" type="baseline" client="gradle" dependencies="false" name="AGP (7.2.0)" variant="all" version="7.2.0">
+
+    <issue
+        id="UnknownIssueId"
+        message="Unknown issue id &quot;NullSafeMutableLiveData&quot;">
+        <location
+            file="build.gradle"
+            line="61"
+            column="80"/>
+    </issue>
+
+    <issue
+        id="UnknownIssueId"
+        message="Unknown issue id &quot;NullSafeMutableLiveData&quot;">
+        <location
+            file="build.gradle"
+            line="61"
+            column="80"/>
+    </issue>
+
+    <issue
+        id="VectorRaster"
+        message="Limit vector icons sizes to 200×200 to keep icon drawing fast; see https://developer.android.com/studio/write/vector-asset-studio#when for more">
+        <location
+            file="src/main/res/drawable/ds_image_calendar.xml"
+            line="3"
+            column="20"/>
+    </issue>
+
+    <issue
+        id="VectorRaster"
+        message="Limit vector icons sizes to 200×200 to keep icon drawing fast; see https://developer.android.com/studio/write/vector-asset-studio#when for more">
+        <location
+            file="src/main/res/drawable/ds_image_community.xml"
+            line="3"
+            column="20"/>
+    </issue>
+
+    <issue
+        id="VectorRaster"
+        message="Limit vector icons sizes to 200×200 to keep icon drawing fast; see https://developer.android.com/studio/write/vector-asset-studio#when for more">
+        <location
+            file="src/main/res/drawable/ds_image_crash.xml"
+            line="3"
+            column="20"/>
+    </issue>
+
+    <issue
+        id="VectorRaster"
+        message="Limit vector icons sizes to 200×200 to keep icon drawing fast; see https://developer.android.com/studio/write/vector-asset-studio#when for more">
+        <location
+            file="src/main/res/drawable/ds_image_empty.xml"
+            line="3"
+            column="20"/>
+    </issue>
+
+    <issue
+        id="VectorRaster"
+        message="Limit vector icons sizes to 200×200 to keep icon drawing fast; see https://developer.android.com/studio/write/vector-asset-studio#when for more">
+        <location
+            file="src/main/res/drawable/ds_image_feed.xml"
+            line="3"
+            column="20"/>
+    </issue>
+
+    <issue
+        id="VectorRaster"
+        message="Limit vector icons sizes to 200×200 to keep icon drawing fast; see https://developer.android.com/studio/write/vector-asset-studio#when for more">
+        <location
+            file="src/main/res/drawable/ds_image_lock.xml"
+            line="3"
+            column="20"/>
+    </issue>
+
+    <issue
+        id="VectorRaster"
+        message="Limit vector icons sizes to 200×200 to keep icon drawing fast; see https://developer.android.com/studio/write/vector-asset-studio#when for more">
+        <location
+            file="src/main/res/drawable/ds_image_maintenance.xml"
+            line="3"
+            column="20"/>
+    </issue>
+
+    <issue
+        id="VectorRaster"
+        message="Limit vector icons sizes to 200×200 to keep icon drawing fast; see https://developer.android.com/studio/write/vector-asset-studio#when for more">
+        <location
+            file="src/main/res/drawable/ds_image_no_network.xml"
+            line="3"
+            column="20"/>
+    </issue>
+
+    <issue
+        id="VectorRaster"
+        message="Limit vector icons sizes to 200×200 to keep icon drawing fast; see https://developer.android.com/studio/write/vector-asset-studio#when for more">
+        <location
+            file="src/main/res/drawable/ds_image_not_installed.xml"
+            line="3"
+            column="20"/>
+    </issue>
+
+    <issue
+        id="VectorRaster"
+        message="Limit vector icons sizes to 200×200 to keep icon drawing fast; see https://developer.android.com/studio/write/vector-asset-studio#when for more">
+        <location
+            file="src/main/res/drawable/ds_image_notification.xml"
+            line="3"
+            column="20"/>
+    </issue>
+
+    <issue
+        id="VectorRaster"
+        message="Limit vector icons sizes to 200×200 to keep icon drawing fast; see https://developer.android.com/studio/write/vector-asset-studio#when for more">
+        <location
+            file="src/main/res/drawable/ds_image_people.xml"
+            line="3"
+            column="20"/>
+    </issue>
+
+    <issue
+        id="VectorRaster"
+        message="Limit vector icons sizes to 200×200 to keep icon drawing fast; see https://developer.android.com/studio/write/vector-asset-studio#when for more">
+        <location
+            file="src/main/res/drawable/ds_image_search.xml"
+            line="3"
+            column="20"/>
+    </issue>
+
+    <issue
+        id="VectorRaster"
+        message="Limit vector icons sizes to 200×200 to keep icon drawing fast; see https://developer.android.com/studio/write/vector-asset-studio#when for more">
+        <location
+            file="src/main/res/drawable/ds_image_shield.xml"
+            line="3"
+            column="20"/>
+    </issue>
+
+    <issue
+        id="VectorRaster"
+        message="Limit vector icons sizes to 200×200 to keep icon drawing fast; see https://developer.android.com/studio/write/vector-asset-studio#when for more">
+        <location
+            file="src/main/res/drawable/ds_image_updates.xml"
+            line="3"
+            column="20"/>
+    </issue>
+
+    <issue
+        id="VectorRaster"
+        message="Limit vector icons sizes to 200×200 to keep icon drawing fast; see https://developer.android.com/studio/write/vector-asset-studio#when for more">
+        <location
+            file="src/main/res/drawable/ds_image_web.xml"
+            line="3"
+            column="20"/>
+    </issue>
+
+    <issue
+        id="NotConstructor"
+        message="Method DebugOverlay looks like a constructor but is a normal method">
+        <location
+            file="src/main/java/com/flamingo/overlay/DebugOverlay.kt"
+            line="35"
+            column="5"/>
+    </issue>
+
+    <issue
+        id="NotConstructor"
+        message="Method DebugOverlay looks like a constructor but is a normal method">
+        <location
+            file="src/main/java/com/flamingo/overlay/DebugOverlay.kt"
+            line="41"
+            column="5"/>
+    </issue>
+
+    <issue
+        id="NotConstructor"
+        message="Method EmptyState looks like a constructor but is a normal method">
+        <location
+            file="src/main/java/com/flamingo/view/components/EmptyState.kt"
+            line="176"
+            column="5"/>
+    </issue>
+
+    <issue
+        id="ModifierParameter"
+        message="Modifier parameter should be the first optional parameter">
+        <location
+            file="src/main/java/com/flamingo/components/Icon.kt"
+            line="65"
+            column="5"/>
+    </issue>
+
+    <issue
+        id="PrivateResource"
+        message="The resource `@integer/mtrl_btn_anim_duration_ms` is marked as private in com.google.android.material:material:1.1.0">
+        <location
+            file="src/main/res/animator/button_state_list_anim.xml"
+            line="11"
+            column="35"/>
+    </issue>
+
+    <issue
+        id="PrivateResource"
+        message="The resource `@dimen/mtrl_btn_elevation` is marked as private in com.google.android.material:material:1.1.0">
+        <location
+            file="src/main/res/animator/button_state_list_anim.xml"
+            line="18"
+            column="34"/>
+    </issue>
+
+    <issue
+        id="PrivateResource"
+        message="The resource `@integer/mtrl_btn_anim_duration_ms` is marked as private in com.google.android.material:material:1.1.0">
+        <location
+            file="src/main/res/animator/button_state_list_anim.xml"
+            line="29"
+            column="35"/>
+    </issue>
+
+    <issue
+        id="PrivateResource"
+        message="The resource `@dimen/mtrl_btn_hovered_z` is marked as private in com.google.android.material:material:1.1.0">
+        <location
+            file="src/main/res/animator/button_state_list_anim.xml"
+            line="31"
+            column="34"/>
+    </issue>
+
+    <issue
+        id="PrivateResource"
+        message="The resource `@dimen/mtrl_btn_elevation` is marked as private in com.google.android.material:material:1.1.0">
+        <location
+            file="src/main/res/animator/button_state_list_anim.xml"
+            line="36"
+            column="34"/>
+    </issue>
+
+    <issue
+        id="PrivateResource"
+        message="The resource `@integer/mtrl_btn_anim_duration_ms` is marked as private in com.google.android.material:material:1.1.0">
+        <location
+            file="src/main/res/animator/button_state_list_anim.xml"
+            line="47"
+            column="35"/>
+    </issue>
+
+    <issue
+        id="PrivateResource"
+        message="The resource `@dimen/mtrl_btn_focused_z` is marked as private in com.google.android.material:material:1.1.0">
+        <location
+            file="src/main/res/animator/button_state_list_anim.xml"
+            line="49"
+            column="34"/>
+    </issue>
+
+    <issue
+        id="PrivateResource"
+        message="The resource `@dimen/mtrl_btn_elevation` is marked as private in com.google.android.material:material:1.1.0">
+        <location
+            file="src/main/res/animator/button_state_list_anim.xml"
+            line="54"
+            column="34"/>
+    </issue>
+
+    <issue
+        id="PrivateResource"
+        message="The resource `@integer/mtrl_btn_anim_duration_ms` is marked as private in com.google.android.material:material:1.1.0">
+        <location
+            file="src/main/res/animator/button_state_list_anim.xml"
+            line="63"
+            column="35"/>
+    </issue>
+
+    <issue
+        id="PrivateResource"
+        message="The resource `@integer/mtrl_btn_anim_delay_ms` is marked as private in com.google.android.material:material:1.1.0">
+        <location
+            file="src/main/res/animator/button_state_list_anim.xml"
+            line="65"
+            column="37"/>
+    </issue>
+
+    <issue
+        id="PrivateResource"
+        message="The resource `@dimen/mtrl_btn_z` is marked as private in com.google.android.material:material:1.1.0">
+        <location
+            file="src/main/res/animator/button_state_list_anim.xml"
+            line="66"
+            column="34"/>
+    </issue>
+
+    <issue
+        id="PrivateResource"
+        message="The resource `@dimen/mtrl_btn_elevation` is marked as private in com.google.android.material:material:1.1.0">
+        <location
+            file="src/main/res/animator/button_state_list_anim.xml"
+            line="72"
+            column="34"/>
+    </issue>
+
+    <issue
+        id="PrivateResource"
+        message="The resource `@dimen/mtrl_btn_disabled_z` is marked as private in com.google.android.material:material:1.1.0">
+        <location
+            file="src/main/res/animator/button_state_list_anim.xml"
+            line="83"
+            column="34"/>
+    </issue>
+
+    <issue
+        id="PrivateResource"
+        message="The resource `@dimen/mtrl_btn_disabled_elevation` is marked as private in com.google.android.material:material:1.1.0">
+        <location
+            file="src/main/res/animator/button_state_list_anim.xml"
+            line="88"
+            column="34"/>
+    </issue>
+
+    <issue
+        id="VectorPath"
+        message="Very long vector path (1873 characters), which is bad for performance. Considering reducing precision, removing minor details or rasterizing vector.">
+        <location
+            file="src/main/res/drawable/ds_ic_agile.xml"
+            line="8"
+            column="27"/>
+    </issue>
+
+    <issue
+        id="VectorPath"
+        message="Very long vector path (920 characters), which is bad for performance. Considering reducing precision, removing minor details or rasterizing vector.">
+        <location
+            file="src/main/res/drawable/ds_ic_alert_triangle_filled.xml"
+            line="8"
+            column="27"/>
+    </issue>
+
+    <issue
+        id="VectorPath"
+        message="Very long vector path (1279 characters), which is bad for performance. Considering reducing precision, removing minor details or rasterizing vector.">
+        <location
+            file="src/main/res/drawable/ds_ic_baby.xml"
+            line="7"
+            column="25"/>
+    </issue>
+
+    <issue
+        id="VectorPath"
+        message="Very long vector path (1350 characters), which is bad for performance. Considering reducing precision, removing minor details or rasterizing vector.">
+        <location
+            file="src/main/res/drawable/ds_ic_face_id.xml"
+            line="9"
+            column="27"/>
+    </issue>
+
+    <issue
+        id="VectorPath"
+        message="Very long vector path (1060 characters), which is bad for performance. Considering reducing precision, removing minor details or rasterizing vector.">
+        <location
+            file="src/main/res/drawable/ds_ic_feedback.xml"
+            line="16"
+            column="27"/>
+    </issue>
+
+    <issue
+        id="VectorPath"
+        message="Very long vector path (1149 characters), which is bad for performance. Considering reducing precision, removing minor details or rasterizing vector.">
+        <location
+            file="src/main/res/drawable/ds_ic_feedback_service.xml"
+            line="9"
+            column="27"/>
+    </issue>
+
+    <issue
+        id="VectorPath"
+        message="Very long vector path (883 characters), which is bad for performance. Considering reducing precision, removing minor details or rasterizing vector.">
+        <location
+            file="src/main/res/drawable/ds_ic_globe_search.xml"
+            line="8"
+            column="27"/>
+    </issue>
+
+    <issue
+        id="VectorPath"
+        message="Very long vector path (942 characters), which is bad for performance. Considering reducing precision, removing minor details or rasterizing vector.">
+        <location
+            file="src/main/res/drawable/ds_ic_grid_v2.xml"
+            line="7"
+            column="25"/>
+    </issue>
+
+    <issue
+        id="VectorPath"
+        message="Very long vector path (880 characters), which is bad for performance. Considering reducing precision, removing minor details or rasterizing vector.">
+        <location
+            file="src/main/res/drawable/ds_ic_h2.xml"
+            line="11"
+            column="25"/>
+    </issue>
+
+    <issue
+        id="VectorPath"
+        message="Very long vector path (1656 characters), which is bad for performance. Considering reducing precision, removing minor details or rasterizing vector.">
+        <location
+            file="src/main/res/drawable/ds_ic_h3.xml"
+            line="11"
+            column="25"/>
+    </issue>
+
+    <issue
+        id="VectorPath"
+        message="Very long vector path (1255 characters), which is bad for performance. Considering reducing precision, removing minor details or rasterizing vector.">
+        <location
+            file="src/main/res/drawable/ds_ic_help_circle_filled.xml"
+            line="9"
+            column="27"/>
+    </issue>
+
+    <issue
+        id="VectorPath"
+        message="Very long vector path (867 characters), which is bad for performance. Considering reducing precision, removing minor details or rasterizing vector.">
+        <location
+            file="src/main/res/drawable/ds_ic_inbox_filled.xml"
+            line="8"
+            column="27"/>
+    </issue>
+
+    <issue
+        id="VectorPath"
+        message="Very long vector path (943 characters), which is bad for performance. Considering reducing precision, removing minor details or rasterizing vector.">
+        <location
+            file="src/main/res/drawable/ds_ic_incognito.xml"
+            line="7"
+            column="25"/>
+    </issue>
+
+    <issue
+        id="VectorPath"
+        message="Very long vector path (1817 characters), which is bad for performance. Considering reducing precision, removing minor details or rasterizing vector.">
+        <location
+            file="src/main/res/drawable/ds_ic_list_number.xml"
+            line="7"
+            column="25"/>
+    </issue>
+
+    <issue
+        id="VectorPath"
+        message="Very long vector path (877 characters), which is bad for performance. Considering reducing precision, removing minor details or rasterizing vector.">
+        <location
+            file="src/main/res/drawable/ds_ic_orgchart.xml"
+            line="8"
+            column="27"/>
+    </issue>
+
+    <issue
+        id="VectorPath"
+        message="Very long vector path (1167 characters), which is bad for performance. Considering reducing precision, removing minor details or rasterizing vector.">
+        <location
+            file="src/main/res/drawable/ds_ic_phone.xml"
+            line="8"
+            column="27"/>
+    </issue>
+
+    <issue
+        id="VectorPath"
+        message="Very long vector path (1663 characters), which is bad for performance. Considering reducing precision, removing minor details or rasterizing vector.">
+        <location
+            file="src/main/res/drawable/ds_ic_phone_call.xml"
+            line="8"
+            column="27"/>
+    </issue>
+
+    <issue
+        id="VectorPath"
+        message="Very long vector path (1577 characters), which is bad for performance. Considering reducing precision, removing minor details or rasterizing vector.">
+        <location
+            file="src/main/res/drawable/ds_ic_phone_forwarded.xml"
+            line="8"
+            column="27"/>
+    </issue>
+
+    <issue
+        id="VectorPath"
+        message="Very long vector path (1473 characters), which is bad for performance. Considering reducing precision, removing minor details or rasterizing vector.">
+        <location
+            file="src/main/res/drawable/ds_ic_phone_incoming.xml"
+            line="8"
+            column="27"/>
+    </issue>
+
+    <issue
+        id="VectorPath"
+        message="Very long vector path (1569 characters), which is bad for performance. Considering reducing precision, removing minor details or rasterizing vector.">
+        <location
+            file="src/main/res/drawable/ds_ic_phone_missed.xml"
+            line="8"
+            column="27"/>
+    </issue>
+
+    <issue
+        id="VectorPath"
+        message="Very long vector path (1116 characters), which is bad for performance. Considering reducing precision, removing minor details or rasterizing vector.">
+        <location
+            file="src/main/res/drawable/ds_ic_phone_off.xml"
+            line="10"
+            column="31"/>
+    </issue>
+
+    <issue
+        id="VectorPath"
+        message="Very long vector path (1501 characters), which is bad for performance. Considering reducing precision, removing minor details or rasterizing vector.">
+        <location
+            file="src/main/res/drawable/ds_ic_phone_outgoing.xml"
+            line="8"
+            column="27"/>
+    </issue>
+
+    <issue
+        id="VectorPath"
+        message="Very long vector path (1007 characters), which is bad for performance. Considering reducing precision, removing minor details or rasterizing vector.">
+        <location
+            file="src/main/res/drawable/ds_ic_pin_outline.xml"
+            line="8"
+            column="27"/>
+    </issue>
+
+    <issue
+        id="VectorPath"
+        message="Very long vector path (879 characters), which is bad for performance. Considering reducing precision, removing minor details or rasterizing vector.">
+        <location
+            file="src/main/res/drawable/ds_ic_replace.xml"
+            line="9"
+            column="27"/>
+    </issue>
+
+    <issue
+        id="VectorPath"
+        message="Very long vector path (929 characters), which is bad for performance. Considering reducing precision, removing minor details or rasterizing vector.">
+        <location
+            file="src/main/res/drawable/ds_ic_sber.xml"
+            line="8"
+            column="27"/>
+    </issue>
+
+    <issue
+        id="VectorPath"
+        message="Very long vector path (1534 characters), which is bad for performance. Considering reducing precision, removing minor details or rasterizing vector.">
+        <location
+            file="src/main/res/drawable/ds_ic_sberchat.xml"
+            line="7"
+            column="25"/>
+    </issue>
+
+    <issue
+        id="VectorPath"
+        message="Very long vector path (816 characters), which is bad for performance. Considering reducing precision, removing minor details or rasterizing vector.">
+        <location
+            file="src/main/res/drawable/ds_ic_star_half_filled.xml"
+            line="9"
+            column="27"/>
+    </issue>
+
+    <issue
+        id="VectorPath"
+        message="Very long vector path (2002 characters), which is bad for performance. Considering reducing precision, removing minor details or rasterizing vector.">
+        <location
+            file="src/main/res/drawable/ds_ic_touch_id.xml"
+            line="8"
+            column="27"/>
+    </issue>
+
+    <issue
+        id="VectorPath"
+        message="Very long vector path (2168 characters), which is bad for performance. Considering reducing precision, removing minor details or rasterizing vector.">
+        <location
+            file="src/main/res/drawable/ds_image_calendar.xml"
+            line="49"
+            column="27"/>
+    </issue>
+
+    <issue
+        id="VectorPath"
+        message="Very long vector path (1996 characters), which is bad for performance. Considering reducing precision, removing minor details or rasterizing vector.">
+        <location
+            file="src/main/res/drawable/ds_image_calendar.xml"
+            line="71"
+            column="27"/>
+    </issue>
+
+    <issue
+        id="VectorPath"
+        message="Very long vector path (5484 characters), which is bad for performance. Considering reducing precision, removing minor details or rasterizing vector.">
+        <location
+            file="src/main/res/drawable/ds_image_calendar.xml"
+            line="230"
+            column="29"/>
+    </issue>
+
+    <issue
+        id="VectorPath"
+        message="Very long vector path (1038 characters), which is bad for performance. Considering reducing precision, removing minor details or rasterizing vector.">
+        <location
+            file="src/main/res/drawable/ds_image_calendar.xml"
+            line="305"
+            column="29"/>
+    </issue>
+
+    <issue
+        id="VectorPath"
+        message="Very long vector path (2195 characters), which is bad for performance. Considering reducing precision, removing minor details or rasterizing vector.">
+        <location
+            file="src/main/res/drawable/ds_image_community.xml"
+            line="9"
+            column="25"/>
+    </issue>
+
+    <issue
+        id="VectorPath"
+        message="Very long vector path (1253 characters), which is bad for performance. Considering reducing precision, removing minor details or rasterizing vector.">
+        <location
+            file="src/main/res/drawable/ds_image_community.xml"
+            line="100"
+            column="27"/>
+    </issue>
+
+    <issue
+        id="VectorPath"
+        message="Very long vector path (809 characters), which is bad for performance. Considering reducing precision, removing minor details or rasterizing vector.">
+        <location
+            file="src/main/res/drawable/ds_image_community.xml"
+            line="132"
+            column="25"/>
+    </issue>
+
+    <issue
+        id="VectorPath"
+        message="Very long vector path (863 characters), which is bad for performance. Considering reducing precision, removing minor details or rasterizing vector.">
+        <location
+            file="src/main/res/drawable/ds_image_community.xml"
+            line="137"
+            column="25"/>
+    </issue>
+
+    <issue
+        id="VectorPath"
+        message="Very long vector path (819 characters), which is bad for performance. Considering reducing precision, removing minor details or rasterizing vector.">
+        <location
+            file="src/main/res/drawable/ds_image_community.xml"
+            line="142"
+            column="25"/>
+    </issue>
+
+    <issue
+        id="VectorPath"
+        message="Very long vector path (2281 characters), which is bad for performance. Considering reducing precision, removing minor details or rasterizing vector.">
+        <location
+            file="src/main/res/drawable/ds_image_crash.xml"
+            line="49"
+            column="27"/>
+    </issue>
+
+    <issue
+        id="VectorPath"
+        message="Very long vector path (833 characters), which is bad for performance. Considering reducing precision, removing minor details or rasterizing vector.">
+        <location
+            file="src/main/res/drawable/ds_image_crash.xml"
+            line="179"
+            column="27"/>
+    </issue>
+
+    <issue
+        id="VectorPath"
+        message="Very long vector path (902 characters), which is bad for performance. Considering reducing precision, removing minor details or rasterizing vector.">
+        <location
+            file="src/main/res/drawable/ds_image_crash.xml"
+            line="249"
+            column="27"/>
+    </issue>
+
+    <issue
+        id="VectorPath"
+        message="Very long vector path (2157 characters), which is bad for performance. Considering reducing precision, removing minor details or rasterizing vector.">
+        <location
+            file="src/main/res/drawable/ds_image_empty.xml"
+            line="29"
+            column="27"/>
+    </issue>
+
+    <issue
+        id="VectorPath"
+        message="Very long vector path (2160 characters), which is bad for performance. Considering reducing precision, removing minor details or rasterizing vector.">
+        <location
+            file="src/main/res/drawable/ds_image_empty.xml"
+            line="51"
+            column="27"/>
+    </issue>
+
+    <issue
+        id="VectorPath"
+        message="Very long vector path (1255 characters), which is bad for performance. Considering reducing precision, removing minor details or rasterizing vector.">
+        <location
+            file="src/main/res/drawable/ds_image_empty.xml"
+            line="123"
+            column="29"/>
+    </issue>
+
+    <issue
+        id="VectorPath"
+        message="Very long vector path (814 characters), which is bad for performance. Considering reducing precision, removing minor details or rasterizing vector.">
+        <location
+            file="src/main/res/drawable/ds_image_empty.xml"
+            line="155"
+            column="27"/>
+    </issue>
+
+    <issue
+        id="VectorPath"
+        message="Very long vector path (861 characters), which is bad for performance. Considering reducing precision, removing minor details or rasterizing vector.">
+        <location
+            file="src/main/res/drawable/ds_image_empty.xml"
+            line="160"
+            column="27"/>
+    </issue>
+
+    <issue
+        id="VectorPath"
+        message="Very long vector path (812 characters), which is bad for performance. Considering reducing precision, removing minor details or rasterizing vector.">
+        <location
+            file="src/main/res/drawable/ds_image_empty.xml"
+            line="165"
+            column="27"/>
+    </issue>
+
+    <issue
+        id="VectorPath"
+        message="Very long vector path (886 characters), which is bad for performance. Considering reducing precision, removing minor details or rasterizing vector.">
+        <location
+            file="src/main/res/drawable/ds_image_feed.xml"
+            line="30"
+            column="27"/>
+    </issue>
+
+    <issue
+        id="VectorPath"
+        message="Very long vector path (1341 characters), which is bad for performance. Considering reducing precision, removing minor details or rasterizing vector.">
+        <location
+            file="src/main/res/drawable/ds_image_feed.xml"
+            line="82"
+            column="29"/>
+    </issue>
+
+    <issue
+        id="VectorPath"
+        message="Very long vector path (867 characters), which is bad for performance. Considering reducing precision, removing minor details or rasterizing vector.">
+        <location
+            file="src/main/res/drawable/ds_image_feed.xml"
+            line="114"
+            column="27"/>
+    </issue>
+
+    <issue
+        id="VectorPath"
+        message="Very long vector path (908 characters), which is bad for performance. Considering reducing precision, removing minor details or rasterizing vector.">
+        <location
+            file="src/main/res/drawable/ds_image_feed.xml"
+            line="119"
+            column="27"/>
+    </issue>
+
+    <issue
+        id="VectorPath"
+        message="Very long vector path (873 characters), which is bad for performance. Considering reducing precision, removing minor details or rasterizing vector.">
+        <location
+            file="src/main/res/drawable/ds_image_feed.xml"
+            line="124"
+            column="27"/>
+    </issue>
+
+    <issue
+        id="VectorPath"
+        message="Very long vector path (1828 characters), which is bad for performance. Considering reducing precision, removing minor details or rasterizing vector.">
+        <location
+            file="src/main/res/drawable/ds_image_feed.xml"
+            line="184"
+            column="27"/>
+    </issue>
+
+    <issue
+        id="VectorPath"
+        message="Very long vector path (3154 characters), which is bad for performance. Considering reducing precision, removing minor details or rasterizing vector.">
+        <location
+            file="src/main/res/drawable/ds_image_feed.xml"
+            line="193"
+            column="27"/>
+    </issue>
+
+    <issue
+        id="VectorPath"
+        message="Very long vector path (1813 characters), which is bad for performance. Considering reducing precision, removing minor details or rasterizing vector.">
+        <location
+            file="src/main/res/drawable/ds_image_feed.xml"
+            line="467"
+            column="27"/>
+    </issue>
+
+    <issue
+        id="VectorPath"
+        message="Very long vector path (1012 characters), which is bad for performance. Considering reducing precision, removing minor details or rasterizing vector.">
+        <location
+            file="src/main/res/drawable/ds_image_feed.xml"
+            line="636"
+            column="29"/>
+    </issue>
+
+    <issue
+        id="VectorPath"
+        message="Very long vector path (2585 characters), which is bad for performance. Considering reducing precision, removing minor details or rasterizing vector.">
+        <location
+            file="src/main/res/drawable/ds_image_lock.xml"
+            line="152"
+            column="31"/>
+    </issue>
+
+    <issue
+        id="VectorPath"
+        message="Very long vector path (2048 characters), which is bad for performance. Considering reducing precision, removing minor details or rasterizing vector.">
+        <location
+            file="src/main/res/drawable/ds_image_maintenance.xml"
+            line="8"
+            column="25"/>
+    </issue>
+
+    <issue
+        id="VectorPath"
+        message="Very long vector path (2187 characters), which is bad for performance. Considering reducing precision, removing minor details or rasterizing vector.">
+        <location
+            file="src/main/res/drawable/ds_image_maintenance.xml"
+            line="24"
+            column="25"/>
+    </issue>
+
+    <issue
+        id="VectorPath"
+        message="Very long vector path (1601 characters), which is bad for performance. Considering reducing precision, removing minor details or rasterizing vector.">
+        <location
+            file="src/main/res/drawable/ds_image_maintenance.xml"
+            line="55"
+            column="25"/>
+    </issue>
+
+    <issue
+        id="VectorPath"
+        message="Very long vector path (895 characters), which is bad for performance. Considering reducing precision, removing minor details or rasterizing vector.">
+        <location
+            file="src/main/res/drawable/ds_image_maintenance.xml"
+            line="338"
+            column="25"/>
+    </issue>
+
+    <issue
+        id="VectorPath"
+        message="Very long vector path (871 characters), which is bad for performance. Considering reducing precision, removing minor details or rasterizing vector.">
+        <location
+            file="src/main/res/drawable/ds_image_maintenance.xml"
+            line="379"
+            column="25"/>
+    </issue>
+
+    <issue
+        id="VectorPath"
+        message="Very long vector path (871 characters), which is bad for performance. Considering reducing precision, removing minor details or rasterizing vector.">
+        <location
+            file="src/main/res/drawable/ds_image_maintenance.xml"
+            line="393"
+            column="25"/>
+    </issue>
+
+    <issue
+        id="VectorPath"
+        message="Very long vector path (3864 characters), which is bad for performance. Considering reducing precision, removing minor details or rasterizing vector.">
+        <location
+            file="src/main/res/drawable/ds_image_maintenance.xml"
+            line="482"
+            column="25"/>
+    </issue>
+
+    <issue
+        id="VectorPath"
+        message="Very long vector path (3864 characters), which is bad for performance. Considering reducing precision, removing minor details or rasterizing vector.">
+        <location
+            file="src/main/res/drawable/ds_image_maintenance.xml"
+            line="496"
+            column="25"/>
+    </issue>
+
+    <issue
+        id="VectorPath"
+        message="Very long vector path (3864 characters), which is bad for performance. Considering reducing precision, removing minor details or rasterizing vector.">
+        <location
+            file="src/main/res/drawable/ds_image_maintenance.xml"
+            line="510"
+            column="25"/>
+    </issue>
+
+    <issue
+        id="VectorPath"
+        message="Very long vector path (913 characters), which is bad for performance. Considering reducing precision, removing minor details or rasterizing vector.">
+        <location
+            file="src/main/res/drawable/ds_image_maintenance.xml"
+            line="524"
+            column="25"/>
+    </issue>
+
+    <issue
+        id="VectorPath"
+        message="Very long vector path (1018 characters), which is bad for performance. Considering reducing precision, removing minor details or rasterizing vector.">
+        <location
+            file="src/main/res/drawable/ds_image_maintenance.xml"
+            line="527"
+            column="25"/>
+    </issue>
+
+    <issue
+        id="VectorPath"
+        message="Very long vector path (4134 characters), which is bad for performance. Considering reducing precision, removing minor details or rasterizing vector.">
+        <location
+            file="src/main/res/drawable/ds_image_maintenance.xml"
+            line="558"
+            column="25"/>
+    </issue>
+
+    <issue
+        id="VectorPath"
+        message="Very long vector path (4134 characters), which is bad for performance. Considering reducing precision, removing minor details or rasterizing vector.">
+        <location
+            file="src/main/res/drawable/ds_image_maintenance.xml"
+            line="572"
+            column="25"/>
+    </issue>
+
+    <issue
+        id="VectorPath"
+        message="Very long vector path (4134 characters), which is bad for performance. Considering reducing precision, removing minor details or rasterizing vector.">
+        <location
+            file="src/main/res/drawable/ds_image_maintenance.xml"
+            line="590"
+            column="25"/>
+    </issue>
+
+    <issue
+        id="VectorPath"
+        message="Very long vector path (4134 characters), which is bad for performance. Considering reducing precision, removing minor details or rasterizing vector.">
+        <location
+            file="src/main/res/drawable/ds_image_maintenance.xml"
+            line="604"
+            column="25"/>
+    </issue>
+
+    <issue
+        id="VectorPath"
+        message="Very long vector path (891 characters), which is bad for performance. Considering reducing precision, removing minor details or rasterizing vector.">
+        <location
+            file="src/main/res/drawable/ds_image_maintenance.xml"
+            line="620"
+            column="25"/>
+    </issue>
+
+    <issue
+        id="VectorPath"
+        message="Very long vector path (1311 characters), which is bad for performance. Considering reducing precision, removing minor details or rasterizing vector.">
+        <location
+            file="src/main/res/drawable/ds_image_maintenance.xml"
+            line="623"
+            column="25"/>
+    </issue>
+
+    <issue
+        id="VectorPath"
+        message="Very long vector path (1340 characters), which is bad for performance. Considering reducing precision, removing minor details or rasterizing vector.">
+        <location
+            file="src/main/res/drawable/ds_image_no_network.xml"
+            line="63"
+            column="29"/>
+    </issue>
+
+    <issue
+        id="VectorPath"
+        message="Very long vector path (872 characters), which is bad for performance. Considering reducing precision, removing minor details or rasterizing vector.">
+        <location
+            file="src/main/res/drawable/ds_image_no_network.xml"
+            line="81"
+            column="29"/>
+    </issue>
+
+    <issue
+        id="VectorPath"
+        message="Very long vector path (913 characters), which is bad for performance. Considering reducing precision, removing minor details or rasterizing vector.">
+        <location
+            file="src/main/res/drawable/ds_image_no_network.xml"
+            line="86"
+            column="29"/>
+    </issue>
+
+    <issue
+        id="VectorPath"
+        message="Very long vector path (874 characters), which is bad for performance. Considering reducing precision, removing minor details or rasterizing vector.">
+        <location
+            file="src/main/res/drawable/ds_image_no_network.xml"
+            line="91"
+            column="29"/>
+    </issue>
+
+    <issue
+        id="VectorPath"
+        message="Very long vector path (1366 characters), which is bad for performance. Considering reducing precision, removing minor details or rasterizing vector.">
+        <location
+            file="src/main/res/drawable/ds_image_no_network.xml"
+            line="167"
+            column="29"/>
+    </issue>
+
+    <issue
+        id="VectorPath"
+        message="Very long vector path (1020 characters), which is bad for performance. Considering reducing precision, removing minor details or rasterizing vector.">
+        <location
+            file="src/main/res/drawable/ds_image_no_network.xml"
+            line="184"
+            column="29"/>
+    </issue>
+
+    <issue
+        id="VectorPath"
+        message="Very long vector path (1125 characters), which is bad for performance. Considering reducing precision, removing minor details or rasterizing vector.">
+        <location
+            file="src/main/res/drawable/ds_image_no_network.xml"
+            line="229"
+            column="29"/>
+    </issue>
+
+    <issue
+        id="VectorPath"
+        message="Very long vector path (3903 characters), which is bad for performance. Considering reducing precision, removing minor details or rasterizing vector.">
+        <location
+            file="src/main/res/drawable/ds_image_not_installed.xml"
+            line="11"
+            column="27"/>
+    </issue>
+
+    <issue
+        id="VectorPath"
+        message="Very long vector path (2112 characters), which is bad for performance. Considering reducing precision, removing minor details or rasterizing vector.">
+        <location
+            file="src/main/res/drawable/ds_image_not_installed.xml"
+            line="27"
+            column="27"/>
+    </issue>
+
+    <issue
+        id="VectorPath"
+        message="Very long vector path (1287 characters), which is bad for performance. Considering reducing precision, removing minor details or rasterizing vector.">
+        <location
+            file="src/main/res/drawable/ds_image_not_installed.xml"
+            line="43"
+            column="27"/>
+    </issue>
+
+    <issue
+        id="VectorPath"
+        message="Very long vector path (1206 characters), which is bad for performance. Considering reducing precision, removing minor details or rasterizing vector.">
+        <location
+            file="src/main/res/drawable/ds_image_not_installed.xml"
+            line="48"
+            column="27"/>
+    </issue>
+
+    <issue
+        id="VectorPath"
+        message="Very long vector path (2779 characters), which is bad for performance. Considering reducing precision, removing minor details or rasterizing vector.">
+        <location
+            file="src/main/res/drawable/ds_image_not_installed.xml"
+            line="64"
+            column="27"/>
+    </issue>
+
+    <issue
+        id="VectorPath"
+        message="Very long vector path (838 characters), which is bad for performance. Considering reducing precision, removing minor details or rasterizing vector.">
+        <location
+            file="src/main/res/drawable/ds_image_not_installed.xml"
+            line="256"
+            column="27"/>
+    </issue>
+
+    <issue
+        id="VectorPath"
+        message="Very long vector path (1949 characters), which is bad for performance. Considering reducing precision, removing minor details or rasterizing vector.">
+        <location
+            file="src/main/res/drawable/ds_image_notification.xml"
+            line="11"
+            column="31"/>
+    </issue>
+
+    <issue
+        id="VectorPath"
+        message="Very long vector path (811 characters), which is bad for performance. Considering reducing precision, removing minor details or rasterizing vector.">
+        <location
+            file="src/main/res/drawable/ds_image_notification.xml"
+            line="264"
+            column="31"/>
+    </issue>
+
+    <issue
+        id="VectorPath"
+        message="Very long vector path (802 characters), which is bad for performance. Considering reducing precision, removing minor details or rasterizing vector.">
+        <location
+            file="src/main/res/drawable/ds_image_notification.xml"
+            line="351"
+            column="31"/>
+    </issue>
+
+    <issue
+        id="VectorPath"
+        message="Very long vector path (2156 characters), which is bad for performance. Considering reducing precision, removing minor details or rasterizing vector.">
+        <location
+            file="src/main/res/drawable/ds_image_notification.xml"
+            line="354"
+            column="31"/>
+    </issue>
+
+    <issue
+        id="VectorPath"
+        message="Very long vector path (2196 characters), which is bad for performance. Considering reducing precision, removing minor details or rasterizing vector.">
+        <location
+            file="src/main/res/drawable/ds_image_people.xml"
+            line="192"
+            column="27"/>
+    </issue>
+
+    <issue
+        id="VectorPath"
+        message="Very long vector path (1255 characters), which is bad for performance. Considering reducing precision, removing minor details or rasterizing vector.">
+        <location
+            file="src/main/res/drawable/ds_image_people.xml"
+            line="283"
+            column="29"/>
+    </issue>
+
+    <issue
+        id="VectorPath"
+        message="Very long vector path (813 characters), which is bad for performance. Considering reducing precision, removing minor details or rasterizing vector.">
+        <location
+            file="src/main/res/drawable/ds_image_people.xml"
+            line="315"
+            column="27"/>
+    </issue>
+
+    <issue
+        id="VectorPath"
+        message="Very long vector path (860 characters), which is bad for performance. Considering reducing precision, removing minor details or rasterizing vector.">
+        <location
+            file="src/main/res/drawable/ds_image_people.xml"
+            line="320"
+            column="27"/>
+    </issue>
+
+    <issue
+        id="VectorPath"
+        message="Very long vector path (813 characters), which is bad for performance. Considering reducing precision, removing minor details or rasterizing vector.">
+        <location
+            file="src/main/res/drawable/ds_image_people.xml"
+            line="325"
+            column="27"/>
+    </issue>
+
+    <issue
+        id="VectorPath"
+        message="Very long vector path (1347 characters), which is bad for performance. Considering reducing precision, removing minor details or rasterizing vector.">
+        <location
+            file="src/main/res/drawable/ds_image_search.xml"
+            line="59"
+            column="29"/>
+    </issue>
+
+    <issue
+        id="VectorPath"
+        message="Very long vector path (875 characters), which is bad for performance. Considering reducing precision, removing minor details or rasterizing vector.">
+        <location
+            file="src/main/res/drawable/ds_image_search.xml"
+            line="91"
+            column="27"/>
+    </issue>
+
+    <issue
+        id="VectorPath"
+        message="Very long vector path (914 characters), which is bad for performance. Considering reducing precision, removing minor details or rasterizing vector.">
+        <location
+            file="src/main/res/drawable/ds_image_search.xml"
+            line="96"
+            column="27"/>
+    </issue>
+
+    <issue
+        id="VectorPath"
+        message="Very long vector path (874 characters), which is bad for performance. Considering reducing precision, removing minor details or rasterizing vector.">
+        <location
+            file="src/main/res/drawable/ds_image_search.xml"
+            line="101"
+            column="27"/>
+    </issue>
+
+    <issue
+        id="VectorPath"
+        message="Very long vector path (1946 characters), which is bad for performance. Considering reducing precision, removing minor details or rasterizing vector.">
+        <location
+            file="src/main/res/drawable/ds_image_search.xml"
+            line="125"
+            column="27"/>
+    </issue>
+
+    <issue
+        id="VectorPath"
+        message="Very long vector path (1296 characters), which is bad for performance. Considering reducing precision, removing minor details or rasterizing vector.">
+        <location
+            file="src/main/res/drawable/ds_image_search.xml"
+            line="149"
+            column="29"/>
+    </issue>
+
+    <issue
+        id="VectorPath"
+        message="Very long vector path (1252 characters), which is bad for performance. Considering reducing precision, removing minor details or rasterizing vector.">
+        <location
+            file="src/main/res/drawable/ds_image_search.xml"
+            line="166"
+            column="29"/>
+    </issue>
+
+    <issue
+        id="VectorPath"
+        message="Very long vector path (1292 characters), which is bad for performance. Considering reducing precision, removing minor details or rasterizing vector.">
+        <location
+            file="src/main/res/drawable/ds_image_search.xml"
+            line="183"
+            column="29"/>
+    </issue>
+
+    <issue
+        id="VectorPath"
+        message="Very long vector path (1296 characters), which is bad for performance. Considering reducing precision, removing minor details or rasterizing vector.">
+        <location
+            file="src/main/res/drawable/ds_image_search.xml"
+            line="200"
+            column="29"/>
+    </issue>
+
+    <issue
+        id="VectorPath"
+        message="Very long vector path (1284 characters), which is bad for performance. Considering reducing precision, removing minor details or rasterizing vector.">
+        <location
+            file="src/main/res/drawable/ds_image_search.xml"
+            line="217"
+            column="29"/>
+    </issue>
+
+    <issue
+        id="VectorPath"
+        message="Very long vector path (1297 characters), which is bad for performance. Considering reducing precision, removing minor details or rasterizing vector.">
+        <location
+            file="src/main/res/drawable/ds_image_search.xml"
+            line="234"
+            column="29"/>
+    </issue>
+
+    <issue
+        id="VectorPath"
+        message="Very long vector path (3977 characters), which is bad for performance. Considering reducing precision, removing minor details or rasterizing vector.">
+        <location
+            file="src/main/res/drawable/ds_image_search.xml"
+            line="287"
+            column="27"/>
+    </issue>
+
+    <issue
+        id="VectorPath"
+        message="Very long vector path (4030 characters), which is bad for performance. Considering reducing precision, removing minor details or rasterizing vector.">
+        <location
+            file="src/main/res/drawable/ds_image_search.xml"
+            line="290"
+            column="27"/>
+    </issue>
+
+    <issue
+        id="VectorPath"
+        message="Very long vector path (1019 characters), which is bad for performance. Considering reducing precision, removing minor details or rasterizing vector.">
+        <location
+            file="src/main/res/drawable/ds_image_search.xml"
+            line="353"
+            column="29"/>
+    </issue>
+
+    <issue
+        id="VectorPath"
+        message="Very long vector path (2434 characters), which is bad for performance. Considering reducing precision, removing minor details or rasterizing vector.">
+        <location
+            file="src/main/res/drawable/ds_image_shield.xml"
+            line="51"
+            column="27"/>
+    </issue>
+
+    <issue
+        id="VectorPath"
+        message="Very long vector path (1120 characters), which is bad for performance. Considering reducing precision, removing minor details or rasterizing vector.">
+        <location
+            file="src/main/res/drawable/ds_image_shield.xml"
+            line="74"
+            column="27"/>
+    </issue>
+
+    <issue
+        id="VectorPath"
+        message="Very long vector path (1086 characters), which is bad for performance. Considering reducing precision, removing minor details or rasterizing vector.">
+        <location
+            file="src/main/res/drawable/ds_image_shield.xml"
+            line="139"
+            column="27"/>
+    </issue>
+
+    <issue
+        id="VectorPath"
+        message="Very long vector path (1276 characters), which is bad for performance. Considering reducing precision, removing minor details or rasterizing vector.">
+        <location
+            file="src/main/res/drawable/ds_image_updates.xml"
+            line="8"
+            column="25"/>
+    </issue>
+
+    <issue
+        id="VectorPath"
+        message="Very long vector path (2143 characters), which is bad for performance. Considering reducing precision, removing minor details or rasterizing vector.">
+        <location
+            file="src/main/res/drawable/ds_image_updates.xml"
+            line="23"
+            column="25"/>
+    </issue>
+
+    <issue
+        id="VectorPath"
+        message="Very long vector path (1300 characters), which is bad for performance. Considering reducing precision, removing minor details or rasterizing vector.">
+        <location
+            file="src/main/res/drawable/ds_image_updates.xml"
+            line="147"
+            column="25"/>
+    </issue>
+
+    <issue
+        id="VectorPath"
+        message="Very long vector path (2750 characters), which is bad for performance. Considering reducing precision, removing minor details or rasterizing vector.">
+        <location
+            file="src/main/res/drawable/ds_image_updates.xml"
+            line="152"
+            column="25"/>
+    </issue>
+
+    <issue
+        id="VectorPath"
+        message="Very long vector path (1101 characters), which is bad for performance. Considering reducing precision, removing minor details or rasterizing vector.">
+        <location
+            file="src/main/res/drawable/ds_image_updates.xml"
+            line="279"
+            column="25"/>
+    </issue>
+
+    <issue
+        id="VectorPath"
+        message="Very long vector path (2463 characters), which is bad for performance. Considering reducing precision, removing minor details or rasterizing vector.">
+        <location
+            file="src/main/res/drawable/ds_image_web.xml"
+            line="18"
+            column="27"/>
+    </issue>
+
+    <issue
+        id="VectorPath"
+        message="Very long vector path (813 characters), which is bad for performance. Considering reducing precision, removing minor details or rasterizing vector.">
+        <location
+            file="src/main/res/drawable/ds_image_web.xml"
+            line="225"
+            column="27"/>
+    </issue>
+
+    <issue
+        id="VectorPath"
+        message="Very long vector path (2317 characters), which is bad for performance. Considering reducing precision, removing minor details or rasterizing vector.">
+        <location
+            file="src/main/res/drawable/ds_image_web.xml"
+            line="304"
+            column="27"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.color.green_100` appears to be unused">
+        <location
+            file="src/main/res/values/colors.xml"
+            line="6"
+            column="28"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.color.green_150` appears to be unused">
+        <location
+            file="src/main/res/values/colors.xml"
+            line="7"
+            column="29"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.color.green_200` appears to be unused">
+        <location
+            file="src/main/res/values/colors.xml"
+            line="8"
+            column="29"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.color.green_250` appears to be unused">
+        <location
+            file="src/main/res/values/colors.xml"
+            line="9"
+            column="29"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.color.green_300` appears to be unused">
+        <location
+            file="src/main/res/values/colors.xml"
+            line="10"
+            column="29"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.color.green_700` appears to be unused">
+        <location
+            file="src/main/res/values/colors.xml"
+            line="14"
+            column="29"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.color.green_800` appears to be unused">
+        <location
+            file="src/main/res/values/colors.xml"
+            line="15"
+            column="29"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.color.green_850` appears to be unused">
+        <location
+            file="src/main/res/values/colors.xml"
+            line="16"
+            column="12"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.color.green_900` appears to be unused">
+        <location
+            file="src/main/res/values/colors.xml"
+            line="17"
+            column="12"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.color.green_950` appears to be unused">
+        <location
+            file="src/main/res/values/colors.xml"
+            line="18"
+            column="12"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.color.green_1000` appears to be unused">
+        <location
+            file="src/main/res/values/colors.xml"
+            line="19"
+            column="12"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.color.arctic_100` appears to be unused">
+        <location
+            file="src/main/res/values/colors.xml"
+            line="21"
+            column="29"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.color.arctic_150` appears to be unused">
+        <location
+            file="src/main/res/values/colors.xml"
+            line="22"
+            column="29"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.color.arctic_200` appears to be unused">
+        <location
+            file="src/main/res/values/colors.xml"
+            line="23"
+            column="29"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.color.arctic_250` appears to be unused">
+        <location
+            file="src/main/res/values/colors.xml"
+            line="24"
+            column="29"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.color.arctic_300` appears to be unused">
+        <location
+            file="src/main/res/values/colors.xml"
+            line="25"
+            column="29"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.color.arctic_400` appears to be unused">
+        <location
+            file="src/main/res/values/colors.xml"
+            line="26"
+            column="29"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.color.arctic_500` appears to be unused">
+        <location
+            file="src/main/res/values/colors.xml"
+            line="27"
+            column="29"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.color.arctic_600` appears to be unused">
+        <location
+            file="src/main/res/values/colors.xml"
+            line="28"
+            column="29"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.color.arctic_700` appears to be unused">
+        <location
+            file="src/main/res/values/colors.xml"
+            line="29"
+            column="29"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.color.arctic_800` appears to be unused">
+        <location
+            file="src/main/res/values/colors.xml"
+            line="30"
+            column="29"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.color.arctic_850` appears to be unused">
+        <location
+            file="src/main/res/values/colors.xml"
+            line="31"
+            column="12"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.color.arctic_900` appears to be unused">
+        <location
+            file="src/main/res/values/colors.xml"
+            line="32"
+            column="12"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.color.arctic_950` appears to be unused">
+        <location
+            file="src/main/res/values/colors.xml"
+            line="33"
+            column="12"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.color.arctic_1000` appears to be unused">
+        <location
+            file="src/main/res/values/colors.xml"
+            line="34"
+            column="12"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.color.blue_100` appears to be unused">
+        <location
+            file="src/main/res/values/colors.xml"
+            line="36"
+            column="29"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.color.blue_150` appears to be unused">
+        <location
+            file="src/main/res/values/colors.xml"
+            line="37"
+            column="29"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.color.blue_200` appears to be unused">
+        <location
+            file="src/main/res/values/colors.xml"
+            line="38"
+            column="29"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.color.blue_250` appears to be unused">
+        <location
+            file="src/main/res/values/colors.xml"
+            line="39"
+            column="29"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.color.blue_300` appears to be unused">
+        <location
+            file="src/main/res/values/colors.xml"
+            line="40"
+            column="29"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.color.blue_800` appears to be unused">
+        <location
+            file="src/main/res/values/colors.xml"
+            line="45"
+            column="29"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.color.blue_850` appears to be unused">
+        <location
+            file="src/main/res/values/colors.xml"
+            line="46"
+            column="12"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.color.blue_900` appears to be unused">
+        <location
+            file="src/main/res/values/colors.xml"
+            line="47"
+            column="12"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.color.blue_950` appears to be unused">
+        <location
+            file="src/main/res/values/colors.xml"
+            line="48"
+            column="12"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.color.blue_1000` appears to be unused">
+        <location
+            file="src/main/res/values/colors.xml"
+            line="49"
+            column="12"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.color.electric_blue_100` appears to be unused">
+        <location
+            file="src/main/res/values/colors.xml"
+            line="51"
+            column="29"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.color.electric_blue_150` appears to be unused">
+        <location
+            file="src/main/res/values/colors.xml"
+            line="52"
+            column="29"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.color.electric_blue_200` appears to be unused">
+        <location
+            file="src/main/res/values/colors.xml"
+            line="53"
+            column="29"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.color.electric_blue_250` appears to be unused">
+        <location
+            file="src/main/res/values/colors.xml"
+            line="54"
+            column="29"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.color.electric_blue_300` appears to be unused">
+        <location
+            file="src/main/res/values/colors.xml"
+            line="55"
+            column="29"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.color.electric_blue_400` appears to be unused">
+        <location
+            file="src/main/res/values/colors.xml"
+            line="56"
+            column="29"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.color.electric_blue_500` appears to be unused">
+        <location
+            file="src/main/res/values/colors.xml"
+            line="57"
+            column="29"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.color.electric_blue_600` appears to be unused">
+        <location
+            file="src/main/res/values/colors.xml"
+            line="58"
+            column="29"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.color.electric_blue_700` appears to be unused">
+        <location
+            file="src/main/res/values/colors.xml"
+            line="59"
+            column="29"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.color.electric_blue_800` appears to be unused">
+        <location
+            file="src/main/res/values/colors.xml"
+            line="60"
+            column="29"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.color.electric_blue_850` appears to be unused">
+        <location
+            file="src/main/res/values/colors.xml"
+            line="61"
+            column="29"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.color.electric_blue_900` appears to be unused">
+        <location
+            file="src/main/res/values/colors.xml"
+            line="62"
+            column="29"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.color.electric_blue_950` appears to be unused">
+        <location
+            file="src/main/res/values/colors.xml"
+            line="63"
+            column="29"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.color.electric_blue_1000` appears to be unused">
+        <location
+            file="src/main/res/values/colors.xml"
+            line="64"
+            column="29"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.color.orchid_100` appears to be unused">
+        <location
+            file="src/main/res/values/colors.xml"
+            line="66"
+            column="29"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.color.orchid_150` appears to be unused">
+        <location
+            file="src/main/res/values/colors.xml"
+            line="67"
+            column="29"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.color.orchid_200` appears to be unused">
+        <location
+            file="src/main/res/values/colors.xml"
+            line="68"
+            column="29"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.color.orchid_250` appears to be unused">
+        <location
+            file="src/main/res/values/colors.xml"
+            line="69"
+            column="29"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.color.orchid_350` appears to be unused">
+        <location
+            file="src/main/res/values/colors.xml"
+            line="70"
+            column="29"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.color.orchid_400` appears to be unused">
+        <location
+            file="src/main/res/values/colors.xml"
+            line="71"
+            column="29"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.color.orchid_500` appears to be unused">
+        <location
+            file="src/main/res/values/colors.xml"
+            line="72"
+            column="29"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.color.orchid_700` appears to be unused">
+        <location
+            file="src/main/res/values/colors.xml"
+            line="74"
+            column="29"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.color.orchid_800` appears to be unused">
+        <location
+            file="src/main/res/values/colors.xml"
+            line="75"
+            column="29"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.color.orchid_850` appears to be unused">
+        <location
+            file="src/main/res/values/colors.xml"
+            line="76"
+            column="29"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.color.orchid_900` appears to be unused">
+        <location
+            file="src/main/res/values/colors.xml"
+            line="77"
+            column="29"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.color.orchid_950` appears to be unused">
+        <location
+            file="src/main/res/values/colors.xml"
+            line="78"
+            column="29"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.color.orchid_1000` appears to be unused">
+        <location
+            file="src/main/res/values/colors.xml"
+            line="79"
+            column="29"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.color.pink_100` appears to be unused">
+        <location
+            file="src/main/res/values/colors.xml"
+            line="81"
+            column="29"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.color.pink_150` appears to be unused">
+        <location
+            file="src/main/res/values/colors.xml"
+            line="82"
+            column="29"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.color.pink_200` appears to be unused">
+        <location
+            file="src/main/res/values/colors.xml"
+            line="83"
+            column="29"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.color.pink_250` appears to be unused">
+        <location
+            file="src/main/res/values/colors.xml"
+            line="84"
+            column="29"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.color.pink_300` appears to be unused">
+        <location
+            file="src/main/res/values/colors.xml"
+            line="85"
+            column="29"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.color.pink_400` appears to be unused">
+        <location
+            file="src/main/res/values/colors.xml"
+            line="86"
+            column="29"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.color.pink_500` appears to be unused">
+        <location
+            file="src/main/res/values/colors.xml"
+            line="87"
+            column="29"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.color.pink_600` appears to be unused">
+        <location
+            file="src/main/res/values/colors.xml"
+            line="88"
+            column="29"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.color.pink_700` appears to be unused">
+        <location
+            file="src/main/res/values/colors.xml"
+            line="89"
+            column="29"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.color.pink_800` appears to be unused">
+        <location
+            file="src/main/res/values/colors.xml"
+            line="90"
+            column="29"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.color.pink_850` appears to be unused">
+        <location
+            file="src/main/res/values/colors.xml"
+            line="91"
+            column="29"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.color.pink_900` appears to be unused">
+        <location
+            file="src/main/res/values/colors.xml"
+            line="92"
+            column="29"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.color.pink_950` appears to be unused">
+        <location
+            file="src/main/res/values/colors.xml"
+            line="93"
+            column="29"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.color.pink_1000` appears to be unused">
+        <location
+            file="src/main/res/values/colors.xml"
+            line="94"
+            column="29"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.color.red_100` appears to be unused">
+        <location
+            file="src/main/res/values/colors.xml"
+            line="96"
+            column="29"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.color.red_150` appears to be unused">
+        <location
+            file="src/main/res/values/colors.xml"
+            line="97"
+            column="29"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.color.red_200` appears to be unused">
+        <location
+            file="src/main/res/values/colors.xml"
+            line="98"
+            column="29"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.color.red_250` appears to be unused">
+        <location
+            file="src/main/res/values/colors.xml"
+            line="99"
+            column="29"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.color.red_300` appears to be unused">
+        <location
+            file="src/main/res/values/colors.xml"
+            line="100"
+            column="29"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.color.red_400` appears to be unused">
+        <location
+            file="src/main/res/values/colors.xml"
+            line="101"
+            column="29"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.color.red_600` appears to be unused">
+        <location
+            file="src/main/res/values/colors.xml"
+            line="103"
+            column="29"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.color.red_800` appears to be unused">
+        <location
+            file="src/main/res/values/colors.xml"
+            line="105"
+            column="29"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.color.red_850` appears to be unused">
+        <location
+            file="src/main/res/values/colors.xml"
+            line="106"
+            column="29"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.color.red_900` appears to be unused">
+        <location
+            file="src/main/res/values/colors.xml"
+            line="107"
+            column="29"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.color.red_950` appears to be unused">
+        <location
+            file="src/main/res/values/colors.xml"
+            line="108"
+            column="29"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.color.red_1000` appears to be unused">
+        <location
+            file="src/main/res/values/colors.xml"
+            line="109"
+            column="29"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.color.orange_100` appears to be unused">
+        <location
+            file="src/main/res/values/colors.xml"
+            line="111"
+            column="29"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.color.orange_150` appears to be unused">
+        <location
+            file="src/main/res/values/colors.xml"
+            line="112"
+            column="29"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.color.orange_200` appears to be unused">
+        <location
+            file="src/main/res/values/colors.xml"
+            line="113"
+            column="29"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.color.orange_250` appears to be unused">
+        <location
+            file="src/main/res/values/colors.xml"
+            line="114"
+            column="29"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.color.orange_300` appears to be unused">
+        <location
+            file="src/main/res/values/colors.xml"
+            line="115"
+            column="29"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.color.orange_400` appears to be unused">
+        <location
+            file="src/main/res/values/colors.xml"
+            line="116"
+            column="29"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.color.orange_600` appears to be unused">
+        <location
+            file="src/main/res/values/colors.xml"
+            line="118"
+            column="29"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.color.orange_800` appears to be unused">
+        <location
+            file="src/main/res/values/colors.xml"
+            line="120"
+            column="29"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.color.orange_850` appears to be unused">
+        <location
+            file="src/main/res/values/colors.xml"
+            line="121"
+            column="29"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.color.orange_900` appears to be unused">
+        <location
+            file="src/main/res/values/colors.xml"
+            line="122"
+            column="29"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.color.orange_950` appears to be unused">
+        <location
+            file="src/main/res/values/colors.xml"
+            line="123"
+            column="29"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.color.orange_1000` appears to be unused">
+        <location
+            file="src/main/res/values/colors.xml"
+            line="124"
+            column="29"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.color.yellow_100` appears to be unused">
+        <location
+            file="src/main/res/values/colors.xml"
+            line="126"
+            column="29"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.color.yellow_150` appears to be unused">
+        <location
+            file="src/main/res/values/colors.xml"
+            line="127"
+            column="29"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.color.yellow_250` appears to be unused">
+        <location
+            file="src/main/res/values/colors.xml"
+            line="129"
+            column="29"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.color.yellow_400` appears to be unused">
+        <location
+            file="src/main/res/values/colors.xml"
+            line="131"
+            column="29"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.color.yellow_500` appears to be unused">
+        <location
+            file="src/main/res/values/colors.xml"
+            line="132"
+            column="29"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.color.yellow_600` appears to be unused">
+        <location
+            file="src/main/res/values/colors.xml"
+            line="133"
+            column="29"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.color.yellow_700` appears to be unused">
+        <location
+            file="src/main/res/values/colors.xml"
+            line="134"
+            column="29"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.color.yellow_800` appears to be unused">
+        <location
+            file="src/main/res/values/colors.xml"
+            line="135"
+            column="29"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.color.yellow_850` appears to be unused">
+        <location
+            file="src/main/res/values/colors.xml"
+            line="136"
+            column="29"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.color.yellow_900` appears to be unused">
+        <location
+            file="src/main/res/values/colors.xml"
+            line="137"
+            column="29"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.color.yellow_950` appears to be unused">
+        <location
+            file="src/main/res/values/colors.xml"
+            line="138"
+            column="29"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.color.yellow_1000` appears to be unused">
+        <location
+            file="src/main/res/values/colors.xml"
+            line="139"
+            column="29"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.color.spring_100` appears to be unused">
+        <location
+            file="src/main/res/values/colors.xml"
+            line="141"
+            column="29"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.color.spring_150` appears to be unused">
+        <location
+            file="src/main/res/values/colors.xml"
+            line="142"
+            column="29"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.color.spring_200` appears to be unused">
+        <location
+            file="src/main/res/values/colors.xml"
+            line="143"
+            column="29"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.color.spring_250` appears to be unused">
+        <location
+            file="src/main/res/values/colors.xml"
+            line="144"
+            column="29"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.color.spring_300` appears to be unused">
+        <location
+            file="src/main/res/values/colors.xml"
+            line="145"
+            column="29"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.color.spring_400` appears to be unused">
+        <location
+            file="src/main/res/values/colors.xml"
+            line="146"
+            column="29"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.color.spring_500` appears to be unused">
+        <location
+            file="src/main/res/values/colors.xml"
+            line="147"
+            column="29"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.color.spring_600` appears to be unused">
+        <location
+            file="src/main/res/values/colors.xml"
+            line="148"
+            column="29"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.color.spring_700` appears to be unused">
+        <location
+            file="src/main/res/values/colors.xml"
+            line="149"
+            column="29"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.color.spring_800` appears to be unused">
+        <location
+            file="src/main/res/values/colors.xml"
+            line="150"
+            column="29"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.color.spring_850` appears to be unused">
+        <location
+            file="src/main/res/values/colors.xml"
+            line="151"
+            column="29"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.color.spring_900` appears to be unused">
+        <location
+            file="src/main/res/values/colors.xml"
+            line="152"
+            column="29"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.color.spring_950` appears to be unused">
+        <location
+            file="src/main/res/values/colors.xml"
+            line="153"
+            column="29"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.color.spring_1000` appears to be unused">
+        <location
+            file="src/main/res/values/colors.xml"
+            line="154"
+            column="29"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.color.grey_150` appears to be unused">
+        <location
+            file="src/main/res/values/colors.xml"
+            line="157"
+            column="29"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.color.grey_200` appears to be unused">
+        <location
+            file="src/main/res/values/colors.xml"
+            line="158"
+            column="29"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.color.grey_250` appears to be unused">
+        <location
+            file="src/main/res/values/colors.xml"
+            line="159"
+            column="29"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.color.grey_300` appears to be unused">
+        <location
+            file="src/main/res/values/colors.xml"
+            line="160"
+            column="29"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.color.grey_400` appears to be unused">
+        <location
+            file="src/main/res/values/colors.xml"
+            line="161"
+            column="29"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.color.grey_500` appears to be unused">
+        <location
+            file="src/main/res/values/colors.xml"
+            line="162"
+            column="29"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.color.grey_600` appears to be unused">
+        <location
+            file="src/main/res/values/colors.xml"
+            line="163"
+            column="29"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.color.grey_700` appears to be unused">
+        <location
+            file="src/main/res/values/colors.xml"
+            line="164"
+            column="29"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.color.grey_800` appears to be unused">
+        <location
+            file="src/main/res/values/colors.xml"
+            line="165"
+            column="29"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.color.grey_950` appears to be unused">
+        <location
+            file="src/main/res/values/colors.xml"
+            line="168"
+            column="29"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.color.coolgrey_200` appears to be unused">
+        <location
+            file="src/main/res/values/colors.xml"
+            line="173"
+            column="29"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.color.coolgrey_250` appears to be unused">
+        <location
+            file="src/main/res/values/colors.xml"
+            line="174"
+            column="29"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.color.coolgrey_300` appears to be unused">
+        <location
+            file="src/main/res/values/colors.xml"
+            line="175"
+            column="29"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.color.coolgrey_400` appears to be unused">
+        <location
+            file="src/main/res/values/colors.xml"
+            line="176"
+            column="29"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.color.coolgrey_500` appears to be unused">
+        <location
+            file="src/main/res/values/colors.xml"
+            line="177"
+            column="29"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.color.coolgrey_600` appears to be unused">
+        <location
+            file="src/main/res/values/colors.xml"
+            line="178"
+            column="29"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.color.coolgrey_700` appears to be unused">
+        <location
+            file="src/main/res/values/colors.xml"
+            line="179"
+            column="29"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.color.coolgrey_800` appears to be unused">
+        <location
+            file="src/main/res/values/colors.xml"
+            line="180"
+            column="29"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.color.coolgrey_850` appears to be unused">
+        <location
+            file="src/main/res/values/colors.xml"
+            line="181"
+            column="29"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.color.coolgrey_900` appears to be unused">
+        <location
+            file="src/main/res/values/colors.xml"
+            line="182"
+            column="29"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.color.coolgrey_950` appears to be unused">
+        <location
+            file="src/main/res/values/colors.xml"
+            line="183"
+            column="29"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.color.coolgrey_1000` appears to be unused">
+        <location
+            file="src/main/res/values/colors.xml"
+            line="184"
+            column="29"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.color.contained_button_default_color_bg_selector` appears to be unused">
+        <location
+            file="src/main/res/color/contained_button_default_color_bg_selector.xml"
+            line="2"
+            column="1"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.color.contained_button_default_color_text_selector` appears to be unused">
+        <location
+            file="src/main/res/color/contained_button_default_color_text_selector.xml"
+            line="2"
+            column="1"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.color.contained_button_error_color_bg_selector` appears to be unused">
+        <location
+            file="src/main/res/color/contained_button_error_color_bg_selector.xml"
+            line="2"
+            column="1"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.color.contained_button_error_color_text_selector` appears to be unused">
+        <location
+            file="src/main/res/color/contained_button_error_color_text_selector.xml"
+            line="2"
+            column="1"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.color.contained_button_opaque_black_color_bg_selector` appears to be unused">
+        <location
+            file="src/main/res/color/contained_button_opaque_black_color_bg_selector.xml"
+            line="2"
+            column="1"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.color.contained_button_opaque_black_color_text_selector` appears to be unused">
+        <location
+            file="src/main/res/color/contained_button_opaque_black_color_text_selector.xml"
+            line="2"
+            column="1"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.color.contained_button_opaque_primary_ripple_color` appears to be unused">
+        <location
+            file="src/main/res/color/contained_button_opaque_primary_ripple_color.xml"
+            line="2"
+            column="1"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.color.contained_button_primary_color_bg_selector` appears to be unused">
+        <location
+            file="src/main/res/color/contained_button_primary_color_bg_selector.xml"
+            line="2"
+            column="1"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.color.contained_button_primary_color_text_selector` appears to be unused">
+        <location
+            file="src/main/res/color/contained_button_primary_color_text_selector.xml"
+            line="2"
+            column="1"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.dimen.corner_radius_small` appears to be unused">
+        <location
+            file="src/main/res/values/dimens.xml"
+            line="3"
+            column="12"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.dimen.corner_radius_medium` appears to be unused">
+        <location
+            file="src/main/res/values/dimens.xml"
+            line="4"
+            column="12"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.dimen.x1` appears to be unused">
+        <location
+            file="src/main/res/values/dimens.xml"
+            line="7"
+            column="12"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.dimen.x2` appears to be unused">
+        <location
+            file="src/main/res/values/dimens.xml"
+            line="8"
+            column="12"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.dimen.x3` appears to be unused">
+        <location
+            file="src/main/res/values/dimens.xml"
+            line="9"
+            column="12"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.dimen.x6` appears to be unused">
+        <location
+            file="src/main/res/values/dimens.xml"
+            line="12"
+            column="12"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.dimen.x8` appears to be unused">
+        <location
+            file="src/main/res/values/dimens.xml"
+            line="13"
+            column="12"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.dimen.btn_size_min` appears to be unused">
+        <location
+            file="src/main/res/values/dimens.xml"
+            line="15"
+            column="12"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.dimen.sbf_main_cards_elevation` appears to be unused">
+        <location
+            file="src/main/res/values/dimens.xml"
+            line="17"
+            column="12"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.drawable.empty_state_divider` appears to be unused">
+        <location
+            file="src/main/res/drawable/empty_state_divider.xml"
+            line="2"
+            column="1"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.drawable.ic_dropdown_collapse` appears to be unused">
+        <location
+            file="src/main/res/drawable/ic_dropdown_collapse.xml"
+            line="2"
+            column="1"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.drawable.ic_dropdown_expand` appears to be unused">
+        <location
+            file="src/main/res/drawable/ic_dropdown_expand.xml"
+            line="1"
+            column="1"/>
+    </issue>
+
+</issues>

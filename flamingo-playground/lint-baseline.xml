@@ -1,0 +1,364 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<issues format="6" by="lint 7.2.0" type="baseline" client="gradle" dependencies="false" name="AGP (7.2.0)" variant="all" version="7.2.0">
+
+    <issue
+        id="UnknownIssueId"
+        message="Unknown issue id &quot;SystemUiColoringMigration&quot;">
+        <location
+            file="build.gradle"
+            line="38"
+            column="18"/>
+    </issue>
+
+    <issue
+        id="UnknownIssueId"
+        message="Unknown issue id &quot;SystemUiColoringMigration&quot;">
+        <location
+            file="build.gradle"
+            line="38"
+            column="18"/>
+    </issue>
+
+    <issue
+        id="UseSwitchCompatOrMaterialXml"
+        message="Use `SwitchCompat` from AppCompat or `SwitchMaterial` from Material library">
+        <location
+            file="src/main/res/layout/fonts_demo_fragment.xml"
+            line="33"
+            column="9"/>
+    </issue>
+
+    <issue
+        id="UseSwitchCompatOrMaterialXml"
+        message="Use `SwitchCompat` from AppCompat or `SwitchMaterial` from Material library">
+        <location
+            file="src/main/res/layout/fonts_demo_fragment.xml"
+            line="40"
+            column="9"/>
+    </issue>
+
+    <issue
+        id="UseSwitchCompatOrMaterialXml"
+        message="Use `SwitchCompat` from AppCompat or `SwitchMaterial` from Material library">
+        <location
+            file="src/main/res/layout/fonts_demo_fragment.xml"
+            line="47"
+            column="9"/>
+    </issue>
+
+    <issue
+        id="VectorRaster"
+        message="Limit vector icons sizes to 200×200 to keep icon drawing fast; see https://developer.android.com/studio/write/vector-asset-studio#when for more">
+        <location
+            file="src/main/res/drawable/flamingo_logo.xml"
+            line="2"
+            column="20"/>
+    </issue>
+
+    <issue
+        id="VectorRaster"
+        message="Limit vector icons sizes to 200×200 to keep icon drawing fast; see https://developer.android.com/studio/write/vector-asset-studio#when for more">
+        <location
+            file="src/main/res/drawable/flamingo_logo_gray.xml"
+            line="2"
+            column="20"/>
+    </issue>
+
+    <issue
+        id="VectorRaster"
+        message="Limit vector icons sizes to 200×200 to keep icon drawing fast; see https://developer.android.com/studio/write/vector-asset-studio#when for more">
+        <location
+            file="src/main/res/drawable/flamingo_logo_gray_no_circle.xml"
+            line="2"
+            column="20"/>
+    </issue>
+
+    <issue
+        id="VectorRaster"
+        message="Limit vector icons sizes to 200×200 to keep icon drawing fast; see https://developer.android.com/studio/write/vector-asset-studio#when for more">
+        <location
+            file="src/main/res/drawable/flamingo_logo_no_circle.xml"
+            line="2"
+            column="20"/>
+    </issue>
+
+    <issue
+        id="SupportAnnotationUsage"
+        message="The API level is already known to be at least 24 here from outer annotations">
+        <location
+            file="src/main/java/com/flamingo/playground/overlay/DebugOverlayTileService.kt"
+            line="11"
+            column="5"/>
+    </issue>
+
+    <issue
+        id="VectorPath"
+        message="Very long vector path (2044 characters), which is bad for performance. Considering reducing precision, removing minor details or rasterizing vector.">
+        <location
+            file="src/main/res/drawable/flamingo_logo.xml"
+            line="16"
+            column="27"/>
+    </issue>
+
+    <issue
+        id="VectorPath"
+        message="Very long vector path (1137 characters), which is bad for performance. Considering reducing precision, removing minor details or rasterizing vector.">
+        <location
+            file="src/main/res/drawable/flamingo_logo_gray.xml"
+            line="13"
+            column="31"/>
+    </issue>
+
+    <issue
+        id="VectorPath"
+        message="Very long vector path (1137 characters), which is bad for performance. Considering reducing precision, removing minor details or rasterizing vector.">
+        <location
+            file="src/main/res/drawable/flamingo_logo_gray_no_circle.xml"
+            line="10"
+            column="31"/>
+    </issue>
+
+    <issue
+        id="VectorPath"
+        message="Very long vector path (2017 characters), which is bad for performance. Considering reducing precision, removing minor details or rasterizing vector.">
+        <location
+            file="src/main/res/drawable/flamingo_logo_no_circle.xml"
+            line="7"
+            column="25"/>
+    </issue>
+
+    <issue
+        id="VectorPath"
+        message="Very long vector path (2088 characters), which is bad for performance. Considering reducing precision, removing minor details or rasterizing vector.">
+        <location
+            file="src/main/res/drawable/ic_launcher_foreground.xml"
+            line="13"
+            column="27"/>
+    </issue>
+
+    <issue
+        id="DisableBaselineAlignment"
+        message="Set `android:baselineAligned=&quot;false&quot;` on this element for better performance">
+        <location
+            file="src/main/res/layout/fonts_demo_fragment.xml"
+            line="54"
+            column="10"/>
+    </issue>
+
+    <issue
+        id="Overdraw"
+        message="Possible overdraw: Root element paints background `?android:colorBackground` with a theme that also paints a background (inferred theme is `@android:style/Theme.Holo`)">
+        <location
+            file="src/main/res/layout/fonts_demo_fragment.xml"
+            line="7"
+            column="5"/>
+    </issue>
+
+    <issue
+        id="Overdraw"
+        message="Possible overdraw: Root element paints background `?android:colorBackground` with a theme that also paints a background (inferred theme is `@android:style/Theme.Holo`)">
+        <location
+            file="src/main/res/layout/fragment_dsc_details.xml"
+            line="8"
+            column="5"/>
+    </issue>
+
+    <issue
+        id="Overdraw"
+        message="Possible overdraw: Root element paints background `?android:colorBackground` with a theme that also paints a background (inferred theme is `@android:style/Theme.Holo`)">
+        <location
+            file="src/main/res/layout/theme_demo_fragment.xml"
+            line="8"
+            column="5"/>
+    </issue>
+
+    <issue
+        id="Overdraw"
+        message="Possible overdraw: Root element paints background `?android:colorBackground` with a theme that also paints a background (inferred theme is `@android:style/Theme.Holo`)">
+        <location
+            file="src/main/res/layout/typical_usage_alert_message.xml"
+            line="6"
+            column="5"/>
+    </issue>
+
+    <issue
+        id="Overdraw"
+        message="Possible overdraw: Root element paints background `?android:colorBackground` with a theme that also paints a background (inferred theme is `@android:style/Theme.Holo`)">
+        <location
+            file="src/main/res/layout/typical_usage_avatar.xml"
+            line="7"
+            column="5"/>
+    </issue>
+
+    <issue
+        id="Overdraw"
+        message="Possible overdraw: Root element paints background `?android:colorBackground` with a theme that also paints a background (inferred theme is `@android:style/Theme.Holo`)">
+        <location
+            file="src/main/res/layout/typical_usage_empty_state.xml"
+            line="6"
+            column="5"/>
+    </issue>
+
+    <issue
+        id="Overdraw"
+        message="Possible overdraw: Root element paints background `?android:colorBackground` with a theme that also paints a background (inferred theme is `@android:style/Theme.Holo`)">
+        <location
+            file="src/main/res/layout/typical_usage_indicator.xml"
+            line="6"
+            column="5"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.layout.compose_demo_fragment` appears to be unused">
+        <location
+            file="src/main/res/layout/compose_demo_fragment.xml"
+            line="2"
+            column="1"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.drawable.flamingo_logo_no_circle` appears to be unused">
+        <location
+            file="src/main/res/drawable/flamingo_logo_no_circle.xml"
+            line="1"
+            column="1"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.drawable.ic_baseline_filter_alt_24` appears to be unused">
+        <location
+            file="src/main/res/drawable/ic_baseline_filter_alt_24.xml"
+            line="1"
+            column="1"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.drawable.ic_baseline_lab_flask_alt_24` appears to be unused">
+        <location
+            file="src/main/res/drawable/ic_baseline_lab_flask_alt_24.xml"
+            line="2"
+            column="1"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.drawable.ic_gesture_tap_button` appears to be unused">
+        <location
+            file="src/main/res/drawable/ic_gesture_tap_button.xml"
+            line="1"
+            column="1"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.drawable.ic_pencil_ruler` appears to be unused">
+        <location
+            file="src/main/res/drawable/ic_pencil_ruler.xml"
+            line="1"
+            column="1"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.layout.icon_demo_list_item` appears to be unused">
+        <location
+            file="src/main/res/layout/icon_demo_list_item.xml"
+            line="2"
+            column="1"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.colors_demo_docs` appears to be unused">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="77"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.lab_fonts_configurator_letter_spacing_helper_text` appears to be unused">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="132"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.lab_fonts_configurator_line_spacing_miltiplier_helper_text` appears to be unused">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="133"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.drawable.text_view_border` appears to be unused">
+        <location
+            file="src/main/res/drawable/text_view_border.xml"
+            line="2"
+            column="1"/>
+    </issue>
+
+    <issue
+        id="SetTextI18n"
+        message="Do not concatenate text displayed with `setText`. Use resource string with placeholders.">
+        <location
+            file="src/main/java/com/flamingo/playground/view/GradientsDemoFragment.kt"
+            line="53"
+            column="31"/>
+    </issue>
+
+    <issue
+        id="SetTextI18n"
+        message="Do not concatenate text displayed with `setText`. Use resource string with placeholders.">
+        <location
+            file="src/main/java/com/flamingo/playground/view/GradientsDemoFragment.kt"
+            line="53"
+            column="34"/>
+    </issue>
+
+    <issue
+        id="SetTextI18n"
+        message="String literal in `setText` can not be translated. Use Android resources instead.">
+        <location
+            file="src/main/java/com/flamingo/playground/view/GradientsDemoFragment.kt"
+            line="53"
+            column="62"/>
+    </issue>
+
+    <issue
+        id="HardcodedText"
+        message="Hardcoded string &quot;Card content&quot;, should use `@string` resource">
+        <location
+            file="src/main/res/layout/card.xml"
+            line="17"
+            column="9"/>
+    </issue>
+
+    <issue
+        id="HardcodedText"
+        message="Hardcoded string &quot; — 50sp&quot;, should use `@string` resource">
+        <location
+            file="src/main/res/layout/font_divider.xml"
+            line="17"
+            column="9"/>
+    </issue>
+
+    <issue
+        id="HardcodedText"
+        message="Hardcoded string &quot;Список атрибутов, доступных в @style/Theme.Flamingo&quot;, should use `@string` resource">
+        <location
+            file="src/main/res/layout/theme_demo_fragment.xml"
+            line="50"
+            column="13"/>
+    </issue>
+
+</issues>
