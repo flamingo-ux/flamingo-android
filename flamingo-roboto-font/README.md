@@ -1,5 +1,4 @@
-This module is used to add roboto-based typography in the Flamingo Design System. It contains 
-open-sourced font files. 
+This module is used to add roboto-based typography in the Flamingo Design System.
 
 You __MUST__:
 1. add this module to your app

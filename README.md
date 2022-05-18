@@ -22,14 +22,17 @@ __[Download](https://github.com/flamingo-ux/flamingo-android/releases)__ Flaming
 
 # Getting Started
 
-1. Download `.aar`s of `flamingo` and `flamingo-sbsans-font` modules from the releases page in confluence
+1. Download `.aar`s of `flamingo` and `flamingo-sbsans-font` modules from the 
+   [releases](https://github.com/flamingo-ux/flamingo-android/releases) page
 2. Put them in `/project name/libs/` folder
 3. Add this to your module's `build.gradle(.kts)`:
 
-```kotlin
-implementation(files("$rootDir/libs/flamingo-LATEST_VERSION.aar"))
-implementation(files("$rootDir/libs/flamingo-roboto-font-LATEST_VERSION.aar"))
-```
+    ```kotlin
+    implementation(files("$rootDir/libs/flamingo-LATEST_VERSION.aar"))
+    implementation(files("$rootDir/libs/flamingo-roboto-font-LATEST_VERSION.aar"))
+    ```
+4. Call `initRobotoTypography()` before the first call to the `FlamingoTheme`
+
 
 <details><summary>If you are an internal user</summary>
 
@@ -45,12 +48,13 @@ code) demos of various design system components
 
 It can be downloaded separately [here](https://github.com/flamingo-ux/flamingo-android/releases).
 
-In addition, playground contains various debugging developer tools that facilitate painless integration and further
-support of the design system in __your__ product.
+In addition, playground contains various debugging developer tools that facilitate painless 
+integration and further support of the design system in __your__ product.
 
 To be able to use those, add the Flamingo Playground to your app:
 
-1. Download `.aar` of `flamingo-playground` module from the releases page in confluence
+1. Download `.aar` of `flamingo-playground` module from the 
+   [releases](https://github.com/flamingo-ux/flamingo-android/releases) page
 2. Put it in `/project name/libs/` folder
 3. Add this line in your _staging_ module's `build.gradle.kts`:
 
