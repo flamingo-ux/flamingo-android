@@ -18,7 +18,10 @@ It is an Android implementation of the Flamingo Design System.
 Flamingo Playground is a demonstration app that contains __live__ (meaning generated using _real_
 code) demos of various design system components
 (see _[It consists of](https://github.com/flamingo-ux/flamingo-android#It-consists-of)_).
-<!-- Here you can see a brief demonstration of the design system: [TODO Video](https://todo.com) -->
+
+Here you can see a brief demonstration of the design system:
+__[Youtube Videos](https://youtube.com/playlist?list=PLSzrfgGrhXFpKbRy-IA5Ju3sOpbFQa5ZX)__
+
 __[Download](https://github.com/flamingo-ux/flamingo-android/releases)__ Flamingo Playground App
 
 # Getting Started
