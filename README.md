@@ -22,7 +22,7 @@ __[Download](https://github.com/flamingo-ux/flamingo-android/releases)__ Flaming
 
 # Getting Started
 
-1. Download `.aar`s of `flamingo` and `flamingo-sbsans-font` modules from the 
+1. Download `.aar`s of `flamingo` and `flamingo-roboto-font` modules from the 
    [releases](https://github.com/flamingo-ux/flamingo-android/releases) page
 2. Put them in `/project name/libs/` folder
 3. Add this to your module's `build.gradle(.kts)`:
@@ -36,7 +36,7 @@ __[Download](https://github.com/flamingo-ux/flamingo-android/releases)__ Flaming
 
 <details><summary>If you are an internal user</summary>
 
-Use _releases_ page in confluence
+Use _releases_ page in confluence and use `flamingo-sbsans-font` module instead
 
 </details>
 
@@ -107,8 +107,7 @@ To be able to use those, add the Flamingo Playground to your app:
     </details>
     </details>
 
-4. Add a button to your app's debug screen that launches
-   `com.flamingo.playground.FlamingoPlaygroundActivity`.
+4. Add a button to your app's debug screen that launches `com.flamingo.playground.FlamingoPlaygroundActivity`.
 
 # Modules Graph
 
