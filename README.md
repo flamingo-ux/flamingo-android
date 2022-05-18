@@ -1,4 +1,5 @@
-<img width="1184" alt="Flamingo Design System" src="https://user-images.githubusercontent.com/98734108/152760098-40e5bd65-8d74-4342-881e-0c280bc84019.png">
+<img src="images/header.jpg" width="1184" alt="">
+<img src="raw/images/header.jpg" width="1184" alt="">
 
 It is an Android implementation of the Flamingo Design System.
 
