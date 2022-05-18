@@ -2,10 +2,6 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'com.google.firebase.appdistribution'
 
-def keystorePropertiesFile = rootProject.file("$rootDir/keystore.properties")
-def keystoreProperties = new Properties()
-keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
-
 android {
     compileSdkVersion deps.android.build.compileSdkVersion
 
@@ -26,12 +22,19 @@ android {
         exclude '**/com/flamingo/crab/generated/**'
     }
 
-    signingConfigs {
-        release {
-            keyAlias = keystoreProperties["keyAlias"]
-            keyPassword = keystoreProperties["keyPassword"]
-            storeFile = file("../" + keystoreProperties["storeFile"])
-            storePassword = keystoreProperties["storePassword"]
+    File keystorePropertiesFile = file("$rootDir/keystore.properties")
+
+    if (keystorePropertiesFile.exists()) {
+        Properties keystoreProperties = new Properties()
+        keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+
+        signingConfigs {
+            release {
+                keyAlias = keystoreProperties["keyAlias"]
+                keyPassword = keystoreProperties["keyPassword"]
+                storeFile = file("../" + keystoreProperties["storeFile"])
+                storePassword = keystoreProperties["storePassword"]
+            }
         }
     }
 
@@ -39,7 +42,7 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-            signingConfig signingConfigs.release
+            if (keystorePropertiesFile.exists()) signingConfig signingConfigs.release
 
             android.applicationVariants.all { variant ->
                 variant.outputs.all {
