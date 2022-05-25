@@ -13,3 +13,21 @@ apply from: 'gradle/dependencies.gradle'
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
+
+task aggregateReleaseFiles(type: Copy) {
+    copy {
+        from("${project(':flamingo-playground-app').buildDir}/outputs/apk/release") {
+            include '*.apk'
+        }
+        into "${buildDir}/releasePkg"
+    }
+    copy {
+        from "${project(':flamingo-playground').buildDir}/outputs/aar/",
+                "${project(':flamingo').buildDir}/outputs/aar/",
+                "${project(':flamingo-component-demo-api').buildDir}/outputs/aar/",
+                "${project(':flamingo-roboto-font').buildDir}/outputs/aar/",
+                "${project(':theater').buildDir}/outputs/aar/"
+
+        into "${buildDir}/releasePkg"
+    }
+}
