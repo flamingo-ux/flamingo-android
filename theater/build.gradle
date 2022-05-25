@@ -29,6 +29,12 @@ android {
         }
     }
 
+    libraryVariants.all { variant ->
+        variant.outputs.all {
+            outputFileName = "${project.name}-${versions.theater}.aar"
+        }
+    }
+
     android {
         testOptions {
             unitTests.all {
