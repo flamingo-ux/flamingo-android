@@ -43,7 +43,7 @@ import com.flamingo.uiTestingTag
  * `com.flamingo.components.RadioButton`
  */
 @Composable
-public fun FlamingoComponentBase(
+internal fun FlamingoComponentBase(
     uiTestingTag: String? = null,
     drawOverlay: Boolean = true,
     drawOverlayText: Boolean = true,

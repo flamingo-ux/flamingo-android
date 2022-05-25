@@ -1,12 +1,13 @@
-package com.flamingo.lint
+package com.flamingo
 
-import org.junit.Assert.assertTrue
+import com.flamingo.lint.WrongComponentAlternativeDetector
+import org.junit.Assert
 import org.junit.Test
 
 class WrongComponentAlternativeDetectorTest {
     @Test
     fun `Config is present and content is valid`() {
         val config = WrongComponentAlternativeDetector.loadConfigFromResources()
-        assertTrue(config.first().first().contains("com.flamingo.components"))
+        Assert.assertTrue(config.first().first().contains("com.flamingo.components"))
     }
 }
