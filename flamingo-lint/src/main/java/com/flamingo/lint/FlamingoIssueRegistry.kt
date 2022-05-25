@@ -21,5 +21,6 @@ class FlamingoIssueRegistry : IssueRegistry() {
         TextAppearanceDetector.ISSUE,
         AlphaDisabledDeclarationDetector.ISSUE,
         WrongComponentAlternativeDetector.ISSUE,
+        TestTagDetector.ISSUE,
     )
 }

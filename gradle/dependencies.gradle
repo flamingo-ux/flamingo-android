@@ -8,7 +8,7 @@ def versions = [
         archCore   : '2.1.0',
         lifecycle  : '2.3.1',
         coroutines : '1.4.3',
-        lint       : '30.2.0',
+        lint       : '30.0.4',
         kotlin     : '1.6.10',
         accompanist: '0.17.0',
         junit5     : '5.8.0',
