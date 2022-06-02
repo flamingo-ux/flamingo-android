@@ -26,9 +26,6 @@ ext.deps = [
                         awMinSdkVersion  : 26,
                         targetSdkVersion : 30
                 ],
-                // also must change lint version using the formula:
-                // If the Gradle plugin version is X.Y.Z, then the Lint library version is X+23.Y.Z
-                gradlePlugin: 'com.android.tools.build:gradle:7.0.4',
                 support     : [
                         annotations       : "androidx.annotation:annotation:${versions.androidx}",
                         appCompat         : "androidx.appcompat:appcompat:${versions.appcompat}",
