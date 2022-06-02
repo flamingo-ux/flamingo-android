@@ -15,11 +15,20 @@
 
 package com.flamingo.components
 
+import androidx.compose.foundation.layout.requiredSize
+import androidx.compose.material.CheckboxDefaults
+import androidx.compose.material.ExperimentalMaterialApi
+import androidx.compose.material.LocalMinimumTouchTargetEnforcement
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.unit.dp
+import com.flamingo.ALPHA_DISABLED
 import com.flamingo.Flamingo
 import com.flamingo.annotations.FlamingoComponent
 import com.flamingo.annotations.UsedInsteadOf
-import com.flamingo.internalComponents
+import com.flamingo.theme.FlamingoTheme
 
 /**
  * Checkboxes allow users to select one or more items from a set. Checkboxes can turn an option on
@@ -42,20 +51,43 @@ import com.flamingo.internalComponents
     supportsWhiteMode = true,
 )
 @UsedInsteadOf("androidx.compose.material.Checkbox")
+@OptIn(ExperimentalMaterialApi::class)
 @Composable
 public fun Checkbox(
     checked: Boolean,
     onCheckedChange: ((Boolean) -> Unit)?,
     disabled: Boolean = false,
 ): Unit = FlamingoComponentBase {
-    val white = Flamingo.palette.white
-    internalComponents.IconToggleButton(
-        checked = checked,
-        onCheckedChange = onCheckedChange,
-        disabled = disabled,
-        checkedIcon = Flamingo.icons.CheckSquare,
-        uncheckedIcon = Flamingo.icons.Square,
-        checkedTint = if (Flamingo.isWhiteMode) white else Flamingo.colors.primary,
-        uncheckedTint = if (Flamingo.isWhiteMode) white else Flamingo.colors.textSecondary,
+    CompositionLocalProvider(LocalMinimumTouchTargetEnforcement provides false) {
+        if (Flamingo.isWhiteMode) FlamingoTheme(darkTheme = true) {
+            InternalCheckbox(checked, onCheckedChange, disabled)
+        }
+        else {
+            InternalCheckbox(checked, onCheckedChange, disabled)
+        }
+    }
+}
+
+@Composable
+private fun InternalCheckbox(
+    checked: Boolean,
+    onCheckedChange: ((Boolean) -> Unit)?,
+    disabled: Boolean,
+) = androidx.compose.material.Checkbox(
+    modifier = Modifier.requiredSize(40.dp),
+    checked = checked,
+    onCheckedChange = onCheckedChange,
+    enabled = !disabled,
+    colors = checkboxColors()
+)
+
+@Composable
+private fun checkboxColors() = with(Flamingo) {
+    CheckboxDefaults.colors(
+        checkedColor = colors.primary,
+        uncheckedColor = colors.textSecondary,
+        checkmarkColor = colors.global.light.backgroundPrimary,
+        disabledColor = colors.textSecondary.copy(alpha = ALPHA_DISABLED),
+        disabledIndeterminateColor = Color.Magenta,
     )
 }

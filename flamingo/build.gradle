@@ -49,7 +49,7 @@ android {
 
     kotlinOptions.freeCompilerArgs += [
             "-Xexplicit-api=strict",
-            "-Xopt-in=com.flamingo.annotations.DelicateFlamingoApi"
+            "-Xopt-in=com.flamingo.annotations.DelicateFlamingoApi,kotlin.RequiresOptIn"
     ]
 
     lintOptions {

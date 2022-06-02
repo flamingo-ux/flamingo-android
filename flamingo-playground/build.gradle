@@ -16,7 +16,7 @@ android {
     }
 
     kotlinOptions.freeCompilerArgs += [
-            "-Xopt-in=com.flamingo.annotations.DelicateFlamingoApi"
+            "-Xopt-in=com.flamingo.annotations.DelicateFlamingoApi,kotlin.RequiresOptIn",
     ]
 
     compileOptions {

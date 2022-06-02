@@ -15,21 +15,18 @@
 
 package com.flamingo.components
 
-import androidx.compose.animation.Crossfade
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.requiredSize
-import androidx.compose.foundation.selection.selectable
-import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.material.ExperimentalMaterialApi
+import androidx.compose.material.LocalMinimumTouchTargetEnforcement
+import androidx.compose.material.RadioButtonDefaults
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
+import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
-import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.unit.dp
+import com.flamingo.ALPHA_DISABLED
 import com.flamingo.Flamingo
-import com.flamingo.alpha
 import com.flamingo.annotations.FlamingoComponent
 import com.flamingo.annotations.UsedInsteadOf
 
@@ -38,8 +35,8 @@ import com.flamingo.annotations.UsedInsteadOf
  *
  * @sample com.flamingo.playground.components.radiobutton.Sample1
  *
- * [RadioButton]s can be combined together with [Text] in the desired layout (e.g. [Column] or
- * [Row]) to achieve radio group-like behaviour, where the entire layout is selectable:
+ * [RadioButton]s can be combined with [Text] in the desired layout (e.g. [Column] or [Row]) to
+ * achieve radio group-like behaviour, where the entire layout is selectable:
  *
  * @sample com.flamingo.playground.components.radiobutton.Sample2
  *
@@ -63,41 +60,37 @@ import com.flamingo.annotations.UsedInsteadOf
     supportsWhiteMode = true,
 )
 @UsedInsteadOf("androidx.compose.material.RadioButton")
+@OptIn(ExperimentalMaterialApi::class)
 @Composable
 public fun RadioButton(
     selected: Boolean,
     onClick: (() -> Unit)?,
     disabled: Boolean = false,
 ): Unit = FlamingoComponentBase {
-    val selectableModifier =
-        if (onClick != null) {
-            Modifier.selectable(
-                selected = selected,
-                onClick = onClick,
-                enabled = !disabled,
-                role = Role.RadioButton,
-            )
-        } else {
-            Modifier
-        }
+    CompositionLocalProvider(LocalMinimumTouchTargetEnforcement provides false) {
+        androidx.compose.material.RadioButton(
+            modifier = Modifier.requiredSize(40.dp),
+            selected = selected,
+            onClick = onClick,
+            enabled = !disabled,
+            colors = radioButtonColors()
+        )
+    }
+}
 
-    Box(
-        modifier = Modifier
-            .requiredSize(40.dp)
-            .clip(CircleShape)
-            .then(selectableModifier)
-            .alpha(disabled),
-        contentAlignment = Alignment.Center
-    ) {
-        Crossfade(targetState = selected) { selected ->
-            Icon(
-                modifier = Modifier.requiredSize(24.dp),
-                icon = if (selected) Flamingo.icons.CheckCircle else Flamingo.icons.Circle,
-                tint = if (Flamingo.isWhiteMode) Flamingo.palette.white else {
-                    if (selected) Flamingo.colors.primary else Flamingo.colors.textSecondary
-                },
-                contentDescription = null,
-            )
-        }
+@Composable
+private fun radioButtonColors() = with(Flamingo) {
+    if (isWhiteMode) {
+        RadioButtonDefaults.colors(
+            selectedColor = palette.white,
+            unselectedColor = palette.white,
+            disabledColor = palette.white.copy(alpha = ALPHA_DISABLED),
+        )
+    } else {
+        RadioButtonDefaults.colors(
+            selectedColor = colors.primary,
+            unselectedColor = colors.textSecondary,
+            disabledColor = colors.textSecondary.copy(alpha = ALPHA_DISABLED),
+        )
     }
 }
