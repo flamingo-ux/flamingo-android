@@ -131,7 +131,7 @@ private fun FlamingoComponentBaseInternal(
 }
 
 @Composable
-private fun UiTestingTagWrapper(tag: String, content: @Composable () -> Unit) {
+internal fun UiTestingTagWrapper(tag: String, content: @Composable () -> Unit) {
     if (Flamingo.uiTestingTagsEnabled) {
         Box(modifier = Modifier.uiTestingTag(tag), propagateMinConstraints = true) { content() }
     } else {

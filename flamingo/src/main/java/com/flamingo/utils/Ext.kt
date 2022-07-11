@@ -13,11 +13,15 @@ import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.tooling.preview.datasource.LoremIpsum
+import androidx.compose.ui.util.fastForEachIndexed
+import androidx.compose.ui.util.fastMap
 import com.flamingo.components.Elevation
 import com.flamingo.components.listitem.ListItem
 import com.flamingo.utils.UnitConversions
 import com.flamingo.utils.UnitConversions.dp
 import com.flamingo.utils.isNightMode
+import kotlin.contracts.ExperimentalContracts
+import kotlin.contracts.contract
 
 /**
  * Convert decimal percentage (0-100) to Hex in decimal representation (0-255).
@@ -108,18 +112,6 @@ internal fun View.initUnitConversionsInCustomView() {
 }
 
 /**
- * If length of [this] is bigger than [maxLength], truncates it with [ellipsisText], such that
- * length of the resulting string is [maxLength]. Else - returns [this]
- */
-internal fun String.ellipsize(maxLength: Int, ellipsisText: String): String {
-    return if (length <= maxLength) {
-        this
-    } else {
-        take(maxLength - ellipsisText.length) + ellipsisText
-    }
-}
-
-/**
  * @param words number of words from "Lorem Ipsum" to use
  */
 public fun loremIpsum(words: Int): String = LoremIpsum(words).values.first().replace("\n", " ")
@@ -147,4 +139,34 @@ public inline fun <R : Any> AnnotatedString.Builder.withStyle(
     withStyle(style.toSpanStyle()) {
         block(this)
     }
+}
+
+/**
+ * Returns a list containing the results of applying the given [transform] function
+ * to each element in the original collection.
+ *
+ * @see fastMap
+ */
+@OptIn(ExperimentalContracts::class)
+internal inline fun <T, R> List<T>.fastMapIndexed(transform: (Int, T) -> R): List<R> {
+    contract { callsInPlace(transform) }
+    val target = ArrayList<R>(size)
+    fastForEachIndexed { index, item ->
+        target += transform(index, item)
+    }
+    return target
+}
+
+/**
+ * Returns the sum of all values produced by [selector] function applied to each element in the
+ * list.
+ */
+@OptIn(ExperimentalContracts::class)
+internal inline fun <T> List<T>.fastSumByIndexed(selector: (Int, T) -> Int): Int {
+    contract { callsInPlace(selector) }
+    var sum = 0
+    fastForEachIndexed { index, element ->
+        sum += selector(index, element)
+    }
+    return sum
 }

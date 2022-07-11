@@ -10,6 +10,7 @@ import com.flamingo.Flamingo
 import com.flamingo.annotations.DelicateFlamingoApi
 import com.flamingo.components.LocalFlamingoTextStyle
 import com.flamingo.components.Text
+import com.flamingo.theme.colors.lightColors
 
 /**
  * FORBIDDEN to use in client code, can only be used in `flamingo-*****-font` modules.
@@ -40,7 +41,7 @@ public object FlamingoTypographyManager {
      * @see LocalFlamingoTextStyle
      */
     internal val LocalFlamingoTypography: ProvidableCompositionLocal<FlamingoTypography> =
-        staticCompositionLocalOf { error("No value provided. Call FlamingoTheme.") }
+        staticCompositionLocalOf { robotoTypographyProvider.invoke(lightColors) }
 
     /** @see debugColors */
     internal fun debugTypography(debugColor: Color) = Typography(
