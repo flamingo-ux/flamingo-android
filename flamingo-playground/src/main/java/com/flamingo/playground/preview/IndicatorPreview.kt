@@ -10,6 +10,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.core.view.updateLayoutParams
 import com.flamingo.components.Indicator
+import com.flamingo.components.IndicatorColor
 import com.flamingo.components.IndicatorSize
 import com.flamingo.view.components.Indicator
 
@@ -28,4 +29,4 @@ class IndicatorPreview : ViewPreview<Indicator>() {
 @Preview
 @Composable
 @Suppress("FunctionNaming")
-fun IndicatorComposePreview() = Indicator(size = IndicatorSize.BIG)
+fun IndicatorComposePreview() = Indicator(size = IndicatorSize.BIG, color = IndicatorColor.PRIMARY)

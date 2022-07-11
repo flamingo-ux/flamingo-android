@@ -109,9 +109,9 @@ fun isEmulator(): Boolean {
 
 @Composable
 @ReadOnlyComposable
-fun boast(msg: String): () -> Unit = LocalContext.current.boast(msg)
-fun Context.boast(msg: String): () -> Unit = { showBoast(msg) }
-fun Context.showBoast(msg: String): Unit = Boast.showText(this, msg, Toast.LENGTH_SHORT)
+fun boast(msg: String = "onClick"): () -> Unit = LocalContext.current.boast(msg)
+fun Context.boast(msg: String = "onClick"): () -> Unit = { showBoast(msg) }
+fun Context.showBoast(msg: String = "onClick"): Unit = Boast.showText(this, msg, Toast.LENGTH_SHORT)
 
 /** @see InternalComponents */
 internal val internalComponents: InternalComponents by lazy {
