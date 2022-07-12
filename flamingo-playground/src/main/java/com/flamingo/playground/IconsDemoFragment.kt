@@ -13,12 +13,13 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.lazy.GridCells
-import androidx.compose.foundation.lazy.LazyVerticalGrid
-import androidx.compose.foundation.lazy.items
-import androidx.compose.foundation.lazy.rememberLazyListState
+import androidx.compose.foundation.lazy.grid.GridCells
+import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
+import androidx.compose.foundation.lazy.grid.items
+import androidx.compose.foundation.lazy.grid.rememberLazyGridState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -31,8 +32,6 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.fragment.app.Fragment
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
 import com.flamingo.Flamingo
 import com.flamingo.components.EmptyState
 import com.flamingo.components.EmptyStateImage
@@ -41,6 +40,8 @@ import com.flamingo.components.Text
 import com.flamingo.components.topappbar.CenterItem
 import com.flamingo.components.topappbar.TopAppBar
 import com.flamingo.theme.FlamingoIcon
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 class IconsDemoFragment : Fragment() {
     override fun onCreateView(
@@ -65,14 +66,20 @@ class IconsDemoFragment : Fragment() {
         LoadIcons(context)
         Column {
             var searchRequest by remember { mutableStateOf("") }
-            val listState = rememberLazyListState()
+            val listState = rememberLazyGridState()
             TopAppBar(
                 center = CenterItem.Search(
                     context = context,
                     value = searchRequest,
                     onValueChange = { searchRequest = it },
                 ),
-                listState = listState
+                showShadow = remember {
+                    // https://youtu.be/eDcGrY_AVlw?t=2793
+                    derivedStateOf {
+                        listState.firstVisibleItemScrollOffset != 0 ||
+                                listState.firstVisibleItemIndex > 0
+                    }
+                }.value
             )
 
             val items = icons?.filter { it.name.contains(searchRequest, ignoreCase = true) }
@@ -80,7 +87,7 @@ class IconsDemoFragment : Fragment() {
                 Loading()
             } else if (items.isEmpty()) {
                 NoIcons()
-            } else LazyVerticalGrid(cells = GridCells.Adaptive(120.dp), state = listState) {
+            } else LazyVerticalGrid(columns = GridCells.Adaptive(120.dp), state = listState) {
                 items(items) { IconBox(it) }
             }
         }
