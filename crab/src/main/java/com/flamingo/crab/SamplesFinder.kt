@@ -1,9 +1,9 @@
 package com.flamingo.crab
 
+import com.flamingo.crab.codegen.sample
 import com.google.devtools.ksp.processing.KSPLogger
 import com.google.devtools.ksp.processing.Resolver
 import com.google.devtools.ksp.symbol.KSName
-import com.flamingo.crab.codegen.sample
 import java.io.File
 
 internal class SamplesFinder(private val logger: KSPLogger) {
@@ -36,6 +36,7 @@ internal class SamplesFinder(private val logger: KSPLogger) {
             val sourceCode = if (noCode) null else resolver.findSampleSourceCode(name, funName)
                 ?: return@mapNotNull null
             sample(
+                funName = name.asString(),
                 sourceCode = sourceCode,
                 composableFunName = if (noPreview) null else name,
             )

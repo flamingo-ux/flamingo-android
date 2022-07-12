@@ -144,6 +144,7 @@
     <string name="component_details_theater_title">Video Teaser</string>
     <string name="component_details_theater_subtitle">Watch 🎬</string>
     <string name="component_details_demo_section">Demos</string>
+    <string name="component_details_samples_section">Samples</string>
     <string name="component_details_spec_section">Specification</string>
     <string name="component_details_figma_section">Figma</string>
     <string name="component_details_white_mode_section">Supports white mode: </string>

@@ -25,33 +25,44 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.combinedClickable
+import androidx.compose.foundation.horizontalScroll
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.requiredHeight
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyListScope
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.itemsIndexed
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.ComposeView
+import androidx.compose.ui.platform.LocalClipboardManager
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalInspectionMode
 import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontFamily
@@ -61,13 +72,18 @@ import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
+import androidx.compose.ui.window.DialogProperties
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import com.flamingo.Flamingo
 import com.flamingo.annotations.view.FlamingoComponent
 import com.flamingo.components.AlertMessage
 import com.flamingo.components.AlertMessageVariant
+import com.flamingo.components.IconButton
+import com.flamingo.components.IconButtonVariant
 import com.flamingo.components.Text
+import com.flamingo.components.button.Button
+import com.flamingo.components.button.ButtonColor
 import com.flamingo.components.listitem.ListItem
 import com.flamingo.crab.FlamingoComponentRecord
 import com.flamingo.crab.FlamingoRegistry
@@ -79,6 +95,7 @@ import com.flamingo.playground.components.alertmessage.TheaterPkg
 import com.flamingo.playground.fromArguments
 import com.flamingo.playground.gallery.ComponentDetailsFragment.DemosAbsenceCause.HAS_VIEW_IMPL
 import com.flamingo.playground.gallery.ComponentDetailsFragment.DemosAbsenceCause.LOAD_ERROR
+import com.flamingo.playground.showBoast
 import com.flamingo.playground.theater.BackstageFragment
 import com.flamingo.playground.theater.TheaterFragment
 import com.theater.TheaterPackage
@@ -123,6 +140,7 @@ class ComponentDetailsFragment : Fragment() {
             item { InternalComponentSection() }
             item { TheaterSection() }
             DemosSection()
+            SamplesSection()
             item { ViewImplSection() }
             item { FigmaSection() }
             item { SpecSection() }
@@ -272,6 +290,114 @@ class ComponentDetailsFragment : Fragment() {
         }
     }
 
+    private fun LazyListScope.SamplesSection() {
+        if (componentRecord.samples.isEmpty()) return
+        item { SectionName(stringResource(R.string.component_details_samples_section)) }
+        items(componentRecord.samples) { sampleRecord ->
+            val sampleName = sampleRecord.funName.substringAfterLast('.')
+            ListItem(
+                title = sampleName,
+                end = {
+                    Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                        if (sampleRecord.sourceCode != null) {
+                            SourceCodeButton(sampleRecord.sourceCode, sampleName)
+                        }
+                        if (sampleRecord.content != null) ContentButton(sampleRecord.content)
+                    }
+                }
+            )
+        }
+    }
+
+    @OptIn(ExperimentalComposeUiApi::class)
+    @Composable
+    private fun ContentButton(content: @Composable () -> Unit) {
+        var contentDialog by rememberSaveable { mutableStateOf(false) }
+        if (contentDialog) Dialog(
+            onDismissRequest = { contentDialog = false },
+            properties = DialogProperties(usePlatformDefaultWidth = false)
+        ) {
+            Column(
+                modifier = Modifier
+                    .padding(16.dp)
+                    .background(Flamingo.colors.background, RoundedCornerShape(16.dp))
+                    .clip(RoundedCornerShape(16.dp))
+                    .padding(16.dp),
+            ) {
+                content.invoke()
+            }
+        }
+        IconButton(
+            onClick = { contentDialog = true },
+            icon = Flamingo.icons.Play,
+            variant = IconButtonVariant.TEXT,
+            contentDescription = null
+        )
+    }
+
+    @OptIn(ExperimentalComposeUiApi::class)
+    @Composable
+    private fun SourceCodeButton(
+        sourceCode: String,
+        sampleName: String,
+    ) {
+        var sourceCodeDialog by rememberSaveable { mutableStateOf(false) }
+        if (sourceCodeDialog) Dialog(
+            onDismissRequest = { sourceCodeDialog = false },
+            properties = DialogProperties(usePlatformDefaultWidth = false)
+        ) { SourceCodeDialogContent({ sourceCodeDialog = false }, sampleName, sourceCode) }
+        IconButton(
+            onClick = { sourceCodeDialog = true },
+            icon = Flamingo.icons.Code,
+            variant = IconButtonVariant.TEXT,
+            contentDescription = null
+        )
+    }
+
+    @Composable
+    private fun SourceCodeDialogContent(
+        onDismissRequest: () -> Unit,
+        name: String,
+        sourceCode: String,
+    ) = Column(
+        modifier = Modifier
+            .padding(16.dp)
+            .background(Flamingo.colors.background,
+                RoundedCornerShape(16.dp))
+            .clip(RoundedCornerShape(16.dp)),
+    ) {
+        ListItem(title = name)
+        Spacer(modifier = Modifier.height(12.dp))
+        Text(
+            modifier = Modifier
+                .weight(1f)
+                .padding(horizontal = 12.dp)
+                .horizontalScroll(rememberScrollState())
+                .verticalScroll(rememberScrollState()),
+            text = sourceCode,
+            fontFamily = FontFamily.Monospace,
+            color = Flamingo.colors.textPrimary
+        )
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(12.dp),
+            horizontalArrangement = Arrangement.spacedBy(12.dp, Alignment.End)
+        ) {
+            val clipboardManager = LocalClipboardManager.current
+            val context = LocalContext.current
+            Button(onClick = onDismissRequest, label = "Close")
+            Button(
+                onClick = {
+                    clipboardManager.setText(AnnotatedString(sourceCode))
+                    context.showBoast("Copied to clipboard")
+                },
+                label = "Copy",
+                color = ButtonColor.Primary
+            )
+        }
+    }
+
     @Composable
     private fun UrlSection(sectionName: String, url: String) {
         SectionName(name = sectionName)
@@ -388,7 +514,7 @@ class ComponentDetailsFragment : Fragment() {
         componentRecord.docs?.let {
             SectionName(stringResource(R.string.component_details_docs_section))
             Text(
-                text = it,
+                text = AnnotatedString(it),
                 fontFamily = FontFamily.Monospace,
                 color = Flamingo.colors.textSecondary,
             )
@@ -452,6 +578,8 @@ class ComponentDetailsFragment : Fragment() {
 
     companion object {
         private val previewShape = RoundedCornerShape(10.dp)
+        private val sampleRegex = "@sample [a-zA-Z.0-9_]+ (no code|no preview){0,2}\\s*\\n"
+            .toRegex()
 
         @JvmStatic
         fun newInstance(funName: String) = ComponentDetailsFragment().apply {

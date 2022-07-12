@@ -33,12 +33,12 @@ import com.flamingo.annotations.UsedInsteadOf
 /**
  * Radio buttons allow users to select one option from a set.
  *
- * @sample com.flamingo.playground.components.radiobutton.Sample1
+ * @sample com.flamingo.playground.components.radiobutton.InGroup
  *
  * [RadioButton]s can be combined with [Text] in the desired layout (e.g. [Column] or [Row]) to
  * achieve radio group-like behaviour, where the entire layout is selectable:
  *
- * @sample com.flamingo.playground.components.radiobutton.Sample2
+ * @sample com.flamingo.playground.components.radiobutton.InGroupInsideListItem
  *
  * @param selected boolean state for this button: either it is selected or not
  *
@@ -53,10 +53,7 @@ import com.flamingo.annotations.UsedInsteadOf
     preview = "com.flamingo.playground.preview.RadioButtonPreview",
     figma = "https://todo.com/file/qVO8jDuABDK9vsuLqRXeMx/Friend-UI-kit?node-id=6434%3A73424",
     specification = "https://todo.com/x/qhd5NgE",
-    demo = [
-        "com.flamingo.playground.components.radiobutton.RadioButtonTypicalUsage",
-        "com.flamingo.playground.components.radiobutton.RadioButtonStatesPlayroom",
-    ],
+    demo = ["com.flamingo.playground.components.radiobutton.RadioButtonStatesPlayroom"],
     supportsWhiteMode = true,
 )
 @UsedInsteadOf("androidx.compose.material.RadioButton")

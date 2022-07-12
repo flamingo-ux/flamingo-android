@@ -51,6 +51,8 @@ import com.flamingo.components.tabrow.TabVariant.Contained
  * @sample com.flamingo.playground.components.tabrow.TwoSmallTabs
  * @sample com.flamingo.playground.components.tabrow.ManyTabs
  * @sample com.flamingo.playground.components.tabrow.ComplexTabs
+ * @sample com.flamingo.playground.components.tabrow.ComplexTextTabs
+ * @sample com.flamingo.playground.components.tabrow.TextTabs
  */
 @FlamingoComponent(
     preview = "com.flamingo.playground.preview.TabRowPreview",

@@ -31,8 +31,6 @@ import kotlin.math.sqrt
  *
  * Consists of [RoundedRectWithCutoutShape] and [circleOffset], which SHOULD be used together to
  * create a circle-shaped cutout in a rounded rectangle.
- *
- * @sample com.flamingo.playground.components.roundedrectwithcutout.Sample1 no preview
  */
 @FlamingoComponent(
     displayName = "Rounded Rectangle with Cutout",
@@ -65,8 +63,6 @@ internal enum class CutoutPlacement {
  *
  * Consists of [RoundedRectWithCutoutShape] and [circleOffset], which SHOULD be used together to
  * create a circle-shaped cutout in a rounded rectangle.
- *
- * @sample com.flamingo.playground.components.roundedrectwithcutout.Sample1
  */
 @Immutable
 internal class RoundedRectWithCutoutShape(
@@ -130,7 +126,6 @@ internal class RoundedRectWithCutoutShape(
  * conjunction with [RoundedRectWithCutoutShape]. See samples for more info.
  *
  * @param rectSize size of the rectangle with a cutout
- * @sample com.flamingo.playground.components.roundedrectwithcutout.Sample1
  */
 @Stable
 internal fun Modifier.circleOffset(

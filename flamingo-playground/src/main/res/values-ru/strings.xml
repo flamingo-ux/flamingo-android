@@ -70,6 +70,7 @@
     <string name="component_details_theater_title">Видео-тизер</string>
     <string name="component_details_theater_subtitle">Смотреть 🎬</string>
     <string name="component_details_demo_section">Демо</string>
+    <string name="component_details_samples_section">Примеры</string>
     <string name="component_details_spec_section">Спецификация</string>
     <string name="component_details_figma_section">Figma</string>
     <string name="component_details_white_mode_section">"Поддержка white mode: "</string>
