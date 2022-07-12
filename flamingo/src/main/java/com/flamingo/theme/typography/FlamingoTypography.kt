@@ -38,8 +38,6 @@ public data class FlamingoTypography @DelicateFlamingoApi constructor(
     public val h6: TextStyle,
     public val body1: TextStyle,
     public val body2: TextStyle,
-    @Deprecated("Temporarily must not be used, use body1 instead (it's identical to subtitle1)",
-        ReplaceWith("body1"))
     public val subtitle1: TextStyle,
     public val subtitle2: TextStyle,
     public val caption: TextStyle,
