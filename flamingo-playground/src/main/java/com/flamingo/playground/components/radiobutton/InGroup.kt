@@ -27,7 +27,7 @@ import com.flamingo.components.RadioButton
 import com.flamingo.components.Text
 
 @Composable
-fun Sample1() {
+fun InGroup() {
     Text(text = "We have two radio buttons and only one can be selected")
 
     var state by remember { mutableStateOf(true) }

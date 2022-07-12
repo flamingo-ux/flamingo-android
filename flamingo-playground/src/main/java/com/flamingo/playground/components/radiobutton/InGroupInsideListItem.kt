@@ -33,7 +33,7 @@ import com.flamingo.components.RadioButton
 import com.flamingo.components.Text
 
 @Composable
-fun Sample2() {
+fun InGroupInsideListItem() {
     Text(
         text = """RadioButtons can be combined together with Text in the desired 
                     |layout (e.g. Column or Row) to achieve radio group-like behaviour, where 

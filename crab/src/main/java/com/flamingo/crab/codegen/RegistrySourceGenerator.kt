@@ -1,8 +1,8 @@
 package com.flamingo.crab.codegen
 
-import com.google.devtools.ksp.symbol.KSName
 import com.flamingo.crab.THREE_QUOTES
 import com.flamingo.crab.escapeForSourceCode
+import com.google.devtools.ksp.symbol.KSName
 
 @Suppress("LongMethod")
 internal fun registry(records: List<String>): String {
@@ -62,6 +62,7 @@ public class FlamingoComponentRecord(
  * @property sourceCode of the file, containing a sample
  */
 public class SampleRecord(
+    val funName: String,
     val sourceCode: String?,
     val content: (@Composable () -> Unit)?,
 )
@@ -98,6 +99,7 @@ internal fun componentRecord(
 }
 
 internal fun sample(
+    funName: String,
     sourceCode: String?,
     composableFunName: KSName?,
 ): String {
@@ -110,5 +112,5 @@ internal fun sample(
     }
     val composableLambda =
         if (composableFunName == null) "null" else "{${composableFunName.asString()}()}"
-    return "SampleRecord(sourceCode=$sourceCode,content=$composableLambda)"
+    return "SampleRecord(funName=\"$funName\",sourceCode=$sourceCode,content=$composableLambda)"
 }

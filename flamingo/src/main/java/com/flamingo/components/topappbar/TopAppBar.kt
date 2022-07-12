@@ -79,8 +79,8 @@ import com.flamingo.theme.colors.FlamingoColors
  * @param showBackground if true, and [Flamingo.LocalWhiteMode] is false, background of the
  * [TopAppBar] will be [FlamingoColors.background]. Else - transparent
  *
- * @sample com.flamingo.playground.components.topappbar.LazyColumnScrollingShadowSample
  * @sample com.flamingo.playground.components.topappbar.ScrollingShadowSample
+ * @sample com.flamingo.playground.components.topappbar.LazyColumnScrollingShadowSample
  */
 @FlamingoComponent(
     preview = "com.flamingo.playground.preview.TopAppBarPreview",
