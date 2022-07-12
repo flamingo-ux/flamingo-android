@@ -18,10 +18,8 @@ package com.flamingo.playground.gallery
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.annotation.Keep
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.Crossfade
-import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
@@ -31,9 +29,10 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.lazy.GridCells
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.LazyVerticalGrid
+import androidx.compose.foundation.lazy.grid.GridCells
+import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
+import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.runtime.Composable
@@ -126,7 +125,7 @@ class GalleryFragment : Fragment() {
         if (viewComponents?.isEmpty() == true) NoComponents(
             stringResource(R.string.design_demo_components_gallery_no_view_components)
         ) else LazyVerticalGrid(
-            cells = GridCells.Fixed(COLUMN_COUNT),
+            columns = GridCells.Fixed(COLUMN_COUNT),
             contentPadding = PaddingValues(bottom = 16.dp)
         ) {
             if (viewComponents == null) items(12) { ViewSkeleton() }
@@ -148,7 +147,7 @@ class GalleryFragment : Fragment() {
                 showDivider = false,
             )
             LazyVerticalGrid(
-                cells = GridCells.Fixed(COLUMN_COUNT),
+                columns = GridCells.Fixed(COLUMN_COUNT),
                 contentPadding = PaddingValues(bottom = 16.dp),
             ) {
                 items(records) { ComposableComponent(it) }
