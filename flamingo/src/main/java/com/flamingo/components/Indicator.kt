@@ -127,7 +127,7 @@ public enum class IndicatorSize(
     internal val withIcon: Dp,
     internal val iconSize: Dp,
 ) {
-    SMALL(withoutIcon = 8.dp, withIcon = 24.dp, iconSize = 16.dp),
+    SMALL(withoutIcon = 8.dp, withIcon = 28.dp, iconSize = 16.dp),
     BIG(withoutIcon = 12.dp, withIcon = 32.dp, iconSize = 24.dp),
     ;
 
