@@ -39,7 +39,6 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import kotlinx.serialization.Serializable
 import com.flamingo.Flamingo
 import com.flamingo.alpha
 import com.flamingo.annotations.FlamingoComponent
@@ -59,6 +58,7 @@ import com.flamingo.components.button.ButtonSize.SMALL
 import com.flamingo.components.button.ButtonVariant.CONTAINED
 import com.flamingo.components.button.ButtonWidthPolicy.MULTILINE
 import com.flamingo.theme.FlamingoIcon
+import kotlinx.serialization.Serializable
 
 /**
  * Height of the [Button] is not influenced by incoming constrains, meaning, that it will be the
@@ -127,8 +127,6 @@ public fun Button(
 
     val paddings = remember { ButtonPaddings() }
     paddings.calculatePaddings(
-        variant = variant,
-        sizeLarge = size == LARGE,
         isIconPresent = icon != null,
         iconPosition = iconPosition,
         loading = loading,
