@@ -232,7 +232,6 @@ private fun EdgeItem(edgeItem: EdgeItem?) = when (edgeItem) {
         IconButtonWithIndicator(edgeItem.icon, indicator, disabled, onClick)
         Spacer(8.dp)
     }
-    null -> Spacer(16.dp)
     is EdgeItem.Button -> with(edgeItem) {
         Spacer(8.dp)
         Button(
@@ -244,6 +243,12 @@ private fun EdgeItem(edgeItem: EdgeItem?) = when (edgeItem) {
         )
         Spacer(8.dp)
     }
+    is EdgeItem.Anything -> {
+        Spacer(8.dp)
+        edgeItem.content()
+        Spacer(8.dp)
+    }
+    null -> Spacer(16.dp)
 }
 
 @Composable
@@ -293,6 +298,18 @@ private fun CenterItem(centerItem: CenterItem?) = when (centerItem) {
         keyboardActions = centerItem.keyboardActions,
         focusRequester = centerItem.focusRequester
     )
+    is CenterItem.SearchWithTextFieldValue -> internalComponents.Search(
+        value = centerItem.value,
+        onValueChange = centerItem.onValueChange,
+        onClick = centerItem.onClick,
+        placeholder = centerItem.placeholder,
+        loading = centerItem.loading,
+        disabled = centerItem.disabled,
+        keyboardOptions = centerItem.keyboardOptions,
+        keyboardActions = centerItem.keyboardActions,
+        focusRequester = centerItem.focusRequester
+    )
+    is CenterItem.Anything -> centerItem.content()
     null -> Unit
 }
 
