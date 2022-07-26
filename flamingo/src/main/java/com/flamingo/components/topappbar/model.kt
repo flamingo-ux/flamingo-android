@@ -3,10 +3,12 @@ package com.flamingo.components.topappbar
 import android.content.Context
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Immutable
 import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.input.ImeAction
+import androidx.compose.ui.text.input.TextFieldValue
 import com.flamingo.R
 import com.flamingo.annotations.DelicateFlamingoApi
 import com.flamingo.components.AvatarContent
@@ -40,6 +42,8 @@ public sealed class EdgeItem {
         val onClick: (() -> Unit)? = null,
         val shape: AvatarShape = AvatarShape.CIRCLE,
     ) : EdgeItem()
+
+    public class Anything(public val content: @Composable () -> Unit) : EdgeItem()
 }
 
 public sealed class CenterItem {
@@ -87,6 +91,23 @@ public sealed class CenterItem {
         val keyboardActions: KeyboardActions = KeyboardActions.Default,
         val focusRequester: FocusRequester? = null,
     ) : CenterItem()
+
+    /** @see com.flamingo.components.Search */
+    @Immutable
+    public data class SearchWithTextFieldValue(
+        val context: Context,
+        val value: TextFieldValue,
+        val onClick: (() -> Unit)? = null,
+        val onValueChange: (TextFieldValue) -> Unit,
+        val placeholder: String? = context.getString(R.string.search_placeholder),
+        val loading: Boolean = false,
+        val disabled: Boolean = false,
+        val keyboardOptions: KeyboardOptions = KeyboardOptions(imeAction = ImeAction.Search),
+        val keyboardActions: KeyboardActions = KeyboardActions.Default,
+        val focusRequester: FocusRequester? = null,
+    ) : CenterItem()
+
+    public class Anything(public val content: @Composable () -> Unit) : CenterItem()
 }
 
 /** @see com.flamingo.components.IconButton */
