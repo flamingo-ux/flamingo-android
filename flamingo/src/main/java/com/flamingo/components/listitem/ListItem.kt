@@ -335,7 +335,7 @@ private fun HeaderWithDate(date: CharSequence, header: @Composable () -> Unit) {
             text = date,
             maxLines = 1,
             overflow = TextOverflow.Ellipsis,
-            style = Flamingo.typography.caption
+            style = Flamingo.typography.caption2
         )
     }
 }
@@ -401,7 +401,7 @@ private fun TextBlock(
     description: @Composable (() -> Unit)?,
 ) = with(Flamingo.typography) {
     val titleStyle = body1.copy(color = Flamingo.colors.textPrimary)
-    val descriptionStyle = caption.copy(color = Flamingo.colors.textSecondary)
+    val descriptionStyle = caption2.copy(color = Flamingo.colors.textSecondary)
 
     if (invertTitleAndSubtitle && subtitle != null) ProvideTextStyle(body2) { subtitle() }
     if (title != null) ProvideTextStyle(titleStyle) { title() }

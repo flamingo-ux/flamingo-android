@@ -155,7 +155,7 @@ private fun Header(
     Text(
         text = shortDescription,
         color = Flamingo.colors.textSecondary,
-        style = Flamingo.typography.caption,
+        style = Flamingo.typography.caption2,
     )
 
     if (longDescription != null) Column {
@@ -169,7 +169,7 @@ private fun Header(
             }
             ),
             color = Flamingo.colors.primary,
-            style = Flamingo.typography.caption,
+            style = Flamingo.typography.caption2,
         )
 
         AnimatedVisibility(
@@ -183,7 +183,7 @@ private fun Header(
                     .padding(top = 8.dp, bottom = 16.dp),
                 text = longDescription,
                 color = Flamingo.colors.textSecondary,
-                style = Flamingo.typography.caption,
+                style = Flamingo.typography.caption2,
             )
         }
     }

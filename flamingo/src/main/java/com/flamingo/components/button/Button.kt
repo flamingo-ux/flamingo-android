@@ -185,7 +185,7 @@ public fun Button(
             textAlign = TextAlign.Start,
             maxLines = if (widthPolicy == MULTILINE) Int.MAX_VALUE else 1,
             overflow = TextOverflow.Ellipsis,
-            style = Flamingo.typography.run { if (size == LARGE) button else button2 }
+            style = Flamingo.typography.run { if (size == LARGE) h6 else subtitle2 }
         )
         // this icon is hidden when loading == true
         if (icon != null && iconPosition == END && !loading) {

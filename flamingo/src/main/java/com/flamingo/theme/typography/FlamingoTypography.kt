@@ -38,10 +38,8 @@ public data class FlamingoTypography @DelicateFlamingoApi constructor(
     public val h6: TextStyle,
     public val body1: TextStyle,
     public val body2: TextStyle,
-    public val subtitle1: TextStyle,
     public val subtitle2: TextStyle,
-    public val caption: TextStyle,
+    public val caption1: TextStyle,
+    public val caption2: TextStyle,
     public val overline: TextStyle,
-    public val button: TextStyle,
-    public val button2: TextStyle,
 )

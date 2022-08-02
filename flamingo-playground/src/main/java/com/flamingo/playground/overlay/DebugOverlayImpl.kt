@@ -66,7 +66,7 @@ internal class DebugOverlayImpl : DebugOverlay {
             val fontSize = with(LocalDensity.current) { 20.toSp() }
             Text(
                 text = config.text,
-                style = Flamingo.typography.caption.copy(
+                style = Flamingo.typography.caption2.copy(
                     fontSize = fontSize, lineHeight = fontSize
                 ),
                 overflow = TextOverflow.Visible,

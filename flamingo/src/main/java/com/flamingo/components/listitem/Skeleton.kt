@@ -76,14 +76,14 @@ public fun ListItemSkeleton(
                 modifier = Modifier
                     .fillMaxWidth()
                     .run { if (textBlocks == TWO) padding(bottom = 4.dp) else this },
-                shape = SkeletonShape.Text(textStyle = Flamingo.typography.caption)
+                shape = SkeletonShape.Text(textStyle = Flamingo.typography.caption2)
             )
         },
         subtitle = if (textBlocks == TWO) {
             {
                 Skeleton(
                     modifier = Modifier.fillMaxWidth(0.65f),
-                    shape = SkeletonShape.Text(textStyle = Flamingo.typography.caption)
+                    shape = SkeletonShape.Text(textStyle = Flamingo.typography.caption2)
                 )
             }
         } else null,

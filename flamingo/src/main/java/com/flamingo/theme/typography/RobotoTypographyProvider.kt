@@ -36,12 +36,10 @@ public val robotoTypographyProvider: FlamingoTypographyProvider = FlamingoTypogr
         h6 =        /**/ roboto(16, 16 * 1.06000000, +0.01562500000, 600, colors.textPrimary),
         body1 =     /**/ roboto(17, 17 * 1.22000000, +0.02941176470, 400, colors.textSecondary),
         body2 =     /**/ roboto(15, 15 * 1.13778711, +0.01666666666, 400, colors.textSecondary),
-        subtitle1 = /**/ roboto(16, 16 * 1.27000000, +0.00937500000, 600, colors.textPrimary),
         subtitle2 = /**/ roboto(15, 15 * 1.13778711, +0.00666666666, 600, colors.textPrimary),
-        caption =   /**/ roboto(12, 12 * 1.13778711, +0.03333333333, 400, colors.textPrimary),
+        caption1 =   /**/ roboto(12, 12 * 1.13778711, +0.03333333333, 600, colors.textPrimary),
+        caption2 =   /**/ roboto(12, 12 * 1.13778711, +0.03333333333, 400, colors.textPrimary),
         overline =  /**/ roboto(11, 11 * 1.24122230, +0.03636363636, 500, colors.textPrimary),
-        button =    /**/ roboto(14, 16 * 1.00000000, +0.00000000000, 600, colors.textPrimary),
-        button2 =   /**/ roboto(14, 16 * 1.00000000, +0.00000000000, 600, colors.textPrimary),
     )
 }
 

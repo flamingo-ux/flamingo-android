@@ -119,7 +119,7 @@ public fun TabRow(
                 Text(
                     text = tab.label.replace("\n", " "),
                     style = if (variant == Contained) {
-                        Flamingo.typography.button2
+                        Flamingo.typography.subtitle2
                     } else {
                         Flamingo.typography.h3
                     },
