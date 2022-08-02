@@ -278,7 +278,7 @@ private fun CenterItem(centerItem: CenterItem?) = when (centerItem) {
                     color = Flamingo.colors.textSecondary,
                     maxLines = 1,
                     overflow = TextOverflow.Ellipsis,
-                    style = Flamingo.typography.caption
+                    style = Flamingo.typography.caption2
                 )
             }
             if (isWhiteMode) {

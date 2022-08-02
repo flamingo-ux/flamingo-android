@@ -249,7 +249,7 @@ private fun TextBlock(
     )
     if (subtitle != null) Text(
         text = subtitle,
-        style = Flamingo.typography.caption,
+        style = Flamingo.typography.caption2,
         color = textColor,
         maxLines = subtitleMaxLines,
         overflow = TextOverflow.Ellipsis

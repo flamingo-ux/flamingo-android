@@ -40,7 +40,7 @@ fun RoundedRectWithCutoutShapeSample(
         Row {
             chunk.forEach { cutoutPlacement ->
                 Column(modifier = Modifier.padding(circleRadius.coerceAtLeast(4.dp))) {
-                    Text(text = cutoutPlacement.name, style = Flamingo.typography.caption)
+                    Text(text = cutoutPlacement.name, style = Flamingo.typography.caption2)
                     Sample1(
                         rectSize = rectSize,
                         cornerRadius = cornerRadius,

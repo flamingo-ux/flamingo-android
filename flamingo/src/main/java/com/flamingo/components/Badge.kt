@@ -84,7 +84,7 @@ public fun Badge(
                 },
             text = if (color == BadgeColor.PickleRick) PICKLE_LABEL else label.replace("\n", " "),
             color = calculateTextColor(color),
-            style = Flamingo.typography.caption,
+            style = Flamingo.typography.caption2,
             maxLines = 1,
             overflow = TextOverflow.Ellipsis
         )
