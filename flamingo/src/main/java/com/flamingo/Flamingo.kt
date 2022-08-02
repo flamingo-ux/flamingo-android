@@ -127,6 +127,9 @@ public object Flamingo {
      */
     public var uiTestingTagsEnabled: Boolean = false
 
+    @Suppress("MayBeConstant") // removal of the 'const' modifier is a breaking change
+    public val versionName: String = BuildConfig.VERSION_NAME
+
     /**
      * Enables testing capabilities in the staging build of the client app.
      * Must be set before any compose hierarchy is created (e.g. in [Application.onCreate])
