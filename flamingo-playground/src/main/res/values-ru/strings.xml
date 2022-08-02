@@ -114,4 +114,5 @@
     <string name="licenses_report_no_source_code_modification">Исходный код: не изменён</string>
     <string name="design_demo_components_gallery_show_previews">Показать превью (только для compose компонентов)</string>
     <string name="design_demo_icons_no_icons">Иконок не найдено</string>
+    <string name="flamingo_version">Версия Flamingo Design System</string>
 </resources>

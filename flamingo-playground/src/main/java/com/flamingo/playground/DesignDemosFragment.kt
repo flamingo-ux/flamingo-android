@@ -8,15 +8,15 @@ import android.os.Bundle
 import androidx.core.content.ContextCompat
 import androidx.preference.PreferenceFragmentCompat
 import androidx.preference.SwitchPreferenceCompat
-import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.flamingo.Flamingo
+import com.flamingo.demoapi.tintIcons
 import com.flamingo.playground.overlay.disableDebugOverlay
 import com.flamingo.playground.overlay.enableDebugOverlay
-import com.flamingo.demoapi.tintIcons
 import com.flamingo.roboto.dsTextStyle
 import com.flamingo.view.components.AlertMessage
 import com.flamingo.view.components.Avatar
 import com.flamingo.view.components.Button
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 
 class DesignDemosFragment : PreferenceFragmentCompat() {
 
@@ -25,6 +25,7 @@ class DesignDemosFragment : PreferenceFragmentCompat() {
         preferenceScreen.tintIcons { key != "compose_sandbox" }
         setupDesignerToolsDownloadButton()
         setupDebugOverlay()
+        setupVersion()
         Flamingo.isStagingBuild = true
         initFlamingoFonts()
     }
@@ -53,6 +54,18 @@ class DesignDemosFragment : PreferenceFragmentCompat() {
         findPreference("debug_overlay_tile_tutorial").setOnPreferenceClickListener {
             requireContext().openTileTutorial()
             true
+        }
+    }
+
+    private fun setupVersion() {
+        findPreference("version").apply {
+            summary = Flamingo.versionName
+            setOnPreferenceClickListener {
+                val urlString = getString(R.string.flamingo_github_release, Flamingo.versionName)
+                val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse(urlString))
+                ContextCompat.startActivity(requireContext(), browserIntent, null)
+                true
+            }
         }
     }
 

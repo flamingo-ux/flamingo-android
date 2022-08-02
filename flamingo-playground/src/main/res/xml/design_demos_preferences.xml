@@ -128,4 +128,9 @@
         app:fragment="com.flamingo.playground.license.LicensesFragment"
         app:icon="@drawable/ds_ic_book_open"
         app:title="@string/licenses_title" />
+
+    <Preference
+        app:key="version"
+        app:icon="@drawable/ds_ic_info"
+        app:title="@string/flamingo_version" />
 </PreferenceScreen>
