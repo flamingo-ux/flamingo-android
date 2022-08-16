@@ -43,13 +43,14 @@ import com.flamingo.InternalComponents
  *
  * @param viewImplementation fully qualified name of the Android View-based impl. CAN be empty
  *
- * @param theaterPackage fully qualified name of [TheaterPackage]. CAN be empty. See
- * [Theater docs](todo) for more info.
+ * @param theaterPackage fully qualified name of [TheaterPackage]. CAN be empty. See README.md of
+ * the theater module for more info.
  *
  * @param demo an array of fully qualified names of [Fragment]s that demonstrate usage of this
- * flamingo component. CAN be empty only for components that have [viewImplementation], because it
- * is needed to create new demos for those components, but time for this task is not present at the
- * moment
+ * flamingo component. CAN be empty only for components that have:
+ * 1. [viewImplementation], because it is needed to create new demos for those
+ * components, but time for this task is not present at the moment
+ * 2. @sample in their KDocs, specifying valid compose functions in the separate file
  *
  * @param supportsWhiteMode if true, component supports [Flamingo.LocalWhiteMode]
  *
