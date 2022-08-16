@@ -43,6 +43,8 @@ internal class SamplesFinder(private val logger: KSPLogger) {
         }
     }
 
+    fun containsSample(string: String): Boolean = string.contains(sampleRegex)
+
     private fun findSampleRefsInKDocs(kdocs: String): List<String> {
         return sampleRegex.findAll(kdocs).mapNotNull {
             it.groupValues.getOrNull(1).takeIf { !it.isNullOrBlank() }?.trim()

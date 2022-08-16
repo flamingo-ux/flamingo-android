@@ -1,5 +1,6 @@
 package com.flamingo.crab
 
+import com.google.devtools.ksp.processing.KSPLogger
 import com.google.devtools.ksp.symbol.KSAnnotation
 import com.google.devtools.ksp.symbol.KSName
 
@@ -23,7 +24,10 @@ internal interface DsAnnModel {
             annotatedFQN: KSName,
             isInternalDsComponent: Boolean,
             usedInsteadOfAnn: KSAnnotation?,
+            docString: String?,
+            logger: KSPLogger,
         ): DsAnnModel {
+            val samplesFinder = SamplesFinder(logger)
             val annotatedShortName = annotatedFQN.getShortName()
             val annotatedFQN = annotatedFQN.asString()
             return object : DsAnnModel {
@@ -67,7 +71,10 @@ internal interface DsAnnModel {
                 override val demo = (dsAnn.arguments
                     .singleOrNull { it.name?.asString() == "demo" }
                     ?.value as? List<String>)
-                    ?.validateDemos(hasViewImpl = viewImplementation != null, annotatedFQN)
+                    ?.validateDemos(
+                        hasViewImpl = viewImplementation != null,
+                        annotatedFQN, docString, samplesFinder
+                    )
                     ?: error("No demos list found in @$DS_ANN_NAME at $annotatedFQN")
 
                 override val usedInsteadOf = (usedInsteadOfAnn?.arguments
@@ -117,12 +124,17 @@ internal interface DsAnnModel {
         private fun List<String>.validateDemos(
             hasViewImpl: Boolean,
             annotatedFQN: String,
+            docString: String?,
+            samplesFinder: SamplesFinder,
         ): List<String> {
             // dsComposables that have viewImpl can have no demos, because it is needed to create
             // new demos for those composable, but time for this task is not present at the moment
             if (hasViewImpl) return this
+            if (docString != null && samplesFinder.containsSample(docString)) return this
             require(isNotEmpty()) {
-                "Demos list found in @$DS_ANN_NAME at $annotatedFQN is not valid: it is empty"
+                "Demos list found in @$DS_ANN_NAME at $annotatedFQN is not valid: it is empty." +
+                        " To fix this error, either add demos and/or samples in the KDocs using " +
+                        "@sample syntax"
             }
             return this
         }

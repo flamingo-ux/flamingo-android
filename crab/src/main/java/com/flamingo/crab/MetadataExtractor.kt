@@ -1,5 +1,7 @@
 package com.flamingo.crab
 
+import com.flamingo.crab.DsAnnModel.Companion.DsAnnModel
+import com.flamingo.crab.codegen.generateSourceCode
 import com.google.devtools.ksp.processing.CodeGenerator
 import com.google.devtools.ksp.processing.Dependencies
 import com.google.devtools.ksp.processing.KSPLogger
@@ -13,8 +15,6 @@ import com.google.devtools.ksp.symbol.KSClassifierReference
 import com.google.devtools.ksp.symbol.KSDeclaration
 import com.google.devtools.ksp.symbol.KSFunctionDeclaration
 import com.google.devtools.ksp.symbol.KSName
-import com.flamingo.crab.DsAnnModel.Companion.DsAnnModel
-import com.flamingo.crab.codegen.generateSourceCode
 import java.io.FileOutputStream
 import java.io.OutputStream
 import java.nio.file.Path
@@ -119,13 +119,16 @@ internal class MetadataExtractor(
         val usedInsteadOfAnn: KSAnnotation? = annotated.annotations
             .singleOrNull { it.shortName.getShortName() == usedInsteadOfAnnName.getShortName() }
 
+        var docString = annotated.docString?.ifBlank { null }
         val dsAnnModel = DsAnnModel(
             dsAnn = dsAnn,
             annotatedFQN = qualifiedName,
             isInternalDsComponent = annotated.isInternalDsComponent(),
             usedInsteadOfAnn = usedInsteadOfAnn,
+            docString = docString,
+            logger = logger
         )
-        val docString = if (dsAnnModel.extractKDocs) annotated.docString?.ifBlank { null } else null
+        if (!dsAnnModel.extractKDocs) docString = null
 
         createMetadataFile(dependencies, packageName, "fqn", qualifiedName.asString())
         if (docString != null) createMetadataFile(dependencies, packageName, "docs", docString)

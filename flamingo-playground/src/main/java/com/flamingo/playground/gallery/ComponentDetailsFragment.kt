@@ -18,7 +18,6 @@ package com.flamingo.playground.gallery
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.annotation.StringRes
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -93,8 +92,6 @@ import com.flamingo.playground.R
 import com.flamingo.playground.StagingFragmentContainer
 import com.flamingo.playground.components.alertmessage.TheaterPkg
 import com.flamingo.playground.fromArguments
-import com.flamingo.playground.gallery.ComponentDetailsFragment.DemosAbsenceCause.HAS_VIEW_IMPL
-import com.flamingo.playground.gallery.ComponentDetailsFragment.DemosAbsenceCause.LOAD_ERROR
 import com.flamingo.playground.showBoast
 import com.flamingo.playground.theater.BackstageFragment
 import com.flamingo.playground.theater.TheaterFragment
@@ -152,13 +149,12 @@ class ComponentDetailsFragment : Fragment() {
 
     @Composable
     private fun InternalComponentSection() {
-        if (componentRecord.internal) {
-            Spacer(modifier = Modifier.padding(top = 16.dp))
-            AlertMessage(
-                text = stringResource(R.string.component_details_internal_component),
-                variant = AlertMessageVariant.WARNING
-            )
-        }
+        if (!componentRecord.internal) return
+        Spacer(modifier = Modifier.padding(top = 16.dp))
+        AlertMessage(
+            text = stringResource(R.string.component_details_internal_component),
+            variant = AlertMessageVariant.WARNING
+        )
     }
 
     @Preview
@@ -250,44 +246,34 @@ class ComponentDetailsFragment : Fragment() {
     }
 
     @Composable
-    private fun PreviewSection() {
-        Box(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(bottom = 16.dp)
-                .border(2.dp, Flamingo.colors.outline, previewShape)
-                .clip(previewShape)
-                .padding(16.dp),
-            contentAlignment = Alignment.Center,
-        ) {
-            componentRecord.preview()
-        }
+    private fun PreviewSection() = Box(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(bottom = 16.dp)
+            .border(2.dp, Flamingo.colors.outline, previewShape)
+            .clip(previewShape)
+            .padding(16.dp),
+        contentAlignment = Alignment.Center,
+    ) {
+        componentRecord.preview()
     }
 
     @Composable
-    private fun TitleSection() {
-        Text(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(start = 32.dp, end = 32.dp, top = 4.dp),
-            text = componentRecord.displayName,
-            textAlign = TextAlign.Center,
-            style = Flamingo.typography.h1,
-        )
-    }
+    private fun TitleSection() = Text(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(start = 32.dp, end = 32.dp, top = 4.dp),
+        text = componentRecord.displayName,
+        textAlign = TextAlign.Center,
+        style = Flamingo.typography.h1,
+    )
 
     private fun LazyListScope.DemosSection() {
+        if (componentRecord.demo.isEmpty()) return
         item { SectionName(stringResource(R.string.component_details_demo_section)) }
-        /**
-         * [FlamingoComponentRecord.demo] can be empty only when component has viewImpl.
-         * Else, project just won't compile
-         */
-        if (componentRecord.demo.isEmpty()) item { NoDemos(HAS_VIEW_IMPL) }
-        else {
-            val demos = loadDemos()
-            if (demos == null) item { NoDemos(LOAD_ERROR) }
-            else items(demos) { DemoItem(it) }
-        }
+        val demos = loadDemos()
+        if (demos == null) item { DemosLoadError() }
+        else items(demos) { DemoItem(it) }
     }
 
     private fun LazyListScope.SamplesSection() {
@@ -561,25 +547,18 @@ class ComponentDetailsFragment : Fragment() {
     }.onFailure(Timber::e).getOrNull()
 
     @Composable
-    private fun NoDemos(cause: DemosAbsenceCause) = Text(
+    private fun DemosLoadError() = Text(
         modifier = Modifier
             .fillMaxWidth()
             .padding(start = 32.dp, end = 32.dp, top = 16.dp),
-        text = stringResource(cause.msgResId),
+        text = stringResource(R.string.error_while_loading_demos_for_component),
         textAlign = TextAlign.Center,
         color = Flamingo.colors.error,
         style = Flamingo.typography.body2,
     )
 
-    private enum class DemosAbsenceCause(@StringRes val msgResId: Int) {
-        HAS_VIEW_IMPL(R.string.no_demos_found_for_component_with_view_impl),
-        LOAD_ERROR(R.string.error_while_loading_demos_for_component),
-    }
-
     companion object {
         private val previewShape = RoundedCornerShape(10.dp)
-        private val sampleRegex = "@sample [a-zA-Z.0-9_]+ (no code|no preview){0,2}\\s*\\n"
-            .toRegex()
 
         @JvmStatic
         fun newInstance(funName: String) = ComponentDetailsFragment().apply {
