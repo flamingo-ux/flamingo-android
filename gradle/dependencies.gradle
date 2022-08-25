@@ -1,9 +1,9 @@
 def versions = [
         theater    : '0.0.2',
         flamingo   : '0.0.4',
-        kotlin     : '1.6.21',
-        compose    : '1.2.0-rc02',
-        ksp        : '1.6.21-1.0.6',
+        kotlin     : '1.7.0',
+        compose    : '1.2.0',
+        ksp        : '1.7.0-1.0.6',
         androidx   : '1.0.0',
         appcompat  : '1.4.0-rc01',
         archCore   : '2.1.0',
