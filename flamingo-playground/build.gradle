@@ -156,6 +156,8 @@ dependencies {
     implementation deps.compose.runtime
     implementation deps.compose.compiler
     implementation deps.compose.accompanistDrawablePainter
+    debugImplementation "androidx.customview:customview:1.2.0-alpha01"
+    debugImplementation "androidx.customview:customview-poolingcontainer:1.0.0"
 
     testImplementation deps.truth
     testImplementation deps.junit5.api
