@@ -24,6 +24,17 @@
     <string name="add_tile_tutorial_url">https://todoist.com/ru/help/articles/add-an-add-task-quick-setting-tile-on-android</string>
 
     <string name="design_demos_other_category_title">Другое</string>
+    <string name="design_demos_links_category_title">Полезные ссылки</string>
+
+    <string name="design_demos_links_introductory_article_title">Статья-введение на Medium</string>
+    <string name="design_demos_links_theater_videos_title">Youtube-плейлист с видеороликами Theater</string>
+    <string name="design_demos_links_github_repo_title">Репозиторий на GitHub</string>
+    <string name="design_demos_links_confluence_title">Пространство Flamingo в Confluence</string>
+    <string name="design_demos_links_confluence_android_title">Раздел Android в пространстве Confluence</string>
+
+    <string name="design_demos_lectures_and_meetups_category_title">Лекции и митапы</string>
+    <string name="design_demos_lectures_and_meetups_category_summary">Отсортированы по дате</string>
+    <string name="design_demos_lectures_and_meetups_q2_2021_title">Q2 2021 (Только Android View impl)</string>
 
     <string name="design_demos_title">Демо дизайн-системы</string>
     <string name="design_demos_summary">Тестовые экраны дизайн-системы. Разработчикам 👨‍💻 рекомендуется

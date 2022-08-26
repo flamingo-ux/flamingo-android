@@ -121,6 +121,45 @@
 
     </PreferenceCategory>
 
+    <PreferenceCategory
+        app:initialExpandedChildrenCount="0"
+        app:key="links_category"
+        app:title="@string/design_demos_links_category_title">
+
+        <Preference
+            app:summary="@string/design_demos_links_introductory_article_url"
+            app:title="@string/design_demos_links_introductory_article_title" />
+
+        <Preference
+            app:summary="@string/design_demos_links_theater_videos_url"
+            app:title="@string/design_demos_links_theater_videos_title" />
+
+        <Preference
+            app:summary="@string/design_demos_links_github_repo_url"
+            app:title="@string/design_demos_links_github_repo_title" />
+
+        <Preference
+            app:summary="@string/design_demos_links_confluence_url"
+            app:title="@string/design_demos_links_confluence_title" />
+
+        <Preference
+            app:summary="@string/design_demos_links_confluence_android_url"
+            app:title="@string/design_demos_links_confluence_android_title" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        app:initialExpandedChildrenCount="0"
+        app:key="lectures_and_meetups_category"
+        app:summary="@string/design_demos_lectures_and_meetups_category_summary"
+        app:title="@string/design_demos_lectures_and_meetups_category_title">
+
+        <Preference
+            app:summary="@string/design_demos_lectures_and_meetups_q2_2021_url"
+            app:title="@string/design_demos_lectures_and_meetups_q2_2021_title" />
+
+    </PreferenceCategory>
+
     <PreferenceCategory app:title="@string/design_demos_other_category_title">
 
         <Preference
