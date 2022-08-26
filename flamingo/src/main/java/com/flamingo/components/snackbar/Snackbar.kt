@@ -80,8 +80,8 @@ import kotlin.math.roundToInt
 @OptIn(ExperimentalMaterialApi::class)
 @FlamingoComponent(
     preview = "com.flamingo.playground.preview.SnackbarPreview",
-    figma = "https://todo.com/file/qVO8jDuABDK9vsuLqRXeMx?node-id=628%3A19",
-    specification = "https://todo.com/x/1JXNmgE",
+    figma = "https://f.com/file/qVO8jDuABDK9vsuLqRXeMx?node-id=628%3A19",
+    specification = "https://confluence.companyname.ru/x/1JXNmgE",
     demo = [
         "com.flamingo.playground.components.snackbar.AllStates",
         "com.flamingo.playground.components.snackbar.TypicalUsage"

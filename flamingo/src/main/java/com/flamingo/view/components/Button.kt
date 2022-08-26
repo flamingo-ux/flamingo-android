@@ -69,7 +69,7 @@ import androidx.appcompat.R as AppCompatR
         <br>
     """,
     preview = "com.flamingo.playground.preview.ButtonPreview",
-    figmaUrl = "https://www.todo.com/file/qVO8jDuABDK9vsuLqRXeMx/UI-kit?node-id=628%3A5",
+    figmaUrl = "https://f.com/file/qVO8jDuABDK9vsuLqRXeMx/UI-kit?node-id=628%3A5",
     permittedXmlAttributes = [
         "app:ds_b_label",
         "app:ds_b_loading",

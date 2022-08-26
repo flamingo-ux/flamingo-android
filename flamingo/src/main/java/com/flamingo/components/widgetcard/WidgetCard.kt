@@ -63,8 +63,8 @@ import com.flamingo.components.UiTestingTagWrapper
 @FlamingoComponent(
     displayName = "Widget Card",
     preview = "com.flamingo.playground.preview.WidgetCardPreview",
-    figma = "https://todo.com/file/6qbNsEofr4vu0p8bAGCM65?node-id=16720%3A132437",
-    specification = "https://todo.com/x/_VwF3QE",
+    figma = "https://f.com/file/6qbNsEofr4vu0p8bAGCM65?node-id=16720%3A132437",
+    specification = "https://confluence.companyname.ru/x/_VwF3QE",
     demo = ["com.flamingo.playground.components.widgetcard.Demo"],
     supportsWhiteMode = false,
 )

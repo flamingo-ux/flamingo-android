@@ -41,7 +41,7 @@ import com.flamingo.view.requireDsIcon
         <br>
     """,
     preview = "com.flamingo.playground.preview.IconButtonPreview",
-    figmaUrl = "https://www.todo.com/file/qVO8jDuABDK9vsuLqRXeMx/UI-kit?node-id=628%3A5",
+    figmaUrl = "https://f.com/file/qVO8jDuABDK9vsuLqRXeMx/UI-kit?node-id=628%3A5",
     permittedXmlAttributes = [
         "app:ds_ib_loading",
         "app:ds_ib_size",

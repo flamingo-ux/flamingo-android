@@ -29,8 +29,8 @@ import com.flamingo.internalComponents
 @FlamingoComponent(
     displayName = "Bookmark Toggle Button",
     preview = "com.flamingo.playground.preview.BookmarkToggleButtonPreview",
-    figma = "https://todo.com/file/qVO8jDuABDK9vsuLqRXeMx?node-id=17133%3A133327",
-    specification = "https://todo.com/x/nRAjfwE",
+    figma = "https://f.com/file/qVO8jDuABDK9vsuLqRXeMx?node-id=17133%3A133327",
+    specification = "https://confluence.companyname.ru/x/nRAjfwE",
     demo = ["com.flamingo.playground.components.bookmarktogglebutton.TypicalUsage"],
     supportsWhiteMode = false,
 )

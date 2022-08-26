@@ -52,8 +52,8 @@ public val WidgetCardGroupChildrenRange: IntRange = 1..6
 @FlamingoComponent(
     displayName = "Widget Card Group",
     preview = "com.flamingo.playground.preview.WidgetCardGroupPreview",
-    figma = "https://todo.com/file/6qbNsEofr4vu0p8bAGCM65?node-id=24622%3A148578",
-    specification = "https://todo.com/x/_VwF3QE",
+    figma = "https://f.com/file/6qbNsEofr4vu0p8bAGCM65?node-id=24622%3A148578",
+    specification = "https://confluence.companyname.ru/x/_VwF3QE",
     demo = ["com.flamingo.playground.components.widgetcardgroup.Demo"],
     supportsWhiteMode = false,
 )

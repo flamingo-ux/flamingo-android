@@ -43,8 +43,8 @@ import com.flamingo.theme.FlamingoIcon
 @FlamingoComponent(
     displayName = "Link Card",
     preview = "com.flamingo.playground.preview.LinkCardPreview",
-    figma = "https://todo.com/file/6qbNsEofr4vu0p8bAGCM65?node-id=24525%3A144708",
-    specification = "https://todo.com/x/k6w23wE",
+    figma = "https://f.com/file/6qbNsEofr4vu0p8bAGCM65?node-id=24525%3A144708",
+    specification = "https://confluence.companyname.ru/x/k6w23wE",
     demo = ["com.flamingo.playground.components.listitem.ListLoadingTypicalUsage"],
     supportsWhiteMode = false,
 )

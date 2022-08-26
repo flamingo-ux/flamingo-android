@@ -1,13 +1,13 @@
 package com.flamingo.playground
 
 import androidx.fragment.app.Fragment
+import com.flamingo.annotations.view.FlamingoComponent
+import com.flamingo.demoapi.FlamingoComponentDemoType
+import com.flamingo.playground.preview.Preview
 import org.junit.jupiter.api.BeforeAll
 import org.junit.jupiter.api.TestInstance
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.MethodSource
-import com.flamingo.annotations.view.FlamingoComponent
-import com.flamingo.playground.preview.Preview
-import com.flamingo.demoapi.FlamingoComponentDemoType
 import java.util.stream.Stream
 import com.flamingo.view.components.FlamingoComponent as FlamingoComponentInterface
 
@@ -103,11 +103,13 @@ class FlamingoComponentTest {
     @ParameterizedTest
     @MethodSource("classes")
     fun checkFigmaUrl(clazz: Class<out FlamingoComponentInterface>) {
-        val figmaUrlPrefix = "https://www.todo.com"
-        val todoPrefix = "https://todo."
+        val figmaUrlPrefix1 = "https://f.com"
+        val figmaUrlPrefix2 = "https://www.f.com"
         val annotation = clazz.getAnnotation(componentAnnClass) ?: error(noAnnotation(clazz))
-        val valid = annotation.figmaUrl.run { startsWith(figmaUrlPrefix) || startsWith(todoPrefix) }
-        if (!valid) error(invalidFigmaUrl(figmaUrlPrefix, clazz))
+        val valid = annotation.figmaUrl.run {
+            startsWith(figmaUrlPrefix1) || startsWith(figmaUrlPrefix2)
+        }
+        if (!valid) error(invalidFigmaUrl(figmaUrlPrefix1, clazz))
     }
 
     @ParameterizedTest

@@ -12,7 +12,6 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.Density
 import androidx.compose.ui.unit.dp
-import kotlinx.coroutines.delay
 import com.flamingo.components.Action
 import com.flamingo.components.ActionGroup
 import com.flamingo.components.AlertMessage
@@ -30,6 +29,7 @@ import com.theater.Plot
 import com.theater.PlotScope
 import com.theater.TheaterPackage
 import com.theater.TheaterPlay
+import kotlinx.coroutines.delay
 
 private class AlertMessageActor : Actor {
     var variant by mutableStateOf(startVariant)
@@ -57,9 +57,9 @@ private class AlertMessageActor : Actor {
 @Suppress("MaxLineLength")
 /**
  * Creation of this file was part of the tutorial on how to create videos with __Theater__
- * framework. Tutorial is located [here](https://video.todo.ru/watch/p3rphgxOQlGtJu2NDA).
- * Before watching, it is recommended to read [this](https://jira.todo.ru/projects/FRIEND/repos/friend-android/browse/base/theater/README.md)
- * [(alternate link)](https://todo.ru/x/lQkbZwE).
+ * framework. Tutorial is located [here](https://sbervideo.companyname.ru/watch/p3rphgxOQlGtJu2NDA).
+ * Before watching, it is recommended to read Theater's README.md, located in the `theater` module.
+ * [(alternate link)](https://confluence.companyname.ru/x/lQkbZwE).
  */
 class TheaterPkg : TheaterPackage {
     override val play: TheaterPlay<*, *> = TheaterPlay(

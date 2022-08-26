@@ -78,8 +78,8 @@ import com.flamingo.Flamingo
  */
 @FlamingoComponent(
     preview = "com.flamingo.playground.preview.SearchPreview",
-    figma = "https://todo.com/file/qVO8jDuABDK9vsuLqRXeMx/Friend-UI-kit?node-id=5484%3A50186",
-    specification = "https://todo.com/x/egLDOAE",
+    figma = "https://f.com/file/qVO8jDuABDK9vsuLqRXeMx/Friend-UI-kit?node-id=5484%3A50186",
+    specification = "https://confluence.companyname.ru/x/egLDOAE",
     demo = ["com.flamingo.playground.components.SearchStatesPlayroom"],
     supportsWhiteMode = true,
 )

@@ -38,8 +38,8 @@ import com.flamingo.annotations.FlamingoComponent
 @FlamingoComponent(
     displayName = "Status Card",
     preview = "com.flamingo.playground.preview.StatusCardPreview",
-    figma = "https://todo.com/file/qVO8jDuABDK9vsuLqRXeMx?node-id=1302%3A4417",
-    specification = "https://todo.com/x/gALDOAE",
+    figma = "https://f.com/file/qVO8jDuABDK9vsuLqRXeMx?node-id=1302%3A4417",
+    specification = "https://confluence.companyname.ru/x/gALDOAE",
     demo = ["com.flamingo.playground.components.listitem.ListLoadingTypicalUsage"],
     supportsWhiteMode = true,
 )

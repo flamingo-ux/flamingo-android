@@ -51,8 +51,8 @@ import com.flamingo.annotations.UsedInsteadOf
 @FlamingoComponent(
     displayName = "Radio Button",
     preview = "com.flamingo.playground.preview.RadioButtonPreview",
-    figma = "https://todo.com/file/qVO8jDuABDK9vsuLqRXeMx/Friend-UI-kit?node-id=6434%3A73424",
-    specification = "https://todo.com/x/qhd5NgE",
+    figma = "https://f.com/file/qVO8jDuABDK9vsuLqRXeMx/Friend-UI-kit?node-id=6434%3A73424",
+    specification = "https://confluence.companyname.ru/x/qhd5NgE",
     demo = ["com.flamingo.playground.components.radiobutton.RadioButtonStatesPlayroom"],
     supportsWhiteMode = true,
 )

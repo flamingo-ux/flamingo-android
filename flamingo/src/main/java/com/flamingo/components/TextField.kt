@@ -160,8 +160,8 @@ public data class TextFieldIcon(
 @FlamingoComponent(
     displayName = "Text Field",
     preview = "com.flamingo.playground.preview.TextFieldPreview",
-    figma = "https://todo.com/file/qVO8jDuABDK9vsuLqRXeMx/Friend-UI-kit?node-id=628%3A9",
-    specification = "https://todo.com/x/KQr3KgE",
+    figma = "https://f.com/file/qVO8jDuABDK9vsuLqRXeMx/Friend-UI-kit?node-id=628%3A9",
+    specification = "https://confluence.companyname.ru/x/KQr3KgE",
     demo = ["com.flamingo.playground.components.TextFieldStatesPlayroom"],
     supportsWhiteMode = true,
 )

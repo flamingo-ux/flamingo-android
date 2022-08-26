@@ -74,8 +74,8 @@ import com.flamingo.theme.FlamingoRippleTheme
 @FlamingoComponent(
     displayName = "Icon Button",
     preview = "com.flamingo.playground.preview.IconButtonComposePreview",
-    figma = "https://todo.com/file/qVO8jDuABDK9vsuLqRXeMx/UI-kit?node-id=628%3A5",
-    specification = "https://todo.com/x/iREnKQE",
+    figma = "https://f.com/file/qVO8jDuABDK9vsuLqRXeMx/UI-kit?node-id=628%3A5",
+    specification = "https://confluence.companyname.ru/x/iREnKQE",
     viewImplementation = "com.flamingo.view.components.IconButton",
     demo = [],
     supportsWhiteMode = true,

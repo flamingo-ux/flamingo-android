@@ -170,7 +170,7 @@ internal class MetadataExtractor(
     @Suppress("MaxLineLength")
     /**
      * Files, created by this function, are included in the build artifact (apk). To exclude them,
-     * follow [this](https://todo.ru/x/YA6oQwE#id-%F0%9F%A6%80CrabAnnotationProcessor-For':app'module).
+     * follow [this](https://confluence.companyname.ru/x/YA6oQwE#id-%F0%9F%A6%80CrabAnnotationProcessor-For':app'module).
      */
     private fun createMetadataFile(
         dependencies: Dependencies,

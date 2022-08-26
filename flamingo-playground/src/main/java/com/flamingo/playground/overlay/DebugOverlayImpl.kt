@@ -49,7 +49,7 @@ internal class DebugOverlayImpl : DebugOverlay {
      * 3. Debug text
      *     - Name of the component
      *
-     * For more info, see [specification](https://todo.ru/x/dpiVSwE) of the debug
+     * For more info, see [specification](https://confluence.companyname.ru/x/dpiVSwE) of the debug
      * overlay.
      */
     @Composable
@@ -80,7 +80,7 @@ internal class DebugOverlayImpl : DebugOverlay {
      * 2. Background color with some alpha
      * 3. [text]
      *
-     * For more info, see [specification](https://todo.ru/x/dpiVSwE) of the debug
+     * For more info, see [specification](https://confluence.companyname.ru/x/dpiVSwE) of the debug
      * overlay.
      */
     @Composable

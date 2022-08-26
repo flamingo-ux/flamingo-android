@@ -59,8 +59,8 @@ import com.flamingo.utils.exhaustive
  */
 @FlamingoComponent(
     preview = "com.flamingo.playground.preview.SkeletonPreview",
-    figma = "https://todo.com/file/qVO8jDuABDK9vsuLqRXeMx/Friend-UI-kit?node-id=4520%3A23658",
-    specification = "https://todo.com/x/14uKMQE",
+    figma = "https://f.com/file/qVO8jDuABDK9vsuLqRXeMx/Friend-UI-kit?node-id=4520%3A23658",
+    specification = "https://confluence.companyname.ru/x/14uKMQE",
     demo = ["com.flamingo.playground.components.skeleton.SkeletonTypicalUsage"],
     supportsWhiteMode = true,
 )

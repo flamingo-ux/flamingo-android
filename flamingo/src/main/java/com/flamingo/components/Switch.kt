@@ -51,8 +51,8 @@ import com.flamingo.theme.FlamingoTheme
 @OptIn(ExperimentalMaterialApi::class)
 @FlamingoComponent(
     preview = "com.flamingo.playground.preview.SwitchPreview",
-    figma = "https://todo.com/file/qVO8jDuABDK9vsuLqRXeMx/Friend-UI-kit?node-id=6434%3A73432",
-    specification = "https://todo.com/x/nBd5NgE",
+    figma = "https://f.com/file/qVO8jDuABDK9vsuLqRXeMx/Friend-UI-kit?node-id=6434%3A73432",
+    specification = "https://confluence.companyname.ru/x/nBd5NgE",
     demo = ["com.flamingo.playground.components.SwitchStatesPlayroom"],
     supportsWhiteMode = true,
 )

@@ -8,11 +8,11 @@ import com.flamingo.InternalComponents
 /**
  * This annotation is used to mark all @[Composable] functions which are design system components.
  * KSP-based annotation processor called __crab__ collects all such annotation usages at the build
- * time and transform them into [FlamingoRegistry] class.
+ * time and transforms them into [FlamingoRegistry] class.
  *
  * If there are `@sample`s in KDocs of the annotated function, and [extractKDocs] is true, then
  * [RegistryGenerator] will resolve fully qualified names of specified sample and, if `no code` is
- * not specified, add source code of the file that contains a sample to the [FlamingoRegistry].
+ * not specified, add the source code of the file that contains a sample to the [FlamingoRegistry].
  * Also, if `no preview` is not specified, [RegistryGenerator] will add a composable lambda to
  * [FlamingoRegistry], which calls the sample function with no arguments.
 
@@ -25,7 +25,7 @@ import com.flamingo.InternalComponents
  * property to the FlamingoRegistry.
  *
  * For more info about annotation processor,
- * see [documentation](https://todo.ru/x/YA6oQwE).
+ * see [documentation](https://confluence.companyname.ru/x/YA6oQwE).
  *
  * @param displayName it will be used on the component's details page. CAN be empty. If
  * [String.isBlank], name of the function will be used
@@ -33,13 +33,14 @@ import com.flamingo.InternalComponents
  * @param preview fully qualified name of the composable function, accessible from
  * `flamingo-playground` module. Function MUST have no arguments. CANNOT be empty
  *
- * @param figma url. MUST start with `https://www.todo.com/` or `https://todo.com/`. CANNOT be
+ * @param figma url. MUST start with `https://www.f.com/` or `https://f.com/`. CANNOT be
  * empty (except when the component is internal (see [InternalComponents])). Note, that designs,
  * located at this url CAN BE not up-to-date with the implementation. Relevant info is located in
  * [specification] instead.
  *
  * @param specification url of the specification of this flamingo component. MUST start with
- * `https://`. CANNOT be empty (except when the component is internal (see [InternalComponents]))
+ * `https://confluence.companyname.ru`. CANNOT be empty (except when component is internal (see
+ * [InternalComponents]))
  *
  * @param viewImplementation fully qualified name of the Android View-based impl. CAN be empty
  *

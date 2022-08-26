@@ -7,7 +7,7 @@ import com.google.devtools.ksp.symbol.KSName
 @Suppress("LongMethod")
 internal fun registry(records: List<String>): String {
     return """// This file was generated using crab. 
-// Please, refer to https://todo.ru/x/YA6oQwE for more details.
+// Please, refer to https://confluence.companyname.ru/x/YA6oQwE for more details.
         
 package com.flamingo.crab
 
@@ -37,7 +37,7 @@ import kotlin.reflect.KClass
  * @property docs KDocs of the function, if present
  * @property samples, referenced in [docs]
  * 
- * [Documentation](https://todo.ru/x/YA6oQwE)
+ * [Documentation](https://confluence.companyname.ru/x/YA6oQwE)
  */
 public class FlamingoComponentRecord(
     val displayName: String,
@@ -71,7 +71,7 @@ public class SampleRecord(
  * Contains metadata info about [FlamingoComponent]s, gathered by crab. For more info,
  * see [FlamingoComponent].
  * 
- * [Documentation](https://todo.ru/x/YA6oQwE)
+ * [Documentation](https://confluence.companyname.ru/x/YA6oQwE)
  */
 public object FlamingoRegistry {
     public val components: List<FlamingoComponentRecord> = listOf(

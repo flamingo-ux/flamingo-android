@@ -21,6 +21,7 @@ import androidx.compose.foundation.layout.requiredSize
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import com.flamingo.Flamingo
 import com.flamingo.annotations.FlamingoComponent
 import com.flamingo.components.Avatar
 import com.flamingo.components.AvatarShape
@@ -29,7 +30,6 @@ import com.flamingo.components.FlamingoComponentBase
 import com.flamingo.components.Skeleton
 import com.flamingo.components.SkeletonShape
 import com.flamingo.components.listitem.TextBlocksSkeleton.TWO
-import com.flamingo.Flamingo
 
 @Suppress("MaxLineLength")
 /**
@@ -48,9 +48,9 @@ import com.flamingo.Flamingo
 @FlamingoComponent(
     displayName = "List Item Skeleton",
     preview = "com.flamingo.playground.preview.ListItemSkeletonPreview",
-    figma = "https://todo.com/file/qVO8jDuABDK9vsuLqRXeMx/3.-Friend-UI-Components?node-id=" +
+    figma = "https://f.com/file/qVO8jDuABDK9vsuLqRXeMx/3.-Friend-UI-Components?node-id=" +
             "11850%3A130044",
-    specification = "https://todo.com/display/FLAMINGO/ListItem#ListItem-Loading",
+    specification = "https://confluence.companyname.ru/display/FLAMINGO/ListItem#ListItem-Loading",
     demo = [
         "com.flamingo.playground.components.ListItemSkeletonStatesPlayroom",
         "com.flamingo.playground.components.listitem.ListLoadingTypicalUsage",

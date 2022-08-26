@@ -50,8 +50,8 @@ import com.flamingo.theme.FlamingoIcon.FlamingoIcons
 @FlamingoComponent(
     displayName = "Icon Toggle Button",
     preview = "com.flamingo.playground.preview.IconToggleButtonPreview",
-    figma = "https://todo.com/file/qVO8jDuABDK9vsuLqRXeMx?node-id=17133%3A133327",
-    specification = "https://todo.com/x/kK_7fgE",
+    figma = "https://f.com/file/qVO8jDuABDK9vsuLqRXeMx?node-id=17133%3A133327",
+    specification = "https://confluence.companyname.ru/x/kK_7fgE",
     demo = ["com.flamingo.playground.components.icontogglebutton.TypicalUsage"],
     supportsWhiteMode = false,
 )

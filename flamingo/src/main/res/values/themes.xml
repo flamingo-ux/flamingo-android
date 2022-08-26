@@ -46,19 +46,19 @@
 
         <!-- 📖🎨⚰ colorPrimaryLight,
         Светлый вариант <i>?colorPrimary</i>
-        <a href="https://www.todo.com/file/siTvBrYyUPigpjkZfOhJ1h/2.Core-Styles-and-Icons?node-id=713%3A13">Figma</a>
+        <a href="https://f.com/file/siTvBrYyUPigpjkZfOhJ1h/2.Core-Styles-and-Icons?node-id=713%3A13">Figma</a>
         -->
         <item name="colorPrimaryLight">@color/orchid_600</item>
 
         <!-- 📖🎨 colorPrimary,
         Основной цвет фирменного стиля для приложения
-        <a href="https://www.todo.com/file/siTvBrYyUPigpjkZfOhJ1h/2.Core-Styles-and-Icons?node-id=713%3A14">Figma</a>
+        <a href="https://f.com/file/siTvBrYyUPigpjkZfOhJ1h/2.Core-Styles-and-Icons?node-id=713%3A14">Figma</a>
         -->
         <item name="colorPrimary">@color/green_600</item>
 
         <!-- 📖🎨⚰ colorPrimaryVariant,
         Темный вариант <i>?colorPrimary</i> бренда, редко используемый
-        <a href="https://www.todo.com/file/siTvBrYyUPigpjkZfOhJ1h/2.Core-Styles-and-Icons?node-id=713%3A15">Figma</a>
+        <a href="https://f.com/file/siTvBrYyUPigpjkZfOhJ1h/2.Core-Styles-and-Icons?node-id=713%3A15">Figma</a>
         -->
         <item name="colorPrimaryVariant">?colorPrimary</item>
 
@@ -70,20 +70,20 @@
 
         <!-- 📖🎨⚰ colorSecondaryLight,
         Светлый вариант <i>?colorSecondary</i>
-        <a href="https://www.todo.com/file/siTvBrYyUPigpjkZfOhJ1h/2.Core-Styles-and-Icons?node-id=714%3A24">Figma</a>
+        <a href="https://f.com/file/siTvBrYyUPigpjkZfOhJ1h/2.Core-Styles-and-Icons?node-id=714%3A24">Figma</a>
         -->
         <item name="colorSecondaryLight">@color/orchid_600</item>
 
         <!-- 📖🎨⚰ colorSecondary,
         Вторичный фирменный цвет вашего приложения, используемый в основном в качестве акцента для
         определенных виджетов, которые должны выделяться
-        <a href="https://www.todo.com/file/siTvBrYyUPigpjkZfOhJ1h/2.Core-Styles-and-Icons?node-id=714%3A15">Figma</a>
+        <a href="https://f.com/file/siTvBrYyUPigpjkZfOhJ1h/2.Core-Styles-and-Icons?node-id=714%3A15">Figma</a>
         -->
         <item name="colorSecondary">@color/blue_600</item>
 
         <!-- 📖🎨⚰ colorSecondaryVariant,
         Темный вариант <i>?colorSecondary</i>, редко используемый
-        <a href="https://www.todo.com/file/siTvBrYyUPigpjkZfOhJ1h/2.Core-Styles-and-Icons?node-id=714%3A7">Figma</a>
+        <a href="https://f.com/file/siTvBrYyUPigpjkZfOhJ1h/2.Core-Styles-and-Icons?node-id=714%3A7">Figma</a>
         -->
         <item name="colorSecondaryVariant">?colorSecondary</item>
 
@@ -95,32 +95,32 @@
 
         <!-- 📖🎨 colorInfo,
         Информация
-        <a href="https://www.todo.com/file/siTvBrYyUPigpjkZfOhJ1h/2.Core-Styles-and-Icons?node-id=714%3A44">Figma</a>
+        <a href="https://f.com/file/siTvBrYyUPigpjkZfOhJ1h/2.Core-Styles-and-Icons?node-id=714%3A44">Figma</a>
         -->
         <item name="colorInfo">@color/blue_700</item>
 
         <!-- 📖🎨 colorWarning,
         Предупреждение
-        <a href="https://www.todo.com/file/siTvBrYyUPigpjkZfOhJ1h/2.Core-Styles-and-Icons?node-id=714%3A47">Figma</a>
+        <a href="https://f.com/file/siTvBrYyUPigpjkZfOhJ1h/2.Core-Styles-and-Icons?node-id=714%3A47">Figma</a>
         -->
         <item name="colorWarning">@color/orange_700</item>
 
         <!-- 📖🎨 colorSuccess,
         Успех
-        <a href="https://www.todo.com/file/siTvBrYyUPigpjkZfOhJ1h/2.Core-Styles-and-Icons?node-id=934%3A1069">Figma</a>
+        <a href="https://f.com/file/siTvBrYyUPigpjkZfOhJ1h/2.Core-Styles-and-Icons?node-id=934%3A1069">Figma</a>
         -->
         <item name="colorSuccess">@color/green_500</item>
 
         <!-- 📖🎨 colorRating,
         Оценка (для звёздочек, например)
-        <a href="https://www.todo.com/file/siTvBrYyUPigpjkZfOhJ1h/2.Core-Styles-and-Icons?node-id=716%3A29">Figma</a>
+        <a href="https://f.com/file/siTvBrYyUPigpjkZfOhJ1h/2.Core-Styles-and-Icons?node-id=716%3A29">Figma</a>
         -->
         <item name="colorRating">@color/yellow_300</item>
 
 
         <!-- 📖🎨 colorError,
         Ошибка
-        <a href="https://www.todo.com/file/siTvBrYyUPigpjkZfOhJ1h/2.Core-Styles-and-Icons?node-id=714%3A42">Figma</a>
+        <a href="https://f.com/file/siTvBrYyUPigpjkZfOhJ1h/2.Core-Styles-and-Icons?node-id=714%3A42">Figma</a>
         -->
         <item name="colorError">@color/red_700</item>
 
@@ -140,19 +140,19 @@
             android:layout_height="1dp"
             android:background="<b>?colorSeparator</b>" /&gt
         </pre></code>
-        <a href="https://www.todo.com/file/siTvBrYyUPigpjkZfOhJ1h/2.Core-Styles-and-Icons?node-id=436%3A5">Figma</a>
+        <a href="https://f.com/file/siTvBrYyUPigpjkZfOhJ1h/2.Core-Styles-and-Icons?node-id=436%3A5">Figma</a>
         -->
         <item name="colorSeparator">#140E3A58</item>
 
         <!-- 📖🎨 colorOutline,
         Для рамки, окружающей элемент
-        <a href="https://www.todo.com/file/siTvBrYyUPigpjkZfOhJ1h/2.Core-Styles-and-Icons?node-id=436%3A8">Figma</a>
+        <a href="https://f.com/file/siTvBrYyUPigpjkZfOhJ1h/2.Core-Styles-and-Icons?node-id=436%3A8">Figma</a>
         -->
         <item name="colorOutline">#290E3A58</item>
 
         <!-- 📖🎨 colorOutlineDark,
         Для рамки, окружающей элемент
-        <a href="https://www.todo.com/file/siTvBrYyUPigpjkZfOhJ1h/2.Core-Styles-and-Icons?node-id=438%3A298">Figma</a>
+        <a href="https://f.com/file/siTvBrYyUPigpjkZfOhJ1h/2.Core-Styles-and-Icons?node-id=438%3A298">Figma</a>
         -->
         <item name="colorOutlineDark">#520E3A58</item>
 
@@ -186,54 +186,54 @@
         <item name="android:colorBackground">@color/white</item>
 
         <!-- 📖🎨 colorBackgroundSecondary,
-        <a href="https://www.todo.com/file/siTvBrYyUPigpjkZfOhJ1h/2.Core-Styles-and-Icons?node-id=735%3A301">Figma</a>
+        <a href="https://f.com/file/siTvBrYyUPigpjkZfOhJ1h/2.Core-Styles-and-Icons?node-id=735%3A301">Figma</a>
         -->
         <item name="colorBackgroundSecondary">@color/coolgrey_100</item>
 
         <!-- 📖🎨 colorBackgroundTertiary,
-        <a href="https://www.todo.com/file/siTvBrYyUPigpjkZfOhJ1h/2.Core-Styles-and-Icons?node-id=735%3A312">Figma</a>
+        <a href="https://f.com/file/siTvBrYyUPigpjkZfOhJ1h/2.Core-Styles-and-Icons?node-id=735%3A312">Figma</a>
         -->
         <item name="colorBackgroundTertiary">@color/coolgrey_150</item>
 
         <!-- 📖🎨 colorBackgroundTextField,
         При изменении необходимо также изменить
         /color/contained_button_default_color_bg_selector.xml:3 (только светлая версия).
-        <a href="https://www.todo.com/file/siTvBrYyUPigpjkZfOhJ1h/2.Core-Styles-and-Icons?node-id=999%3A1219">Figma</a>
+        <a href="https://f.com/file/siTvBrYyUPigpjkZfOhJ1h/2.Core-Styles-and-Icons?node-id=999%3A1219">Figma</a>
         -->
         <item name="colorBackgroundTextField">#147D868C</item>
 
         <!-- 📖🎨 colorBackgroundQuaternary,
-        <a href="https://www.todo.com/file/siTvBrYyUPigpjkZfOhJ1h/2.Core-Styles-and-Icons?node-id=735%3A311">Figma</a>
+        <a href="https://f.com/file/siTvBrYyUPigpjkZfOhJ1h/2.Core-Styles-and-Icons?node-id=735%3A311">Figma</a>
         -->
         <item name="colorBackgroundQuaternary">#14E4EBF0</item>
 
         <!-- 📖🎨 colorControlHighlight,
         Цвет ripple, применяется ко всем стандартным android view
-        <a href="https://www.todo.com/file/siTvBrYyUPigpjkZfOhJ1h/2.Core-Styles-and-Icons?node-id=1736%3A10">Figma</a>
+        <a href="https://f.com/file/siTvBrYyUPigpjkZfOhJ1h/2.Core-Styles-and-Icons?node-id=1736%3A10">Figma</a>
         -->
         <item name="colorControlHighlight">#1F0E3A58</item>
 
         <!-- 📖🎨⚰ colorBackgroundTextFieldDeprecated,
         Цвет дефолтного фона для текстовых полей в dom-core
-        <a href="https://www.todo.com/file/siTvBrYyUPigpjkZfOhJ1h/2.Core-Styles-and-Icons?node-id=2562%3A9">Figma</a>
+        <a href="https://f.com/file/siTvBrYyUPigpjkZfOhJ1h/2.Core-Styles-and-Icons?node-id=2562%3A9">Figma</a>
         -->
         <item name="colorBackgroundTextFieldDeprecated">@color/orchid_600</item>
 
         <!-- 📖🎨⚰ colorBackgroundTextFieldError,
         Цвет фона для текстовых полей с ошибкой в dom-core
-        <a href="https://www.todo.com/file/JHCZ1XVles0EGhKVTTeQ0G/5.1.-DOMcore?node-id=824%3A29122">Figma</a>
+        <a href="https://f.com/file/JHCZ1XVles0EGhKVTTeQ0G/5.1.-DOMcore?node-id=824%3A29122">Figma</a>
         -->
         <item name="colorBackgroundTextFieldError">@color/orchid_600</item>
 
         <!-- 📖🎨⚰ colorStrokeTextField,
         Цвет рамки текстового поля в некативном состоянии
-        <a href="https://www.todo.com/file/JHCZ1XVles0EGhKVTTeQ0G/5.1.-DOMcore?node-id=824%3A29070">Figma</a>
+        <a href="https://f.com/file/JHCZ1XVles0EGhKVTTeQ0G/5.1.-DOMcore?node-id=824%3A29070">Figma</a>
         -->
         <item name="colorStrokeTextField">@color/orchid_600</item>
 
         <!-- 📖🎨⚰ colorStrokeTextFieldHighlight,
         Цвет рамки текстового поля в активированном состоянии
-        <a href="https://www.todo.com/file/JHCZ1XVles0EGhKVTTeQ0G/5.1.-DOMcore?node-id=824%3A29085">Figma</a>
+        <a href="https://f.com/file/JHCZ1XVles0EGhKVTTeQ0G/5.1.-DOMcore?node-id=824%3A29085">Figma</a>
         -->
         <item name="colorStrokeTextFieldHighlight">@color/orchid_600</item>
     </style>
@@ -244,7 +244,7 @@
         disabled. Если применить атрибут на android view c enabled="false", то из ColorStateList
         применится цвет <i>?android:textColorTertiary</i>. Если у android view enabled="true", то
         применится нормальный цвет.
-        <a href="https://www.todo.com/file/siTvBrYyUPigpjkZfOhJ1h/2.Core-Styles-and-Icons?node-id=337%3A1436">Figma</a>
+        <a href="https://f.com/file/siTvBrYyUPigpjkZfOhJ1h/2.Core-Styles-and-Icons?node-id=337%3A1436">Figma</a>
         -->
         <item name="android:textColorPrimary">@color/primary_text_color_selector</item>
 
@@ -253,13 +253,13 @@
         disabled. Если применить атрибут на android view c enabled="false", то из ColorStateList
         применится цвет <i>?android:textColorTertiary</i>. Если у android view enabled="true", то
         применится нормальный цвет.
-        <a href="https://www.todo.com/file/siTvBrYyUPigpjkZfOhJ1h/2.Core-Styles-and-Icons?node-id=337%3A1437">Figma</a>
+        <a href="https://f.com/file/siTvBrYyUPigpjkZfOhJ1h/2.Core-Styles-and-Icons?node-id=337%3A1437">Figma</a>
         -->
         <item name="android:textColorSecondary">@color/secondary_text_color_selector</item>
 
         <!-- 📖🎨 android:textColorTertiary,
         Используется в качестве disabled текста
-        <a href="https://www.todo.com/file/siTvBrYyUPigpjkZfOhJ1h/2.Core-Styles-and-Icons?node-id=337%3A1438">Figma</a>
+        <a href="https://f.com/file/siTvBrYyUPigpjkZfOhJ1h/2.Core-Styles-and-Icons?node-id=337%3A1438">Figma</a>
         -->
         <item name="android:textColorTertiary">@color/tertiary_text_color_selector</item>
     </style>
