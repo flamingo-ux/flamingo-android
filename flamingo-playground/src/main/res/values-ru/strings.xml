@@ -23,6 +23,8 @@
     <string name="design_demos_tools_debug_overlay_tile_summary">Добавить quick settings tile в быстрые настройки в шторке уведомлений, чтобы мгновенно управлять overlay\'ем с любого экрана системы</string>
     <string name="add_tile_tutorial_url">https://todoist.com/ru/help/articles/add-an-add-task-quick-setting-tile-on-android</string>
 
+    <string name="design_demos_other_category_title">Другое</string>
+
     <string name="design_demos_title">Демо дизайн-системы</string>
     <string name="design_demos_summary">Тестовые экраны дизайн-системы. Разработчикам 👨‍💻 рекомендуется
         ознакомиться со <b>всеми</b> демо перед началом использования дизайн-системы.</string>

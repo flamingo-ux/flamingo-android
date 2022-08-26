@@ -25,6 +25,8 @@
     <string name="design_demos_tools_debug_overlay_tile_summary">Add a quick settings tile to quick settings in the notification shade to instantly control overlay from any screen</string>
     <string name="add_tile_tutorial_url">https://todoist.com/en/help/articles/add-an-add-task-quick-setting-tile-on-android</string>
 
+    <string name="design_demos_other_category_title">Other</string>
+
     <string name="design_demos_title">Demo of the Design System</string>
     <string name="design_demos_summary">Test screens of the design system. Developers 👨‍💻 should
          familiarize themselves with <b>every</b> demo before using the design system.</string>
