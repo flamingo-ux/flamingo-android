@@ -16,7 +16,7 @@ import org.intellij.lang.annotations.Language
  * forbidden to create new ones. Instead, use compose implementation.
  * See [com.flamingo.annotations.FlamingoComponent].
  *
- * ## [Video introduction](https://sbervideo.companyname.ru/watch/6083)
+ * ## [Video introduction](https://youtu.be/oRbQns82FX4)
  * Probably outdated and partially inaccurate.
  *
  * # What is a design system component
@@ -24,9 +24,6 @@ import org.intellij.lang.annotations.Language
  * It is a custom android view with special properties.
  *
  * # How to create a design system component
- *
- * There is a template for fast creation of design system component class.
- * [How to use it](https://sbervideo.companyname.ru/watch/6223).
  *
  * - Subclass any android view and put it in [com.flamingo.view.components]
  * package in the `flamingo` gradle module

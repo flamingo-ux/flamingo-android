@@ -56,9 +56,7 @@ private class AlertMessageActor : Actor {
 
 @Suppress("MaxLineLength")
 /**
- * Creation of this file was part of the tutorial on how to create videos with __Theater__
- * framework. Tutorial is located [here](https://sbervideo.companyname.ru/watch/p3rphgxOQlGtJu2NDA).
- * Before watching, it is recommended to read Theater's README.md, located in the `theater` module.
+ * Read Theater's README.md, located in the `theater` module.
  * [(alternate link)](https://confluence.companyname.ru/x/lQkbZwE).
  */
 class TheaterPkg : TheaterPackage {

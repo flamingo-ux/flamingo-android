@@ -12,7 +12,7 @@ import androidx.compose.ui.unit.Dp
 /**
  * Allows applying shadow with opacity to [content].
  *
- * Just an experiment, CANNOT be used by library users.
+ * CANNOT be used by library users.
  */
 @Composable
 public fun InternalComponents.Shadow(
