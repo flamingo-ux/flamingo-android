@@ -1,11 +1,14 @@
 package com.flamingo.playground
 
 import android.content.ActivityNotFoundException
+import android.content.ClipData
+import android.content.ClipboardManager
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import androidx.core.content.ContextCompat
+import androidx.preference.PreferenceCategory
 import androidx.preference.PreferenceFragmentCompat
 import androidx.preference.SwitchPreferenceCompat
 import com.flamingo.Flamingo
@@ -26,6 +29,8 @@ class DesignDemosFragment : PreferenceFragmentCompat() {
         setupDesignerToolsDownloadButton()
         setupDebugOverlay()
         setupVersion()
+        setupLinks()
+        setupLecturesAndMeetups()
         Flamingo.isStagingBuild = true
         initFlamingoFonts()
     }
@@ -62,9 +67,30 @@ class DesignDemosFragment : PreferenceFragmentCompat() {
             summary = Flamingo.versionName
             setOnPreferenceClickListener {
                 val urlString = getString(R.string.flamingo_github_release, Flamingo.versionName)
-                val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse(urlString))
-                ContextCompat.startActivity(requireContext(), browserIntent, null)
+                context.openUrl(urlString)
                 true
+            }
+        }
+    }
+
+    private fun setupLinks() =
+        makeChildPrefsClickableLinks("links_category")
+
+    private fun setupLecturesAndMeetups() =
+        makeChildPrefsClickableLinks("lectures_and_meetups_category")
+
+    private fun makeChildPrefsClickableLinks(prefKey: CharSequence) {
+        (findPreference(prefKey) as PreferenceCategory).apply {
+            repeat(preferenceCount) { i ->
+                getPreference(i).setOnPreferenceClickListener {
+                    val url = it.summary.toString()
+                    it.context.openUrl(url)
+                    val manager =
+                        it.context.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
+                    manager.setPrimaryClip(ClipData.newPlainText("url", url))
+                    it.context.showBoast("Copied into clipboard")
+                    true
+                }
             }
         }
     }

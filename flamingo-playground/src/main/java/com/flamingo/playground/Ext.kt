@@ -19,6 +19,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.platform.LocalContext
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import com.flamingo.InternalComponents
@@ -123,7 +124,7 @@ internal val internalComponents: InternalComponents by lazy {
 
 internal fun Context.openUrl(url: String) {
     val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
-    startActivity(intent)
+    ContextCompat.startActivity(this, intent, null)
 }
 
 @Composable

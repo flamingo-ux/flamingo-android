@@ -5,13 +5,15 @@ It is an Android implementation of the Flamingo Design System.
 
 ## It Consists Of:
 
-1. Palette
-2. Theme colors
-3. Typography
-4. Icon set
-5. Illustrations
-6. Gradients
-7. __UI components__
+Palette, theme colors, typography, icon set, illustrations, gradients and __UI components__.
+
+## Useful links
+
+- [Introductory article on Medium](https://popovanton0.medium.com/building-a-modern-design-system-using-jetpack-compose-8bd8084e8b0c)
+- [Youtube-playlist with Theater videos](https://www.youtube.com/playlist?list=PLGEKQ_tCWabRme1pUVZJLektqXXfDIW2G)
+- [Flamingo space in Confluence](https://confluence.companyname.ru/x/cIMLOwE)
+- [Android section in Confluence space](https://confluence.companyname.ru/x/v4cgegE)
+- [Meetup Q2 2021 (Android View impl only)](https://youtu.be/oRbQns82FX4)
 
 # Playground App
 

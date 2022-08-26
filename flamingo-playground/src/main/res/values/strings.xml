@@ -26,6 +26,23 @@
     <string name="add_tile_tutorial_url">https://todoist.com/en/help/articles/add-an-add-task-quick-setting-tile-on-android</string>
 
     <string name="design_demos_other_category_title">Other</string>
+    <string name="design_demos_links_category_title">Useful links</string>
+
+    <string name="design_demos_links_introductory_article_title">Introductory article on Medium</string>
+    <string name="design_demos_links_introductory_article_url" translatable="false">https://popovanton0.medium.com/building-a-modern-design-system-using-jetpack-compose-8bd8084e8b0c</string>
+    <string name="design_demos_links_theater_videos_title">Youtube-playlist with Theater videos</string>
+    <string name="design_demos_links_theater_videos_url" translatable="false">https://www.youtube.com/playlist?list=PLGEKQ_tCWabRme1pUVZJLektqXXfDIW2G</string>
+    <string name="design_demos_links_github_repo_title">GitHub repository</string>
+    <string name="design_demos_links_github_repo_url" translatable="false">https://github.com/flamingo-ux/flamingo-android</string>
+    <string name="design_demos_links_confluence_title">Flamingo space in Confluence</string>
+    <string name="design_demos_links_confluence_url" translatable="false">https://confluence.companyname.ru/x/cIMLOwE</string>
+    <string name="design_demos_links_confluence_android_title">Android section in Confluence space</string>
+    <string name="design_demos_links_confluence_android_url" translatable="false">https://confluence.companyname.ru/x/v4cgegE</string>
+
+    <string name="design_demos_lectures_and_meetups_category_title">Lectures and meetups</string>
+    <string name="design_demos_lectures_and_meetups_category_summary">Sorted by date</string>
+    <string name="design_demos_lectures_and_meetups_q2_2021_title">Q2 2021 (Android View impl only)</string>
+    <string name="design_demos_lectures_and_meetups_q2_2021_url" translatable="false">https://youtu.be/oRbQns82FX4</string>
 
     <string name="design_demos_title">Demo of the Design System</string>
     <string name="design_demos_summary">Test screens of the design system. Developers 👨‍💻 should

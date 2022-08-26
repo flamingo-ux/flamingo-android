@@ -35,8 +35,6 @@ import coil.imageLoader
 import coil.request.Disposable
 import coil.request.ImageRequest
 import coil.request.ImageResult
-import com.google.android.material.card.MaterialCardView
-import okhttp3.HttpUrl
 import com.flamingo.ALPHA_DISABLED
 import com.flamingo.R
 import com.flamingo.annotations.view.DsIconSet
@@ -50,6 +48,8 @@ import com.flamingo.utils.resolveColorAttr
 import com.flamingo.view.AvatarTarget
 import com.flamingo.view.VIEW_DEPRECATION_MSG
 import com.flamingo.view.dsIcon
+import com.google.android.material.card.MaterialCardView
+import okhttp3.HttpUrl
 import java.io.File
 import kotlin.math.sqrt
 import androidx.appcompat.R as AppCompatR
@@ -88,7 +88,7 @@ import androidx.appcompat.R as AppCompatR
         функции <code>showIndicator</code> была установлена <code>SHAPE_CIRCLE</code>. Иначе - 
         fatal exception.</p>
         
-        <a href='https://confluence.companyname.ru/pages/viewpage.action?pageId=4113499843'>
+        <a href='https://youtu.be/SCmBIkDRTh4'>
         Получение формулы для расчёта положения Indicator (DS component) на Avatar</a>
         <br>
     """,
@@ -447,7 +447,7 @@ public class Avatar @JvmOverloads public constructor(
         val r = if (cardRadius > halfAvatarWidth) halfAvatarWidth else cardRadius
         val indicatorRadius = indicator.size.dp / 2
 
-        // 🤓 https://confluence.companyname.ru/pages/viewpage.action?pageId=4113499843
+        // 🤓 https://youtu.be/SCmBIkDRTh4
         val indicatorTranslation =
             avatarWidth - (r * (1 - (SQRT_OF_TWO / 2))) - indicatorRadius
 
