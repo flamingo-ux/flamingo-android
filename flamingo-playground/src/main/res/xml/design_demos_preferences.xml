@@ -2,13 +2,6 @@
 <PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto"
     app:key="design_demos">
 
-    <Preference
-        app:icon="@drawable/ic_baseline_colorize_24"
-        app:key="design_demo_tools_download_designer_tools"
-        app:persistent="false"
-        app:summary="@string/design_demos_tools_download_designer_tools_summary"
-        app:title="@string/design_demos_tools_download_designer_tools_title" />
-
     <com.flamingo.demoapi.LongSummaryCategoryPreference
         app:initialExpandedChildrenCount="1"
         app:summary="@string/labs_summary"
@@ -58,6 +51,11 @@
             app:fragment="com.flamingo.playground.PaletteColorsDemoFragment"
             app:icon="@drawable/ic_baseline_palette_24"
             app:title="@string/design_demo_palette_colors_title" />
+
+        <Preference
+            app:fragment="com.flamingo.playground.FontsDemoFragment"
+            app:icon="@drawable/ic_format_font"
+            app:title="@string/design_demo_fonts_title" />
 
         <Preference
             app:fragment="com.flamingo.playground.IconsDemoFragment"
@@ -123,14 +121,24 @@
 
     </PreferenceCategory>
 
+    <PreferenceCategory app:title="@string/design_demos_other_category_title">
 
-    <Preference
-        app:fragment="com.flamingo.playground.license.LicensesFragment"
-        app:icon="@drawable/ds_ic_book_open"
-        app:title="@string/licenses_title" />
+        <Preference
+            app:icon="@drawable/ic_baseline_colorize_24"
+            app:key="design_demo_tools_download_designer_tools"
+            app:persistent="false"
+            app:summary="@string/design_demos_tools_download_designer_tools_summary"
+            app:title="@string/design_demos_tools_download_designer_tools_title" />
 
-    <Preference
-        app:key="version"
-        app:icon="@drawable/ds_ic_info"
-        app:title="@string/flamingo_version" />
+        <Preference
+            app:fragment="com.flamingo.playground.license.LicensesFragment"
+            app:icon="@drawable/ds_ic_book_open"
+            app:title="@string/licenses_title" />
+
+        <Preference
+            app:icon="@drawable/ds_ic_info"
+            app:key="version"
+            app:title="@string/flamingo_version" />
+
+    </PreferenceCategory>
 </PreferenceScreen>
