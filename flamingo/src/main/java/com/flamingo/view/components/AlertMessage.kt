@@ -44,7 +44,7 @@ import androidx.appcompat.R as AppCompatR
         <br>
     """,
     preview = "com.flamingo.playground.preview.AlertMessagePreview",
-    figmaUrl = "https://www.todo.com/file/sPbkUbBGkp5Mstc0IQYubk/4.1.-UI-Android-kit?node-id=839" +
+    figmaUrl = "https://f.com/file/sPbkUbBGkp5Mstc0IQYubk/4.1.-UI-Android-kit?node-id=839" +
             "%3A681",
     permittedXmlAttributes = ["app:ds_variant", "app:ds_message"],
     theDemos = [

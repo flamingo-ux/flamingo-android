@@ -61,8 +61,8 @@ import com.flamingo.annotations.UsedInsteadOf
 @FlamingoComponent(
     displayName = "Circular Loader",
     preview = "com.flamingo.playground.preview.CircularLoaderPreview",
-    figma = "https://todo.com/file/qVO8jDuABDK9vsuLqRXeMx?node-id=6485%3A1143",
-    specification = "https://todo.com/x/qALDOAE",
+    figma = "https://f.com/file/qVO8jDuABDK9vsuLqRXeMx?node-id=6485%3A1143",
+    specification = "https://confluence.companyname.ru/x/qALDOAE",
     demo = ["com.flamingo.playground.components.CircularLoaderStatesPlayroom"],
     supportsWhiteMode = true,
 )

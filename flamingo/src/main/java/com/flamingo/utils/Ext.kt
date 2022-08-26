@@ -34,7 +34,7 @@ internal inline val Int.hexp: Int
 /**
  * Sets [CardView] elevation, but in the dark theme also sets [CardView] background to the
  * appropriate color. More info:
- * [https://www.todo.com/file/siTvBrYyUPigpjkZfOhJ1h/2.Core-Styles-%26-Icons?node-id=337%3A1261]
+ * [https://f.com/file/siTvBrYyUPigpjkZfOhJ1h/2.Core-Styles-%26-Icons?node-id=337%3A1261]
  *
  * For behavior demo and more explanation, open
  * [com.flamingo.playground.CardElevationDemoFragment].
@@ -49,7 +49,7 @@ public fun CardView.setCardElevationWithBackground(elevation: Elevation) {
 /**
  * Sets [CardView] elevation, but in the dark theme also sets [CardView] background to the
  * appropriate color. More info:
- * [https://www.todo.com/file/siTvBrYyUPigpjkZfOhJ1h/2.Core-Styles-%26-Icons?node-id=337%3A1261]
+ * [https://f.com/file/siTvBrYyUPigpjkZfOhJ1h/2.Core-Styles-%26-Icons?node-id=337%3A1261]
  *
  * For behavior demo and more explanation, open
  * [com.flamingo.playground.CardElevationDemoFragment].
@@ -78,7 +78,7 @@ public fun CardView.setCardElevationWithBackground(@Dimension(unit = DP) elevati
  * Keys represent all allowed card elevation values in dp.
  * Values are dark background colors which correspond to the [elevation] keys (in dp). Used in
  * [CardView.setCardElevationWithBackground]. More info:
- * [https://www.todo.com/file/siTvBrYyUPigpjkZfOhJ1h/2.Core-Styles-%26-Icons?node-id=337%3A1261]
+ * [https://f.com/file/siTvBrYyUPigpjkZfOhJ1h/2.Core-Styles-%26-Icons?node-id=337%3A1261]
  */
 @Suppress("MagicNumber")
 public val cardElevationDarkBackgroundColors: Map<Int, Int> = HashMap<Int, Int>(9, 1f).apply {

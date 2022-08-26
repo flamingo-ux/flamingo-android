@@ -72,8 +72,8 @@ import com.flamingo.components.listitem.TextBlocksSkeleton
  */
 @FlamingoComponent(
     preview = "com.flamingo.playground.preview.AttachmentPreview",
-    figma = "https://todo.com/file/6qbNsEofr4vu0p8bAGCM65?node-id=22240%3A144536",
-    specification = "https://todo.com/x/L5ctuQE",
+    figma = "https://f.com/file/6qbNsEofr4vu0p8bAGCM65?node-id=22240%3A144536",
+    specification = "https://confluence.companyname.ru/x/L5ctuQE",
     demo = ["com.flamingo.playground.components.attachment.LazyColumnTypicalUsage"],
     supportsWhiteMode = false,
 )

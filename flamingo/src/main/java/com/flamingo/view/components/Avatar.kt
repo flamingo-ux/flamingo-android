@@ -88,12 +88,12 @@ import androidx.appcompat.R as AppCompatR
         функции <code>showIndicator</code> была установлена <code>SHAPE_CIRCLE</code>. Иначе - 
         fatal exception.</p>
         
-        <a href='https://todo.ru/pages/viewpage.action?pageId=4113499843'>
+        <a href='https://confluence.companyname.ru/pages/viewpage.action?pageId=4113499843'>
         Получение формулы для расчёта положения Indicator (DS component) на Avatar</a>
         <br>
     """,
     preview = "com.flamingo.playground.preview.AvatarPreview",
-    figmaUrl = "https://www.todo.com/file/sPbkUbBGkp5Mstc0IQYubk/4.1.-UI-Android-kit?node-id=830" +
+    figmaUrl = "https://f.com/file/sPbkUbBGkp5Mstc0IQYubk/4.1.-UI-Android-kit?node-id=830" +
             "%3A17",
     permittedXmlAttributes = [
         "app:ds_a_letters",
@@ -447,7 +447,7 @@ public class Avatar @JvmOverloads public constructor(
         val r = if (cardRadius > halfAvatarWidth) halfAvatarWidth else cardRadius
         val indicatorRadius = indicator.size.dp / 2
 
-        // 🤓 https://todo.ru/pages/viewpage.action?pageId=4113499843
+        // 🤓 https://confluence.companyname.ru/pages/viewpage.action?pageId=4113499843
         val indicatorTranslation =
             avatarWidth - (r * (1 - (SQRT_OF_TWO / 2))) - indicatorRadius
 

@@ -145,7 +145,7 @@
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/textView8"
             app:layout_constraintTop_toBottomOf="@+id/textView8"
-            tools:text="https://www.todo.com/file/sfjhkshfsfjhkshfsfjhkshfsfjhkshfsfjhkshf" />
+            tools:text="https://f.com/file/sfjhkshfsfjhkshfsfjhkshfsfjhkshfsfjhkshf" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

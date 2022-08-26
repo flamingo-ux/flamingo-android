@@ -56,8 +56,8 @@ import com.flamingo.components.tabrow.TabVariant.Contained
  */
 @FlamingoComponent(
     preview = "com.flamingo.playground.preview.TabRowPreview",
-    figma = "https://todo.com/file/qVO8jDuABDK9vsuLqRXeMx?node-id=628%3A21",
-    specification = "https://todo.com/x/GQJKWAE",
+    figma = "https://f.com/file/qVO8jDuABDK9vsuLqRXeMx?node-id=628%3A21",
+    specification = "https://confluence.companyname.ru/x/GQJKWAE",
     theaterPackage = "com.flamingo.playground.components.tabrow.TheaterPkg",
     demo = ["com.flamingo.playground.components.tabrow.TabRowTypicalUsage"],
     supportsWhiteMode = false,

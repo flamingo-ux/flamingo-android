@@ -51,8 +51,8 @@ import com.flamingo.theme.FlamingoIcon
 @FlamingoComponent(
     displayName = "Alert Message",
     preview = "com.flamingo.playground.preview.AlertMessageComposePreview",
-    figma = "https://todo.com/file/qVO8jDuABDK9vsuLqRXeMx/Friend-UI-kit?node-id=8378%3A17126",
-    specification = "https://todo.com/x/C4YjKQE",
+    figma = "https://f.com/file/qVO8jDuABDK9vsuLqRXeMx/Friend-UI-kit?node-id=8378%3A17126",
+    specification = "https://confluence.companyname.ru/x/C4YjKQE",
     theaterPackage = "com.flamingo.playground.components.alertmessage.TheaterPkg",
     viewImplementation = "com.flamingo.view.components.AlertMessage",
     demo = [],

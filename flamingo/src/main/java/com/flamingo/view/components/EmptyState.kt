@@ -35,7 +35,7 @@ import com.flamingo.view.dsIcon
         <br>
     """,
     preview = "com.flamingo.playground.preview.EmptyStatePreview",
-    figmaUrl = "https://www.todo.com/file/sPbkUbBGkp5Mstc0IQYubk/4.1.-UI-Android-kit?node-id=830" +
+    figmaUrl = "https://www.f.com/file/sPbkUbBGkp5Mstc0IQYubk/4.1.-UI-Android-kit?node-id=830" +
             "%3A621",
     permittedXmlAttributes = [
         "app:ds_es_imageType",

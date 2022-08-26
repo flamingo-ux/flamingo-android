@@ -54,8 +54,8 @@ import com.flamingo.theme.FlamingoIcon
  */
 @FlamingoComponent(
     preview = "com.flamingo.playground.preview.ChipPreview",
-    figma = "https://todo.com/file/qVO8jDuABDK9vsuLqRXeMx?node-id=6750%3A71617",
-    specification = "https://todo.com/x/6KBGNQE",
+    figma = "https://f.com/file/qVO8jDuABDK9vsuLqRXeMx?node-id=6750%3A71617",
+    specification = "https://confluence.companyname.ru/x/6KBGNQE",
     theaterPackage = "com.flamingo.playground.components.chip.TheaterPkg",
     demo = ["com.flamingo.playground.components.chip.ChipStatesPlayroom"],
     supportsWhiteMode = false,

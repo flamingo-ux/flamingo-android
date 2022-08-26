@@ -21,7 +21,7 @@ import kotlin.annotation.AnnotationTarget.VALUE_PARAMETER
  * with this annotation, because it is important to provide an explicit [explanation] for each
  * violation of this lint check.
  *
- * [More info](https://todo.ru/x/UwcyeQE)
+ * [More info](https://confluence.companyname.ru/x/UwcyeQE)
  * @param explanation MUST NOT be blank. Detailed reason for a violation of the lint check.
  * @see com.flamingo.annotations.UsedInsteadOf
  */

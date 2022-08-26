@@ -9,8 +9,8 @@ be viewed and rendered in realtime on an Android device.
 2. TODO
 
 # How to create a video?
-[Code](https://todo.com/) of the already written video plots is a good starting point to learn 
-Theater.
+[Code](/flamingo-playground/src/main/java/com/flamingo/playground/components/alertmessage/Theater.kt)
+of the already written video plots is a good starting point to learn Theater.
 
 ## Integration into the Flamingo Design System's playground app
 1. [Example integration in the app](https://todo.com/)

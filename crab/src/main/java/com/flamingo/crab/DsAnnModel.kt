@@ -98,11 +98,10 @@ internal interface DsAnnModel {
             isInternalDsComponent: Boolean,
             annotatedFQN: String,
         ): String {
-            val prefix1 = "https://www.todo.com/"
-            val prefix2 = "https://todo.com/"
-            val prefix3 = "https://todo."
+            val prefix1 = "https://f.com/"
+            val prefix2 = "https://www.f.com/"
             require((isInternalDsComponent && isEmpty()) ||
-                    startsWith(prefix1) || startsWith(prefix2) || startsWith(prefix3)) {
+                    startsWith(prefix1) || startsWith(prefix2)) {
                 "Figma url value found in @$DS_ANN_NAME at $annotatedFQN is not " +
                         "valid: it doesn't start with $prefix1 or $prefix2"
             }
@@ -113,7 +112,7 @@ internal interface DsAnnModel {
             isInternalDsComponent: Boolean,
             annotatedFQN: String,
         ): String {
-            val prefix = "https://"
+            val prefix = "https://confluence.companyname.ru"
             require((isInternalDsComponent && isEmpty()) || startsWith(prefix)) {
                 "Specification url value found in @$DS_ANN_NAME at $annotatedFQN is " +
                         "not valid: it doesn't start with $prefix"

@@ -51,8 +51,8 @@ import kotlin.random.Random
 
 @FlamingoComponent(
     preview = "com.flamingo.playground.preview.BadgePreview",
-    figma = "https://todo.com/file/qVO8jDuABDK9vsuLqRXeMx?node-id=628%3A8",
-    specification = "https://todo.com/x/gRUdbQE",
+    figma = "https://f.com/file/qVO8jDuABDK9vsuLqRXeMx?node-id=628%3A8",
+    specification = "https://confluence.companyname.ru/x/gRUdbQE",
     theaterPackage = "com.flamingo.playground.components.badge.TheaterPkg",
     demo = ["com.flamingo.playground.components.badge.BadgeStatesPlayroom"],
     supportsWhiteMode = true,

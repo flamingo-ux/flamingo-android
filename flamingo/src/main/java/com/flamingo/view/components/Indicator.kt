@@ -29,7 +29,7 @@ import androidx.appcompat.R as AppCompatR
         <br>
     """,
     preview = "com.flamingo.playground.preview.IndicatorPreview",
-    figmaUrl = "https://www.todo.com/file/sPbkUbBGkp5Mstc0IQYubk/4.1.-UI-Android-kit?node-id=670" +
+    figmaUrl = "https://f.com/file/sPbkUbBGkp5Mstc0IQYubk/4.1.-UI-Android-kit?node-id=670" +
         "%3A8",
     permittedXmlAttributes = ["app:ds_i_size", "app:ds_i_color"],
     theDemos = [

@@ -10,19 +10,19 @@ import androidx.preference.DropDownPreference
 import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
 import com.flamingo.cardElevationDarkBackgroundColors
-import com.flamingo.playground.R
 import com.flamingo.demoapi.DemoPreference
 import com.flamingo.demoapi.configurePreference
+import com.flamingo.demoapi.findPreference
 import com.flamingo.demoapi.initPref
 import com.flamingo.demoapi.onChange
 import com.flamingo.demoapi.tintIcons
-import com.flamingo.demoapi.findPreference
+import com.flamingo.playground.R
 import com.flamingo.playground.utils.Boast
 import com.flamingo.setCardElevationWithBackground
 
 /** @see R.string.card_demo_docs */
 class CardElevationDemoFragment : PreferenceFragmentCompat() {
-    private val figmaUrl = "https://www.todo.com/file/siTvBrYyUPigpjkZfOhJ1h/2.Core-Styles-and-I" +
+    private val figmaUrl = "https://f.com/file/siTvBrYyUPigpjkZfOhJ1h/2.Core-Styles-and-I" +
             "cons?node-id=1920%3A1363"
     private val elevations: Array<String> = cardElevationDarkBackgroundColors.keys
         .sorted()

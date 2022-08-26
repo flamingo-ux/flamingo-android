@@ -144,7 +144,7 @@ internal fun Modifier.circleOffset(
 }
 
 /**
- * 🤓 https://todo.ru/x/Kg81QQE
+ * 🤓 https://confluence.companyname.ru/x/Kg81QQE
  */
 @Stable
 private fun circleCenterOffset(

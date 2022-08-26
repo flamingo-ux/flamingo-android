@@ -44,8 +44,8 @@ import com.flamingo.theme.FlamingoIcon
  */
 @FlamingoComponent(
     preview = "com.flamingo.playground.preview.IndicatorComposePreview",
-    figma = "https://todo.com/file/sPbkUbBGkp5Mstc0IQYubk/4.1.-UI-Android-kit?node-id=670%3A8",
-    specification = "https://todo.com/x/ehEnKQE",
+    figma = "https://f.com/file/sPbkUbBGkp5Mstc0IQYubk/4.1.-UI-Android-kit?node-id=670%3A8",
+    specification = "https://confluence.companyname.ru/x/ehEnKQE",
     viewImplementation = "com.flamingo.view.components.Indicator",
     demo = ["com.flamingo.playground.components.indicator.StatesPlayroom"],
     supportsWhiteMode = false,

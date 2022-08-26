@@ -84,8 +84,8 @@ import com.flamingo.theme.colors.FlamingoColors
  */
 @FlamingoComponent(
     preview = "com.flamingo.playground.preview.TopAppBarPreview",
-    figma = "https://todo.com/file/qVO8jDuABDK9vsuLqRXeMx/Friend-UI-kit?node-id=11906%3A132158",
-    specification = "https://todo.com/x/FoBJPAE",
+    figma = "https://f.com/file/qVO8jDuABDK9vsuLqRXeMx/Friend-UI-kit?node-id=11906%3A132158",
+    specification = "https://confluence.companyname.ru/x/FoBJPAE",
     theaterPackage = "com.flamingo.playground.components.topappbar.TheaterPkg",
     demo = [
         "com.flamingo.playground.components.topappbar.TopAppBarStatesPlayroom",

@@ -60,8 +60,8 @@ import com.flamingo.theme.FlamingoTheme
 @FlamingoComponent(
     displayName = "Empty State",
     preview = "com.flamingo.playground.preview.EmptyStateComposePreview",
-    figma = "https://todo.com/file/qVO8jDuABDK9vsuLqRXeMx/Friend-UI-kit?node-id=830%3A621",
-    specification = "https://todo.com/x/M4YjKQE",
+    figma = "https://f.com/file/qVO8jDuABDK9vsuLqRXeMx/Friend-UI-kit?node-id=830%3A621",
+    specification = "https://confluence.companyname.ru/x/M4YjKQE",
     viewImplementation = "com.flamingo.view.components.EmptyState",
     demo = ["com.flamingo.playground.components.listitem.ListLoadingTypicalUsage"],
     supportsWhiteMode = true,

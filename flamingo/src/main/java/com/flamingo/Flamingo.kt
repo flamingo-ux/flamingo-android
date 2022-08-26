@@ -85,7 +85,7 @@ public object Flamingo {
     /**
      * When non-null, all flamingo components render debug info on top of them.
      *
-     * For more info, see [specification](https://todo.ru/x/dpiVSwE) of the debug
+     * For more info, see [specification](https://confluence.companyname.ru/x/dpiVSwE) of the debug
      * overlay.
      *
      * To see what exactly is drawn, refer to default overlay drawing implementation docs:

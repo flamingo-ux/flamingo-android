@@ -52,8 +52,8 @@ import com.flamingo.uiTestingTag
  */
 @FlamingoComponent(
     preview = "com.flamingo.playground.preview.IconPreview",
-    figma = "https://todo.com/file/siTvBrYyUPigpjkZfOhJ1h?node-id=381%3A2116",
-    specification = "https://todo.com/x/LBhzNgE",
+    figma = "https://f.com/file/siTvBrYyUPigpjkZfOhJ1h?node-id=381%3A2116",
+    specification = "https://confluence.companyname.ru/x/LBhzNgE",
     demo = ["com.flamingo.playground.IconsDemoFragment"],
     supportsWhiteMode = true,
 )

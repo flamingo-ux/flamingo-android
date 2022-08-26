@@ -8,7 +8,7 @@ package com.flamingo.annotations
  * forbids usage of [wrongComponentName] components. Details on how it works can be found in KDocs
  * of [com.flamingo.lint.WrongComponentAlternativeDetector]
  *
- * [More info](https://todo.ru/x/UwcyeQE)
+ * [More info](https://confluence.companyname.ru/x/UwcyeQE)
  */
 @MustBeDocumented
 @Retention(AnnotationRetention.SOURCE)

@@ -39,8 +39,8 @@ import com.flamingo.components.listitem.ListItem
  */
 @FlamingoComponent(
     preview = "com.flamingo.playground.preview.DividerPreview",
-    figma = "https://todo.com/file/qVO8jDuABDK9vsuLqRXeMx/Friend-UI-kit?node-id=11148%3A115043",
-    specification = "https://todo.com/x/6QchMQE",
+    figma = "https://f.com/file/qVO8jDuABDK9vsuLqRXeMx/Friend-UI-kit?node-id=11148%3A115043",
+    specification = "https://confluence.companyname.ru/x/6QchMQE",
     demo = ["com.flamingo.playground.components.DividerStatesPlayroom"],
     supportsWhiteMode = true,
 )

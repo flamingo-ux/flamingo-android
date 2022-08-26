@@ -137,8 +137,8 @@ import com.flamingo.withStyle
 @FlamingoComponent(
     displayName = "List Item",
     preview = "com.flamingo.playground.preview.ListItemPreview",
-    figma = "https://todo.com/file/qVO8jDuABDK9vsuLqRXeMx/Friend-UI-kit?node-id=628%3A7",
-    specification = "https://todo.com/x/jhEnKQE",
+    figma = "https://f.com/file/qVO8jDuABDK9vsuLqRXeMx/Friend-UI-kit?node-id=628%3A7",
+    specification = "https://confluence.companyname.ru/x/jhEnKQE",
     demo = [
         "com.flamingo.playground.components.listitem.ListItemStatesPlayroom",
         "com.flamingo.playground.components.listitem.ListLoadingTypicalUsage",

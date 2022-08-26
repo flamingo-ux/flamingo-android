@@ -85,8 +85,8 @@ import com.flamingo.annotations.UsedInsteadOf
  */
 @FlamingoComponent(
     preview = "com.flamingo.playground.preview.TextPreview",
-    figma = "https://todo.com/file/siTvBrYyUPigpjkZfOhJ1h?node-id=731%3A295",
-    specification = "https://todo.com/x/J4HJPgE",
+    figma = "https://f.com/file/siTvBrYyUPigpjkZfOhJ1h?node-id=731%3A295",
+    specification = "https://confluence.companyname.ru/x/J4HJPgE",
     demo = ["com.flamingo.playground.view.FontsDemoFragment"],
     supportsWhiteMode = false,
 )

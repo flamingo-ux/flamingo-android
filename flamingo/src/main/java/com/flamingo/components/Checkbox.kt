@@ -45,8 +45,8 @@ import com.flamingo.theme.FlamingoTheme
  */
 @FlamingoComponent(
     preview = "com.flamingo.playground.preview.CheckboxPreview",
-    figma = "https://todo.com/file/qVO8jDuABDK9vsuLqRXeMx/Friend-UI-kit?node-id=6434%3A73416",
-    specification = "https://todo.com/x/sBd5NgE",
+    figma = "https://f.com/file/qVO8jDuABDK9vsuLqRXeMx/Friend-UI-kit?node-id=6434%3A73416",
+    specification = "https://confluence.companyname.ru/x/sBd5NgE",
     demo = ["com.flamingo.playground.components.CheckboxStatesPlayroom"],
     supportsWhiteMode = true,
 )

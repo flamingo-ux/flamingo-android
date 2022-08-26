@@ -34,8 +34,8 @@ import com.flamingo.internalComponents
 @FlamingoComponent(
     displayName = "Rating Toggle Button",
     preview = "com.flamingo.playground.preview.RatingToggleButtonPreview",
-    figma = "https://todo.com/file/qVO8jDuABDK9vsuLqRXeMx?node-id=17133%3A133328",
-    specification = "https://todo.com/x/nRAjfwE",
+    figma = "https://f.com/file/qVO8jDuABDK9vsuLqRXeMx?node-id=17133%3A133328",
+    specification = "https://confluence.companyname.ru/x/nRAjfwE",
     demo = [
         "com.flamingo.playground.components.ratingtogglebutton.StatesPlayroom",
         "com.flamingo.playground.components.ratingtogglebutton.TypicalUsage",

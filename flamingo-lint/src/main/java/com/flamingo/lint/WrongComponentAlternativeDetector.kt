@@ -12,11 +12,11 @@ import com.android.tools.lint.detector.api.Scope
 import com.android.tools.lint.detector.api.Severity
 import com.android.tools.lint.detector.api.SourceCodeScanner
 import com.android.tools.lint.detector.api.TextFormat
+import com.flamingo.lint.WrongComponentAlternativeDetector.Companion.explanation
 import com.google.common.annotations.VisibleForTesting
 import com.intellij.psi.PsiMethod
 import org.jetbrains.uast.UCallExpression
 import org.jetbrains.uast.UastCallKind
-import com.flamingo.lint.WrongComponentAlternativeDetector.Companion.explanation
 
 /**
  * See [com.flamingo.annotations.UsedInsteadOf] to learn the purpose of this lint check.
@@ -24,10 +24,10 @@ import com.flamingo.lint.WrongComponentAlternativeDetector.Companion.explanation
  * ## How it works
  * 1. If there is a `gradle clean`, _`KspWrongComponentAlternatives.csv`_ is deleted from the
  * `resources` folder of the `flamingo-lint` module. (see `build.gradle` of this module)
- * 2. [crab](https://todo.ru/x/YA6oQwE) extracts @[UsedInsteadOf] from component
+ * 2. [crab](https://confluence.companyname.ru/x/YA6oQwE) extracts @[UsedInsteadOf] from component
  * declarations and creates _`wrong component alternatives config`_ file for each component in the
  * `flamingo` module.
- * 3. Then, when processing demo module(s), [crab](https://todo.ru/x/YA6oQwE)
+ * 3. Then, when processing demo module(s), [crab](https://confluence.companyname.ru/x/YA6oQwE)
  * combines all configs into one compound config file - _`KspWrongComponentAlternatives.csv`_ and
  * saves it in the demo module(s).
  * 4. __Only after__ this, gradle's custom `copyConfigIntoResourcesDebug` task is launched (see
@@ -37,7 +37,7 @@ import com.flamingo.lint.WrongComponentAlternativeDetector.Companion.explanation
  * 6. Compiled lint.jar is added to the `flamingo.aar` and/or is picked up by the Android Studio to
  * perform __live__ checking of the code.
  *
- * [More info](https://todo.ru/x/UwcyeQE)
+ * [More info](https://confluence.companyname.ru/x/UwcyeQE)
  *
  * @see com.flamingo.annotations.UsedInsteadOf
  * @see explanation
@@ -142,8 +142,8 @@ class WrongComponentAlternativeDetector : Detector(), SourceCodeScanner {
             This is a wrong alternative to the existing flamingo component. Use it instead.
             """
 
-        private const val memeUrl = "https://todo.ru/pages/viewpage.action?pageId=" +
-                "6328289107&preview=/6328289107/6328289137/meme.png"
+        private const val memeUrl = "https://confluence.companyname.ru/pages/viewpage.action" +
+                "?pageId=6328289107&preview=/6328289107/6328289137/meme.png"
 
         val ISSUE: Issue = Issue.create(
             id = "WrongComponentAlternative",

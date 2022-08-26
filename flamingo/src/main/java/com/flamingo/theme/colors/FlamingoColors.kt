@@ -12,62 +12,62 @@ public data class FlamingoColors internal constructor(
 
     /**
      * Основной цвет фирменного стиля для приложения
-     * [figma](https://todo.com/file/siTvBrYyUPigpjkZfOhJ1h?node-id=713%3A14)
+     * [figma](https://f.com/file/siTvBrYyUPigpjkZfOhJ1h?node-id=713%3A14)
      */
     public val primary: Color,
 
     /**
      * Вторичный фирменный цвет вашего приложения, используемый в основном в качестве акцента для
      * определенных виджетов, которые должны выделяться
-     * [figma](https://todo.com/file/siTvBrYyUPigpjkZfOhJ1h?node-id=714%3A15)
+     * [figma](https://f.com/file/siTvBrYyUPigpjkZfOhJ1h?node-id=714%3A15)
      */
     public val secondary: Color,
 
     /**
      * Информация
-     * [figma](https://todo.com/file/siTvBrYyUPigpjkZfOhJ1h?node-id=714%3A44)
+     * [figma](https://f.com/file/siTvBrYyUPigpjkZfOhJ1h?node-id=714%3A44)
      */
     public val info: Color,
 
     /**
      * Предупреждение
-     * [figma](https://todo.com/file/siTvBrYyUPigpjkZfOhJ1h?node-id=714%3A47)
+     * [figma](https://f.com/file/siTvBrYyUPigpjkZfOhJ1h?node-id=714%3A47)
      */
     public val warning: Color,
 
     /**
      * Успех
-     * [figma](https://todo.com/file/siTvBrYyUPigpjkZfOhJ1h?node-id=934%3A1069)
+     * [figma](https://f.com/file/siTvBrYyUPigpjkZfOhJ1h?node-id=934%3A1069)
      */
     public val success: Color,
 
     /**
      * Оценка (для звёздочек, например)
-     * [figma](https://todo.com/file/siTvBrYyUPigpjkZfOhJ1h?node-id=716%3A29)
+     * [figma](https://f.com/file/siTvBrYyUPigpjkZfOhJ1h?node-id=716%3A29)
      */
     public val rating: Color,
 
     /**
      * Ошибка
-     * [figma](https://todo.com/file/siTvBrYyUPigpjkZfOhJ1h?node-id=714%3A42)
+     * [figma](https://f.com/file/siTvBrYyUPigpjkZfOhJ1h?node-id=714%3A42)
      */
     public val error: Color,
 
     /**
      * Используется для разделителей в списках
-     * [figma](https://todo.com/file/siTvBrYyUPigpjkZfOhJ1h?node-id=436%3A5)
+     * [figma](https://f.com/file/siTvBrYyUPigpjkZfOhJ1h?node-id=436%3A5)
      */
     public val separator: Color,
 
     /**
      * Для рамки, окружающей элемент
-     * [figma](https://todo.com/file/siTvBrYyUPigpjkZfOhJ1h?node-id=436%3A8)
+     * [figma](https://f.com/file/siTvBrYyUPigpjkZfOhJ1h?node-id=436%3A8)
      */
     public val outline: Color,
 
     /**
      * Для рамки, окружающей элемент
-     * [figma](https://todo.com/file/siTvBrYyUPigpjkZfOhJ1h?node-id=438%3A298)
+     * [figma](https://f.com/file/siTvBrYyUPigpjkZfOhJ1h?node-id=438%3A298)
      */
     public val outlineDark: Color,
 
@@ -77,22 +77,22 @@ public data class FlamingoColors internal constructor(
     public val background: Color,
 
     /**
-     * [figma](https://todo.com/file/siTvBrYyUPigpjkZfOhJ1h?node-id=735%3A301)
+     * [figma](https://f.com/file/siTvBrYyUPigpjkZfOhJ1h?node-id=735%3A301)
      */
     public val backgroundSecondary: Color,
 
     /**
-     * [figma](https://todo.com/file/siTvBrYyUPigpjkZfOhJ1h?node-id=735%3A312)
+     * [figma](https://f.com/file/siTvBrYyUPigpjkZfOhJ1h?node-id=735%3A312)
      */
     public val backgroundTertiary: Color,
 
     /**
-     * [figma](https://todo.com/file/siTvBrYyUPigpjkZfOhJ1h?node-id=735%3A311)
+     * [figma](https://f.com/file/siTvBrYyUPigpjkZfOhJ1h?node-id=735%3A311)
      */
     public val backgroundQuaternary: Color,
 
     /**
-     * [figma](https://todo.com/file/siTvBrYyUPigpjkZfOhJ1h?node-id=999%3A1219)
+     * [figma](https://f.com/file/siTvBrYyUPigpjkZfOhJ1h?node-id=999%3A1219)
      */
     public val backgroundTextField: Color,
 
@@ -100,19 +100,19 @@ public data class FlamingoColors internal constructor(
 
     /**
      * Основной (заголовочный) текст.
-     * [figma](https://todo.com/file/siTvBrYyUPigpjkZfOhJ1h?node-id=337%3A1436)
+     * [figma](https://f.com/file/siTvBrYyUPigpjkZfOhJ1h?node-id=337%3A1436)
      */
     public val textPrimary: Color,
 
     /**
      * Вторичный текст
-     * [figma](https://todo.com/file/siTvBrYyUPigpjkZfOhJ1h?node-id=337%3A1437)
+     * [figma](https://f.com/file/siTvBrYyUPigpjkZfOhJ1h?node-id=337%3A1437)
      */
     public val textSecondary: Color,
 
     /**
      * Используется в качестве disabled текста
-     * [figma](https://todo.com/file/siTvBrYyUPigpjkZfOhJ1h?node-id=337%3A1438)
+     * [figma](https://f.com/file/siTvBrYyUPigpjkZfOhJ1h?node-id=337%3A1438)
      */
     public val textTertiary: Color,
 

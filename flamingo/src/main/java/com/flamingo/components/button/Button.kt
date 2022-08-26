@@ -88,8 +88,8 @@ import kotlinx.serialization.Serializable
  */
 @FlamingoComponent(
     preview = "com.flamingo.playground.preview.ButtonComposePreview",
-    figma = "https://todo.com/file/qVO8jDuABDK9vsuLqRXeMx/UI-kit?node-id=628%3A5",
-    specification = "https://todo.com/x/j4cjKQE",
+    figma = "https://f.com/file/qVO8jDuABDK9vsuLqRXeMx/UI-kit?node-id=628%3A5",
+    specification = "https://confluence.companyname.ru/x/j4cjKQE",
     viewImplementation = "com.flamingo.view.components.Button",
     demo = [
         "com.flamingo.playground.components.button.ButtonComposeStatesPlayroom",

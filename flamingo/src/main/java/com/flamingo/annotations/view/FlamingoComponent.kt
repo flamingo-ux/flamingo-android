@@ -2,11 +2,11 @@ package com.flamingo.annotations.view
 
 import android.view.View
 import androidx.appcompat.view.ContextThemeWrapper
-import org.intellij.lang.annotations.Language
 import com.flamingo.initUnitConversionsInCustomView
 import com.flamingo.utils.UnitConversions
 import com.flamingo.view.components.EmptyState
 import com.flamingo.view.components.FlamingoComponent
+import org.intellij.lang.annotations.Language
 
 /**
  * Every design system component, that has Android View implementation, MUST BE annotated with
@@ -16,7 +16,7 @@ import com.flamingo.view.components.FlamingoComponent
  * forbidden to create new ones. Instead, use compose implementation.
  * See [com.flamingo.annotations.FlamingoComponent].
  *
- * ## [Video introduction](https://video.todo.ru/watch/6083)
+ * ## [Video introduction](https://sbervideo.companyname.ru/watch/6083)
  * Probably outdated and partially inaccurate.
  *
  * # What is a design system component
@@ -26,7 +26,7 @@ import com.flamingo.view.components.FlamingoComponent
  * # How to create a design system component
  *
  * There is a template for fast creation of design system component class.
- * [How to use it](https://video.todo.ru/watch/6223).
+ * [How to use it](https://sbervideo.companyname.ru/watch/6223).
  *
  * - Subclass any android view and put it in [com.flamingo.view.components]
  * package in the `flamingo` gradle module
@@ -57,7 +57,7 @@ import com.flamingo.view.components.FlamingoComponent
  * @param displayName MUST NOT BE blank. It will be used on the component's details page.
  * @param docs is an html string that describes details of the component usage to the programmers.
  * All docs MUST BE there, usage of KDoc comments is prohibited.
- * @param figmaUrl points to the figma design node. Must start with https://www.todo.com
+ * @param figmaUrl points to the figma design node. Must start with https://f.com
  * @param preview see [com.flamingo.playground.preview.Preview]
  * @param permittedXmlAttributes specifies names of the custom xml attributes of this component.
  * All other attributes are prohibited.

@@ -49,8 +49,8 @@ import com.flamingo.utils.times
  */
 @FlamingoComponent(
     preview = "com.flamingo.playground.preview.RatingPreview",
-    figma = "https://todo.com/file/qVO8jDuABDK9vsuLqRXeMx?node-id=1026%3A1",
-    specification = "https://todo.com/x/WiTQgAE",
+    figma = "https://f.com/file/qVO8jDuABDK9vsuLqRXeMx?node-id=1026%3A1",
+    specification = "https://confluence.companyname.ru/x/WiTQgAE",
     demo = ["com.flamingo.playground.components.RatingStatesPlayroom"],
     supportsWhiteMode = false,
 )
