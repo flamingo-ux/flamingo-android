@@ -35,7 +35,7 @@ import com.flamingo.theme.FlamingoIcon
 /**
  * Animates between [color] changes.
  *
- * Using [icon], it is possible to display an icon inside of the [Indicator]. Our designers invented
+ * Using [icon], it is possible to display an icon inside the [Indicator]. Our designers invented
  * a __novel__ concept: only a __small__ subset of all [FlamingoIcon]s are correctly displayed
  * inside the [Indicator]. Edges of others are cut off because of the small [Indicator] size. Beware
  * of this behaviour and __always check__ how your particular icon is displayed.

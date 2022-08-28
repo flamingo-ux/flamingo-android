@@ -22,7 +22,7 @@ fun Sample2() {
     // Label 1, Label 2, ... Label 8
     val labels = remember { (1..8).map { "Label " + it } }
     // this is the key to displaying unlimited number of WidgetCards
-    val groups = remember { labels.chunked(WidgetCardGroupChildrenRange.last) }
+    val groups: List<List<String>> = remember { labels.chunked(WidgetCardGroupChildrenRange.last) }
     LazyColumn(verticalArrangement = Arrangement.spacedBy(16.dp)) {
         itemsIndexed(groups) { index, list ->
             Text("Group " + index, style = Flamingo.typography.h3)

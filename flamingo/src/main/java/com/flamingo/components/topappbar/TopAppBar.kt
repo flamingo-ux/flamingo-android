@@ -137,7 +137,7 @@ public fun TopAppBar(
 
 /**
  * Shadow [Box]:
- * 1. has height of [4.dp] (less then 54.dp - min height of the [TopAppBar])
+ * 1. has height of [4.dp] (less than 54.dp - min height of the [TopAppBar])
  * 2. aligned to the bottom of the outer box, because shadow is needed only at the bottom of the
  * [TopAppBar], not at the top
  * 3. is drawn behind the actual [TopAppBar] content (which has a non-transparent background)

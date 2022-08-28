@@ -11,7 +11,7 @@ import com.flamingo.annotations.FlamingoComponent
  * It is __PROHIBITED__ to reflectively instantiate [InternalComponents] outside of
  * `flamingo-playground` module.
  *
- * `crab` sees if a function has this receiver and adds a corresponding property to the
+ * `crab` checks if a function has this receiver and adds a corresponding property to the
  * [FlamingoRegistry].
  *
  * @see com.flamingo.components.Search
