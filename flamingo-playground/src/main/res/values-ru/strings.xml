@@ -35,6 +35,7 @@
     <string name="design_demos_lectures_and_meetups_category_title">Лекции и митапы</string>
     <string name="design_demos_lectures_and_meetups_category_summary">Отсортированы по дате</string>
     <string name="design_demos_lectures_and_meetups_q2_2021_title">Q2 2021 (Только Android View impl)</string>
+    <string name="design_demos_lectures_and_meetups_q3_2022_title">Q3 2022 (Jetpack Compose)</string>
 
     <string name="design_demos_title">Демо дизайн-системы</string>
     <string name="design_demos_summary">Тестовые экраны дизайн-системы. Разработчикам 👨‍💻 рекомендуется

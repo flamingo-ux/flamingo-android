@@ -13,10 +13,14 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.requiredSize
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.lazy.rememberLazyListState
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.SpanStyle
@@ -27,7 +31,10 @@ import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.flamingo.Flamingo
+import com.flamingo.InternalComponents
 import com.flamingo.annotations.FlamingoComponent
+import com.flamingo.components.AlertMessage
+import com.flamingo.components.AlertMessageVariant
 import com.flamingo.components.Card
 import com.flamingo.components.Chip
 import com.flamingo.components.CornerRadius
@@ -35,13 +42,22 @@ import com.flamingo.components.Divider
 import com.flamingo.components.Elevation
 import com.flamingo.components.Icon
 import com.flamingo.components.IconButton
+import com.flamingo.components.LinkCard
+import com.flamingo.components.Search
 import com.flamingo.components.Text
 import com.flamingo.components.button.Button
 import com.flamingo.components.button.ButtonColor
+import com.flamingo.components.button.ButtonWidthPolicy
+import com.flamingo.components.listitem.ListItem
+import com.flamingo.components.topappbar.TopAppBar
+import com.flamingo.components.widgetcard.WidgetCardGroup
 import com.flamingo.crab.FlamingoRegistry
 import com.flamingo.loremIpsum
 import com.flamingo.playground.boast
+import com.flamingo.playground.components.alertmessage.TheaterPkg
 import com.flamingo.playground.conf.Conf.Companion.Preview
+import com.flamingo.playground.internalComponents
+import com.flamingo.playground.overlay.DebugOverlayImpl
 import com.flamingo.playground.overlay.disableDebugOverlay
 import com.flamingo.playground.overlay.enableDebugOverlay
 import com.flamingo.playground.preview.ButtonComposePreview
@@ -54,7 +70,7 @@ import com.flamingo.uiTestingTag
  * This is the presentation about the Flamingo Design System. Is is intended to be presented in an
  * Android Studio IDE v. 2021.2.1 Patch 2.
  *
- * ## Video recording is available [here](https://todo.com)
+ * ## Video recording is available [here](https://youtu.be/QW6lD5ip9xs)
  *
  * Do not auto-format this file, because giant line brakes will be removed.
  *
@@ -75,7 +91,9 @@ import com.flamingo.uiTestingTag
  * - Right-click on the rendered KDocs block
  *      - "Adjust font size" and set the __largest__ front size
  *      - Render All Doc Comments
- * - Adjust code font size in the _presentation mode_ using pinch-to-zoom on the MacBook's touchpad
+ * - Adjust code font size:
+ *      - using pinch-to-zoom on the MacBook's touchpad
+ *      - __OR__ in the Android Studio's settings
  *
  * ### THEN
  *
@@ -103,16 +121,40 @@ internal class Conf {
 
 
 
-
     /**
      * # Дизайн-система Flamingo: Jetpack Compose
      *
      * ⠀
      *
-     *  __Антон Попов__ ([web](https://popov-anton.web.app/),
-     *  [Профиль в СберДруг](https://sberfriend.sbrf.ru/sberfriend/#/user/1804736))
+     *  __Антон Попов__ ([https://popov-anton.web.app/])
      */
     class Intro
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    /**
+     * ## 2 части
+     *
+     * - Введение в дизайн систему Flamingo
+     * - Внутреннее устройство дизайн системы Flamingo
+     */
+    class TwoParts
 
 
 
@@ -144,9 +186,9 @@ internal class Conf {
      * - 🎨 Палитра цветов
      * - 🖍 Цвета темы
      * - __📦 UI компоненты__
-     *      - Button
-     *      - AlertMessage
-     *      - ListItem
+     *      - [Button]
+     *      - [AlertMessage]
+     *      - [ListItem]
      *      - и т. д.
      * - Градиенты
      * - Тени
@@ -176,9 +218,9 @@ internal class Conf {
     /**
      * ## Где документация?
      *
-     * Документацией всей ДС являются
-     * [Flamingo Playground](https://confluence.sberbank.ru/x/Aw1jdQE) —
-     * демонстрационные приложения, позволяющие просматривать реальное содержимое дизайн-системы на
+     * Документацией всей ДС является
+     * [Flamingo Playground](https://confluence.companyname.ru/x/Aw1jdQE) —
+     * демонстрационное приложение, позволяющее просматривать реальное содержимое дизайн-системы на
      * каждой платформе. Здесь можно посмотреть:
      *
      * - 📦 список и состояния всех компонентов
@@ -254,9 +296,6 @@ internal class Conf {
      *      странице __Releases__
      *      - Не забывайте обновлять это приложение, скачивая apk-файл вручную при выходе новой
      *      версии Flamingo
-     * _Firebase App Distribution_
-     * ([ссылка](https://confluence.sberbank.ru/x/Aw1jdQE)
-     * есть в Confluence)
      */
     class FlamingoPlaygroundInApk
 
@@ -287,6 +326,25 @@ internal class Conf {
      * Compose с Android View.
      */
     class TwoImpls
+
+
+
+
+
+
+
+
+
+
+
+
+
+    /**
+     * ## Gradle Модули
+     * [README.md]
+     *
+     */
+    class GradleModules
 
 
 
@@ -334,6 +392,7 @@ internal class Conf {
      */
     @Composable
     fun Theme() {
+        MaterialTheme { /* code */ }
         FlamingoTheme { Chip(label = "Chip label") } // ✅
         Chip(label = "Chip label") // ❌
     }
@@ -728,6 +787,135 @@ internal class Conf {
 
 
 
+    /**
+     * ## Theater
+     *
+     * Это небольшой фреймворк для создания коротких 3D видео-тизеров о flamingo-компонентах.
+     *
+     * Он позволяет написать сюжет (plot) видеоролика на языке программирования kotlin и запустить
+     * его на Android устройстве.
+     */
+    class Theater
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    /**
+     * Некоторые UI компоненты дизайн системы являются внутренними ([InternalComponents]) — их можно
+     * использовать только __внутри__ ДС, например, для реализации других компонентов. Их __нельзя__
+     * использовать в клиентском коде.
+     *
+     * Такие компоненты всё равно видны в галерее компонентов, но помечены как внутренние.
+     */
+    @Composable
+    fun InternalComponents() {
+        internalComponents.Search(value = "", onValueChange = {})
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    /**
+     * ## [Button]
+     * [ButtonWidthPolicy]
+     */
+    class ButtonComponent
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    /**
+     * ## [TopAppBar]
+     * Для показа тени при скроллинге используйте специальные function overloads:
+     */
+    @Composable
+    fun TopAppBarComponent() {
+        TopAppBar(listState = rememberLazyListState())
+        TopAppBar(scrollState = rememberScrollState())
+    }
+
+
+
+
+
+
+
+
+
+
+
+    /**
+     * ## [ListItem]
+     * - Ограничения на контент слотов
+     * - Скелетон при загрузке
+     */
+    @Composable
+    fun ListItemComponent() {
+        ListItem(title = loremIpsum(3))
+    }
+
+
+
+
+
+
+
+
+
+
+
+    /**
+     * ## [WidgetCardGroup]
+     * - Концепция _layout_
+     * - [LinkCard]
+     */
+    @Composable
+    fun WidgetCardGroupComponent() {
+        WidgetCardGroup { LinkCard(text = loremIpsum(2)) }
+    }
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -743,11 +931,15 @@ internal class Conf {
      *
      * ### Compose
      * - [com.flamingo.lint.WrongComponentAlternativeDetector]
+     *      - Запрещает использовать аналоги flamingo-компонентов из других библиотек (material)
+     *      - Неверные альтернативы показываются в Flamingo Playground на странице компонента
      */
     @Composable
     fun LintChecks() {
 //        androidx.compose.material.RadioButton(selected = false, onClick = {})
     }
+
+//    public val ALPHA_DISABLED = 0
 
 
 
@@ -794,39 +986,254 @@ internal class Conf {
 
 
 
+    /**
+     * # Конец первой части
+     * ⌛ Перерыв 15 мин.
+     */
+    class Pause
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    /**
+     * # Внутренности Flamingo
+     *
+     * Эта часть презентации посвящена внутреннему устройству UI компонентов и Flamingo Playground
+     */
+    class Internals
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    /**
+     * # Crab
+     *
+     * Crab это написанный на KSP annotation processor, собирающий из исходного кода gradle-модуля
+     * `flamingo`:
+     *
+     * - Значения properties в аннотации @[FlamingoComponent]
+     * - KDocs функций, помеченных @FlamingoComponent (если @[FlamingoComponent.extractKDocs] ==
+     * true)
+     * - `@samples`, указанные в KDocs функций (подробнее — ниже)
+     *
+     */
+    class Crab
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    /**
+     * # Зачем?
+     *
+     * ## Требования
+     * Нужно, чтобы метаданные о UI компонентах
+     * - были видны разработчику в файле исходного кода
+     * самого компонента (не в отдельном файле)
+     * - не попадали в production apk
+     * - были доступны в runtime из модуля `flamingo-playground`
+     */
+    class WhyCrabRequirements
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    /**
+     * ## Проблемы
+     *
+     * - Невозможно сканировать classpath модуля во время выполнения и собирать список всех composable функций, которые также являются flamingo-компонентами.
+     * - Composable функции недоступны через reflection в runtime: они не поддерживают _function references_.
+     * - Они также не могут быть вызваны через reflection, потому что плагин компилятора Jetpack Compose изменяет их параметры.
+     * - Текущий подход использует аннотации для подклассов View с [AnnotationRetention.RUNTIME],
+     * что означает, что возможно конфиденциальная внутренняя документация включена в production apk.
+     */
+    class WhyCrabProblems
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    /**
+     * ## Существующее решение
+     *
+     * Библиотека [Showkase](https://github.com/airbnb/Showkase) от Airbnb также использует
+     * annotation processing, но не подходит из-за этих ограничений:
+     *
+     * - `@ShowkaseComposable` имеет ограниченный набор параметров, нельзя добавить свои (figma,
+     * specUrl, supportsWhiteMode, и т. д.)
+     * - `@Preview`-annotated функции включаются в processing
+     * - Нельзя отличить flamingo-компоненты от других composable функций
+     */
+    class ExistingSolutions
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    /**
+     * ## Как работает Crab
+     *
+     * - [F0ae2f6c706cff60bff7c0125b99cae]
+     * - [FlamingoRegistry]
+     */
+    class HowCrabWorks
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    /**
+     * ## Lint check — _Wrong Component Alternative Detector_
+     *
+     * - [UsedInsteadOf] ([TopAppBar])
+     * - [F0ae2f6c706cff60bff7c0125b99cae]
+     * - [KspWrongComponentAlternatives]
+     * - [copyConfigIntoResourcesDebug]
+     *
+     * Подробнее — [WrongComponentAlternativeDetector]
+     */
+    class WrongComponentAlternativeLint
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    /**
+     * ## Debug Overlay
+     *
+     * - [FlamingoComponentBase]
+     * - [DebugOverlay]
+     * - [Flamingo.enableDebugOverlay]
+     * - [DebugOverlayImpl]
+     */
+    class InternalsOfDebugOverlay
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    /**
+     * ## Внутренности Theater
+     *
+     * - [Modifier.graphicsLayer]
+     * - Backstage
+     * - [TheaterPkg]
+     */
+    class TheaterInternals
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
     /**
      * ## Как быть Flaming Developer™-ом
      *
-     * TODO
+     * [Flamingo Developer Workflow](https://confluence.companyname.ru/x/3xs7AQI)
      */
     class HowToDevelopFlamingo
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    /**
-     * ## Как сделать релиз
-     *
-     * TODO
-     */
-    class HowToRelease
 
 
 
@@ -850,7 +1257,7 @@ internal class Conf {
      * - [Confluence — раздел Android](https://confluence.companyname.ru/x/v4cgegE)
      * - [Статья-введение на Medium](https://popovanton0.medium.com/building-a-modern-design-system-using-jetpack-compose-8bd8084e8b0c)
      * - [Youtube-плейлист с видеороликами Theater](https://www.youtube.com/playlist?list=PLGEKQ_tCWabRme1pUVZJLektqXXfDIW2G)
-     * - [Запись этой презентации](https://todo.com)
+     * - [Запись этой презентации](https://youtu.be/QW6lD5ip9xs)
      * - [Запись предыдущей презентации о ДС](https://youtu.be/oRbQns82FX4)
      */
     class TheEnd
@@ -873,10 +1280,19 @@ internal class Conf {
          * To be able to (un-)comment pieces of and still have import statements
          */
         @Suppress("UNUSED_EXPRESSION")
-        fun references() {
+        @Composable
+        fun References() {
             Preview::class
             Configuration::class
             Flamingo.disableDebugOverlay()
+            Button(onClick = { /*TODO*/ }, label = "")
+            AlertMessage(text = "", variant = AlertMessageVariant.SUCCESS)
+            ListItem(title = "")
+            InternalComponents::class
+            ButtonWidthPolicy::class
+            DebugOverlayImpl::class
+            Modifier.graphicsLayer {}
+            TheaterPkg::class
         }
 
         @Composable
