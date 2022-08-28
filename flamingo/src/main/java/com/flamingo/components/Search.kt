@@ -53,19 +53,19 @@ import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import com.flamingo.Flamingo
 import com.flamingo.InternalComponents
 import com.flamingo.R
 import com.flamingo.alpha
 import com.flamingo.annotations.FlamingoComponent
 import com.flamingo.theme.FlamingoTheme
-import com.flamingo.Flamingo
 
 /**
  * Used for entering search requests. Works just like [TextField].
  *
  * @param onClick if non-null, all text editing capabilities are disabled ([value] and
  * [onValueChange] are ignored), and entirety of the field becomes clickable, if [disabled] is
- * false. Else - non clickable
+ * false. Else - non-clickable
  *
  * @param placeholder if null, placeholder won't be shown
  *
