@@ -131,10 +131,6 @@
             app:title="@string/design_demos_links_introductory_article_title" />
 
         <Preference
-            app:summary="@string/design_demos_links_theater_videos_url"
-            app:title="@string/design_demos_links_theater_videos_title" />
-
-        <Preference
             app:summary="@string/design_demos_links_github_repo_url"
             app:title="@string/design_demos_links_github_repo_title" />
 
@@ -146,6 +142,10 @@
             app:summary="@string/design_demos_links_confluence_android_url"
             app:title="@string/design_demos_links_confluence_android_title" />
 
+        <Preference
+            app:summary="@string/design_demos_links_theater_videos_url"
+            app:title="@string/design_demos_links_theater_videos_title" />
+
     </PreferenceCategory>
 
     <PreferenceCategory
@@ -153,6 +153,10 @@
         app:key="lectures_and_meetups_category"
         app:summary="@string/design_demos_lectures_and_meetups_category_summary"
         app:title="@string/design_demos_lectures_and_meetups_category_title">
+
+        <Preference
+            app:summary="@string/design_demos_lectures_and_meetups_q3_2022_url"
+            app:title="@string/design_demos_lectures_and_meetups_q3_2022_title" />
 
         <Preference
             app:summary="@string/design_demos_lectures_and_meetups_q2_2021_url"

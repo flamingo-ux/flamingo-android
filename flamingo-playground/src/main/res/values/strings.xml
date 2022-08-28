@@ -43,6 +43,8 @@
     <string name="design_demos_lectures_and_meetups_category_summary">Sorted by date</string>
     <string name="design_demos_lectures_and_meetups_q2_2021_title">Q2 2021 (Android View impl only)</string>
     <string name="design_demos_lectures_and_meetups_q2_2021_url" translatable="false">https://youtu.be/oRbQns82FX4</string>
+    <string name="design_demos_lectures_and_meetups_q3_2022_title">Q3 2022 (Jetpack Compose)</string>
+    <string name="design_demos_lectures_and_meetups_q3_2022_url" translatable="false">https://youtu.be/QW6lD5ip9xs</string>
 
     <string name="design_demos_title">Demo of the Design System</string>
     <string name="design_demos_summary">Test screens of the design system. Developers 👨‍💻 should

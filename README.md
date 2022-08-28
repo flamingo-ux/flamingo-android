@@ -13,6 +13,7 @@ Palette, theme colors, typography, icon set, illustrations, gradients and __UI c
 - [Youtube-playlist with Theater videos](https://www.youtube.com/playlist?list=PLGEKQ_tCWabRme1pUVZJLektqXXfDIW2G)
 - [Flamingo space in Confluence](https://confluence.companyname.ru/x/cIMLOwE)
 - [Android section in Confluence space](https://confluence.companyname.ru/x/v4cgegE)
+- [Meetup Q3 2022 (Jetpack Compose)](https://youtu.be/QW6lD5ip9xs)
 - [Meetup Q2 2021 (Android View impl only)](https://youtu.be/oRbQns82FX4)
 
 # Playground App
