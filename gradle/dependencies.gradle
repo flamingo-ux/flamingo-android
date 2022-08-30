@@ -1,6 +1,6 @@
 def versions = [
         theater    : '0.0.2',
-        flamingo   : '0.0.4',
+        flamingo   : '0.0.5',
         kotlin     : '1.7.0',
         compose    : '1.2.0',
         ksp        : '1.7.0-1.0.6',
