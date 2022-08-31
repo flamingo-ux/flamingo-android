@@ -21,7 +21,6 @@ import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.animateContentSize
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.spring
-import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
@@ -66,12 +65,19 @@ import com.flamingo.ALPHA_DISABLED
 import com.flamingo.Flamingo
 import com.flamingo.annotations.FlamingoComponent
 import com.flamingo.annotations.UsedInsteadOf
+import com.flamingo.components.TextFieldIcon.IconPlacement
+import com.flamingo.components.button.Button
+import com.flamingo.components.button.ButtonColor
+import com.flamingo.components.button.ButtonSize
+import com.flamingo.components.button.ButtonVariant
 import com.flamingo.theme.FlamingoIcon
 import com.flamingo.theme.FlamingoTheme
 
 /**
- * Allows to display [Icon] or [IconButton] in the [TextField]. If [onClick] is null, [Icon] will be
+ * Allows displaying [Icon] or [IconButton] in the [TextField]. If [onClick] is null, [Icon] will be
  * displayed. Else - [IconButton].
+ *
+ * @param placement in the [TextField]. If [IconPlacement.START], [onClick] MUST BE null
  *
  * @param contentDescription text used by accessibility services to describe what this [Icon] or
  * [IconButton] represents. This should always be provided unless this [Icon] or [IconButton] is
@@ -82,7 +88,26 @@ import com.flamingo.theme.FlamingoTheme
 public data class TextFieldIcon(
     val icon: FlamingoIcon,
     val onClick: (() -> Unit)? = null,
+    val placement: IconPlacement = IconPlacement.END,
     val contentDescription: String?,
+) {
+    init {
+        if (placement == IconPlacement.START) require(onClick == null) {
+            "If placement == IconPlacement.START, onClick MUST BE null"
+        }
+    }
+
+    public enum class IconPlacement { START, END, }
+}
+
+/**
+ * Allows displaying [Button] at the end of the [TextField]
+ */
+public data class TextFieldButton(
+    val label: String,
+    val onClick: () -> Unit,
+    val loading: Boolean = false,
+    val disabled: Boolean = false,
 )
 
 /**
@@ -135,16 +160,21 @@ public data class TextFieldIcon(
  * hidden
  *
  * @param iconAreaAlignment defines vertical alignment of the contents in the icon area - either
- * [icon] or [CircularLoader] from [loading]. But when [value] contains no `\n`,
+ * [icon], or [CircularLoader] from [loading], or [button]. But when [value] contains no `\n`,
  * [iconAreaAlignment] is overridden with [TextFieldIconAlignment.CENTER]
  *
- * @param icon allows to display [Icon] or [IconButton] in the [TextField]. If
+ * @param icon allows displaying [Icon] or [IconButton] in the [TextField]. If
  * [TextFieldIcon.onClick] is null, [Icon] will be displayed. Else - [IconButton]
+ *
+ * @param button if non-null, [Button] in [ButtonVariant.TEXT] is displayed at the end of the
+ * [TextField]
  *
  * @param size controls vertical size of the [TextField]
  *
  * @param onClick if non-null, and [disabled] is false, editing capabilities of the [TextField]
  * become disabled, [TextField] becomes clickable
+ *
+ * @param bottomPadding specifies padding from the bottom of the whole [TextField]
  *
  * @param keyboardOptions software keyboard options that contains configuration such as
  * [KeyboardType] and [ImeAction]
@@ -155,7 +185,7 @@ public data class TextFieldIcon(
  *
  * @param visualTransformation transforms the visual representation of the input [value].
  * For example, you can use [androidx.compose.ui.text.input.PasswordVisualTransformation] to create
- * a password text field. By default no visual transformation is applied
+ * a password text field. By default, no visual transformation is applied
  */
 @FlamingoComponent(
     displayName = "Text Field",
@@ -184,7 +214,9 @@ public fun TextField(
     maxVisibleLines: Int = 4,
     icon: TextFieldIcon? = null,
     iconAreaAlignment: TextFieldIconAlignment = TextFieldIconAlignment.TOP,
+    button: TextFieldButton? = null,
     onClick: (() -> Unit)? = null,
+    bottomPadding: TextFieldBottomPadding = TextFieldBottomPadding.MEDIUM,
     visualTransformation: VisualTransformation = VisualTransformation.None,
     interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
     keyboardOptions: KeyboardOptions = KeyboardOptions.Default,
@@ -212,8 +244,10 @@ public fun TextField(
         multiline = multiline,
         maxVisibleLines = maxVisibleLines,
         icon = icon,
+        button = button,
         iconAreaAlignment = iconAreaAlignment,
         onClick = onClick,
+        bottomPadding = bottomPadding,
         visualTransformation = visualTransformation,
         interactionSource = interactionSource,
         keyboardOptions = keyboardOptions,
@@ -248,8 +282,10 @@ public fun TextField(
     multiline: Boolean = false,
     maxVisibleLines: Int = 4,
     icon: TextFieldIcon? = null,
+    button: TextFieldButton? = null,
     iconAreaAlignment: TextFieldIconAlignment = TextFieldIconAlignment.TOP,
     onClick: (() -> Unit)? = null,
+    bottomPadding: TextFieldBottomPadding = TextFieldBottomPadding.MEDIUM,
     visualTransformation: VisualTransformation = VisualTransformation.None,
     interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
     keyboardOptions: KeyboardOptions = KeyboardOptions.Default,
@@ -271,7 +307,11 @@ public fun TextField(
             if (disabled) ALPHA_DISABLED else 1f,
             animationSpec = spring(stiffness = SPRING_STIFFNESS)
         )
-        Column(modifier = Modifier.alpha(alpha)) {
+        Column(
+            modifier = Modifier
+                .alpha(alpha)
+                .padding(bottom = bottomPadding.value)
+        ) {
             if (label != null) Label(label, required, errorDependantTextColor)
 
             BasicTextField(
@@ -309,6 +349,7 @@ public fun TextField(
                         error,
                         placeholder,
                         icon,
+                        button,
                         loading,
                         innerTextField,
                     )
@@ -334,20 +375,18 @@ private fun TextFieldValue.limitChars(maxCharNumber: Int?): TextFieldValue {
 private fun Label(
     label: String,
     required: Boolean,
-    errorDependantTextColor: Color
+    errorDependantTextColor: Color,
 ) {
     Text(
         modifier = Modifier
-            .padding(bottom = 4.dp)
+            .padding(bottom = 6.dp)
             .animateContentSize(spring(stiffness = SPRING_STIFFNESS)),
         text = buildAnnotatedString {
             append(label)
-            if (required) {
-                withStyle(SpanStyle(color = Flamingo.colors.error)) { append("*") }
-            }
+            if (required) withStyle(SpanStyle(color = Flamingo.colors.error)) { append("*") }
         },
         color = errorDependantTextColor,
-        style = Flamingo.typography.body2
+        style = Flamingo.typography.caption2
     )
 }
 
@@ -367,7 +406,7 @@ private fun BottomTextBlock(
     Row(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(top = 4.dp)
+            .padding(top = 6.dp)
     ) {
         /** box will always be drawn, because [Counter] MUST BE glued to the end of the row */
         Box(modifier = Modifier.weight(1f)) {
@@ -388,14 +427,14 @@ private fun BottomTextBlock(
 private fun RowScope.Counter(
     textLength: Int,
     maxCharNumber: Int?,
-    errorDependantTextColor: Color
+    errorDependantTextColor: Color,
 ) = Text(
     modifier = Modifier.Companion
         .align(Alignment.Top)
         .padding(horizontal = 8.dp),
     text = "$textLength/$maxCharNumber",
     color = errorDependantTextColor,
-    style = Flamingo.typography.body2
+    style = Flamingo.typography.caption2
 )
 
 @Composable
@@ -404,13 +443,13 @@ private fun HelperText(text: String, color: Color) {
         Text(
             text = it,
             color = color,
-            style = Flamingo.typography.body2
+            style = Flamingo.typography.caption2
         )
     }
 }
 
 private fun TextFieldValue.take(
-    maxCharNumber: Int
+    maxCharNumber: Int,
 ) = copy(annotatedString = annotatedString.subSequence(0, maxCharNumber))
 
 @ExperimentalComposeUiApi
@@ -426,65 +465,88 @@ private fun TypingArea(
     error: Boolean,
     placeholder: String?,
     icon: TextFieldIcon?,
+    button: TextFieldButton?,
     loading: Boolean,
-    innerTextField: @Composable () -> Unit
+    innerTextField: @Composable () -> Unit,
 ) {
     val borderWidth = 1.dp
-    val verticalPadding = when (size) {
-        TextFieldSize.SMALL -> 4.dp
-        TextFieldSize.MEDIUM -> 8.dp
-    } - borderWidth
+    val verticalPadding = size.verticalPadding - borderWidth
 
     val borderColor = when {
         error -> Flamingo.colors.error
         isFocused -> Flamingo.colors.primary
-        else -> Flamingo.colors.outline
+        else -> Flamingo.colors.outlineDark
     }.let { animateColorAsState(targetValue = it, spring(stiffness = SPRING_STIFFNESS)).value }
 
     Row(
         modifier = Modifier
             .clip(fieldShape)
             .border(borderWidth, borderColor, fieldShape)
-            .background(Flamingo.colors.backgroundTextField)
             .padding(
                 top = verticalPadding,
                 bottom = verticalPadding,
-                start = 16.dp - borderWidth,
-                end = 8.dp - borderWidth,
+                start = 12.dp - borderWidth,
+                end = 12.dp - borderWidth,
             ),
         verticalAlignment = Alignment.CenterVertically,
     ) {
+        val alignmentModifier = Modifier.align(
+            alignment = if (multiline && transformedText.contains('\n')) {
+                iconAreaAlignment.toComposeAlignment()
+            } else Alignment.CenterVertically
+        )
+
+        if (icon != null && icon.placement == IconPlacement.START) {
+            IconArea(alignmentModifier, disabled, loading = false, icon)
+        }
+
         Box(modifier = Modifier.weight(1f)) {
             Placeholder(placeholder, transformedText)
             Box { innerTextField() }
         }
 
-        IconArea(multiline, transformedText, iconAreaAlignment, disabled, loading, icon)
+        if (loading || (icon != null && icon.placement == IconPlacement.END)) {
+            IconArea(alignmentModifier, disabled, loading, icon)
+        }
+
+        if (button != null) Box(
+            modifier = alignmentModifier
+                .padding(start = 8.dp)
+                .pointerInteropFilter { disabled }
+        ) {
+            Button(
+                onClick = button.onClick,
+                label = button.label,
+                loading = button.loading,
+                disabled = button.disabled,
+                variant = ButtonVariant.TEXT,
+                color = ButtonColor.Primary,
+                size = ButtonSize.SMALL
+            )
+        }
     }
 }
 
 @ExperimentalComposeUiApi
 @Composable
 private fun RowScope.IconArea(
-    multiline: Boolean,
-    transformedText: AnnotatedString,
-    iconAreaAlignment: TextFieldIconAlignment,
+    @Suppress("ModifierParameter") alignmentModifier: Modifier,
     disabled: Boolean,
     loading: Boolean,
-    icon: TextFieldIcon?
+    icon: TextFieldIcon?,
 ) {
-    val alignmentModifier = Modifier.align(
-        alignment = if (multiline && transformedText.contains('\n')) {
-            iconAreaAlignment.toComposeAlignment()
-        } else Alignment.CenterVertically
-    )
-
     Box(
         modifier = Modifier
-            .padding(start = 8.dp)
+            .run {
+                if (loading || icon == null) padding(start = 8.dp)
+                else when (icon.placement) {
+                    IconPlacement.START -> padding(end = 8.dp)
+                    IconPlacement.END -> padding(start = 8.dp)
+                }
+            }
             /**
              * [IconButton] will go out of the bounds: icon will be centered inside the box
-             * (icon in [IconButtonSize.SMALL] is 24 dp), but ripple will be drawn outside of
+             * (icon in [IconButtonSize.SMALL] is 24 dp), but ripple will be drawn outside
              * the box, which is expected
              */
             .requiredSize(24.dp)
@@ -506,7 +568,7 @@ private fun RowScope.IconArea(
                 modifier = Modifier.requiredSize(24.dp),
                 icon = icon.icon,
                 contentDescription = icon.contentDescription,
-                tint = Flamingo.colors.textSecondary
+                tint = Flamingo.colors.textTertiary
             )
         }
     }
@@ -523,7 +585,18 @@ public enum class TextFieldIconAlignment {
     }
 }
 
-public enum class TextFieldSize(internal val verticalPadding: Dp) { SMALL(4.dp), MEDIUM(8.dp), }
+public enum class TextFieldSize(internal val verticalPadding: Dp) {
+    SMALL(4.dp),
+    MEDIUM(8.dp),
+    LARGE(12.dp),
+}
 
-private val fieldShape = RoundedCornerShape(12.dp)
+public enum class TextFieldBottomPadding(internal val value: Dp) {
+    NONE(0.dp),
+    SMALL(16.dp),
+    MEDIUM(24.dp),
+    LARGE(32.dp),
+}
+
+private val fieldShape = RoundedCornerShape(8.dp)
 private const val SPRING_STIFFNESS = 700f

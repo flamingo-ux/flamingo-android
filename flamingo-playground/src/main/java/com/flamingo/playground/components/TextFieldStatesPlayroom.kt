@@ -11,21 +11,23 @@ import androidx.preference.PreferenceFragmentCompat
 import androidx.preference.SwitchPreferenceCompat
 import com.flamingo.Flamingo
 import com.flamingo.components.TextField
+import com.flamingo.components.TextFieldBottomPadding
+import com.flamingo.components.TextFieldButton
 import com.flamingo.components.TextFieldIcon
 import com.flamingo.components.TextFieldIconAlignment
 import com.flamingo.components.TextFieldSize
-import com.flamingo.playground.R
-import com.flamingo.demoapi.StatesPlayroomDemo
-import com.flamingo.playground.boast
-import com.flamingo.playground.utils.Boast
-import com.flamingo.demoapi.parceNull
-import com.flamingo.demoapi.wrapWithBraces
 import com.flamingo.demoapi.DemoPreference
+import com.flamingo.demoapi.StatesPlayroomDemo
 import com.flamingo.demoapi.WhiteModeDemo
 import com.flamingo.demoapi.configurePreference
 import com.flamingo.demoapi.findPreference
 import com.flamingo.demoapi.initPref
 import com.flamingo.demoapi.onChange
+import com.flamingo.demoapi.parceNull
+import com.flamingo.demoapi.wrapWithBraces
+import com.flamingo.playground.R
+import com.flamingo.playground.boast
+import com.flamingo.playground.utils.Boast
 
 @StatesPlayroomDemo
 class TextFieldStatesPlayroom : PreferenceFragmentCompat() {
@@ -51,6 +53,8 @@ class TextFieldStatesPlayroom : PreferenceFragmentCompat() {
         var iconAreaAlignment: TextFieldIconAlignment by mutableStateOf(TextFieldIconAlignment.TOP)
         var icon: TextFieldIcon? by mutableStateOf(null)
         var hasOnClick: Boolean by mutableStateOf(false)
+        var buttonText: String? by mutableStateOf(null)
+        var bottomPadding: TextFieldBottomPadding by mutableStateOf(TextFieldBottomPadding.MEDIUM)
         var white: Boolean by mutableStateOf(false)
     }
 
@@ -63,6 +67,7 @@ class TextFieldStatesPlayroom : PreferenceFragmentCompat() {
         findPreference<DemoPreference>("component")?.setComposeDesignComponent {
             with(state) {
                 WhiteModeDemo(white = white) {
+                    val buttonText = buttonText
                     TextField(
                         value = value,
                         onValueChange = { value = it },
@@ -80,8 +85,11 @@ class TextFieldStatesPlayroom : PreferenceFragmentCompat() {
                         maxVisibleLines = maxVisibleLines,
                         iconAreaAlignment = iconAreaAlignment,
                         icon = icon,
-                        onClick =
-                        if (hasOnClick) boast("TextField onClick") else null,
+                        button = if (buttonText != null) {
+                            TextFieldButton(label = buttonText, onClick = boast())
+                        } else null,
+                        onClick = if (hasOnClick) boast("TextField onClick") else null,
+                        bottomPadding = bottomPadding
                     )
                 }
             }
@@ -212,6 +220,7 @@ class TextFieldStatesPlayroom : PreferenceFragmentCompat() {
                     Flamingo.icons.fromName(context, it)
                 }
                 findPreference("iconHasOnClick").isVisible = dsIcon != null
+                findPreference("iconPlacement").isVisible = dsIcon != null
                 if (dsIcon == null) {
                     state.icon = null
                     return@onChange true
@@ -236,10 +245,32 @@ class TextFieldStatesPlayroom : PreferenceFragmentCompat() {
             initPref(savedInstanceState, defVal = false)
         }
 
+        configurePreference<DropDownPreference>("iconPlacement") {
+            val values = TextFieldIcon.IconPlacement.values().map { it.name }.toTypedArray()
+            entries = values
+            entryValues = values
+            onChange { newValue ->
+                val icon = state.icon ?: return@onChange false
+                val newValue = TextFieldIcon.IconPlacement.valueOf(newValue)
+                state.icon = icon.copy(placement = newValue)
+                true
+            }
+            initPref(savedInstanceState, defVal = TextFieldIcon.IconPlacement.END)
+        }
+
+        configurePreference<EditTextPreference>("buttonText") {
+            onChange { newValue ->
+                state.buttonText = (newValue as? String)?.parceNull()
+                summary = state.buttonText?.wrapWithBraces() ?: "null"
+                true
+            }
+            initPref(savedInstanceState, defVal = "null")
+        }
+
         configurePreference<DropDownPreference>("iconAreaAlignment") {
-            val sizes = TextFieldIconAlignment.values().map { it.name }.toTypedArray()
-            entries = sizes
-            entryValues = sizes
+            val values = TextFieldIconAlignment.values().map { it.name }.toTypedArray()
+            entries = values
+            entryValues = values
             onChange { newValue ->
                 state.iconAreaAlignment = TextFieldIconAlignment.valueOf(newValue)
                 true
@@ -258,6 +289,19 @@ class TextFieldStatesPlayroom : PreferenceFragmentCompat() {
                 true
             }
             initPref(savedInstanceState, defVal = false)
+        }
+
+
+
+        configurePreference<DropDownPreference>("bottomPadding") {
+            val values = TextFieldBottomPadding.values().map { it.name }.toTypedArray()
+            entries = values
+            entryValues = values
+            onChange { newValue ->
+                state.bottomPadding = TextFieldBottomPadding.valueOf(newValue)
+                true
+            }
+            initPref(savedInstanceState, defVal = TextFieldBottomPadding.MEDIUM)
         }
     }
 }
