@@ -34,6 +34,19 @@
 
     <DropDownPreference
         app:iconSpaceReserved="false"
+        app:key="iconPlacement"
+        app:persistent="false"
+        app:summary="%s"
+        app:title="Icon placement" />
+
+    <EditTextPreference
+        app:iconSpaceReserved="false"
+        app:key="buttonText"
+        app:persistent="false"
+        app:title="Button text" />
+
+    <DropDownPreference
+        app:iconSpaceReserved="false"
         app:key="iconAreaAlignment"
         app:persistent="false"
         app:summary="%s"
@@ -105,6 +118,13 @@
         app:key="hasOnClick"
         app:persistent="false"
         app:title="Has onClick" />
+
+    <DropDownPreference
+        app:iconSpaceReserved="false"
+        app:key="bottomPadding"
+        app:persistent="false"
+        app:summary="%s"
+        app:title="Bottom padding" />
 
     <SwitchPreferenceCompat
         app:iconSpaceReserved="false"
