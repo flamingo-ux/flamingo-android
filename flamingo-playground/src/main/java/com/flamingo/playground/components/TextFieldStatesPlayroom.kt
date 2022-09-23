@@ -10,24 +10,12 @@ import androidx.preference.EditTextPreference
 import androidx.preference.PreferenceFragmentCompat
 import androidx.preference.SwitchPreferenceCompat
 import com.flamingo.Flamingo
-import com.flamingo.components.TextField
-import com.flamingo.components.TextFieldBottomPadding
-import com.flamingo.components.TextFieldButton
-import com.flamingo.components.TextFieldIcon
-import com.flamingo.components.TextFieldIconAlignment
-import com.flamingo.components.TextFieldSize
-import com.flamingo.demoapi.DemoPreference
-import com.flamingo.demoapi.StatesPlayroomDemo
-import com.flamingo.demoapi.WhiteModeDemo
-import com.flamingo.demoapi.configurePreference
-import com.flamingo.demoapi.findPreference
-import com.flamingo.demoapi.initPref
-import com.flamingo.demoapi.onChange
-import com.flamingo.demoapi.parceNull
-import com.flamingo.demoapi.wrapWithBraces
+import com.flamingo.components.*
+import com.flamingo.demoapi.*
 import com.flamingo.playground.R
 import com.flamingo.playground.boast
 import com.flamingo.playground.utils.Boast
+import com.flamingo.playground.utils.exhaustive
 
 @StatesPlayroomDemo
 class TextFieldStatesPlayroom : PreferenceFragmentCompat() {
@@ -51,9 +39,11 @@ class TextFieldStatesPlayroom : PreferenceFragmentCompat() {
         var multiline: Boolean by mutableStateOf(false)
         var maxVisibleLines: Int by mutableStateOf(@Suppress("MagicNumber") 4)
         var iconAreaAlignment: TextFieldIconAlignment by mutableStateOf(TextFieldIconAlignment.TOP)
-        var icon: TextFieldIcon? by mutableStateOf(null)
+        var edgeItem: EdgeItem? by mutableStateOf(null)
+        var edgeItemHasOnClick: Boolean by mutableStateOf(false)
+        var edgeItemPlacement: IconPlacement by mutableStateOf(IconPlacement.END)
+        var buttonText: String by mutableStateOf("")
         var hasOnClick: Boolean by mutableStateOf(false)
-        var buttonText: String? by mutableStateOf(null)
         var bottomPadding: TextFieldBottomPadding by mutableStateOf(TextFieldBottomPadding.MEDIUM)
         var white: Boolean by mutableStateOf(false)
     }
@@ -67,7 +57,6 @@ class TextFieldStatesPlayroom : PreferenceFragmentCompat() {
         findPreference<DemoPreference>("component")?.setComposeDesignComponent {
             with(state) {
                 WhiteModeDemo(white = white) {
-                    val buttonText = buttonText
                     TextField(
                         value = value,
                         onValueChange = { value = it },
@@ -83,11 +72,8 @@ class TextFieldStatesPlayroom : PreferenceFragmentCompat() {
                         disabled = disabled,
                         multiline = multiline,
                         maxVisibleLines = maxVisibleLines,
-                        iconAreaAlignment = iconAreaAlignment,
-                        icon = icon,
-                        button = if (buttonText != null) {
-                            TextFieldButton(label = buttonText, onClick = boast())
-                        } else null,
+                        edgeItemAreaAlignment = iconAreaAlignment,
+                        edgeItem = edgeItem,
                         onClick = if (hasOnClick) boast("TextField onClick") else null,
                         bottomPadding = bottomPadding
                     )
@@ -201,70 +187,108 @@ class TextFieldStatesPlayroom : PreferenceFragmentCompat() {
             initPref(savedInstanceState, defVal = "4")
         }
 
-        configurePreference<DropDownPreference>("icon") {
+        val onIconClick = { Boast.showText(context, "Click") }
+
+        configurePreference<DropDownPreference>("edgeItem") {
             entries = arrayOf(
                 "null",
-                "Airplay",
-                "Bell",
-                "Aperture",
+                "Icon",
+                "Avatar",
+                "Button",
             )
             entryValues = arrayOf(
                 "null",
-                Flamingo.icons.Airplay.getName(context),
-                Flamingo.icons.Bell.getName(context),
-                Flamingo.icons.Aperture.getName(context),
+                "Icon",
+                "Avatar",
+                "Button",
             )
             onChange { newValue ->
-                val icon = state.icon
-                val dsIcon = (newValue as? String)?.parceNull()?.let {
-                    Flamingo.icons.fromName(context, it)
+                var newEdgeItem: EdgeItem? = null
+                (newValue as? String)?.parceNull()?.let {
+                    newEdgeItem = when (it) {
+                        "Icon" -> EdgeItem.TextFieldIcon(
+                            Flamingo.icons.Bell,
+                            if (state.edgeItemHasOnClick) onIconClick else null,
+                            state.edgeItemPlacement,
+                            null
+                        )
+                        "Avatar" -> EdgeItem.TextFieldAvatar(
+                            AvatarContent.Letters('A', 'A', AvatarBackground.PRIMARY),
+                            if (state.edgeItemHasOnClick) onIconClick else null,
+                            AvatarShape.CIRCLE,
+                            state.edgeItemPlacement
+                        )
+                        "Button" -> EdgeItem.TextFieldButton(
+                            state.buttonText,
+                            onIconClick,
+                            state.loading,
+                            state.disabled
+                        )
+                        else -> null
+                    }
                 }
-                findPreference("iconHasOnClick").isVisible = dsIcon != null
-                findPreference("iconPlacement").isVisible = dsIcon != null
-                if (dsIcon == null) {
-                    state.icon = null
+                findPreference("edgeItemHasOnClick").isVisible =
+                    newEdgeItem != null && newEdgeItem !is EdgeItem.TextFieldButton
+                findPreference("edgeItemPlacement").isVisible =
+                    newEdgeItem != null && newEdgeItem !is EdgeItem.TextFieldButton
+                findPreference("buttonText").isVisible =
+                    newEdgeItem != null && newEdgeItem is EdgeItem.TextFieldButton
+                if (newEdgeItem == null) {
+                    state.edgeItem = null
                     return@onChange true
                 }
-                state.icon =
-                    icon?.copy(icon = dsIcon) ?: TextFieldIcon(dsIcon, contentDescription = null)
+                state.edgeItem = newEdgeItem
 
                 true
             }
             initPref(savedInstanceState, defVal = "null")
         }
 
-        val onIconClick = { Boast.showText(context, "Click") }
-
-        configurePreference<SwitchPreferenceCompat>("iconHasOnClick") {
+        configurePreference<SwitchPreferenceCompat>("edgeItemHasOnClick") {
             onChange { newValue ->
-                val newValue = newValue as? Boolean ?: return@onChange false
-                val icon = state.icon ?: return@onChange false
-                state.icon = icon.copy(onClick = if (newValue) onIconClick else null)
+                val click = newValue as? Boolean ?: return@onChange false
+                val edgeItem = state.edgeItem ?: return@onChange false
+                when (edgeItem) {
+                    is EdgeItem.TextFieldIcon -> state.edgeItem =
+                        edgeItem.copy(onClick = if (click) onIconClick else null)
+                    is EdgeItem.TextFieldAvatar -> state.edgeItem =
+                        edgeItem.copy(onClick = if (click) onIconClick else null)
+                    else -> return@onChange false
+                }.exhaustive
+
                 true
             }
             initPref(savedInstanceState, defVal = false)
         }
 
-        configurePreference<DropDownPreference>("iconPlacement") {
-            val values = TextFieldIcon.IconPlacement.values().map { it.name }.toTypedArray()
+        configurePreference<DropDownPreference>("edgeItemPlacement") {
+            val values = IconPlacement.values().map { it.name }.toTypedArray()
             entries = values
             entryValues = values
             onChange { newValue ->
-                val icon = state.icon ?: return@onChange false
-                val newValue = TextFieldIcon.IconPlacement.valueOf(newValue)
-                state.icon = icon.copy(placement = newValue)
+                val edgeItem = state.edgeItem ?: return@onChange false
+                val placement = IconPlacement.valueOf(newValue)
+                when (edgeItem) {
+                    is EdgeItem.TextFieldIcon -> state.edgeItem =
+                        edgeItem.copy(placement = placement)
+                    is EdgeItem.TextFieldAvatar -> state.edgeItem =
+                        edgeItem.copy(placement = placement)
+                    else -> return@onChange false
+                }.exhaustive
                 true
             }
-            initPref(savedInstanceState, defVal = TextFieldIcon.IconPlacement.END)
+            initPref(savedInstanceState, defVal = IconPlacement.END)
         }
 
         configurePreference<EditTextPreference>("buttonText") {
             onChange { newValue ->
-                state.buttonText = (newValue as? String)?.parceNull()
-                summary = state.buttonText?.wrapWithBraces() ?: "null"
+                state.buttonText = newValue
+                summary = state.buttonText.wrapWithBraces()
+                state.edgeItem =
+                    (state.edgeItem as? EdgeItem.TextFieldButton)?.copy(label = state.buttonText)
                 true
             }
-            initPref(savedInstanceState, defVal = "null")
+            initPref(savedInstanceState, defVal = "")
         }
 
         configurePreference<DropDownPreference>("iconAreaAlignment") {
