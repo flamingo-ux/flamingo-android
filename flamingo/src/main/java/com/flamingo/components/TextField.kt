@@ -458,13 +458,13 @@ private fun TypingArea(
 
         AnimatedVisibility(
             visible = transformedText.isNotEmpty(),
-            modifier = Modifier.padding(end = 0.dp),
+            modifier = alignmentModifier,
             enter = fadeIn(animationSpec = animSpec),
             exit = fadeOut(animationSpec = animSpec),
         ) {
             Box(
                 modifier = Modifier
-                    .requiredSize(30.dp)
+                    .requiredSize(22.dp) //
                     .clip(CircleShape)
                     .clickable(
                         enabled = !disabled,
@@ -513,7 +513,7 @@ private fun RowScope.IconArea(
                              * (icon in [IconButtonSize.SMALL] is 24 dp), but ripple will be drawn outside
                              * the box, which is expected
                              */
-                            .requiredSize(24.dp)
+                            .requiredSize(22.dp)
                     }
                     is EdgeItem.TextFieldButton -> {
                         padding(start = 8.dp)
@@ -528,7 +528,7 @@ private fun RowScope.IconArea(
                              * (icon in [IconButtonSize.SMALL] is 24 dp), but ripple will be drawn outside
                              * the box, which is expected
                              */
-                            .requiredSize(24.dp)
+                            .requiredSize(22.dp)
                     }
                 }
             }
