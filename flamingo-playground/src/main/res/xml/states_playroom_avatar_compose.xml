@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <com.flamingo.demoapi.DemoPreference app:key="component" />
+
+    <SwitchPreferenceCompat
+        app:iconSpaceReserved="false"
+        app:key="disabled"
+        app:persistent="false"
+        app:title="Disabled" />
+
+    <SwitchPreferenceCompat
+        app:iconSpaceReserved="false"
+        app:key="hasOnClick"
+        app:persistent="false"
+        app:title="Has onClick" />
+
+    <DropDownPreference
+        app:iconSpaceReserved="false"
+        app:key="content"
+        app:persistent="false"
+        app:summary="%s"
+        app:title="Content" />
+
+    <DropDownPreference
+        app:iconSpaceReserved="false"
+        app:key="size"
+        app:persistent="false"
+        app:summary="%s"
+        app:title="Size" />
+
+    <DropDownPreference
+        app:iconSpaceReserved="false"
+        app:key="shape"
+        app:persistent="false"
+        app:summary="%s"
+        app:title="Shape" />
+
+    <SwitchPreferenceCompat
+        app:iconSpaceReserved="false"
+        app:key="indicator"
+        app:persistent="false"
+        app:title="Indicator" />
+
+</PreferenceScreen>
