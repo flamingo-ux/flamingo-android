@@ -18,6 +18,7 @@ package com.flamingo.components
 import androidx.compose.animation.*
 import androidx.compose.animation.core.LinearEasing
 import androidx.compose.animation.core.animateDpAsState
+import androidx.compose.animation.core.spring
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -183,10 +184,7 @@ private fun SearchTypingArea(
     val iconTint =
         if (Flamingo.isWhiteMode) Flamingo.palette.white else Flamingo.colors.textTertiary
 
-    val dpAnimateAsState: Dp by animateDpAsState(
-        targetValue = if (value.annotatedString.isNotEmpty()) 2.dp else 0.dp,
-        animationSpec = animSpec2
-    )
+    val borderColor = animateColorAsState(targetValue = Flamingo.colors.primary, spring(stiffness = SPRING_STIFFNESS)).value
 
     Row(
         modifier = Modifier
@@ -196,7 +194,7 @@ private fun SearchTypingArea(
             .requiredHeightIn(min = 30.dp)
             .run {
                 if (value.annotatedString.isNotEmpty())
-                    border(dpAnimateAsState, Flamingo.colors.primary, searchShape)
+                    border(2.dp, borderColor, searchShape)
                 else this
             },
         verticalAlignment = Alignment.CenterVertically,
@@ -263,7 +261,7 @@ private fun Modifier.padding(
 )
 
 private val animSpec = tween<Float>(100, easing = LinearEasing)
-private val animSpec2 = tween<Dp>(100, easing = LinearEasing)
+private const val SPRING_STIFFNESS = 700f
 private val searchShape = RoundedCornerShape(CornerSize(100))
 
 public enum class SearchSize(public val verticalPadding: Dp, public val endPadding: Dp) {
