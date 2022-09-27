@@ -73,8 +73,8 @@ class AvatarComposeStatesPlayroom : PreferenceFragmentCompat() {
 
         configurePreference<DropDownPreference>("content") {
             val list = arrayOf(
-                "Image",
                 "Icon",
+                "Image",
                 "Letters",
             )
             entries = list
