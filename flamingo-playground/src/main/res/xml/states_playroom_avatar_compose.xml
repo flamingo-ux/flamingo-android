@@ -24,6 +24,13 @@
 
     <DropDownPreference
         app:iconSpaceReserved="false"
+        app:key="avatarBackground"
+        app:persistent="false"
+        app:summary="%s"
+        app:title="Avatar background" />
+
+    <DropDownPreference
+        app:iconSpaceReserved="false"
         app:key="size"
         app:persistent="false"
         app:summary="%s"
@@ -41,5 +48,18 @@
         app:key="indicator"
         app:persistent="false"
         app:title="Indicator" />
+
+    <DropDownPreference
+        app:iconSpaceReserved="false"
+        app:key="indicatorColor"
+        app:persistent="false"
+        app:summary="%s"
+        app:title="Indicator Color" />
+
+    <SwitchPreferenceCompat
+        app:iconSpaceReserved="false"
+        app:key="indicatorIcon"
+        app:persistent="false"
+        app:title="Indicator Icon" />
 
 </PreferenceScreen>
