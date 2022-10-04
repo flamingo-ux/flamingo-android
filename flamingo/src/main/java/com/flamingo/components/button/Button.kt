@@ -119,11 +119,7 @@ public fun Button(
     val rippleColor = ButtonColorCalculation.rippleColor(variant, color)
     val backgroundColor = ButtonColorCalculation.backgroundColor(variant, color)
 
-    val verticalPadding: Dp = when (size) {
-        SMALL -> 8.dp
-        MEDIUM -> 12.dp
-        LARGE -> 18.dp
-    }
+    val verticalPadding: Dp = size.verticalPadding
 
     val paddings = remember { ButtonPaddings() }
     paddings.calculatePaddings(
@@ -185,7 +181,7 @@ public fun Button(
             textAlign = TextAlign.Start,
             maxLines = if (widthPolicy == MULTILINE) Int.MAX_VALUE else 1,
             overflow = TextOverflow.Ellipsis,
-            style = Flamingo.typography.run { if (size == LARGE) h6 else subtitle2 }
+            style = Flamingo.typography.run { if (size == SMALL) body2 else body1 }
         )
         // this icon is hidden when loading == true
         if (icon != null && iconPosition == END && !loading) {
@@ -207,7 +203,11 @@ internal fun Color.animateButtonColor(
     animationSpec: SpringSpec<Color> = spring(stiffness = 700f),
 ): Color = animateColorAsState(this, animationSpec = animationSpec).value
 
-public enum class ButtonSize(internal val height: Dp) { SMALL(32.dp), MEDIUM(40.dp), LARGE(56.dp), }
+public enum class ButtonSize(
+    internal val height: Dp,
+    internal val verticalPadding: Dp
+) { SMALL(32.dp, 6.dp), MEDIUM(40.dp, 8.dp), LARGE(48.dp, 12.dp), }
+
 public enum class ButtonIconPosition { START, END, }
 public enum class ButtonVariant { TEXT, CONTAINED, }
 
@@ -225,4 +225,4 @@ public sealed class ButtonColor {
     public object White : ButtonColor()
 }
 
-private val buttonShape = RoundedCornerShape(12.dp)
+private val buttonShape = RoundedCornerShape(8.dp)
