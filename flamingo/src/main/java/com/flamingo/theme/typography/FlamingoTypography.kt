@@ -29,6 +29,7 @@ public data class FlamingoTypography @DelicateFlamingoApi constructor(
     private val colors: FlamingoColors,
     public val display1: TextStyle,
     public val display2: TextStyle,
+    public val display2_1: TextStyle,
     public val display3: TextStyle,
     public val h1: TextStyle,
     public val h2: TextStyle,
