@@ -139,7 +139,7 @@ private fun Header(
                 if (labelAsterisk) append('*')
             }
         },
-        style = Flamingo.typography.body2,
+        style = Flamingo.typography.caption2,
     )
 
     Button(
