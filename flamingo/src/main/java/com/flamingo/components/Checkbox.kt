@@ -19,10 +19,11 @@ import androidx.compose.foundation.layout.requiredSize
 import androidx.compose.material.CheckboxDefaults
 import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.LocalMinimumTouchTargetEnforcement
+import androidx.compose.material.TriStateCheckbox
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.state.ToggleableState
 import androidx.compose.ui.unit.dp
 import com.flamingo.ALPHA_DISABLED
 import com.flamingo.Flamingo
@@ -42,6 +43,8 @@ import com.flamingo.theme.FlamingoTheme
  *
  * @param disabled indicates to the user that this component is not interactive. Clicks will be
  * ignored
+ *
+ * @param state defines the appearance of the active (checked) state of the CheckBox
  */
 @FlamingoComponent(
     preview = "com.flamingo.playground.preview.CheckboxPreview",
@@ -57,29 +60,33 @@ public fun Checkbox(
     checked: Boolean,
     onCheckedChange: ((Boolean) -> Unit)?,
     disabled: Boolean = false,
+    state: CheckBoxState = CheckBoxState.DEFAULT
 ): Unit = FlamingoComponentBase {
     CompositionLocalProvider(LocalMinimumTouchTargetEnforcement provides false) {
         if (Flamingo.isWhiteMode) FlamingoTheme(darkTheme = true) {
-            InternalCheckbox(checked, onCheckedChange, disabled)
+            InternalCheckBox(checked, onCheckedChange, disabled, state)
         }
         else {
-            InternalCheckbox(checked, onCheckedChange, disabled)
+            InternalCheckBox(checked, onCheckedChange, disabled, state)
         }
     }
 }
 
 @Composable
-private fun InternalCheckbox(
+private fun InternalCheckBox(
     checked: Boolean,
     onCheckedChange: ((Boolean) -> Unit)?,
     disabled: Boolean,
-) = androidx.compose.material.Checkbox(
-    modifier = Modifier.requiredSize(40.dp),
-    checked = checked,
-    onCheckedChange = onCheckedChange,
-    enabled = !disabled,
-    colors = checkboxColors()
-)
+    state: CheckBoxState
+) {
+    TriStateCheckbox(
+        modifier = Modifier.requiredSize(40.dp),
+        state = if (checked) state.toggleableState else ToggleableState.Off,
+        onClick = { onCheckedChange?.invoke(!checked) },
+        enabled = !disabled,
+        colors = checkboxColors()
+    )
+}
 
 @Composable
 private fun checkboxColors() = with(Flamingo) {
@@ -88,6 +95,11 @@ private fun checkboxColors() = with(Flamingo) {
         uncheckedColor = colors.textSecondary,
         checkmarkColor = colors.global.light.backgroundPrimary,
         disabledColor = colors.textSecondary.copy(alpha = ALPHA_DISABLED),
-        disabledIndeterminateColor = Color.Magenta,
+        disabledIndeterminateColor = colors.textSecondary.copy(alpha = ALPHA_DISABLED),
     )
+}
+
+public enum class CheckBoxState(public val toggleableState: ToggleableState) {
+    DEFAULT(ToggleableState.On),
+    MINUS(ToggleableState.Indeterminate)
 }

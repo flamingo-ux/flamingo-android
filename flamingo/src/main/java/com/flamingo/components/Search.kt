@@ -15,32 +15,22 @@
 
 package com.flamingo.components
 
-import androidx.compose.animation.AnimatedVisibility
-import androidx.compose.animation.Crossfade
-import androidx.compose.animation.ExperimentalAnimationApi
+import androidx.compose.animation.*
 import androidx.compose.animation.core.LinearEasing
+import androidx.compose.animation.core.animateDpAsState
+import androidx.compose.animation.core.spring
 import androidx.compose.animation.core.tween
-import androidx.compose.animation.fadeIn
-import androidx.compose.animation.fadeOut
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.requiredHeightIn
-import androidx.compose.foundation.layout.requiredSize
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.CornerSize
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -94,6 +84,7 @@ public fun InternalComponents.Search(
     keyboardOptions: KeyboardOptions = KeyboardOptions(imeAction = ImeAction.Search),
     keyboardActions: KeyboardActions = KeyboardActions.Default,
     focusRequester: FocusRequester? = null,
+    size: SearchSize = SearchSize.SMALL
 ) {
     var textFieldValueState by remember { mutableStateOf(TextFieldValue(text = value)) }
     val textFieldValue = textFieldValueState.copy(text = value)
@@ -111,6 +102,7 @@ public fun InternalComponents.Search(
         keyboardOptions = keyboardOptions,
         keyboardActions = keyboardActions,
         focusRequester = focusRequester,
+        size = size
     )
 }
 
@@ -132,6 +124,7 @@ public fun InternalComponents.Search(
     keyboardOptions: KeyboardOptions = KeyboardOptions(imeAction = ImeAction.Search),
     keyboardActions: KeyboardActions = KeyboardActions.Default,
     focusRequester: FocusRequester? = null,
+    size: SearchSize = SearchSize.SMALL
 ): Unit = FlamingoComponentBase {
     require(!(loading && disabled)) {
         "Only ONE of the following properties can be true: loading, disabled"
@@ -143,7 +136,7 @@ public fun InternalComponents.Search(
                     .clip(searchShape)
                     .clickable(enabled = !disabled, onClick = onClick)
             ) {
-                SearchTypingArea(TextFieldValue(), {}, placeholder, loading, disabled, {})
+                SearchTypingArea(TextFieldValue(), {}, placeholder, loading, disabled, {}, size)
             }
         } else BasicTextField(
             value = value,
@@ -153,7 +146,7 @@ public fun InternalComponents.Search(
                 .run { if (focusRequester != null) focusRequester(focusRequester) else this },
             enabled = !disabled,
             readOnly = false,
-            textStyle = Flamingo.typography.body1,
+            textStyle = Flamingo.typography.body1.copy(color = Flamingo.colors.textPrimary),
             keyboardOptions = keyboardOptions,
             keyboardActions = keyboardActions,
             singleLine = true,
@@ -161,7 +154,15 @@ public fun InternalComponents.Search(
                 if (Flamingo.isWhiteMode) Flamingo.palette.white else Flamingo.colors.primary
             ),
             decorationBox = { textField ->
-                SearchTypingArea(value, onValueChange, placeholder, loading, disabled, textField)
+                SearchTypingArea(
+                    value,
+                    onValueChange,
+                    placeholder,
+                    loading,
+                    disabled,
+                    textField,
+                    size
+                )
             },
         )
     }
@@ -176,29 +177,36 @@ private fun SearchTypingArea(
     placeholder: String?,
     loading: Boolean,
     disabled: Boolean,
-    innerTextField: @Composable () -> Unit
+    innerTextField: @Composable () -> Unit,
+    size: SearchSize
 ) {
-    val vertical = 4.dp
+    val vertical = size.verticalPadding
     val iconTint =
         if (Flamingo.isWhiteMode) Flamingo.palette.white else Flamingo.colors.textTertiary
+
+    val borderColor = animateColorAsState(targetValue = Flamingo.colors.primary, spring(stiffness = SPRING_STIFFNESS)).value
 
     Row(
         modifier = Modifier
             .alpha(disabled, animate = true)
             .clip(searchShape)
-            .background(Flamingo.colors.backgroundTextField)
-            .padding(start = 8.dp)
-            .requiredHeightIn(min = 30.dp),
+            .background(Flamingo.colors.backgroundSecondary)
+            .requiredHeightIn(min = 30.dp)
+            .run {
+                if (value.annotatedString.isNotEmpty())
+                    border(2.dp, borderColor, searchShape)
+                else this
+            },
         verticalAlignment = Alignment.CenterVertically,
     ) {
         Crossfade(targetState = loading, animationSpec = animSpec) { loading ->
             when {
-                loading -> Box(Modifier.padding(end = 8.dp, vertical = vertical)) {
+                loading -> Box(Modifier.padding(start = 8.dp, end = 8.dp, vertical = vertical)) {
                     CircularLoader(CircularLoaderSize.MEDIUM, CircularLoaderColor.PRIMARY)
                 }
                 else -> Icon(
                     modifier = Modifier
-                        .padding(end = 8.dp, vertical = vertical)
+                        .padding(start = 8.dp, end = 8.dp, vertical = vertical)
                         .requiredSize(24.dp),
                     icon = Flamingo.icons.Search,
                     tint = iconTint
@@ -216,7 +224,7 @@ private fun SearchTypingArea(
 
         AnimatedVisibility(
             visible = value.annotatedString.isNotEmpty(),
-            modifier = Modifier.padding(end = 1.dp, vertical = 1.dp),
+            modifier = Modifier.padding(end = size.endPadding, vertical = 1.dp),
             enter = fadeIn(animationSpec = animSpec),
             exit = fadeOut(animationSpec = animSpec),
         ) {
@@ -253,4 +261,11 @@ private fun Modifier.padding(
 )
 
 private val animSpec = tween<Float>(100, easing = LinearEasing)
+private const val SPRING_STIFFNESS = 700f
 private val searchShape = RoundedCornerShape(CornerSize(100))
+
+public enum class SearchSize(public val verticalPadding: Dp, public val endPadding: Dp) {
+    SMALL(4.dp, 1.dp),
+    DEFAULT(8.dp, 8.dp),
+    LARGE(12.dp, 8.dp)
+}

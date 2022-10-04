@@ -129,6 +129,7 @@ public value class FlamingoIcon private constructor(@DsIconSet private val resId
         public val Check: FlamingoIcon = I(R.drawable.ds_ic_check)
         public val CheckCircle: FlamingoIcon = I(R.drawable.ds_ic_check_circle)
         public val CheckSquare: FlamingoIcon = I(R.drawable.ds_ic_check_square)
+        public val CheckSquareMinusV2: FlamingoIcon = I(R.drawable.ds_ic_check_square_minus_v2)
         public val ChevronDown: FlamingoIcon = I(R.drawable.ds_ic_chevron_down)
         public val ChevronLeft: FlamingoIcon = I(R.drawable.ds_ic_chevron_left)
         public val ChevronRight: FlamingoIcon = I(R.drawable.ds_ic_chevron_right)
