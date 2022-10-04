@@ -6,17 +6,13 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.preference.DropDownPreference
 import androidx.preference.PreferenceFragmentCompat
 import androidx.preference.SwitchPreferenceCompat
+import com.flamingo.components.CheckBoxState
 import com.flamingo.components.Checkbox
+import com.flamingo.demoapi.*
 import com.flamingo.playground.R
-import com.flamingo.demoapi.StatesPlayroomDemo
-import com.flamingo.demoapi.DemoPreference
-import com.flamingo.demoapi.WhiteModeDemo
-import com.flamingo.demoapi.configurePreference
-import com.flamingo.demoapi.initPref
-import com.flamingo.demoapi.onChange
-import com.flamingo.demoapi.findPreference
 import com.flamingo.playground.utils.Boast
 
 @StatesPlayroomDemo
@@ -31,6 +27,7 @@ class CheckboxStatesPlayroom : PreferenceFragmentCompat() {
 
         var disabled by mutableStateOf(false)
         var white by mutableStateOf(false)
+        var state by mutableStateOf(CheckBoxState.DEFAULT)
         findPreference<DemoPreference>("component")?.setComposeDesignComponent {
             WhiteModeDemo(white = white) {
                 var checked by remember { mutableStateOf(false) }
@@ -41,6 +38,7 @@ class CheckboxStatesPlayroom : PreferenceFragmentCompat() {
                         Boast.showText(context, "Click: checked = $checked")
                     },
                     disabled = disabled,
+                    state = state
                 )
             }
         }
@@ -56,6 +54,17 @@ class CheckboxStatesPlayroom : PreferenceFragmentCompat() {
         configurePreference<SwitchPreferenceCompat>("white") {
             onChange { white = it; true }
             initPref(savedInstanceState, defVal = false)
+        }
+
+        configurePreference<DropDownPreference>("state") {
+            val states = CheckBoxState.values().map { it.name }.toTypedArray()
+            entries = states
+            entryValues = states
+            onChange { newValue ->
+                state = CheckBoxState.valueOf(newValue)
+                true
+            }
+            initPref(savedInstanceState, defVal = CheckBoxState.DEFAULT)
         }
     }
 }

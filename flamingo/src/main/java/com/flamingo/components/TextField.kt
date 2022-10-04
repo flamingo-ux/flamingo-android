@@ -15,33 +15,23 @@
 
 package com.flamingo.components
 
-import androidx.compose.animation.Crossfade
-import androidx.compose.animation.ExperimentalAnimationApi
-import androidx.compose.animation.animateColorAsState
-import androidx.compose.animation.animateContentSize
+import androidx.compose.animation.*
+import androidx.compose.animation.core.LinearEasing
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.spring
+import androidx.compose.animation.core.tween
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.interaction.collectIsFocusedAsState
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.RowScope
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.requiredSize
+import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.Icon
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
@@ -65,50 +55,12 @@ import com.flamingo.ALPHA_DISABLED
 import com.flamingo.Flamingo
 import com.flamingo.annotations.FlamingoComponent
 import com.flamingo.annotations.UsedInsteadOf
-import com.flamingo.components.TextFieldIcon.IconPlacement
 import com.flamingo.components.button.Button
 import com.flamingo.components.button.ButtonColor
 import com.flamingo.components.button.ButtonSize
 import com.flamingo.components.button.ButtonVariant
 import com.flamingo.theme.FlamingoIcon
 import com.flamingo.theme.FlamingoTheme
-
-/**
- * Allows displaying [Icon] or [IconButton] in the [TextField]. If [onClick] is null, [Icon] will be
- * displayed. Else - [IconButton].
- *
- * @param placement in the [TextField]. If [IconPlacement.START], [onClick] MUST BE null
- *
- * @param contentDescription text used by accessibility services to describe what this [Icon] or
- * [IconButton] represents. This should always be provided unless this [Icon] or [IconButton] is
- * used for decorative purposes, and does not represent a meaningful action that a user can take.
- * This text should be localized, such as by using [androidx.compose.ui.res.stringResource] or
- * similar
- */
-public data class TextFieldIcon(
-    val icon: FlamingoIcon,
-    val onClick: (() -> Unit)? = null,
-    val placement: IconPlacement = IconPlacement.END,
-    val contentDescription: String?,
-) {
-    init {
-        if (placement == IconPlacement.START) require(onClick == null) {
-            "If placement == IconPlacement.START, onClick MUST BE null"
-        }
-    }
-
-    public enum class IconPlacement { START, END, }
-}
-
-/**
- * Allows displaying [Button] at the end of the [TextField]
- */
-public data class TextFieldButton(
-    val label: String,
-    val onClick: () -> Unit,
-    val loading: Boolean = false,
-    val disabled: Boolean = false,
-)
 
 /**
  * Used for text input.
@@ -156,18 +108,15 @@ public data class TextFieldButton(
  * Length of chars is the length of the [value], NOT the length of the [value] after
  * [visualTransformation]. Must be in the range of [5, [Int.MAX_VALUE]]
  *
- * @param loading if true, [CircularLoader] will be displayed in the icon area, and [icon] will be
+ * @param loading if true, [CircularLoader] will be displayed in the edge item area, and [edgeItem] will be
  * hidden
  *
- * @param iconAreaAlignment defines vertical alignment of the contents in the icon area - either
- * [icon], or [CircularLoader] from [loading], or [button]. But when [value] contains no `\n`,
- * [iconAreaAlignment] is overridden with [TextFieldIconAlignment.CENTER]
+ * @param edgeItemAreaAlignment defines vertical alignment of the contents in the edge item area - either
+ * [edgeItem], or [CircularLoader] from [loading]. But when [value] contains no `\n`,
+ * [edgeItemAreaAlignment] is overridden with [TextFieldIconAlignment.CENTER]
  *
- * @param icon allows displaying [Icon] or [IconButton] in the [TextField]. If
- * [TextFieldIcon.onClick] is null, [Icon] will be displayed. Else - [IconButton]
- *
- * @param button if non-null, [Button] in [ButtonVariant.TEXT] is displayed at the end of the
- * [TextField]
+ * @param edgeItem allows displaying [Icon] or [IconButton] or [Button] in the [TextField]. If
+ * [EdgeItem.TextFieldIcon.onClick] is null, [Icon] will be displayed. Else - [IconButton]
  *
  * @param size controls vertical size of the [TextField]
  *
@@ -212,9 +161,8 @@ public fun TextField(
     disabled: Boolean = false,
     multiline: Boolean = false,
     maxVisibleLines: Int = 4,
-    icon: TextFieldIcon? = null,
-    iconAreaAlignment: TextFieldIconAlignment = TextFieldIconAlignment.TOP,
-    button: TextFieldButton? = null,
+    edgeItem: EdgeItem? = null,
+    edgeItemAreaAlignment: TextFieldIconAlignment = TextFieldIconAlignment.TOP,
     onClick: (() -> Unit)? = null,
     bottomPadding: TextFieldBottomPadding = TextFieldBottomPadding.MEDIUM,
     visualTransformation: VisualTransformation = VisualTransformation.None,
@@ -243,9 +191,8 @@ public fun TextField(
         disabled = disabled,
         multiline = multiline,
         maxVisibleLines = maxVisibleLines,
-        icon = icon,
-        button = button,
-        iconAreaAlignment = iconAreaAlignment,
+        edgeItem = edgeItem,
+        iconAreaAlignment = edgeItemAreaAlignment,
         onClick = onClick,
         bottomPadding = bottomPadding,
         visualTransformation = visualTransformation,
@@ -281,8 +228,7 @@ public fun TextField(
     disabled: Boolean = false,
     multiline: Boolean = false,
     maxVisibleLines: Int = 4,
-    icon: TextFieldIcon? = null,
-    button: TextFieldButton? = null,
+    edgeItem: EdgeItem? = null,
     iconAreaAlignment: TextFieldIconAlignment = TextFieldIconAlignment.TOP,
     onClick: (() -> Unit)? = null,
     bottomPadding: TextFieldBottomPadding = TextFieldBottomPadding.MEDIUM,
@@ -348,10 +294,10 @@ public fun TextField(
                         transformedText,
                         error,
                         placeholder,
-                        icon,
-                        button,
+                        edgeItem,
                         loading,
                         innerTextField,
+                        onValueChange
                     )
                 },
             )
@@ -410,8 +356,8 @@ private fun BottomTextBlock(
     ) {
         /** box will always be drawn, because [Counter] MUST BE glued to the end of the row */
         Box(modifier = Modifier.weight(1f)) {
-            val errorText = if (error) errorText else null
-            val text = errorText ?: helperText
+            val newErrorText = if (error) errorText else null
+            val text = newErrorText ?: helperText
             if (text != null) {
                 HelperText(
                     text = text,
@@ -464,10 +410,10 @@ private fun TypingArea(
     transformedText: AnnotatedString,
     error: Boolean,
     placeholder: String?,
-    icon: TextFieldIcon?,
-    button: TextFieldButton?,
+    edgeItem: EdgeItem?,
     loading: Boolean,
     innerTextField: @Composable () -> Unit,
+    onValueChange: (TextFieldValue) -> Unit
 ) {
     val borderWidth = 1.dp
     val verticalPadding = size.verticalPadding - borderWidth
@@ -496,8 +442,10 @@ private fun TypingArea(
             } else Alignment.CenterVertically
         )
 
-        if (icon != null && icon.placement == IconPlacement.START) {
-            IconArea(alignmentModifier, disabled, loading = false, icon)
+        if (edgeItem != null && ((edgeItem is EdgeItem.TextFieldIcon && edgeItem.placement == IconPlacement.START) ||
+                    (edgeItem is EdgeItem.TextFieldAvatar && edgeItem.placement == IconPlacement.START))
+        ) {
+            IconArea(alignmentModifier, disabled, loading = false, edgeItem)
         }
 
         Box(modifier = Modifier.weight(1f)) {
@@ -505,24 +453,39 @@ private fun TypingArea(
             Box { innerTextField() }
         }
 
-        if (loading || (icon != null && icon.placement == IconPlacement.END)) {
-            IconArea(alignmentModifier, disabled, loading, icon)
+        val iconTint =
+        if (Flamingo.isWhiteMode) Flamingo.palette.white else Flamingo.colors.textTertiary
+
+        AnimatedVisibility(
+            visible = transformedText.isNotEmpty(),
+            modifier = alignmentModifier,
+            enter = fadeIn(animationSpec = animSpec),
+            exit = fadeOut(animationSpec = animSpec),
+        ) {
+            Box(
+                modifier = Modifier
+                    .requiredSize(22.dp) //
+                    .clip(CircleShape)
+                    .clickable(
+                        enabled = !disabled,
+                        role = Role.Button,
+                        onClick = { onValueChange(TextFieldValue()) }
+                    ),
+                contentAlignment = Alignment.Center
+            ) {
+                Icon(
+                    modifier = Modifier.requiredSize(24.dp),
+                    icon = Flamingo.icons.X,
+                    tint = iconTint
+                )
+            }
         }
 
-        if (button != null) Box(
-            modifier = alignmentModifier
-                .padding(start = 8.dp)
-                .pointerInteropFilter { disabled }
+        if (loading || (edgeItem != null && ((edgeItem is EdgeItem.TextFieldIcon && edgeItem.placement == IconPlacement.END) ||
+                    (edgeItem is EdgeItem.TextFieldAvatar && edgeItem.placement == IconPlacement.END))) ||
+            (edgeItem != null && edgeItem is EdgeItem.TextFieldButton)
         ) {
-            Button(
-                onClick = button.onClick,
-                label = button.label,
-                loading = button.loading,
-                disabled = button.disabled,
-                variant = ButtonVariant.TEXT,
-                color = ButtonColor.Primary,
-                size = ButtonSize.SMALL
-            )
+            IconArea(alignmentModifier, disabled, loading, edgeItem)
         }
     }
 }
@@ -533,43 +496,87 @@ private fun RowScope.IconArea(
     @Suppress("ModifierParameter") alignmentModifier: Modifier,
     disabled: Boolean,
     loading: Boolean,
-    icon: TextFieldIcon?,
+    edgeItem: EdgeItem?
 ) {
     Box(
         modifier = Modifier
             .run {
-                if (loading || icon == null) padding(start = 8.dp)
-                else when (icon.placement) {
-                    IconPlacement.START -> padding(end = 8.dp)
-                    IconPlacement.END -> padding(start = 8.dp)
+                if (loading || edgeItem == null) padding(start = 8.dp)
+                else when (edgeItem) {
+                    is EdgeItem.TextFieldAvatar -> {
+                        when (edgeItem.placement) {
+                            IconPlacement.START -> padding(end = 8.dp)
+                            IconPlacement.END -> padding(start = 8.dp)
+                        }
+                            /**
+                             * [IconButton] will go out of the bounds: icon will be centered inside the box
+                             * (icon in [IconButtonSize.SMALL] is 24 dp), but ripple will be drawn outside
+                             * the box, which is expected
+                             */
+                            .requiredSize(22.dp)
+                    }
+                    is EdgeItem.TextFieldButton -> {
+                        padding(start = 8.dp)
+                    }
+                    is EdgeItem.TextFieldIcon -> {
+                        when (edgeItem.placement) {
+                            IconPlacement.START -> padding(end = 8.dp)
+                            IconPlacement.END -> padding(start = 8.dp)
+                        }
+                            /**
+                             * [IconButton] will go out of the bounds: icon will be centered inside the box
+                             * (icon in [IconButtonSize.SMALL] is 24 dp), but ripple will be drawn outside
+                             * the box, which is expected
+                             */
+                            .requiredSize(22.dp)
+                    }
                 }
             }
-            /**
-             * [IconButton] will go out of the bounds: icon will be centered inside the box
-             * (icon in [IconButtonSize.SMALL] is 24 dp), but ripple will be drawn outside
-             * the box, which is expected
-             */
-            .requiredSize(24.dp)
             .then(alignmentModifier)
-            /** blocks clicks on the [IconButton] */
+            /** blocks clicks */
             .pointerInteropFilter { disabled }
     ) {
         when {
             loading -> CircularLoader(color = CircularLoaderColor.PRIMARY)
-            icon?.onClick != null -> IconButton(
-                size = IconButtonSize.SMALL,
-                color = IconButtonColor.DEFAULT,
-                variant = IconButtonVariant.TEXT,
-                onClick = icon.onClick,
-                icon = icon.icon,
-                contentDescription = icon.contentDescription
-            )
-            icon != null -> Icon(
-                modifier = Modifier.requiredSize(24.dp),
-                icon = icon.icon,
-                contentDescription = icon.contentDescription,
-                tint = Flamingo.colors.textTertiary
-            )
+            edgeItem is EdgeItem.TextFieldIcon -> {
+                if (edgeItem.onClick != null) {
+                    IconButton(
+                        size = IconButtonSize.SMALL,
+                        color = IconButtonColor.DEFAULT,
+                        variant = IconButtonVariant.TEXT,
+                        onClick = edgeItem.onClick,
+                        icon = edgeItem.icon,
+                        contentDescription = edgeItem.contentDescription
+                    )
+                } else {
+                    Icon(
+                        modifier = Modifier.requiredSize(24.dp),
+                        icon = edgeItem.icon,
+                        contentDescription = edgeItem.contentDescription,
+                        tint = Flamingo.colors.textTertiary
+                    )
+                }
+            }
+            edgeItem is EdgeItem.TextFieldButton -> {
+                Button(
+                    onClick = edgeItem.onClick,
+                    label = edgeItem.label,
+                    loading = edgeItem.loading,
+                    disabled = edgeItem.disabled,
+                    variant = ButtonVariant.TEXT,
+                    color = ButtonColor.Primary,
+                    size = ButtonSize.SMALL
+                )
+            }
+            edgeItem is EdgeItem.TextFieldAvatar -> {
+                Avatar(
+                    content = edgeItem.content,
+                    onClick = edgeItem.onClick,
+                    shape = edgeItem.shape,
+                    size = AvatarSize.SIZE_24,
+                    contentDescription = null,
+                )
+            }
         }
     }
 }
@@ -600,3 +607,55 @@ public enum class TextFieldBottomPadding(internal val value: Dp) {
 
 private val fieldShape = RoundedCornerShape(8.dp)
 private const val SPRING_STIFFNESS = 700f
+
+public sealed class EdgeItem {
+
+    /**
+     * Allows displaying [Icon] or [IconButton] in the [TextField]. If [onClick] is null, [Icon] will be
+     * displayed. Else - [IconButton].
+     *
+     * @param placement in the [TextField]. If [IconPlacement.START], [onClick] MUST BE null
+     *
+     * @param contentDescription text used by accessibility services to describe what this [Icon] or
+     * [IconButton] represents. This should always be provided unless this [Icon] or [IconButton] is
+     * used for decorative purposes, and does not represent a meaningful action that a user can take.
+     * This text should be localized, such as by using [androidx.compose.ui.res.stringResource] or
+     * similar
+     */
+    public data class TextFieldIcon(
+        val icon: FlamingoIcon,
+        val onClick: (() -> Unit)? = null,
+        val placement: IconPlacement = IconPlacement.END,
+        val contentDescription: String?,
+    ) : EdgeItem() {
+        init {
+            if (placement == IconPlacement.START) require(onClick == null) {
+                "If placement == IconPlacement.START, onClick MUST BE null"
+            }
+        }
+    }
+
+    /**
+     * Allows displaying [Button] at the end of the [TextField]
+     */
+    public data class TextFieldButton(
+        val label: String,
+        val onClick: () -> Unit,
+        val loading: Boolean = false,
+        val disabled: Boolean = false,
+    ) : EdgeItem()
+
+
+    /** @see com.flamingo.components.Avatar */
+    @Immutable
+    public data class TextFieldAvatar(
+        val content: AvatarContent,
+        val onClick: (() -> Unit)? = null,
+        val shape: AvatarShape = AvatarShape.CIRCLE,
+        val placement: IconPlacement = IconPlacement.END,
+    ) : EdgeItem()
+
+}
+
+private val animSpec = tween<Float>(100, easing = LinearEasing)
+public enum class IconPlacement { START, END, }

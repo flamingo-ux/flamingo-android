@@ -37,4 +37,11 @@
         app:persistent="false"
         app:title="White" />
 
+    <DropDownPreference
+        app:iconSpaceReserved="false"
+        app:key="size"
+        app:summary="%s"
+        app:persistent="false"
+        app:title="Size" />
+
 </PreferenceScreen>
