@@ -75,7 +75,7 @@ import com.flamingo.utils.exhaustive
     figma = "https://f.com/file/sPbkUbBGkp5Mstc0IQYubk/4.1.-UI-Android-kit?node-id=830%3A17",
     specification = "https://confluence.companyname.ru/x/MhEnKQE",
     viewImplementation = "com.flamingo.view.components.Avatar",
-    demo = [],
+    demo = ["com.flamingo.playground.components.AvatarComposeStatesPlayroom"],
     supportsWhiteMode = false,
 )
 @Composable

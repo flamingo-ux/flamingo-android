@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <com.flamingo.demoapi.DemoPreference app:key="component" />
+
+    <EditTextPreference
+        app:iconSpaceReserved="false"
+        app:key="message"
+        app:persistent="false"
+        app:title="Message" />
+
+    <SwitchPreferenceCompat
+        app:iconSpaceReserved="false"
+        app:key="hasOnCloseClick"
+        app:persistent="false"
+        app:title="Has on close click" />
+
+    <DropDownPreference
+        app:iconSpaceReserved="false"
+        app:key="variant"
+        app:persistent="false"
+        app:summary="%s"
+        app:title="Variant" />
+
+    <SwitchPreferenceCompat
+        app:allowDividerAbove="true"
+        app:iconSpaceReserved="false"
+        app:key="firstAction"
+        app:persistent="false"
+        app:title="First action" />
+
+    <EditTextPreference
+        app:iconSpaceReserved="false"
+        app:key="firstActionLabel"
+        app:persistent="false"
+        app:title="First action label" />
+
+    <SwitchPreferenceCompat
+        app:iconSpaceReserved="false"
+        app:key="firstActionLoading"
+        app:persistent="false"
+        app:title="First action loading" />
+
+    <SwitchPreferenceCompat
+        app:iconSpaceReserved="false"
+        app:key="firstActionDisabled"
+        app:persistent="false"
+        app:title="First action disabled" />
+
+    <SwitchPreferenceCompat
+        app:allowDividerAbove="true"
+        app:iconSpaceReserved="false"
+        app:key="secondAction"
+        app:persistent="false"
+        app:title="Second action" />
+
+    <EditTextPreference
+        app:iconSpaceReserved="false"
+        app:key="secondActionLabel"
+        app:persistent="false"
+        app:title="Second action label" />
+
+    <SwitchPreferenceCompat
+        app:iconSpaceReserved="false"
+        app:key="secondActionLoading"
+        app:persistent="false"
+        app:title="Second action loading" />
+
+    <SwitchPreferenceCompat
+        app:iconSpaceReserved="false"
+        app:key="secondActionDisabled"
+        app:persistent="false"
+        app:title="Second action disabled" />
+
+</PreferenceScreen>
