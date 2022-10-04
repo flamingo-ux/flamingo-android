@@ -14,4 +14,11 @@
         app:persistent="false"
         app:title="White" />
 
+    <DropDownPreference
+        app:iconSpaceReserved="false"
+        app:key="state"
+        app:summary="%s"
+        app:persistent="false"
+        app:title="State" />
+
 </PreferenceScreen>

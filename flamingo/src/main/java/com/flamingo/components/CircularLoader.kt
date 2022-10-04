@@ -128,6 +128,7 @@ public enum class CircularLoaderSize(internal val size: Dp, internal val lineThi
     SMALL(size = 16.dp, lineThickness = 2.dp),
     MEDIUM(size = 24.dp, lineThickness = 2.dp),
     LARGE(size = 40.dp, lineThickness = 3.dp),
+    HUGE(size = 124.dp, lineThickness = 5.dp)
 }
 
 public enum class CircularLoaderColor {

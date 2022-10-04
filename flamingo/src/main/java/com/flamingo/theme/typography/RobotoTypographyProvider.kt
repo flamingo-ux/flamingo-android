@@ -27,6 +27,7 @@ public val robotoTypographyProvider: FlamingoTypographyProvider = FlamingoTypogr
         colors = colors,
         display1 =  /**/ roboto(96, 96 * 1.00000000, -0.01900000000, 500, colors.textPrimary),
         display2 =  /**/ roboto(60, 64 * 1.00000000, -0.01900000000, 500, colors.textPrimary),
+        display2_1 =  /**/ roboto(56, 50 * 1.00000000, -0.01900000000, 400, colors.textPrimary),
         display3 =  /**/ roboto(48, 52 * 1.00000000, -0.01900000000, 500, colors.textPrimary),
         h1 =        /**/ roboto(34, 34 * 0.99608550, +0.00735294117, 700, colors.textPrimary),
         h2 =        /**/ roboto(28, 28 * 0.97000000, +0.00892857142, 600, colors.textPrimary),
