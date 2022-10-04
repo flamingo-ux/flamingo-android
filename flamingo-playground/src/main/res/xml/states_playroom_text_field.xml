@@ -21,23 +21,23 @@
 
     <DropDownPreference
         app:iconSpaceReserved="false"
-        app:key="icon"
+        app:key="edgeItem"
         app:persistent="false"
         app:summary="%s"
-        app:title="Icon" />
+        app:title="Edge Item" />
 
     <SwitchPreferenceCompat
         app:iconSpaceReserved="false"
-        app:key="iconHasOnClick"
+        app:key="edgeItemHasOnClick"
         app:persistent="false"
-        app:title="Icon has onClick" />
+        app:title="Edge Item has onClick" />
 
     <DropDownPreference
         app:iconSpaceReserved="false"
-        app:key="iconPlacement"
+        app:key="edgeItemPlacement"
         app:persistent="false"
         app:summary="%s"
-        app:title="Icon placement" />
+        app:title="Edge Item placement" />
 
     <EditTextPreference
         app:iconSpaceReserved="false"
