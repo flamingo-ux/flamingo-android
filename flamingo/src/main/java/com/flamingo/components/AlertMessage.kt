@@ -55,7 +55,7 @@ import com.flamingo.theme.FlamingoIcon
     specification = "https://confluence.companyname.ru/x/C4YjKQE",
     theaterPackage = "com.flamingo.playground.components.alertmessage.TheaterPkg",
     viewImplementation = "com.flamingo.view.components.AlertMessage",
-    demo = [],
+    demo = ["com.flamingo.playground.components.AlertMessageComposeStatesPlayroom"],
     supportsWhiteMode = false,
 )
 @Composable

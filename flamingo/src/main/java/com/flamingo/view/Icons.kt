@@ -75,6 +75,7 @@ private val designSystemIcons = intArrayOf(
     R.drawable.ds_ic_check,
     R.drawable.ds_ic_check_circle,
     R.drawable.ds_ic_check_square,
+    R.drawable.ds_ic_check_square_minus_v2,
     R.drawable.ds_ic_chevron_down,
     R.drawable.ds_ic_chevron_left,
     R.drawable.ds_ic_chevron_right,
