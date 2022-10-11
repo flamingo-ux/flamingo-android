@@ -48,6 +48,7 @@ internal val lightColors = with(Flamingo.palette) {
         textPrimary = black.copy(alpha = .87f),
         textSecondary = black.copy(alpha = .60f),
         textTertiary = black.copy(alpha = .38f),
+        greenHover = green800,
         global = GlobalColors(
             light = GlobalColors.GlobalColorsVersion(
                 textPrimary = white.copy(alpha = .98f),
@@ -114,6 +115,7 @@ internal val darkColors = with(Flamingo.palette) {
         textPrimary = white.copy(alpha = .98f),
         textSecondary = white.copy(alpha = .60f),
         textTertiary = white.copy(alpha = .38f),
+        greenHover = green600,
         global = GlobalColors(
             light = GlobalColors.GlobalColorsVersion(
                 textPrimary = white.copy(alpha = .98f),
