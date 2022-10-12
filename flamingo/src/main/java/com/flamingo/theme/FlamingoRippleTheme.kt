@@ -12,7 +12,7 @@ import com.flamingo.Flamingo
 internal object FlamingoRippleTheme : RippleTheme {
     @Composable
     override fun defaultColor(): Color =
-        (if (isSystemInDarkTheme()) Color.White else Flamingo.palette.blue850)
+        (if (isSystemInDarkTheme()) Color.White else Flamingo.palette.grey850)
 
     @Composable
     override fun rippleAlpha() = RippleAlpha(
