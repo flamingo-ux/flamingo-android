@@ -15,22 +15,25 @@
 
 package com.flamingo.components
 
-import androidx.compose.animation.animateColorAsState
-import androidx.compose.animation.core.snap
-import androidx.compose.animation.core.spring
+import android.util.Log
+import androidx.compose.animation.Animatable
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
+import androidx.compose.foundation.interaction.PressInteraction
 import androidx.compose.foundation.interaction.collectIsPressedAsState
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.requiredSize
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.compositeOver
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.Dp
@@ -39,6 +42,8 @@ import com.flamingo.Flamingo
 import com.flamingo.annotations.FlamingoComponent
 import com.flamingo.components.button.ButtonWidthPolicy
 import com.flamingo.theme.FlamingoIcon
+import com.flamingo.theme.FlamingoRippleTheme
+import kotlinx.coroutines.flow.collectLatest
 
 /**
  * @param label Link to be displayed. '\n' will be respected only in [ButtonWidthPolicy.MULTILINE].
@@ -68,7 +73,7 @@ import com.flamingo.theme.FlamingoIcon
 @Composable
 public fun Link(
     label: String,
-    onClick: ((String) -> Unit)?,
+    onClick: (() -> Unit)?,
     size: LinkSize = LinkSize.NORMAL,
     color: Color = Flamingo.colors.primary,
     loading: Boolean = false,
@@ -79,36 +84,51 @@ public fun Link(
     val textStartPadding = if (loading || startIcon != null) 8.dp else 0.dp
     val textEndPadding = if (endIcon != null) 8.dp else 0.dp
     val interactionSource = remember { MutableInteractionSource() }
-    val isPressed by interactionSource.collectIsPressedAsState()
-    val newColor by animateColorAsState(
-        targetValue = if (isPressed) Flamingo.colors.greenHover else color, //todo hover depends on color!
-        animationSpec = tween(100)
-    )
+
+    val newColor = remember { Animatable(color) }
+
+    val hoverColor = if (color == Flamingo.colors.primary) Flamingo.colors.greenHover else
+        FlamingoRippleTheme.defaultColor().copy(alpha = .12f).compositeOver(color)
+
+    // text ripple effect
+    LaunchedEffect(key1 = color) {
+        // this is needed to update color when new color is passed in component
+        newColor.animateTo(color, tween(0))
+        interactionSource.interactions.collectLatest {
+            if (it is PressInteraction.Press) {
+                newColor.animateTo(hoverColor, tween(100))
+            } else {
+                newColor.animateTo(hoverColor, tween(100))
+                newColor.animateTo(color, tween(100))
+            }
+        }
+    }
+
     Row(
         modifier = Modifier.padding(vertical = size.verticalPadding)
             .run {
                 if (onClick != null) clickable(
-                    onClick = { onClick.invoke(label) },
+                    onClick = onClick,
                     enabled = !disabled,
                     interactionSource = interactionSource,
-                    indication = null
+                    indication = null,
                 ) else this
             },
         verticalAlignment = Alignment.CenterVertically,
     ) {
         if (loading) {
-            CircularLoader(size = CircularLoaderSize.SMALL, color = newColor)
+            CircularLoader(size = CircularLoaderSize.SMALL, color = newColor.value)
         } else if (startIcon != null) {
             Icon(
                 modifier = Modifier
                     .requiredSize(16.dp),
-                tint = newColor,
+                tint = newColor.value,
                 icon = startIcon,
                 contentDescription = null
             )
         }
         Text(
-            color = newColor,
+            color = newColor.value,
             text = label,
             modifier = Modifier
                 .padding(start = textStartPadding, end = textEndPadding),
@@ -122,7 +142,7 @@ public fun Link(
             Icon(
                 modifier = Modifier
                     .requiredSize(16.dp),
-                tint = newColor,
+                tint = newColor.value,
                 icon = endIcon,
                 contentDescription = null
             )
