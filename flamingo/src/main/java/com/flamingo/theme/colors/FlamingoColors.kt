@@ -116,6 +116,12 @@ public data class FlamingoColors internal constructor(
      */
     public val textTertiary: Color,
 
+    /**
+     * Используется для выделения нажатия для зеленых компонентов
+     * [figma](https://f.com/file/OvrFgcI8VcGcL8Bw24pK5e?node-id=13978%3A22650)
+     */
+    public val greenHover: Color,
+
     public val global: GlobalColors,
     public val inverse: InverseColors,
     public val extensions: ExtensionColors,
