@@ -96,10 +96,10 @@ public fun Link(
         newColor.animateTo(color, tween(0))
         interactionSource.interactions.collectLatest {
             if (it is PressInteraction.Press) {
-                newColor.animateTo(hoverColor, tween(100))
+                newColor.animateTo(hoverColor, animationSpec)
             } else {
-                newColor.animateTo(hoverColor, tween(100))
-                newColor.animateTo(color, tween(100))
+                newColor.animateTo(hoverColor, animationSpec)
+                newColor.animateTo(color, animationSpec)
             }
         }
     }
@@ -149,6 +149,8 @@ public fun Link(
         }
     }
 }
+
+private val animationSpec = tween<Color>(100)
 
 public enum class LinkSize(
     internal val verticalPadding: Dp
