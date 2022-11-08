@@ -43,6 +43,8 @@ import com.flamingo.Flamingo
 import com.flamingo.alpha
 import com.flamingo.annotations.FlamingoComponent
 import com.flamingo.annotations.UsedInsteadOf
+import com.flamingo.components.Badge
+import com.flamingo.components.BadgeSize
 import com.flamingo.components.CircularLoader
 import com.flamingo.components.CircularLoaderSize
 import com.flamingo.components.FlamingoComponentBase
@@ -50,8 +52,6 @@ import com.flamingo.components.Icon
 import com.flamingo.components.Text
 import com.flamingo.components.button.ButtonColor.Default
 import com.flamingo.components.button.ButtonColor.White
-import com.flamingo.components.button.ButtonIconPosition.END
-import com.flamingo.components.button.ButtonIconPosition.START
 import com.flamingo.components.button.ButtonSize.LARGE
 import com.flamingo.components.button.ButtonSize.MEDIUM
 import com.flamingo.components.button.ButtonSize.SMALL
@@ -106,8 +106,8 @@ public fun Button(
     size: ButtonSize = MEDIUM,
     color: ButtonColor = if (Flamingo.isWhiteMode) White else Default,
     variant: ButtonVariant = CONTAINED,
-    icon: FlamingoIcon? = null,
-    iconPosition: ButtonIconPosition = START,
+    startIcon: FlamingoIcon? = null,
+    endItem: ButtonEndItem? = null,
     disabled: Boolean = false,
     fillMaxWidth: Boolean = false,
     widthPolicy: ButtonWidthPolicy = MULTILINE,
@@ -123,9 +123,10 @@ public fun Button(
 
     val paddings = remember { ButtonPaddings() }
     paddings.calculatePaddings(
-        isIconPresent = icon != null,
-        iconPosition = iconPosition,
+        hasStartItem = startIcon != null,
+        hasEndItem = endItem != null,
         loading = loading,
+        size = size
     )
 
     val showShadow = variant == CONTAINED && when (color) {
@@ -142,8 +143,8 @@ public fun Button(
         Box(
             modifier = Modifier
                 .layoutId("background")
-                .shadow(if (showShadow) 2.dp else 0.dp, buttonShape)
-                .clip(buttonShape)
+                .shadow(if (showShadow) 2.dp else 0.dp, buttonShape(size))
+                .clip(buttonShape(size))
                 .background(backgroundColor)
                 .clickable(
                     onClick = onClick,
@@ -161,14 +162,14 @@ public fun Button(
             ) {
                 CircularLoader(size = CircularLoaderSize.SMALL, color = onColor)
             }
-        } else if (icon != null && iconPosition == START) {
+        } else if (startIcon != null) {
             Icon(
                 modifier = Modifier
                     .layoutId("startIcon")
                     .padding(start = paddings.iconStart)
                     .requiredSize(16.dp),
                 tint = onColor,
-                icon = icon,
+                icon = startIcon,
                 contentDescription = null
             )
         }
@@ -183,17 +184,27 @@ public fun Button(
             overflow = TextOverflow.Ellipsis,
             style = Flamingo.typography.run { if (size == SMALL) body2 else body1 }
         )
-        // this icon is hidden when loading == true
-        if (icon != null && iconPosition == END && !loading) {
-            Icon(
-                modifier = Modifier
-                    .layoutId("endIcon")
-                    .padding(end = paddings.iconEnd)
-                    .requiredSize(16.dp),
-                tint = onColor,
-                icon = icon,
-                contentDescription = null
-            )
+
+        if (endItem != null) {
+            when (endItem) {
+                is ButtonEndItem.Icon -> {
+                    Icon(
+                        modifier = Modifier
+                            .layoutId("endIcon")
+                            .padding(end = paddings.iconEnd)
+                            .requiredSize(16.dp),
+                        tint = onColor,
+                        icon = endItem.icon,
+                        contentDescription = null
+                    )
+                }
+                is ButtonEndItem.Badge -> {
+                    val badgeColor = ButtonColorCalculation.badgeColor(variant, color)
+                    Box(Modifier.padding(end = paddings.iconEnd)) {
+                        Badge(label = endItem.label, color = badgeColor, size = BadgeSize.SMALL)
+                    }
+                }
+            }
         }
     }
 }
@@ -206,7 +217,7 @@ internal fun Color.animateButtonColor(
 public enum class ButtonSize(
     internal val height: Dp,
     internal val verticalPadding: Dp
-) { SMALL(32.dp, 6.dp), MEDIUM(40.dp, 8.dp), LARGE(48.dp, 12.dp), }
+) { SMALL(32.dp, 6.dp), MEDIUM(40.dp, 10.dp), LARGE(48.dp, 14.dp), }
 
 public enum class ButtonIconPosition { START, END, }
 public enum class ButtonVariant { TEXT, CONTAINED, }
@@ -225,4 +236,9 @@ public sealed class ButtonColor {
     public object White : ButtonColor()
 }
 
-private val buttonShape = RoundedCornerShape(8.dp)
+private fun buttonShape(size: ButtonSize) = RoundedCornerShape(if (size == LARGE) 12.dp else 8.dp)
+
+public sealed class ButtonEndItem {
+    public data class Icon(val icon: FlamingoIcon) : ButtonEndItem()
+    public data class Badge(val label: String) : ButtonEndItem()
+}
