@@ -96,6 +96,11 @@ public data class FlamingoColors internal constructor(
      */
     public val backgroundTextField: Color,
 
+    /**
+     * [figma](https://f.com/file/OvrFgcI8VcGcL8Bw24pK5e?node-id=13978%3A22650)
+     */
+    public val backgroundQuinary: Color,
+
     public val backdrop: Color,
 
     /**
