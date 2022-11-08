@@ -51,6 +51,9 @@ import com.flamingo.theme.FlamingoIcon
 /**
  * Intended to be used in [Row]. Does not support truncating text, will always display full length
  * of the content (text and icons). '\n's are replaced with spaces.
+ *
+ * [variant] and [color] params are not used anymore, they remained for backwards compatibility
+ * only [ChipVariant.CONTAINED] and [ChipColor.PRIMARY] are used now
  */
 @FlamingoComponent(
     preview = "com.flamingo.playground.preview.ChipPreview",
@@ -67,13 +70,12 @@ public fun Chip(
     onClick: (() -> Unit)? = null,
     onDelete: (() -> Unit)? = null,
     variant: ChipVariant = CONTAINED,
-    color: ChipColor = DEFAULT,
+    color: ChipColor = PRIMARY,
     icon: FlamingoIcon? = null,
     disabled: Boolean = false,
 ): Unit = FlamingoComponentBase {
-    val backgroundColor = calculateBackgroundColor(selected, variant, color)
-    val contentColor = calculateContentColor(selected, variant, color)
-    val borderColor = calculateBorderColor(selected, variant, color)
+    val backgroundColor = calculateBackgroundColor(selected)
+    val contentColor = calculateContentColor(selected)
 
     Row(
         modifier = Modifier
@@ -81,7 +83,6 @@ public fun Chip(
             .alpha(disabled, animate = true)
             .clip(CircleShape)
             .background(backgroundColor, CircleShape)
-            .border(1.dp, borderColor, CircleShape)
             .run {
                 if (onClick != null) {
                     clickable(enabled = !disabled, role = Role.Checkbox, onClick = onClick)
@@ -111,7 +112,7 @@ public fun Chip(
                 .align(BiasAlignment.Vertical(-0.18f)),
             text = label.replace("\n", " "),
             color = contentColor,
-            style = Flamingo.typography.body1,
+            style = Flamingo.typography.body2,
             maxLines = 1,
             overflow = TextOverflow.Ellipsis
         )
@@ -143,45 +144,11 @@ public enum class ChipVariant { CONTAINED, OUTLINED, }
 public enum class ChipColor { DEFAULT, PRIMARY, }
 
 @Composable
-private fun calculateBorderColor(
-    selected: Boolean,
-    variant: ChipVariant,
-    color: ChipColor
-) = when (variant) {
-    CONTAINED -> Color.Transparent
-    OUTLINED -> if (selected) when (color) {
-        DEFAULT -> Flamingo.colors.outlineDark
-        PRIMARY -> Flamingo.colors.primary
-    } else Flamingo.colors.outlineDark
-}
-
-@Composable
 private fun calculateContentColor(
-    selected: Boolean,
-    variant: ChipVariant,
-    color: ChipColor
-) = if (selected) {
-    when (variant) {
-        CONTAINED -> Flamingo.colors.inverse.textPrimary
-        OUTLINED -> when (color) {
-            DEFAULT -> Flamingo.colors.textPrimary
-            PRIMARY -> Flamingo.colors.primary
-        }
-    }
-} else Flamingo.colors.textPrimary
+    selected: Boolean
+) = if (selected) Flamingo.colors.primary else Flamingo.colors.textPrimary
 
 @Composable
 private fun calculateBackgroundColor(
-    selected: Boolean,
-    variant: ChipVariant,
-    color: ChipColor
-) = when (variant) {
-    CONTAINED -> if (selected) when (color) {
-        DEFAULT -> Flamingo.colors.inverse.backgroundTertiary
-        PRIMARY -> Flamingo.colors.primary
-    } else Flamingo.colors.backgroundQuaternary
-    OUTLINED -> if (selected) when (color) {
-        DEFAULT -> Flamingo.colors.backgroundQuaternary
-        PRIMARY -> Flamingo.colors.extensions.background.success
-    } else Color.Transparent
-}
+    selected: Boolean
+) = if (selected) Flamingo.colors.backgroundQuinary else Flamingo.colors.backgroundQuaternary
