@@ -19,26 +19,27 @@ internal class ButtonPaddings {
 
     @Suppress("NestedBlockDepth", "MagicNumber", "ComplexMethod", "LongMethod")
     fun calculatePaddings(
-        isIconPresent: Boolean,
-        iconPosition: ButtonIconPosition,
+        hasStartItem: Boolean,
+        hasEndItem: Boolean,
         loading: Boolean,
+        size: ButtonSize
     ) {
+        val sizePadding = if (size == ButtonSize.LARGE) 16 else 12
         /** Properties are [Int]s and not [Dp]s because .[dp] calls will clutter the code */
-        var textStartDp = 16
-        var textEndDp = 16
+        var textStartDp = sizePadding
+        var textEndDp = sizePadding
         var iconStartDp = 0
         var iconEndDp = 0
 
-        if (isIconPresent || loading) when {
-            iconPosition == ButtonIconPosition.START || loading -> {
+        when {
+            hasStartItem || loading -> {
                 textStartDp = 8
-                iconStartDp = 16
+                iconStartDp = sizePadding
             }
-            iconPosition == ButtonIconPosition.END -> {
+            hasEndItem -> {
                 textEndDp = 8
-                iconEndDp = 16
+                iconEndDp = sizePadding
             }
-            else -> error("Unknown icon position: $iconPosition")
         }
 
         textStart = textStartDp.dp

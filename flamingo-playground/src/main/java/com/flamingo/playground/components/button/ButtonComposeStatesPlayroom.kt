@@ -12,21 +12,21 @@ import androidx.preference.SwitchPreferenceCompat
 import com.flamingo.Flamingo
 import com.flamingo.components.button.Button
 import com.flamingo.components.button.ButtonColor
-import com.flamingo.components.button.ButtonIconPosition
+import com.flamingo.components.button.ButtonEndItem
 import com.flamingo.components.button.ButtonSize
 import com.flamingo.components.button.ButtonVariant
 import com.flamingo.components.button.ButtonWidthPolicy
-import com.flamingo.playground.R
-import com.flamingo.demoapi.StatesPlayroomDemo
-import com.flamingo.playground.boast
-import com.flamingo.demoapi.WhiteModeDemo
-import com.flamingo.demoapi.parceNull
 import com.flamingo.demoapi.DemoPreference
+import com.flamingo.demoapi.StatesPlayroomDemo
+import com.flamingo.demoapi.WhiteModeDemo
 import com.flamingo.demoapi.configurePreference
+import com.flamingo.demoapi.findPreference
 import com.flamingo.demoapi.initPref
 import com.flamingo.demoapi.onChange
+import com.flamingo.demoapi.parceNull
 import com.flamingo.demoapi.tintIcons
-import com.flamingo.demoapi.findPreference
+import com.flamingo.playground.R
+import com.flamingo.playground.boast
 import com.flamingo.theme.FlamingoIcon
 
 @StatesPlayroomDemo
@@ -46,8 +46,10 @@ class ButtonComposeStatesPlayroom : PreferenceFragmentCompat() {
         var size by mutableStateOf(ButtonSize.MEDIUM)
         var color by mutableStateOf<ButtonColor>(ButtonColor.Default)
         var variant by mutableStateOf(ButtonVariant.CONTAINED)
-        var icon by mutableStateOf<FlamingoIcon?>(null)
-        var iconPosition by mutableStateOf(ButtonIconPosition.START)
+        var startIcon by mutableStateOf<FlamingoIcon?>(null)
+        var endItem by mutableStateOf<ButtonEndItem?>(null)
+        var endIcon by mutableStateOf<FlamingoIcon?>(null)
+        var badgeLabel by mutableStateOf("")
         var disabled by mutableStateOf(false)
         var fillMaxWidth by mutableStateOf(false)
         var widthPolicy by mutableStateOf(ButtonWidthPolicy.MULTILINE)
@@ -61,8 +63,8 @@ class ButtonComposeStatesPlayroom : PreferenceFragmentCompat() {
                     size = size,
                     color = color,
                     variant = variant,
-                    icon = icon,
-                    iconPosition = iconPosition,
+                    startIcon = startIcon,
+                    endItem = endItem,
                     disabled = disabled,
                     fillMaxWidth = fillMaxWidth,
                     widthPolicy = widthPolicy,
@@ -116,15 +118,34 @@ class ButtonComposeStatesPlayroom : PreferenceFragmentCompat() {
             initPref(savedInstanceState, defVal = ButtonWidthPolicy.MULTILINE)
         }
 
-        configurePreference<DropDownPreference>("iconPosition") {
-            val positions = ButtonIconPosition.values().map { it.toString() }.toTypedArray()
-            entries = positions
-            entryValues = positions
-            onChange { iconPosition = ButtonIconPosition.valueOf(it); true }
-            initPref(savedInstanceState, defVal = ButtonIconPosition.START)
+        configurePreference<DropDownPreference>("endItem") {
+            val endItemClasses = arrayOf(
+                "null",
+                "Icon",
+                "Badge",
+            )
+            entries = endItemClasses
+            entryValues = endItemClasses
+            onChange { newValue ->
+                endItem = when (newValue) {
+                    "null" -> null
+                    "Icon" -> ButtonEndItem.Icon(endIcon ?: Flamingo.icons.Airplay)
+                    "Badge" -> ButtonEndItem.Badge(badgeLabel)
+                    else -> null
+                }
+
+                findPreference("endIcon").isVisible =
+                    endItem != null && endItem is ButtonEndItem.Icon
+
+                findPreference("badgeLabel").isVisible =
+                    endItem != null && endItem is ButtonEndItem.Badge
+
+                true
+            }
+            initPref(savedInstanceState, defVal = "null")
         }
 
-        configurePreference<DropDownPreference>("icon") {
+        configurePreference<DropDownPreference>("startIcon") {
             entries = arrayOf(
                 "null",
                 "Airplay",
@@ -138,10 +159,38 @@ class ButtonComposeStatesPlayroom : PreferenceFragmentCompat() {
                 Flamingo.icons.Aperture.getName(context),
             )
             onChange {
-                icon = (it as? String)?.parceNull()?.let { Flamingo.icons.fromName(context, it) }
+                startIcon =
+                    (it as? String)?.parceNull()?.let { Flamingo.icons.fromName(context, it) }
                 true
             }
             initPref(savedInstanceState, defVal = "null")
+        }
+
+        configurePreference<EditTextPreference>("badgeLabel") {
+            onChange { newValue ->
+                summary = "\"$newValue\""
+                badgeLabel = newValue
+                true
+            }
+            initPref(savedInstanceState, defVal = "badge")
+        }
+
+        configurePreference<DropDownPreference>("endIcon") {
+            entries = arrayOf(
+                "Airplay",
+                "Bell",
+                "Aperture",
+            )
+            entryValues = arrayOf(
+                Flamingo.icons.Airplay.getName(context),
+                Flamingo.icons.Bell.getName(context),
+                Flamingo.icons.Aperture.getName(context),
+            )
+            onChange {
+                endIcon = (it as? String)?.let { Flamingo.icons.fromName(context, it) }
+                true
+            }
+            initPref(savedInstanceState, defVal = "Airplay")
         }
 
         configurePreference<SwitchPreferenceCompat>("fillMaxWidth") {
