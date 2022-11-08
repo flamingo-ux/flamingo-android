@@ -39,8 +39,6 @@ class ChipStatesPlayroom : PreferenceFragmentCompat() {
         var selected by mutableStateOf(false)
         var hasOnClick by mutableStateOf(false)
         var hasOnDelete by mutableStateOf(false)
-        var variant by mutableStateOf(ChipVariant.CONTAINED)
-        var color by mutableStateOf(ChipColor.DEFAULT)
         var icon by mutableStateOf<FlamingoIcon?>(null)
         var disabled by mutableStateOf(false)
 
@@ -50,8 +48,6 @@ class ChipStatesPlayroom : PreferenceFragmentCompat() {
                 selected = selected,
                 onClick = if (hasOnClick) boast(msg = "onClick") else null,
                 onDelete = if (hasOnDelete) boast(msg = "onDelete") else null,
-                variant = variant,
-                color = color,
                 icon = icon,
                 disabled = disabled,
             )
@@ -88,28 +84,6 @@ class ChipStatesPlayroom : PreferenceFragmentCompat() {
                 true
             }
             initPref(savedInstanceState, defVal = false)
-        }
-
-        configurePreference<DropDownPreference>("variant") {
-            val contents = ChipVariant.values().map { it.name }.toTypedArray()
-            entries = contents
-            entryValues = contents
-            onChange { newValue ->
-                variant = ChipVariant.valueOf(newValue)
-                true
-            }
-            initPref(savedInstanceState, defVal = ChipVariant.CONTAINED.toString())
-        }
-
-        configurePreference<DropDownPreference>("color") {
-            val contents = ChipColor.values().map { it.name }.toTypedArray()
-            entries = contents
-            entryValues = contents
-            onChange { newValue ->
-                color = ChipColor.valueOf(newValue)
-                true
-            }
-            initPref(savedInstanceState, defVal = ChipColor.DEFAULT.toString())
         }
 
         configurePreference<DropDownPreference>("icon") {
