@@ -33,6 +33,7 @@ import com.flamingo.annotations.view.DsIconSet
 import com.flamingo.annotations.view.FlamingoComponent
 import com.flamingo.components.button.Button
 import com.flamingo.components.button.ButtonColor
+import com.flamingo.components.button.ButtonEndItem
 import com.flamingo.components.button.ButtonIconPosition
 import com.flamingo.components.button.ButtonSize
 import com.flamingo.components.button.ButtonVariant
@@ -340,8 +341,10 @@ public class Button @JvmOverloads constructor(
             Button(
                 onClick = { callOnClick() },
                 label = label,
-                icon = if (icon == 0) null else Flamingo.icons.fromId(icon),
-                iconPosition = iconPosition,
+                startIcon = if (icon == 0 || iconPosition != ButtonIconPosition.START) null
+                else Flamingo.icons.fromId(icon),
+                endItem = if (icon == 0 || iconPosition != ButtonIconPosition.END) null
+                else ButtonEndItem.Icon(Flamingo.icons.fromId(icon)),
                 size = when (size) {
                     SIZE_SMALL -> ButtonSize.SMALL
                     SIZE_MEDIUM -> ButtonSize.MEDIUM

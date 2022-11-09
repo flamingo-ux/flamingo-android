@@ -761,13 +761,13 @@ internal class Conf {
                     onClick = boast("Click"),
                     label = "Button",
                     color = ButtonColor.Default,
-                    icon = Flamingo.icons.Briefcase,
+                    startIcon = Flamingo.icons.Briefcase,
                 )
                 Button(
                     onClick = boast("Click"),
                     label = "Button",
                     color = ButtonColor.White,
-                    icon = Flamingo.icons.Briefcase,
+                    startIcon = Flamingo.icons.Briefcase,
                 )
             }
         }
