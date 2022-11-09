@@ -146,7 +146,7 @@ private fun Header(
         onClick = filePickerButton.onClick,
         label = filePickerButton.label,
         color = if (filePickerButton.isPrimary) ButtonColor.Primary else ButtonColor.Default,
-        icon = Flamingo.icons.Paperclip,
+        startIcon = Flamingo.icons.Paperclip,
         disabled = filePickerButton.disabled,
         fillMaxWidth = true,
         widthPolicy = ButtonWidthPolicy.TRUNCATING,
