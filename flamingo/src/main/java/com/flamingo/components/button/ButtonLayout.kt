@@ -37,21 +37,27 @@ internal fun ButtonLayout(
         measurables: List<Measurable>,
         constraints: Constraints
     ): MeasureResult {
-        require(measurables.size in 2..3) {
-            "ButtonLayout supports only 2 or 3 children, but was: ${measurables.size}"
+        require(measurables.size in 2..4) {
+            "ButtonLayout supports only 2 to 4 children, but was: ${measurables.size}"
         }
         val verticalPaddingPx = verticalPadding.roundToPx()
 
-        val iconMeasurable = measurables.getIcon()
+        val startIconMeasurable = measurables.getStartItem()
+        val endIconMeasurable = measurables.getEndItem()
         val textMeasurable = measurables.getText()
         val backgroundMeasurable = measurables.getBackground()
 
-        val iconAtStart = (iconMeasurable?.layoutId as? String)?.startsWith("start")
+        val iconAtStart = startIconMeasurable != null
+        val iconAtEnd = endIconMeasurable != null
 
         // icon cannot be cropped and will be displayed no matter what
-        val iconPlaceable = iconMeasurable?.measure(Constraints())
+        val startIconPlaceable = startIconMeasurable?.measure(Constraints())
 
-        val iconWidth = iconPlaceable?.width ?: 0
+        val startIconWidth = startIconPlaceable?.width ?: 0
+
+        val endIconPlaceable = endIconMeasurable?.measure(Constraints())
+
+        val endIconWidth = endIconPlaceable?.width ?: 0
 
         val textPlaceable = textMeasurable.measure(
             Constraints(
@@ -60,7 +66,7 @@ internal fun ButtonLayout(
                 } else {
                     if (constraints.hasBoundedWidth) {
                         // if maxWidth < iconWidth, textWidth will be zero (no room for text)
-                        (constraints.maxWidth - iconWidth).coerceAtLeast(0)
+                        (constraints.maxWidth - startIconWidth - endIconWidth).coerceAtLeast(0)
                     } else {
                         Constraints.Infinity
                     }
@@ -70,17 +76,18 @@ internal fun ButtonLayout(
 
         val textWidth = textPlaceable.width
         val textHeight = textPlaceable.height
-        val iconHeight = iconPlaceable?.height ?: 0
+        val startIconHeight = startIconPlaceable?.height ?: 0
+        val endIconHeight = endIconPlaceable?.height ?: 0
 
         // can be larger than constraints.maxWidth, if maxWidth < iconWidth (which will always be
         // displayed)
-        val contentWidth = iconWidth + textWidth
+        val contentWidth = startIconWidth + endIconWidth + textWidth
 
         // maxOf is used because contentWidth can be larger than constraints.maxWidth
         val totalWidth =
             if (fillMaxWidth) maxOf(contentWidth, constraints.maxWidth) else contentWidth
 
-        val totalHeight = maxOf(iconHeight, textHeight) + verticalPaddingPx * 2
+        val totalHeight = maxOf(startIconHeight, endIconHeight, textHeight) + verticalPaddingPx * 2
 
         val backgroundPlaceable = backgroundMeasurable.measure(
             Constraints.fixed(totalWidth, totalHeight)
@@ -89,13 +96,13 @@ internal fun ButtonLayout(
         return layout(width = totalWidth, height = totalHeight) {
             backgroundPlaceable.placeRelative(0, 0)
             val freeSideSpace = (totalWidth - contentWidth) / 2
-            if (iconAtStart == true) {
-                iconPlaceable?.placeRelative(
+            if (iconAtStart) {
+                startIconPlaceable?.placeRelative(
                     x = freeSideSpace,
-                    y = totalHeight / 2 - iconHeight / 2 // means center vertically
+                    y = totalHeight / 2 - startIconHeight / 2 // means center vertically
                 )
                 textPlaceable.placeRelative(
-                    x = freeSideSpace + iconWidth, // after icon
+                    x = freeSideSpace + startIconWidth, // after icon
                     y = totalHeight / 2 - textHeight / 2
                 )
             } else {
@@ -103,9 +110,11 @@ internal fun ButtonLayout(
                     x = freeSideSpace,
                     y = totalHeight / 2 - textHeight / 2
                 )
-                iconPlaceable?.placeRelative(
-                    x = freeSideSpace + textWidth,
-                    y = totalHeight / 2 - iconHeight / 2
+            }
+            if (iconAtEnd) {
+                endIconPlaceable?.placeRelative(
+                    x = freeSideSpace + textWidth + startIconWidth,
+                    y = totalHeight / 2 - endIconHeight / 2
                 )
             }
         }
@@ -119,7 +128,11 @@ internal fun ButtonLayout(
         it.layoutId == "text"
     } ?: error("Child with layoutId == \"text\" is not found")
 
-    private fun List<Measurable>.getIcon(): Measurable? = fastFirstOrNull {
-        (it.layoutId as String).endsWith("Icon")
+    private fun List<Measurable>.getStartItem(): Measurable? = fastFirstOrNull {
+        (it.layoutId as String).endsWith("startItem")
+    }
+
+    private fun List<Measurable>.getEndItem(): Measurable? = fastFirstOrNull {
+        (it.layoutId as String).endsWith("endItem")
     }
 })
