@@ -37,10 +37,7 @@ import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.unit.dp
 import com.flamingo.Flamingo
 import com.flamingo.annotations.FlamingoComponent
-import com.flamingo.components.button.Button
 import com.flamingo.components.button.ButtonColor
-import com.flamingo.components.button.ButtonSize
-import com.flamingo.components.button.ButtonVariant
 import com.flamingo.components.button.ButtonWidthPolicy
 import com.flamingo.theme.FlamingoIcon
 
@@ -139,44 +136,38 @@ private fun Actions(
 ) = with(actions) {
     Row(modifier = modifier) {
         if (secondAction == null) {
-            Box(Modifier.offset(x = -8.dp)) {
+            Box {
                 with(firstAction) {
-                    Button(
-                        size = ButtonSize.SMALL,
-                        variant = ButtonVariant.TEXT,
-                        color = variant.buttonColor,
+                    Link(
                         label = label,
                         onClick = onClick,
+                        size = LinkSize.SMALL,
+                        color = Flamingo.colors.textPrimary,
                         loading = loading,
-                        disabled = disabled,
-                        widthPolicy = ButtonWidthPolicy.TRUNCATING,
+                        disabled = disabled
                     )
                 }
             }
         } else {
             Box(modifier = Modifier.weight(1f, fill = false)) {
-                Button(
-                    size = ButtonSize.SMALL,
-                    variant = ButtonVariant.CONTAINED,
-                    color = variant.buttonColor,
+                Link(
                     label = firstAction.label,
                     onClick = firstAction.onClick,
+                    size = LinkSize.SMALL,
+                    color = Flamingo.colors.textPrimary,
                     loading = firstAction.loading,
-                    disabled = firstAction.disabled,
-                    widthPolicy = ButtonWidthPolicy.TRUNCATING,
+                    disabled = firstAction.disabled
                 )
             }
-            Spacer(modifier = Modifier.requiredWidth(8.dp))
+            Spacer(modifier = Modifier.requiredWidth(24.dp))
             Box(modifier = Modifier.weight(1f, fill = false)) {
-                Button(
-                    size = ButtonSize.SMALL,
-                    variant = ButtonVariant.TEXT,
-                    color = ButtonColor.Default,
+                Link(
                     label = secondAction.label,
                     onClick = secondAction.onClick,
+                    size = LinkSize.SMALL,
+                    color = Flamingo.colors.textPrimary,
                     loading = secondAction.loading,
-                    disabled = secondAction.disabled,
-                    widthPolicy = ButtonWidthPolicy.TRUNCATING,
+                    disabled = secondAction.disabled
                 )
             }
         }

@@ -202,7 +202,10 @@ public fun Button(
                 }
                 is ButtonEndItem.Badge -> {
                     val badgeColor = ButtonColorCalculation.badgeColor(variant, color)
-                    Box(Modifier.layoutId("endItem").padding(end = paddings.iconEnd)) {
+                    Box(
+                        Modifier
+                            .layoutId("endItem")
+                            .padding(end = paddings.iconEnd)) {
                         Badge(label = endItem.label, color = badgeColor, size = BadgeSize.SMALL)
                     }
                 }
