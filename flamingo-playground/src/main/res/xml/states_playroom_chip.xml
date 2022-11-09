@@ -28,20 +28,6 @@
 
     <DropDownPreference
         app:iconSpaceReserved="false"
-        app:key="variant"
-        app:persistent="false"
-        app:summary="%s"
-        app:title="Variant" />
-
-    <DropDownPreference
-        app:iconSpaceReserved="false"
-        app:key="color"
-        app:persistent="false"
-        app:summary="%s"
-        app:title="Color" />
-
-    <DropDownPreference
-        app:iconSpaceReserved="false"
         app:key="icon"
         app:persistent="false"
         app:summary="%s"

@@ -105,7 +105,7 @@ fun Split() = Section("2 buttons in fixed Row (width = screen width)") {
             Button(
                 onClick = boast("Click"),
                 label = loremIpsum(1),
-                icon = Flamingo.icons.Briefcase,
+                startIcon = Flamingo.icons.Briefcase,
                 fillMaxWidth = true,
                 widthPolicy = ButtonWidthPolicy.TRUNCATING,
             )
@@ -114,7 +114,7 @@ fun Split() = Section("2 buttons in fixed Row (width = screen width)") {
             Button(
                 onClick = boast("Click"),
                 label = loremIpsum(1),
-                icon = Flamingo.icons.Briefcase,
+                startIcon = Flamingo.icons.Briefcase,
                 fillMaxWidth = true,
                 widthPolicy = ButtonWidthPolicy.TRUNCATING,
             )
@@ -130,7 +130,7 @@ fun SplitWrapContent() = Section("2 buttons in fixed Row (width = button content
             Button(
                 onClick = boast("Click"),
                 label = loremIpsum(1),
-                icon = Flamingo.icons.Briefcase,
+                startIcon = Flamingo.icons.Briefcase,
                 fillMaxWidth = false,
                 widthPolicy = ButtonWidthPolicy.TRUNCATING,
             )
@@ -139,7 +139,7 @@ fun SplitWrapContent() = Section("2 buttons in fixed Row (width = button content
             Button(
                 onClick = boast("Click"),
                 label = loremIpsum(1),
-                icon = Flamingo.icons.Briefcase,
+                startIcon = Flamingo.icons.Briefcase,
                 fillMaxWidth = false,
                 widthPolicy = ButtonWidthPolicy.TRUNCATING,
             )
@@ -157,7 +157,7 @@ fun SplitBigText() = Section(
             Button(
                 onClick = boast("Click"),
                 label = loremIpsum20,
-                icon = Flamingo.icons.Briefcase,
+                startIcon = Flamingo.icons.Briefcase,
                 fillMaxWidth = true,
                 widthPolicy = ButtonWidthPolicy.TRUNCATING,
             )
@@ -166,7 +166,7 @@ fun SplitBigText() = Section(
             Button(
                 onClick = boast("Click"),
                 label = loremIpsum20,
-                icon = Flamingo.icons.Briefcase,
+                startIcon = Flamingo.icons.Briefcase,
                 fillMaxWidth = true,
                 widthPolicy = ButtonWidthPolicy.TRUNCATING,
             )
@@ -184,7 +184,7 @@ fun SplitAndSqueezedBigText() = Section(
             Button(
                 onClick = boast("Click"),
                 label = loremIpsum20,
-                icon = Flamingo.icons.Briefcase,
+                startIcon = Flamingo.icons.Briefcase,
                 fillMaxWidth = true,
                 widthPolicy = ButtonWidthPolicy.TRUNCATING,
             )
@@ -210,7 +210,7 @@ fun SplitMultiline() = Section(
             Button(
                 onClick = boast("Click"),
                 label = loremIpsum20,
-                icon = Flamingo.icons.Briefcase,
+                startIcon = Flamingo.icons.Briefcase,
                 fillMaxWidth = true,
                 widthPolicy = ButtonWidthPolicy.MULTILINE,
             )
@@ -219,7 +219,7 @@ fun SplitMultiline() = Section(
             Button(
                 onClick = boast("Click"),
                 label = loremIpsum20,
-                icon = Flamingo.icons.Briefcase,
+                startIcon = Flamingo.icons.Briefcase,
                 fillMaxWidth = true,
                 widthPolicy = ButtonWidthPolicy.MULTILINE,
             )
