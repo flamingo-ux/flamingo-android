@@ -52,17 +52,30 @@
 
     <DropDownPreference
         app:iconSpaceReserved="false"
-        app:key="icon"
+        app:key="startIcon"
         app:persistent="false"
         app:summary="%s"
-        app:title="Icon" />
+        app:title="Start icon" />
 
     <DropDownPreference
         app:iconSpaceReserved="false"
-        app:key="iconPosition"
+        app:key="endItem"
         app:persistent="false"
         app:summary="%s"
-        app:title="Icon position" />
+        app:title="End item" />
+
+    <EditTextPreference
+        app:iconSpaceReserved="false"
+        app:key="badgeLabel"
+        app:persistent="false"
+        app:title="Badge label" />
+
+    <DropDownPreference
+        app:iconSpaceReserved="false"
+        app:key="endIcon"
+        app:persistent="false"
+        app:summary="%s"
+        app:title="End icon" />
 
     <SwitchPreferenceCompat
         app:iconSpaceReserved="false"

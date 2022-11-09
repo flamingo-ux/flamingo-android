@@ -52,6 +52,6 @@ fun ButtonComposePreview() {
         loading = false,
         color = ButtonColor.Primary,
         widthPolicy = ButtonWidthPolicy.STRICT,
-        icon = Flamingo.icons.Briefcase,
+        startIcon = Flamingo.icons.Briefcase,
     )
 }
