@@ -1,6 +1,7 @@
 package com.flamingo.playground.components.button
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -127,9 +128,10 @@ class ButtonComposeStatesPlayroom : PreferenceFragmentCompat() {
             entries = endItemClasses
             entryValues = endItemClasses
             onChange { newValue ->
+                Log.d("qwerty", "endICon $endIcon")
                 endItem = when (newValue) {
                     "null" -> null
-                    "Icon" -> ButtonEndItem.Icon(endIcon ?: Flamingo.icons.Airplay)
+                    "Icon" -> ButtonEndItem.Icon(endIcon ?: Flamingo.icons.Bell)
                     "Badge" -> ButtonEndItem.Badge(badgeLabel)
                     else -> null
                 }
@@ -170,6 +172,7 @@ class ButtonComposeStatesPlayroom : PreferenceFragmentCompat() {
             onChange { newValue ->
                 summary = "\"$newValue\""
                 badgeLabel = newValue
+                endItem = if (endItem != null) ButtonEndItem.Badge(badgeLabel) else null
                 true
             }
             initPref(savedInstanceState, defVal = "badge")
@@ -188,9 +191,12 @@ class ButtonComposeStatesPlayroom : PreferenceFragmentCompat() {
             )
             onChange {
                 endIcon = (it as? String)?.let { Flamingo.icons.fromName(context, it) }
+                endItem = if (endItem != null) ButtonEndItem.Icon(
+                    endIcon ?: Flamingo.icons.Airplay
+                ) else null
                 true
             }
-            initPref(savedInstanceState, defVal = "Airplay")
+            initPref(savedInstanceState, defVal = "airplay")
         }
 
         configurePreference<SwitchPreferenceCompat>("fillMaxWidth") {

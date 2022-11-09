@@ -31,15 +31,14 @@ internal class ButtonPaddings {
         var iconStartDp = 0
         var iconEndDp = 0
 
-        when {
-            hasStartItem || loading -> {
-                textStartDp = 8
-                iconStartDp = sizePadding
-            }
-            hasEndItem -> {
-                textEndDp = 8
-                iconEndDp = sizePadding
-            }
+        if (hasStartItem || loading) {
+            textStartDp = 8
+            iconStartDp = sizePadding
+        }
+
+        if (hasEndItem) {
+            textEndDp = 8
+            iconEndDp = sizePadding
         }
 
         textStart = textStartDp.dp
