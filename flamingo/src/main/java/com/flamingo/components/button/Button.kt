@@ -15,6 +15,7 @@
 
 package com.flamingo.components.button
 
+import android.util.Log
 import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.core.SpringSpec
 import androidx.compose.animation.core.spring
@@ -157,7 +158,7 @@ public fun Button(
         if (loading) {
             Box(
                 modifier = Modifier
-                    .layoutId("startIcon")
+                    .layoutId("startItem")
                     .padding(start = paddings.iconStart)
             ) {
                 CircularLoader(size = CircularLoaderSize.SMALL, color = onColor)
@@ -165,7 +166,7 @@ public fun Button(
         } else if (startIcon != null) {
             Icon(
                 modifier = Modifier
-                    .layoutId("startIcon")
+                    .layoutId("startItem")
                     .padding(start = paddings.iconStart)
                     .requiredSize(16.dp),
                 tint = onColor,
@@ -188,9 +189,10 @@ public fun Button(
         if (endItem != null) {
             when (endItem) {
                 is ButtonEndItem.Icon -> {
+                    Log.d("qwerty", "padding end ${paddings.iconEnd}")
                     Icon(
                         modifier = Modifier
-                            .layoutId("endIcon")
+                            .layoutId("endItem")
                             .padding(end = paddings.iconEnd)
                             .requiredSize(16.dp),
                         tint = onColor,
@@ -200,7 +202,7 @@ public fun Button(
                 }
                 is ButtonEndItem.Badge -> {
                     val badgeColor = ButtonColorCalculation.badgeColor(variant, color)
-                    Box(Modifier.padding(end = paddings.iconEnd)) {
+                    Box(Modifier.layoutId("endItem").padding(end = paddings.iconEnd)) {
                         Badge(label = endItem.label, color = badgeColor, size = BadgeSize.SMALL)
                     }
                 }
