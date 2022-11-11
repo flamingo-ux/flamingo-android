@@ -298,7 +298,7 @@ public fun ListItem(
                     text = it.text,
                     maxLines = titleMaxLines,
                     overflow = TextOverflow.Ellipsis,
-                    //modifier = Modifier.weight(1f)
+                    modifier = Modifier.layoutId("text")
                 )
             }
             return@let {
@@ -309,7 +309,7 @@ public fun ListItem(
             val text: @Composable RowScope.() -> Unit = {
                 Text(
                     text = it.text,
-                    //modifier = Modifier.weight(1f)
+                    modifier = Modifier.layoutId("text")
                 )
             }
             return@let {
@@ -320,7 +320,7 @@ public fun ListItem(
             val text: @Composable RowScope.() -> Unit = {
                 Text(
                     text = it.text,
-                    //modifier = Modifier.weight(1f)
+                    modifier = Modifier.layoutId("text")
                 )
             }
             return@let {
@@ -347,29 +347,34 @@ private fun TextByTextWrapper(
 ) {
     Row(
         verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.Start,
         modifier = Modifier.padding(textWrapper.padding)
     ) {
-        if (textWrapper.icon == null) {
-            text()
-        } else {
-            if (textWrapper.iconPosition == TextWrapper.TextIconPosition.START) {
-                Icon(
-                    icon = textWrapper.icon,
-                    tint = textWrapper.iconTint ?: defaultIconTint,
-                    modifier = Modifier
-                        .padding(end = 4.dp)
-                        .size(16.dp)
-                )
+        ListItemTextLayout() {
+            if (textWrapper.icon == null) {
                 text()
             } else {
-                text()
-                Icon(
-                    icon = textWrapper.icon,
-                    tint = textWrapper.iconTint ?: defaultIconTint,
-                    modifier = Modifier
-                        .padding(start = 4.dp)
-                        .size(16.dp)
-                )
+                if (textWrapper.iconPosition == TextWrapper.TextIconPosition.START) {
+                    Icon(
+                        icon = textWrapper.icon,
+                        tint = textWrapper.iconTint ?: defaultIconTint,
+                        modifier = Modifier
+                            .padding(end = 4.dp)
+                            .size(16.dp)
+                            .layoutId("textIconStart")
+                    )
+                    text()
+                } else {
+                    text()
+                    Icon(
+                        icon = textWrapper.icon,
+                        tint = textWrapper.iconTint ?: defaultIconTint,
+                        modifier = Modifier
+                            .padding(start = 4.dp)
+                            .size(16.dp)
+                            .layoutId("textIconEnd")
+                    )
+                }
             }
         }
     }

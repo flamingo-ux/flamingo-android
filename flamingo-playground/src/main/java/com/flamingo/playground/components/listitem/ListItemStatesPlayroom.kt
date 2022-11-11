@@ -286,7 +286,8 @@ class ListItemStatesPlayroom : PreferenceFragmentCompat() {
                 description = Text.valueOf(newValue)
                 findPreference("descriptionIcon").isVisible = description == Text.TEXT_WRAPPER
                 findPreference("descriptionIconTint").isVisible = description == Text.TEXT_WRAPPER
-                findPreference("descriptionIconPosition").isVisible = description == Text.TEXT_WRAPPER
+                findPreference("descriptionIconPosition").isVisible =
+                    description == Text.TEXT_WRAPPER
                 findPreference("descriptionPadding").isVisible = description == Text.TEXT_WRAPPER
                 true
             }
@@ -489,7 +490,7 @@ class ListItemStatesPlayroom : PreferenceFragmentCompat() {
                 Text.ONE_LINE -> TextWrapper("ListItem " + "Subtitle ")
                 Text.MULTILINE -> TextWrapper("ListItem " + "Subtitle ".repeat(7))
                 Text.TEXT_WRAPPER -> TextWrapper(
-                    text = "ListItem " + "Subtitle ".repeat(7),
+                    text = "ListItem " + "Subtitle ",
                     padding = subtitleWrapper.padding,
                     icon = subtitleWrapper.icon,
                     iconTint = subtitleWrapper.iconTint,
@@ -501,7 +502,7 @@ class ListItemStatesPlayroom : PreferenceFragmentCompat() {
                 Text.ONE_LINE -> TextWrapper("ListItem " + "Description ")
                 Text.MULTILINE -> TextWrapper("ListItem " + "Description ".repeat(7))
                 Text.TEXT_WRAPPER -> TextWrapper(
-                    text = "ListItem " + "Description ".repeat(7),
+                    text = "ListItem " + "Description ",
                     padding = descriptionWrapper.padding,
                     icon = descriptionWrapper.icon,
                     iconTint = descriptionWrapper.iconTint,
@@ -586,12 +587,6 @@ class ListItemStatesPlayroom : PreferenceFragmentCompat() {
     }
 
     private enum class IconDemoColors {
-        Null,
-        Primary,
-        TextPrimary,
-        TextSecondary,
-        TextTertiary,
-        Error,
-        Warning
+        Null, Primary, TextPrimary, TextSecondary, TextTertiary, Error, Warning
     }
 }
