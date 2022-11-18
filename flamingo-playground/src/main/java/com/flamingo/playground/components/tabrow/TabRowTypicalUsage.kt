@@ -48,7 +48,7 @@ class TabRowTypicalUsage : Fragment() {
         TwoSmallTabs()
         ManyTabs()
         ComplexTabs()
-        TextTabs()
-        ComplexTextTabs()
+        LinedTabs()
+        ComplexLinedTabs()
     }
 }
