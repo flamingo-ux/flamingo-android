@@ -108,7 +108,6 @@ private class TabRowActor : Actor {
             tabs = tabs,
             selectedTabIndex = selectedTabIndex,
             onTabSelect = {},
-            edgePadding = edgePadding,
         )
     }
 
