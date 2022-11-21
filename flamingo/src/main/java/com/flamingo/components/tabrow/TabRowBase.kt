@@ -58,9 +58,8 @@ import kotlinx.coroutines.launch
 internal fun TabRowBase(
     selectedTabIndex: Int,
     modifier: Modifier = Modifier,
-    edgePadding: Dp,
+    variant: TabVariant,
     indicator: @Composable (tabPositions: List<TabPosition>) -> Unit,
-    divider: @Composable () -> Unit,
     tabs: @Composable () -> Unit,
 ) {
     val scrollState = rememberScrollState()
@@ -81,12 +80,13 @@ internal fun TabRowBase(
     ) { constraints ->
         val minTabWidth = ScrollableTabRowMinimumTabWidth.roundToPx()
         val padding = edgePadding.roundToPx()
+        val inner = innerPadding(variant).roundToPx()
         val tabConstraints = constraints.copy(minWidth = minTabWidth)
 
         val tabPlaceables = subcompose(TabSlots.Tabs, tabs)
             .fastMap { it.measure(tabConstraints) }
 
-        var layoutWidth = padding * 2
+        var layoutWidth = padding * 2 + inner * (tabPlaceables.size - 1)
         var layoutHeight = 0
         tabPlaceables.fastForEach {
             layoutWidth += it.width
@@ -101,16 +101,16 @@ internal fun TabRowBase(
             tabPlaceables.fastForEach {
                 it.placeRelative(left, 0, zIndex = 2f)
                 tabPositions.add(TabPosition(left = left.toDp(), width = it.width.toDp()))
-                left += it.width
+                left += it.width + inner
             }
 
             // The divider is measured to fill the entire space occupied by the tab row and
             // placed.
-            subcompose(TabSlots.Divider, divider).fastForEach {
-                val placeable =
-                    it.measure(Constraints.fixed(layoutWidth - padding * 2, layoutHeight))
-                placeable.placeRelative(padding, 0, zIndex = 0f)
-            }
+//            subcompose(TabSlots.Divider).fastForEach {
+//                val placeable =
+//                    it.measure(Constraints.fixed(layoutWidth - padding * 2, layoutHeight))
+//                placeable.placeRelative(padding, 0, zIndex = 0f)
+//            }
 
             // The indicator container is measured to fill the entire space occupied by the tab
             // row, and then placed on top of the divider.
@@ -195,7 +195,6 @@ internal fun Modifier.tabIndicatorOffset(
 
 private enum class TabSlots {
     Tabs,
-    Divider,
     Indicator
 }
 
@@ -255,7 +254,11 @@ private class ScrollableTabData(
     }
 }
 
-private val ScrollableTabRowMinimumTabWidth = 90.dp
+private val ScrollableTabRowMinimumTabWidth = 0.dp
+private val edgePadding = 16.dp
+
+private fun innerPadding(variant: TabVariant) =
+    if (variant == TabVariant.Contained) 12.dp else 24.dp
 
 /**
  * [AnimationSpec] used when scrolling to a tab that is not fully visible.
