@@ -20,9 +20,11 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.requiredWidth
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
@@ -47,12 +49,13 @@ import com.flamingo.components.tabrow.TabVariant.Contained
  * scrolling side of [TabRow].
  *
  * @param tabs size must be larger than 1
+ * @param edgePadding to be removed, now uses 16.dp as default
  *
  * @sample com.flamingo.playground.components.tabrow.TwoSmallTabs
  * @sample com.flamingo.playground.components.tabrow.ManyTabs
  * @sample com.flamingo.playground.components.tabrow.ComplexTabs
- * @sample com.flamingo.playground.components.tabrow.ComplexTextTabs
- * @sample com.flamingo.playground.components.tabrow.TextTabs
+ * @sample com.flamingo.playground.components.tabrow.ComplexLinedTabs
+ * @sample com.flamingo.playground.components.tabrow.LinedTabs
  */
 @FlamingoComponent(
     preview = "com.flamingo.playground.preview.TabRowPreview",
@@ -75,7 +78,6 @@ public fun TabRow(
     selectedTabIndex = selectedTabIndex,
     onTabSelect = onTabSelect,
     variant = variant,
-    edgePadding = edgePadding,
 )
 
 /**
@@ -95,21 +97,25 @@ public fun TabRow(
     require(tabs.size >= 2) { "TabRow doesn't support one tab. 2 or more are required" }
 
     TabRowBase(
-        edgePadding = edgePadding,
+        variant = variant,
         indicator = { tabPositions ->
-            if (variant == Contained) TabIndicator(tabPositions[selectedTabIndex])
+            if (variant == Contained) {
+                TabContainedIndicator(tabPositions[selectedTabIndex])
+            } else {
+                TabLinedIndicator(tabPositions[selectedTabIndex])
+            }
         },
-        divider = { if (variant == Contained) TabDivider() },
         selectedTabIndex = selectedTabIndex,
     ) {
         tabs.fastForEachIndexed { index, tab ->
             val selected = selectedTabIndex == index
             Tab(
                 modifier = Modifier
-                    .clip(CircleShape)
+                    .clip(if (variant == Contained) CircleShape else RoundedCornerShape(8.dp))
                     .alpha(tab.disabled, animate = true),
                 selected = selected,
                 enabled = !tab.disabled,
+                variant = variant,
                 onClick = { onTabSelect(index) },
             ) {
                 val textColor by animateColorAsState(
@@ -119,14 +125,14 @@ public fun TabRow(
                 Text(
                     text = tab.label.replace("\n", " "),
                     style = if (variant == Contained) {
-                        Flamingo.typography.subtitle2
+                        Flamingo.typography.body1
                     } else {
-                        Flamingo.typography.h3
+                        Flamingo.typography.h6
                     },
                     color = textColor,
                 )
                 with(tab.badge ?: return@Tab) {
-                    Spacer(modifier = Modifier.requiredWidth(10.dp))
+                    Spacer(modifier = Modifier.requiredWidth(4.dp))
                     Badge(label, color, BadgeSize.SMALL)
                 }
             }
@@ -135,7 +141,11 @@ public fun TabRow(
 }
 
 public enum class TabVariant {
-    Contained, Text
+    Contained,
+
+    @Deprecated("to be removed soon, DO NOT use it, replaced with TabVariant.Lined")
+    Text,
+    Lined
 }
 
 /**
@@ -151,21 +161,21 @@ public data class Tab(
 }
 
 @Composable
-private fun TabDivider() = Box(
-    Modifier
-        .fillMaxSize()
-        .clip(CircleShape)
-        .background(Flamingo.colors.backgroundQuaternary)
-)
-
-@Composable
-private fun TabIndicator(tabPosition: TabPosition) = Box(
+private fun TabContainedIndicator(tabPosition: TabPosition) = Box(
     Modifier
         .tabIndicatorOffset(tabPosition)
         .fillMaxSize()
-        .padding(2.dp)
         .clip(CircleShape)
-        .background(Flamingo.colors.background)
+        .background(Flamingo.colors.inverse.backgroundTertiary)
+)
+
+@Composable
+private fun TabLinedIndicator(tabPosition: TabPosition) = Box(
+    Modifier
+        .tabIndicatorOffset(tabPosition)
+        .fillMaxWidth()
+        .height(4.dp)
+        .background(Flamingo.colors.primary)
 )
 
 @Composable
@@ -173,7 +183,7 @@ private fun getTabTextColor(
     variant: TabVariant,
     selected: Boolean,
 ): Color = if (variant == Contained) {
-    Flamingo.colors.textPrimary
+    if (selected) Flamingo.colors.inverse.textPrimary else Flamingo.colors.textPrimary
 } else {
-    if (selected) Flamingo.colors.textPrimary else Flamingo.colors.textTertiary
+    if (selected) Flamingo.colors.textPrimary else Flamingo.colors.textSecondary
 }
