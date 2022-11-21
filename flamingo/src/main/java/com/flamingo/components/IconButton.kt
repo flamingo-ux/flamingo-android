@@ -77,7 +77,7 @@ import com.flamingo.theme.FlamingoRippleTheme
     figma = "https://f.com/file/qVO8jDuABDK9vsuLqRXeMx/UI-kit?node-id=628%3A5",
     specification = "https://confluence.companyname.ru/x/iREnKQE",
     viewImplementation = "com.flamingo.view.components.IconButton",
-    demo = [],
+    demo = ["com.flamingo.playground.components.iconbutton.IconButtonComposeStatesPlayroom"],
     supportsWhiteMode = true,
 )
 @UsedInsteadOf("androidx.compose.material.IconButton", "androidx.compose.material.IconToggleButton")
@@ -88,6 +88,7 @@ public fun IconButton(
     size: IconButtonSize = IconButtonSize.MEDIUM,
     variant: IconButtonVariant = CONTAINED,
     color: IconButtonColor = if (Flamingo.isWhiteMode) WHITE else DEFAULT,
+    shape: IconButtonShape = IconButtonShape.CIRCLE,
     indicator: IconButtonIndicator? = null,
     loading: Boolean = false,
     disabled: Boolean = false,
@@ -107,23 +108,34 @@ public fun IconButton(
     val indicatorSize = when (size) {
         IconButtonSize.SMALL -> IndicatorSize.SMALL
         IconButtonSize.MEDIUM -> IndicatorSize.BIG
+        IconButtonSize.LARGE -> IndicatorSize.BIG
     }
     val cutoutRadius = if (indicator != null) indicatorSize.withoutIcon / 2 else 0.dp
     val cutoutPlacement = indicator?.placement?.cutoutPlacement ?: CutoutPlacement.TopEnd
 
     Box(modifier = Modifier.alpha(disabled, animate = true)) {
         if (indicator != null) {
-            IconButtonIndicator(size, cutoutRadius, cutoutPlacement, indicator, indicatorSize)
+            IconButtonIndicator(
+                size,
+                shape,
+                cutoutRadius,
+                cutoutPlacement,
+                indicator,
+                indicatorSize
+            )
         }
 
         Box(
             modifier = Modifier
                 .requiredSize(size.size)
-                .clip(RoundedRectWithCutoutShape(
-                    cornerRadius = size.size / 2,
-                    cutoutRadius = cutoutRadius,
-                    cutoutPlacement = cutoutPlacement,
-                ))
+                .clip(
+                    RoundedRectWithCutoutShape(
+                        cornerRadius = if (shape == IconButtonShape.CIRCLE)
+                            size.size / 2 else size.squareCorners,
+                        cutoutRadius = cutoutRadius,
+                        cutoutPlacement = cutoutPlacement,
+                    )
+                )
                 .background(backgroundColor)
                 .clickable(
                     onClick = onClick,
@@ -148,17 +160,21 @@ public fun IconButton(
 @Composable
 private fun IconButtonIndicator(
     size: IconButtonSize,
+    shape: IconButtonShape,
     cutoutRadius: Dp,
     cutoutPlacement: CutoutPlacement,
     indicator: IconButtonIndicator,
     indicatorSize: IndicatorSize,
 ) {
-    Box(modifier = Modifier.circleOffset(
-        rectSize = DpSize(size.size, size.size),
-        cornerRadius = size.size / 2,
-        circleRadius = cutoutRadius,
-        cutoutPlacement = cutoutPlacement,
-    )) {
+    Box(
+        modifier = Modifier.circleOffset(
+            rectSize = DpSize(size.size, size.size),
+            cornerRadius = if (shape == IconButtonShape.CIRCLE)
+                size.size / 2 else size.squareCorners,
+            circleRadius = cutoutRadius,
+            cutoutPlacement = cutoutPlacement,
+        )
+    ) {
         Indicator(size = indicatorSize, color = indicator.color, trench = true)
     }
 }
@@ -215,9 +231,14 @@ private fun calculateIconColor(
     }
 }.animateButtonColor()
 
-public enum class IconButtonSize(internal val size: Dp) { SMALL(32.dp), MEDIUM(40.dp), }
+public enum class IconButtonSize(
+    internal val size: Dp,
+    internal val squareCorners: Dp
+) { SMALL(32.dp, 8.dp), MEDIUM(40.dp, 8.dp), LARGE(48.dp, 12.dp) }
+
 public enum class IconButtonColor { DEFAULT, PRIMARY, WARNING, RATING, ERROR, WHITE }
 public enum class IconButtonVariant { CONTAINED, TEXT, }
+public enum class IconButtonShape { CIRCLE, SQUARE, }
 
 public data class IconButtonIndicator(
     val color: IndicatorColor,
