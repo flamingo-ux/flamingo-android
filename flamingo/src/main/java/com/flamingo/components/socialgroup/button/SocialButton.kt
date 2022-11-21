@@ -31,5 +31,5 @@ internal fun SocialButton(
         tint = Flamingo.colors.textTertiary,
     )
 
-    Text(text = counter, style = size.textStyle())
+    Text(text = counter, style = size.textStyle(), color = Flamingo.colors.textTertiary)
 }
