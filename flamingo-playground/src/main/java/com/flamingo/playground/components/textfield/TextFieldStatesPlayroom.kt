@@ -1,4 +1,4 @@
-package com.flamingo.playground.components
+package com.flamingo.playground.components.textfield
 
 import android.os.Bundle
 import android.view.View

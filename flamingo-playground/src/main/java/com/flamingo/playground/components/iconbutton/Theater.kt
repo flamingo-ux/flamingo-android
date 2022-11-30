@@ -50,13 +50,14 @@ private class IconButtonActor : Actor {
     var color: IconButtonColor by mutableStateOf(startColor)
     var disabled by mutableStateOf(false)
     var indicator: IconButtonIndicator? by mutableStateOf(null)
+    var icon by mutableStateOf(Flamingo.icons.User)
 
     @Composable
     override fun ActorScope.Actor() {
         Box(modifier = Modifier) {
             IconButton(
                 onClick = {},
-                icon = Flamingo.icons.User,
+                icon = icon,
                 contentDescription = null,
                 size = size,
                 variant = variant,
@@ -178,13 +179,6 @@ private val iconButtonPlot = Plot<IconButtonActor, FlamingoStage> {
     delay(1000)
     leadActor.shape = IconButtonShape.CIRCLE
     delay(1000)
-    leadActor.indicator = IconButtonIndicator(IndicatorColor.ERROR, IndicatorPlacement.BottomEnd)
-    delay(1000)
-    leadActor.indicator =
-        IconButtonIndicator(IndicatorColor.WARNING, IndicatorPlacement.BottomStart)
-    delay(1000)
-    leadActor.indicator = IconButtonIndicator(IndicatorColor.PRIMARY, IndicatorPlacement.TopStart)
-    delay(1000)
     leadActor.indicator = IconButtonIndicator(IndicatorColor.DEFAULT, IndicatorPlacement.TopEnd)
     delay(1000)
     leadActor.loading = true
@@ -203,8 +197,8 @@ private val iconButtonPlot = Plot<IconButtonActor, FlamingoStage> {
         {
             layer0.animateTo(
                 rotationZ = 980f,
-                scaleX = 12f,
-                scaleY = 12f,
+                scaleX = 16f,
+                scaleY = 16f,
                 spec = tween(2000)
             )
         },
@@ -249,7 +243,14 @@ private suspend fun PlotScope<IconButtonActor, FlamingoStage>.iconButtonTablePlo
                 else index
             actor.shape = IconButtonShape.CIRCLE
             delay(1000)
-            flickThroughIndicators(actor, IndicatorColor.values()[newIndex])
+            actor.indicator =
+                IconButtonIndicator(IndicatorColor.values()[newIndex], IndicatorPlacement.TopEnd)
+            delay(700)
+            actor.icon = Flamingo.icons.Android
+            delay(700)
+            actor.icon = Flamingo.icons.Aperture
+            delay(700)
+            actor.icon = Flamingo.icons.Repost
             delay(1000)
         }
     }.awaitAll()
@@ -270,7 +271,14 @@ private suspend fun PlotScope<IconButtonActor, FlamingoStage>.iconButtonTablePlo
                 else index
             actor.shape = IconButtonShape.SQUARE
             delay(1000)
-            flickThroughIndicators(actor, IndicatorColor.values()[newIndex])
+            actor.indicator =
+                IconButtonIndicator(IndicatorColor.values()[newIndex], IndicatorPlacement.TopEnd)
+            delay(700)
+            actor.icon = Flamingo.icons.Bell
+            delay(700)
+            actor.icon = Flamingo.icons.Download
+            delay(700)
+            actor.icon = Flamingo.icons.Edit
             delay(1000)
         }
     }.awaitAll()
@@ -283,19 +291,6 @@ private suspend fun PlotScope<IconButtonActor, FlamingoStage>.flickThroughColorV
             delay(1000)
         }
     }
-}
-
-private suspend fun PlotScope<IconButtonActor, FlamingoStage>.flickThroughIndicators(
-    actor: IconButtonActor,
-    indicatorColor: IndicatorColor
-) {
-    actor.indicator = IconButtonIndicator(indicatorColor, IndicatorPlacement.BottomEnd)
-    delay(500)
-    actor.indicator = IconButtonIndicator(indicatorColor, IndicatorPlacement.BottomStart)
-    delay(500)
-    actor.indicator = IconButtonIndicator(indicatorColor, IndicatorPlacement.TopStart)
-    delay(500)
-    actor.indicator = IconButtonIndicator(indicatorColor, IndicatorPlacement.TopEnd)
 }
 
 private val PlotScope<IconButtonActor, FlamingoStage>.iconButtonTableActor: IconButtonTableActor
