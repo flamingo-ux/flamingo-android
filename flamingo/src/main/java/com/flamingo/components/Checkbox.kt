@@ -82,7 +82,7 @@ private fun InternalCheckBox(
     TriStateCheckbox(
         modifier = Modifier.requiredSize(40.dp),
         state = if (checked) state.toggleableState else ToggleableState.Off,
-        onClick = { onCheckedChange?.invoke(!checked) },
+        onClick = if (onCheckedChange != null) ({ onCheckedChange.invoke(!checked) }) else null,
         enabled = !disabled,
         colors = checkboxColors()
     )

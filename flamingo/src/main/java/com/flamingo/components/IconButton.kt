@@ -15,6 +15,8 @@
 
 package com.flamingo.components
 
+import androidx.compose.animation.core.SpringSpec
+import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.spring
 import androidx.compose.foundation.background
@@ -76,6 +78,7 @@ import com.flamingo.theme.FlamingoRippleTheme
     preview = "com.flamingo.playground.preview.IconButtonComposePreview",
     figma = "https://f.com/file/qVO8jDuABDK9vsuLqRXeMx/UI-kit?node-id=628%3A5",
     specification = "https://confluence.companyname.ru/x/iREnKQE",
+    theaterPackage = "com.flamingo.playground.components.iconbutton.TheaterPkg",
     viewImplementation = "com.flamingo.view.components.IconButton",
     demo = ["com.flamingo.playground.components.iconbutton.IconButtonComposeStatesPlayroom"],
     supportsWhiteMode = true,
@@ -127,11 +130,11 @@ public fun IconButton(
 
         Box(
             modifier = Modifier
-                .requiredSize(size.size)
+                .requiredSize(size.size.animateButtonDp())
                 .clip(
                     RoundedRectWithCutoutShape(
-                        cornerRadius = if (shape == IconButtonShape.CIRCLE)
-                            size.size / 2 else size.squareCorners,
+                        cornerRadius = (if (shape == IconButtonShape.CIRCLE)
+                            size.size / 2 else size.squareCorners).animateButtonDp(),
                         cutoutRadius = cutoutRadius,
                         cutoutPlacement = cutoutPlacement,
                     )
@@ -168,10 +171,10 @@ private fun IconButtonIndicator(
 ) {
     Box(
         modifier = Modifier.circleOffset(
-            rectSize = DpSize(size.size, size.size),
-            cornerRadius = if (shape == IconButtonShape.CIRCLE)
-                size.size / 2 else size.squareCorners,
-            circleRadius = cutoutRadius,
+            rectSize = DpSize(size.size.animateButtonDp(), size.size.animateButtonDp()),
+            cornerRadius = (if (shape == IconButtonShape.CIRCLE)
+                size.size / 2 else size.squareCorners).animateButtonDp(),
+            circleRadius = cutoutRadius.animateButtonDp(),
             cutoutPlacement = cutoutPlacement,
         )
     ) {
@@ -230,6 +233,11 @@ private fun calculateIconColor(
         WHITE -> Flamingo.palette.white
     }
 }.animateButtonColor()
+
+@Composable
+internal fun Dp.animateButtonDp(
+    animationSpec: SpringSpec<Dp> = spring(stiffness = 700f),
+): Dp = animateDpAsState(this, animationSpec = animationSpec).value
 
 public enum class IconButtonSize(
     internal val size: Dp,
