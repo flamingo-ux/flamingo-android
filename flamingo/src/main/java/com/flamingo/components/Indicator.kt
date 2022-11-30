@@ -86,7 +86,7 @@ internal fun Indicator(
     val borderWidth = 2.dp
     Box(
         modifier = Modifier
-            .requiredSize(size.size(icon != null))
+            .requiredSize(size.size(icon != null).animateButtonDp())
             .run { if (trench) padding(borderWidth) else this }
             .background(backgroundColor, CircleShape),
         contentAlignment = Alignment.Center,

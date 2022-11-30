@@ -15,7 +15,6 @@
 
 package com.flamingo.components.button
 
-import android.util.Log
 import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.core.SpringSpec
 import androidx.compose.animation.core.spring
@@ -92,6 +91,7 @@ import kotlinx.serialization.Serializable
     figma = "https://f.com/file/qVO8jDuABDK9vsuLqRXeMx/UI-kit?node-id=628%3A5",
     specification = "https://confluence.companyname.ru/x/j4cjKQE",
     viewImplementation = "com.flamingo.view.components.Button",
+    theaterPackage = "com.flamingo.playground.components.button.TheaterPkg",
     demo = [
         "com.flamingo.playground.components.button.ButtonComposeStatesPlayroom",
         "com.flamingo.playground.components.button.ButtonInRowTypicalUsage",
@@ -189,7 +189,6 @@ public fun Button(
         if (endItem != null) {
             when (endItem) {
                 is ButtonEndItem.Icon -> {
-                    Log.d("qwerty", "padding end ${paddings.iconEnd}")
                     Icon(
                         modifier = Modifier
                             .layoutId("endItem")
@@ -205,7 +204,8 @@ public fun Button(
                     Box(
                         Modifier
                             .layoutId("endItem")
-                            .padding(end = paddings.iconEnd)) {
+                            .padding(end = paddings.iconEnd)
+                    ) {
                         Badge(label = endItem.label, color = badgeColor, size = BadgeSize.SMALL)
                     }
                 }
