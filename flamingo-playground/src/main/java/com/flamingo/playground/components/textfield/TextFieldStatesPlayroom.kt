@@ -24,30 +24,6 @@ class TextFieldStatesPlayroom : PreferenceFragmentCompat() {
         setPreferencesFromResource(R.xml.states_playroom_text_field, rootKey)
     }
 
-    private class TextFieldState {
-        var value: String by mutableStateOf("")
-        var label: String? by mutableStateOf(null)
-        var placeholder: String? by mutableStateOf(null)
-        var required: Boolean by mutableStateOf(false)
-        var size: TextFieldSize by mutableStateOf(TextFieldSize.MEDIUM)
-        var error: Boolean by mutableStateOf(false)
-        var errorText: String? by mutableStateOf(null)
-        var helperText: String? by mutableStateOf(null)
-        var maxCharNumber: Int? by mutableStateOf(null)
-        var loading: Boolean by mutableStateOf(false)
-        var disabled: Boolean by mutableStateOf(false)
-        var multiline: Boolean by mutableStateOf(false)
-        var maxVisibleLines: Int by mutableStateOf(@Suppress("MagicNumber") 4)
-        var iconAreaAlignment: TextFieldIconAlignment by mutableStateOf(TextFieldIconAlignment.TOP)
-        var edgeItem: EdgeItem? by mutableStateOf(null)
-        var edgeItemHasOnClick: Boolean by mutableStateOf(false)
-        var edgeItemPlacement: IconPlacement by mutableStateOf(IconPlacement.END)
-        var buttonText: String by mutableStateOf("")
-        var hasOnClick: Boolean by mutableStateOf(false)
-        var bottomPadding: TextFieldBottomPadding by mutableStateOf(TextFieldBottomPadding.MEDIUM)
-        var white: Boolean by mutableStateOf(false)
-    }
-
     @Suppress("LongMethod", "ComplexMethod")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -328,4 +304,28 @@ class TextFieldStatesPlayroom : PreferenceFragmentCompat() {
             initPref(savedInstanceState, defVal = TextFieldBottomPadding.MEDIUM)
         }
     }
+}
+
+class TextFieldState {
+    var value: String by mutableStateOf("")
+    var label: String? by mutableStateOf(null)
+    var placeholder: String? by mutableStateOf(null)
+    var required: Boolean by mutableStateOf(false)
+    var size: TextFieldSize by mutableStateOf(TextFieldSize.MEDIUM)
+    var error: Boolean by mutableStateOf(false)
+    var errorText: String? by mutableStateOf(null)
+    var helperText: String? by mutableStateOf(null)
+    var maxCharNumber: Int? by mutableStateOf(null)
+    var loading: Boolean by mutableStateOf(false)
+    var disabled: Boolean by mutableStateOf(false)
+    var multiline: Boolean by mutableStateOf(false)
+    var maxVisibleLines: Int by mutableStateOf(@Suppress("MagicNumber") 4)
+    var iconAreaAlignment: TextFieldIconAlignment by mutableStateOf(TextFieldIconAlignment.TOP)
+    var edgeItem: EdgeItem? by mutableStateOf(null)
+    var edgeItemHasOnClick: Boolean by mutableStateOf(false)
+    var edgeItemPlacement: IconPlacement by mutableStateOf(IconPlacement.END)
+    var buttonText: String by mutableStateOf("")
+    var hasOnClick: Boolean by mutableStateOf(false)
+    var bottomPadding: TextFieldBottomPadding by mutableStateOf(TextFieldBottomPadding.MEDIUM)
+    var white: Boolean by mutableStateOf(false)
 }
