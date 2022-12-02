@@ -4,14 +4,7 @@ import androidx.compose.animation.animateContentSize
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.requiredWidth
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.focus.FocusRequester
-import androidx.compose.ui.focus.focusRequester
-import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.unit.Density
 import androidx.compose.ui.unit.dp
 import com.flamingo.Flamingo
@@ -41,15 +34,13 @@ private class TextFieldActor : Actor {
 
     val state = TextFieldState()
 
-    val focus by mutableStateOf(FocusRequester())
-
-    @OptIn(ExperimentalComposeUiApi::class)
     @Composable
     override fun ActorScope.Actor() {
-        val focusRequester = remember { focus }
-        val kc = LocalSoftwareKeyboardController.current
-        kc?.hide()
-        Box(modifier = Modifier.requiredWidth(320.dp).animateContentSize().focusRequester(focusRequester)) {
+        Box(
+            modifier = Modifier
+                .requiredWidth(320.dp)
+                .animateContentSize()
+        ) {
             with(state) {
                 TextField(
                     value = value,
@@ -104,11 +95,6 @@ private val textFieldPlot = Plot<TextFieldActor, FlamingoStage> {
 
     leadActor.state.placeholder = "placeholder"
 
-    //todo think about this
-    delay(1000)
-    leadActor.focus.requestFocus()
-    delay(1000)
-    leadActor.focus.freeFocus()
     delay(1000)
     typeText()
     delay(1000)
@@ -137,12 +123,13 @@ private suspend fun PlotScope<TextFieldActor, FlamingoStage>.typeText(
     }
 }
 
-private suspend fun PlotScope<TextFieldActor, FlamingoStage>.deleteText(delay: Long = 50) = with(leadActor) {
-    while (state.value.isNotEmpty()) {
-        state.value = state.value.dropLast(1)
-        delay(delay)
+private suspend fun PlotScope<TextFieldActor, FlamingoStage>.deleteText(delay: Long = 50) =
+    with(leadActor) {
+        while (state.value.isNotEmpty()) {
+            state.value = state.value.dropLast(1)
+            delay(delay)
+        }
     }
-}
 
 private suspend fun PlotScope<TextFieldActor, FlamingoStage>.showcaseStartEdge() {
     // zoom to start of textField
