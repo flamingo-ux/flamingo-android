@@ -50,7 +50,8 @@ import com.flamingo.theme.FlamingoTheme
     preview = "com.flamingo.playground.preview.CheckboxPreview",
     figma = "https://f.com/file/qVO8jDuABDK9vsuLqRXeMx/Friend-UI-kit?node-id=6434%3A73416",
     specification = "https://confluence.companyname.ru/x/sBd5NgE",
-    demo = ["com.flamingo.playground.components.CheckboxStatesPlayroom"],
+    theaterPackage = "com.flamingo.playground.components.checkbox.TheaterPkg",
+    demo = ["com.flamingo.playground.components.checkbox.CheckboxStatesPlayroom"],
     supportsWhiteMode = true,
 )
 @UsedInsteadOf("androidx.compose.material.Checkbox")
@@ -82,7 +83,7 @@ private fun InternalCheckBox(
     TriStateCheckbox(
         modifier = Modifier.requiredSize(40.dp),
         state = if (checked) state.toggleableState else ToggleableState.Off,
-        onClick = { onCheckedChange?.invoke(!checked) },
+        onClick = if (onCheckedChange != null) ({ onCheckedChange.invoke(!checked) }) else null,
         enabled = !disabled,
         colors = checkboxColors()
     )

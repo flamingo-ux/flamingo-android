@@ -80,8 +80,8 @@ internal object ButtonColorCalculation {
             Warning -> BadgeColor.Warning
             Error -> BadgeColor.Error
             Info -> BadgeColor.Info
-            Success -> BadgeColor.Default //todo Badge success
-            White -> BadgeColor.White
+            Success -> BadgeColor.Primary //todo Badge success
+            White -> BadgeColor.Default
             ButtonColor.TopAppBar -> BadgeColor.Default //todo Badge TopAppBar
         }
     }

@@ -63,7 +63,8 @@ import kotlinx.coroutines.flow.collectLatest
     preview = "com.flamingo.playground.preview.LinkPreview",
     figma = "https://f.com/file/6qbNsEofr4vu0p8bAGCM65?node-id=27216%3A177530",
     specification = "https://confluence.companyname.ru/x/_CTwHAI",
-    demo = ["com.flamingo.playground.components.LinkStatesPlayroom"],
+    theaterPackage = "com.flamingo.playground.components.link.TheaterPkg",
+    demo = ["com.flamingo.playground.components.link.LinkStatesPlayroom"],
     supportsWhiteMode = false,
 )
 @Composable
