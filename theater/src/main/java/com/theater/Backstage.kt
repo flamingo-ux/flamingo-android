@@ -369,7 +369,7 @@ private fun LabeledCheckbox(
     verticalAlignment = Alignment.CenterVertically,
     horizontalArrangement = Arrangement.spacedBy(8.dp)
 ) {
-    Text(text = label)
+    Text(text = label, color = MaterialTheme.colors.onBackground)
     Checkbox(checked = value, onCheckedChange = null)
 }
 
@@ -387,7 +387,7 @@ private fun ParamTweaker(
     ) {
         Column(modifier = Modifier.weight(1f)) {
             val value by state
-            Text(text = "$name: $value")
+            Text(text = "$name: $value", color = MaterialTheme.colors.onBackground)
             Slider(
                 modifier = Modifier.requiredHeight(30.dp),
                 value = value, valueRange = valueRange, onValueChange = onValueChange

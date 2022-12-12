@@ -21,6 +21,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.runtime.Composable
@@ -264,7 +265,7 @@ private fun AvatarBlock(
     second: (@Composable () -> Unit)?,
 ) = Row(modifier, verticalAlignment = verticalAlignment) {
     Box(Modifier.weight(1f)) { avatar?.invoke() }
-    Box(if (avatar == null) Modifier.weight(1f) else Modifier) { second?.invoke() }
+    Box(Modifier) { second?.invoke() }
 }
 
 
