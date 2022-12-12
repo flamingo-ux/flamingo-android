@@ -34,6 +34,7 @@ import com.flamingo.Flamingo
 import com.flamingo.components.BadgeColor
 import com.flamingo.components.tabrow.Tab
 import com.flamingo.components.tabrow.TabRow
+import com.flamingo.components.tabrow.TabVariant
 import com.flamingo.playground.theater.Director
 import com.flamingo.playground.theater.EndScreenActor
 import com.flamingo.playground.theater.FlamingoStage
@@ -76,6 +77,7 @@ private class TabRowActor : Actor {
     var tabs = mutableStateListOf<Tab>().apply { addAll(tabLabels.take(2).map(::Tab)) }
     var selectedTabIndex: Int by mutableStateOf(0)
     var isContentPaneVisible by mutableStateOf(false)
+    var variant by mutableStateOf(TabVariant.Contained)
 
     /**
      * Used in combination with [FlamingoStage.darkTheme] because of a strange bug:
@@ -108,6 +110,7 @@ private class TabRowActor : Actor {
             tabs = tabs,
             selectedTabIndex = selectedTabIndex,
             onTabSelect = {},
+            variant = variant
         )
     }
 
@@ -202,6 +205,7 @@ private val tabRowPlot = Plot<TabRowActor, FlamingoStage> {
             translationX = -465.5957f,
         )
     })
+    leadActor.variant = TabVariant.Lined
 
     delay(1000)
 
@@ -262,6 +266,7 @@ private val tabRowPlot = Plot<TabRowActor, FlamingoStage> {
         )
     })
 
+    leadActor.variant = TabVariant.Lined
     // stop and zoom onto the disabled tab
     val slideToDisabledTabDuration = 6000
     parallel({
@@ -285,6 +290,9 @@ private val tabRowPlot = Plot<TabRowActor, FlamingoStage> {
     }, {
         repeat(4) {
             val i = it + 1 // first tab is already selected
+            if (i == 3) {
+                leadActor.variant = TabVariant.Contained
+            }
             leadActor.selectedTabIndex = i
             delay(slideToDisabledTabDuration / 4L)
         }

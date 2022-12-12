@@ -141,7 +141,8 @@ import com.flamingo.theme.FlamingoTheme
     preview = "com.flamingo.playground.preview.TextFieldPreview",
     figma = "https://f.com/file/qVO8jDuABDK9vsuLqRXeMx/Friend-UI-kit?node-id=628%3A9",
     specification = "https://confluence.companyname.ru/x/KQr3KgE",
-    demo = ["com.flamingo.playground.components.TextFieldStatesPlayroom"],
+    theaterPackage = "com.flamingo.playground.components.textfield.TheaterPkg",
+    demo = ["com.flamingo.playground.components.textfield.TextFieldStatesPlayroom"],
     supportsWhiteMode = true,
 )
 @UsedInsteadOf("androidx.compose.material.TextField", "androidx.compose.material.OutlinedTextField")
