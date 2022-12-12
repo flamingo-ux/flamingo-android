@@ -425,25 +425,21 @@ private val PlotScope<ChipActor, FlamingoStage>.chipGroupActor: ChipGroupActor
     get() = cast.find { it is ChipGroupActor } as ChipGroupActor
 
 private suspend fun PlotScope<ChipActor, FlamingoStage>.flickerAllConfigs() = with(leadActor) {
-    variants.forEach { currentVariant ->
-        variant = currentVariant
-        colors.forEach { currentColor ->
-            color = currentColor
+    colors.forEach { currentColor ->
+        color = currentColor
 
-            icon = Flamingo.icons.Moon
-            delay(100)
-            onDelete = {}
+        icon = Flamingo.icons.Moon
+        delay(100)
+        onDelete = {}
 
-            selected = true
-            delay(200)
-            selected = false
+        selected = true
+        delay(200)
+        selected = false
 
-            onDelete = null
-            delay(100)
-            icon = null
+        onDelete = null
+        delay(100)
+        icon = null
 
-            delay(200)
-        }
         delay(200)
     }
 }
