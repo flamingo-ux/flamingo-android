@@ -130,11 +130,11 @@ public fun IconButton(
 
         Box(
             modifier = Modifier
-                .requiredSize(size.size.animateButtonDp())
+                .requiredSize(size.size.animateDp())
                 .clip(
                     RoundedRectWithCutoutShape(
                         cornerRadius = (if (shape == IconButtonShape.CIRCLE)
-                            size.size / 2 else size.squareCorners).animateButtonDp(),
+                            size.size / 2 else size.squareCorners).animateDp(),
                         cutoutRadius = cutoutRadius,
                         cutoutPlacement = cutoutPlacement,
                     )
@@ -171,10 +171,10 @@ private fun IconButtonIndicator(
 ) {
     Box(
         modifier = Modifier.circleOffset(
-            rectSize = DpSize(size.size.animateButtonDp(), size.size.animateButtonDp()),
+            rectSize = DpSize(size.size.animateDp(), size.size.animateDp()),
             cornerRadius = (if (shape == IconButtonShape.CIRCLE)
-                size.size / 2 else size.squareCorners).animateButtonDp(),
-            circleRadius = cutoutRadius.animateButtonDp(),
+                size.size / 2 else size.squareCorners).animateDp(),
+            circleRadius = cutoutRadius.animateDp(),
             cutoutPlacement = cutoutPlacement,
         )
     ) {
@@ -235,7 +235,7 @@ private fun calculateIconColor(
 }.animateButtonColor()
 
 @Composable
-internal fun Dp.animateButtonDp(
+internal fun Dp.animateDp(
     animationSpec: SpringSpec<Dp> = spring(stiffness = 700f),
 ): Dp = animateDpAsState(this, animationSpec = animationSpec).value
 
