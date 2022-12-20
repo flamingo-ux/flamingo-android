@@ -50,5 +50,6 @@ class TabRowTypicalUsage : Fragment() {
         ComplexTabs()
         LinedTabs()
         ComplexLinedTabs()
+        TabsWithDropdown()
     }
 }

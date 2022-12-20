@@ -42,6 +42,9 @@ import com.flamingo.components.BadgeColor
 import com.flamingo.components.BadgeSize
 import com.flamingo.components.FlamingoComponentBase
 import com.flamingo.components.Text
+import com.flamingo.components.dropdown.BaseComponent
+import com.flamingo.components.dropdown.Dropdown
+import com.flamingo.components.dropdown.DropdownItem
 import com.flamingo.components.tabrow.TabVariant.Contained
 
 /**
@@ -56,6 +59,7 @@ import com.flamingo.components.tabrow.TabVariant.Contained
  * @sample com.flamingo.playground.components.tabrow.ComplexTabs
  * @sample com.flamingo.playground.components.tabrow.ComplexLinedTabs
  * @sample com.flamingo.playground.components.tabrow.LinedTabs
+ * @sample com.flamingo.playground.components.tabrow.TabsWithDropdown
  */
 @FlamingoComponent(
     preview = "com.flamingo.playground.preview.TabRowPreview",
@@ -93,6 +97,31 @@ public fun TabRow(
     onTabSelect: (index: Int) -> Unit,
     variant: TabVariant = Contained,
     edgePadding: Dp = 16.dp,
+): Unit = TabRow(
+    tabs = tabs.map { TabWithDropdown(it.label, it.disabled, it.badge) },
+    selectedTabIndex = selectedTabIndex,
+    onTabSelect = { index, _ ->
+        onTabSelect(index)
+    },
+    variant
+)
+
+/**
+ * This overload allows displaying disabled tabs, tabs with [Badge] and tabs with dropdown
+ *
+ * @param onTabSelect in this overload also accepts dropdownIndex that indicates if user clicked on
+ * dropdown item or not. Returns -1 if [TabWithDropdown.dropdownItems] is empty or if selected tab
+ * was changed. Returns index of dropdown item otherwise.
+ *
+ * @see TabRow
+ * @sample com.flamingo.playground.components.tabrow.TabsWithDropdown
+ */
+@Composable
+public fun TabRow(
+    tabs: List<TabWithDropdown>,
+    selectedTabIndex: Int,
+    onTabSelect: (index: Int, dropdownIndex: Int) -> Unit,
+    variant: TabVariant = Contained,
 ): Unit = FlamingoComponentBase {
     require(tabs.size >= 2) { "TabRow doesn't support one tab. 2 or more are required" }
 
@@ -109,31 +138,47 @@ public fun TabRow(
     ) {
         tabs.fastForEachIndexed { index, tab ->
             val selected = selectedTabIndex == index
-            Tab(
-                modifier = Modifier
-                    .clip(if (variant == Contained) CircleShape else RoundedCornerShape(8.dp))
-                    .alpha(tab.disabled, animate = true),
-                selected = selected,
-                enabled = !tab.disabled,
-                variant = variant,
-                onClick = { onTabSelect(index) },
-            ) {
-                val textColor by animateColorAsState(
-                    getTabTextColor(variant, selected),
-                    animationSpec = tween(300)
-                )
-                Text(
-                    text = tab.label.replace("\n", " "),
-                    style = if (variant == Contained) {
-                        Flamingo.typography.body1
-                    } else {
-                        Flamingo.typography.h6
+            if (tab.dropdownItems.isEmpty()) {
+                Tab(
+                    modifier = Modifier
+                        .clip(if (variant == Contained) CircleShape else RoundedCornerShape(8.dp))
+                        .alpha(tab.disabled, animate = true),
+                    selected = selected,
+                    enabled = !tab.disabled,
+                    variant = variant,
+                    onClick = { onTabSelect(index, -1) },
+                ) {
+                    val textColor by animateColorAsState(
+                        getTabTextColor(variant, selected),
+                        animationSpec = tween(300)
+                    )
+                    Text(
+                        text = tab.label.replace("\n", " "),
+                        style = if (variant == Contained) {
+                            Flamingo.typography.body1
+                        } else {
+                            Flamingo.typography.h6
+                        },
+                        color = textColor,
+                    )
+                    with(tab.badge ?: return@Tab) {
+                        Spacer(modifier = Modifier.requiredWidth(4.dp))
+                        Badge(label, color, BadgeSize.SMALL)
+                    }
+                }
+            } else {
+                Dropdown(
+                    baseComponent = BaseComponent.Tab(
+                        tab.label,
+                        variant,
+                        tab.disabled,
+                        selected
+                    ) {
+                        onTabSelect(index, -1)
                     },
-                    color = textColor,
-                )
-                with(tab.badge ?: return@Tab) {
-                    Spacer(modifier = Modifier.requiredWidth(4.dp))
-                    Badge(label, color, BadgeSize.SMALL)
+                    items = tab.dropdownItems
+                ) { label ->
+                    onTabSelect(index, tab.dropdownItems.indexOfFirst { it.label == label })
                 }
             }
         }
@@ -160,6 +205,16 @@ public data class Tab(
     public data class Badge(val label: String, val color: BadgeColor)
 }
 
+/**
+ *  @property badge is ignored when [dropdownItems] is not empty
+ */
+public data class TabWithDropdown(
+    val label: String,
+    val disabled: Boolean = false,
+    val badge: Tab.Badge? = null,
+    val dropdownItems: List<DropdownItem> = listOf()
+)
+
 @Composable
 private fun TabContainedIndicator(tabPosition: TabPosition) = Box(
     Modifier
@@ -179,7 +234,7 @@ private fun TabLinedIndicator(tabPosition: TabPosition) = Box(
 )
 
 @Composable
-private fun getTabTextColor(
+internal fun getTabTextColor(
     variant: TabVariant,
     selected: Boolean,
 ): Color = if (variant == Contained) {
