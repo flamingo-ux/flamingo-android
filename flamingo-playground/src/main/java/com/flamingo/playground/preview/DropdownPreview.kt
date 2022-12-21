@@ -11,23 +11,21 @@ import com.flamingo.components.dropdown.DropdownItem
 @Composable
 fun DropdownPreview() {
     Dropdown(
-        baseComponent = BaseComponent.Button("sdfdsfsd"),
+        baseComponent = BaseComponent.Button("dropdown"),
         items = listOf(
-            DropdownItem("sfsdfsdf", Flamingo.icons.Bell),
-            DropdownItem("erw", Flamingo.icons.Aperture),
-            DropdownItem("sdfsd"),
-            DropdownItem("sfsdfsdf"),
-            DropdownItem("ffv", Flamingo.icons.Bell),
-            DropdownItem("1234254", disabled = true),
-            DropdownItem("fgs", Flamingo.icons.Share),
-            DropdownItem("fvbhg", Flamingo.icons.Bell),
-            DropdownItem("fvbhg", Flamingo.icons.Bell),
-            DropdownItem("fvbhg", Flamingo.icons.Bell, true),
-            DropdownItem("fvbhg", Flamingo.icons.Bell),
-            DropdownItem("fvbhg", Flamingo.icons.Bell),
-            DropdownItem("fvbhg", Flamingo.icons.Bell),
-            DropdownItem("fvbhg", Flamingo.icons.Bell),
-            DropdownItem("fvbhg", Flamingo.icons.Bell),
+            DropdownItem("item 1", Flamingo.icons.Bell),
+            DropdownItem("long long long long long long long long item", Flamingo.icons.Aperture),
+            DropdownItem("item 3"),
+            DropdownItem("item 4 long long long long long long long long"),
+            DropdownItem("item 5", Flamingo.icons.Bell),
+            DropdownItem("item 6", disabled = true),
+            DropdownItem("item 7", Flamingo.icons.Share),
+            DropdownItem("item 8", Flamingo.icons.Bell),
+            DropdownItem("item 9", Flamingo.icons.Bell),
+            DropdownItem("item 10", Flamingo.icons.Bell, true),
+            DropdownItem("item 11", Flamingo.icons.Bell),
+            DropdownItem("item 12", Flamingo.icons.Bell),
+            DropdownItem("item 13", Flamingo.icons.Bell),
         )
     ) {
 
