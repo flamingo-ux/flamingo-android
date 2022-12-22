@@ -14,8 +14,8 @@
 
 package com.flamingo.components
 
+import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.foundation.background
-import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
@@ -35,17 +35,15 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.BiasAlignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import com.flamingo.Flamingo
 import com.flamingo.alpha
 import com.flamingo.annotations.FlamingoComponent
-import com.flamingo.components.ChipColor.DEFAULT
 import com.flamingo.components.ChipColor.PRIMARY
 import com.flamingo.components.ChipVariant.CONTAINED
-import com.flamingo.components.ChipVariant.OUTLINED
 import com.flamingo.theme.FlamingoIcon
 
 /**
@@ -73,7 +71,57 @@ public fun Chip(
     color: ChipColor = PRIMARY,
     icon: FlamingoIcon? = null,
     disabled: Boolean = false,
+) {
+    Chip(
+        label = label,
+        selected = selected,
+        onClick = onClick,
+        onDelete = onDelete,
+        isDropdown = false,
+        icon = icon,
+        disabled = disabled
+    )
+}
+
+/**
+ * Intended to be used ONLY in [Dropdown]
+ */
+@Composable
+internal fun DropdownChip(
+    label: String,
+    selected: Boolean = false,
+    onClick: (() -> Unit)? = null,
+    icon: FlamingoIcon? = null,
+    disabled: Boolean = false,
+    isDropdownExpanded: Boolean = false
+) {
+    Chip(
+        label = label,
+        selected = selected,
+        onClick = onClick,
+        isDropdown = true,
+        icon = icon,
+        disabled = disabled,
+        isDropdownExpanded = isDropdownExpanded
+    )
+}
+
+@Composable
+private fun Chip(
+    label: String,
+    selected: Boolean = false,
+    onClick: (() -> Unit)? = null,
+    onDelete: (() -> Unit)? = null,
+    isDropdown: Boolean = false,
+    icon: FlamingoIcon? = null,
+    disabled: Boolean = false,
+    isDropdownExpanded: Boolean = false
 ): Unit = FlamingoComponentBase {
+
+    require(!(isDropdown && onDelete != null)) {
+        "Chip doesn't support onDelete and dropdown functionality simultaneously"
+    }
+
     val backgroundColor = calculateBackgroundColor(selected)
     val contentColor = calculateContentColor(selected)
 
@@ -107,7 +155,7 @@ public fun Chip(
             modifier = Modifier
                 .padding(
                     start = if (icon == null) 12.dp else 8.dp,
-                    end = if (onDelete == null) 12.dp else 0.dp,
+                    end = if (onDelete == null && !isDropdown) 12.dp else 0.dp,
                 )
                 .align(BiasAlignment.Vertical(-0.18f)),
             text = label.replace("\n", " "),
@@ -116,6 +164,23 @@ public fun Chip(
             maxLines = 1,
             overflow = TextOverflow.Ellipsis
         )
+
+        if (isDropdown) {
+            Box(
+                modifier = Modifier
+                    .fillMaxHeight()
+                    .aspectRatio(1f, matchHeightConstraintsFirst = true),
+                contentAlignment = Alignment.Center
+            ) {
+                Icon(
+                    modifier = Modifier
+                        .requiredSize(16.dp)
+                        .rotate(animateFloatAsState(if (isDropdownExpanded) 180f else 0f).value),
+                    icon = Flamingo.icons.ChevronDown,
+                    tint = contentColor
+                )
+            }
+        }
 
         if (onDelete != null) {
             Box(
