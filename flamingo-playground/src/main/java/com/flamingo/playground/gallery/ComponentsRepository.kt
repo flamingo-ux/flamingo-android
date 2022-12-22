@@ -15,7 +15,6 @@ internal class ComponentsRepository {
 
         return dscClass.sealedSubclasses
             .filterNot { it.isAbstract }
-            .ifEmpty { error("There must be subclasses of ${dscClass.simpleName}") }
             .map {
                 it.java.getAnnotation(annClass)
                     ?: error("Annotation @${annClass.simpleName} not found")

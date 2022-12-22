@@ -2,7 +2,10 @@ package com.flamingo.components.dropdown
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.animateColorAsState
+import androidx.compose.animation.core.Spring
+import androidx.compose.animation.core.VisibilityThreshold
 import androidx.compose.animation.core.animateFloatAsState
+import androidx.compose.animation.core.spring
 import androidx.compose.animation.core.tween
 import androidx.compose.animation.expandVertically
 import androidx.compose.animation.shrinkVertically
@@ -35,12 +38,12 @@ import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.layout.onSizeChanged
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.IntOffset
+import androidx.compose.ui.unit.IntSize
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Popup
 import com.flamingo.Flamingo
 import com.flamingo.alpha
 import com.flamingo.annotations.FlamingoComponent
-import com.flamingo.annotations.UsedInsteadOf
 import com.flamingo.components.Card
 import com.flamingo.components.CornerRadius
 import com.flamingo.components.DropdownChip
@@ -66,40 +69,46 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 /**
- *
- * @param baseComponent component to which dropdown is anchored. Supported components are
+ * @param baseDropdownComponent component to which dropdown is anchored. Supported components are
  * [Button], [IconButton], [Chip] and [Tab]. [Tab] can't be accessed directly, only inside [TabRow]
  * to match the behavior of this component
  *
  * @param items Items to be displayed inside [Dropdown]. If the amount of items is more than can
  * be displayed [Dropdown] will be scrollable
  *
- * @param onDropdownItemSelected callback that is called when item is selected. Returns label of
- * the item
+ * @param onDropdownItemSelected callback that is called when item is selected. Returns clicked item
  *
  * @sample com.flamingo.playground.components.tabrow.TabsWithDropdown
+ * @sample com.flamingo.playground.components.dropdown.ButtonDropdownWithChangingLabel
+ * @sample com.flamingo.playground.components.dropdown.IconButtonDropdown
+ * @sample com.flamingo.playground.components.dropdown.ChipDropdown
  */
 @FlamingoComponent(
     preview = "com.flamingo.playground.preview.DropdownPreview",
     figma = "https://f.com/file/6qbNsEofr4vu0p8bAGCM65?node-id=666%3A371&t=XAfutUOhgSNQfY6x-1",
     specification = "https://confluence.companyname.ru/x/-YlCQgI",
-    demo = ["com.flamingo.playground.components.dropdown.DropdownStatesPlayroom"], //todo typical usage and samples
+    demo = [
+        "com.flamingo.playground.components.dropdown.DropdownStatesPlayroom",
+        "com.flamingo.playground.components.dropdown.DropdownTypicalUsage"
+    ],
     supportsWhiteMode = false,
 )
-@UsedInsteadOf("androidx.compose.material.ExposedDropdownMenuBox")
 @Composable
 public fun Dropdown(
-    baseComponent: BaseComponent,
+    modifier: Modifier = Modifier,
+    baseDropdownComponent: BaseDropdownComponent,
     items: List<DropdownItem>,
-    onDropdownItemSelected: (String) -> Unit
+    onDropdownItemSelected: (DropdownItem) -> Unit
 ) {
+    require(items.isNotEmpty()) { "items should not be empty!" }
+
     val isExpanded = remember { mutableStateOf(false) }
     var offset by remember { mutableStateOf(IntOffset(0, 0)) }
 
-    Box(modifier = Modifier.onSizeChanged {
+    Box(modifier = modifier.onSizeChanged {
         offset = IntOffset(0, it.height)
     }) {
-        BaseActionComponent(baseComponent, isExpanded.value) {
+        BaseActionComponent(baseDropdownComponent, isExpanded.value) {
             isExpanded.value = true
         }
 
@@ -111,78 +120,78 @@ public fun Dropdown(
 
 @Composable
 private fun BaseActionComponent(
-    baseComponent: BaseComponent,
+    baseDropdownComponent: BaseDropdownComponent,
     isExpanded: Boolean,
     onClick: () -> Unit
 ) {
-    when (baseComponent) {
-        is BaseComponent.Button -> {
+    when (baseDropdownComponent) {
+        is BaseDropdownComponent.Button -> {
             Button(
                 onClick = onClick,
-                label = baseComponent.label,
-                startIcon = baseComponent.startIcon,
+                label = baseDropdownComponent.label,
+                startIcon = baseDropdownComponent.startIcon,
                 endItem = ButtonEndItem.Icon(
                     Flamingo.icons.ChevronDown,
                     if (isExpanded) 180f else 0f
                 ),
-                size = baseComponent.size,
-                color = baseComponent.color,
-                loading = baseComponent.loading,
-                variant = baseComponent.variant,
-                disabled = baseComponent.disabled,
-                fillMaxWidth = baseComponent.fillMaxWidth,
-                widthPolicy = baseComponent.widthPolicy
+                size = baseDropdownComponent.size,
+                color = baseDropdownComponent.color,
+                loading = baseDropdownComponent.loading,
+                variant = baseDropdownComponent.variant,
+                disabled = baseDropdownComponent.disabled,
+                fillMaxWidth = baseDropdownComponent.fillMaxWidth,
+                widthPolicy = baseDropdownComponent.widthPolicy
             )
         }
-        is BaseComponent.Chip -> {
+        is BaseDropdownComponent.Chip -> {
             DropdownChip(
-                label = baseComponent.label,
+                label = baseDropdownComponent.label,
                 onClick = onClick,
-                icon = baseComponent.startIcon,
-                selected = baseComponent.selected,
-                disabled = baseComponent.disabled,
+                icon = baseDropdownComponent.startIcon,
+                selected = baseDropdownComponent.selected,
+                disabled = baseDropdownComponent.disabled,
                 isDropdownExpanded = isExpanded
             )
         }
-        is BaseComponent.IconButton -> {
+        is BaseDropdownComponent.IconButton -> {
             IconButton(
                 onClick = onClick,
-                icon = baseComponent.icon, //todo узнать какая иконка должна быть, можно ли менять
-                contentDescription = baseComponent.contentDescription,
-                size = baseComponent.size,
-                variant = baseComponent.variant,
-                color = baseComponent.color,
-                shape = baseComponent.shape,
-                loading = baseComponent.loading,
-                disabled = baseComponent.disabled
+                icon = baseDropdownComponent.icon,
+                contentDescription = baseDropdownComponent.contentDescription,
+                size = baseDropdownComponent.size,
+                variant = baseDropdownComponent.variant,
+                color = baseDropdownComponent.color,
+                shape = baseDropdownComponent.shape,
+                loading = baseDropdownComponent.loading,
+                disabled = baseDropdownComponent.disabled
             )
         }
-        is BaseComponent.Tab -> {
+        is BaseDropdownComponent.Tab -> {
             Tab(
                 modifier = Modifier
                     .clip(
-                        if (baseComponent.variant == TabVariant.Contained) CircleShape
+                        if (baseDropdownComponent.variant == TabVariant.Contained) CircleShape
                         else RoundedCornerShape(8.dp)
                     )
-                    .alpha(baseComponent.disabled, animate = true),
-                selected = baseComponent.selected,
-                enabled = !baseComponent.disabled,
-                variant = baseComponent.variant,
+                    .alpha(baseDropdownComponent.disabled, animate = true),
+                selected = baseDropdownComponent.selected,
+                enabled = !baseDropdownComponent.disabled,
+                variant = baseDropdownComponent.variant,
                 onClick = {
-                    if (baseComponent.selected) {
+                    if (baseDropdownComponent.selected) {
                         onClick()
                     } else {
-                        baseComponent.onTabSelect()
+                        baseDropdownComponent.onTabSelect()
                     }
                 },
             ) {
                 val textColor by animateColorAsState(
-                    getTabTextColor(baseComponent.variant, baseComponent.selected),
+                    getTabTextColor(baseDropdownComponent.variant, baseDropdownComponent.selected),
                     animationSpec = tween(300)
                 )
                 Text(
-                    text = baseComponent.label.replace("\n", " "),
-                    style = if (baseComponent.variant == TabVariant.Contained) {
+                    text = baseDropdownComponent.label.replace("\n", " "),
+                    style = if (baseDropdownComponent.variant == TabVariant.Contained) {
                         Flamingo.typography.body1
                     } else {
                         Flamingo.typography.h6
@@ -208,7 +217,7 @@ private fun DropdownMenu(
     offset: IntOffset,
     isExpanded: MutableState<Boolean>,
     items: List<DropdownItem>,
-    onDropdownItemSelected: (String) -> Unit
+    onDropdownItemSelected: (DropdownItem) -> Unit
 ) {
     val scope = rememberCoroutineScope()
     var isContentVisible by remember { mutableStateOf(false) }
@@ -217,24 +226,22 @@ private fun DropdownMenu(
         {
             scope.launch {
                 isContentVisible = false
-                delay(animationDuration)
+                delay(animationDuration) // needed to properly show closing animation
                 isExpanded.value = false
             }
         }
     }
 
     LaunchedEffect(key1 = Unit) {
-        launch {
-            delay(popupSetupDelay)
-            isContentVisible = true
-        }
+        //delay(popupSetupDelay)
+        isContentVisible = true
     }
 
     Popup(onDismissRequest = onDismiss, offset = offset) {
         AnimatedVisibility(
             visible = isContentVisible,
-            enter = expandVertically(),
-            exit = shrinkVertically()
+            enter = expandVertically(dropdownAnimation),
+            exit = shrinkVertically(dropdownAnimation)
         ) {
             Card(
                 elevation = Elevation.Solid.Medium,
@@ -243,9 +250,9 @@ private fun DropdownMenu(
                 Column(
                     modifier = Modifier
                         .requiredSizeIn(
-                            minWidth = 192.dp,
-                            maxWidth = 224.dp,
-                            maxHeight = 288.dp
+                            minWidth = minDropdownWidth,
+                            maxWidth = maxDropdownWidth,
+                            maxHeight = maxDropdownHeight
                         )
                         .verticalScroll(rememberScrollState())
                 ) {
@@ -264,14 +271,14 @@ private fun DropdownMenu(
 }
 
 @Composable
-private fun DropdownItem(item: DropdownItem, onItemClick: (String) -> Unit) {
+private fun DropdownItem(item: DropdownItem, onItemClick: (DropdownItem) -> Unit) {
     Row(
         verticalAlignment = Alignment.CenterVertically,
         modifier = Modifier
             .fillMaxWidth()
             .alpha(item.disabled)
             .clickable(enabled = !item.disabled) {
-                onItemClick(item.label)
+                onItemClick(item)
             }
     ) {
         if (item.icon != null) {
@@ -300,7 +307,7 @@ private fun DropdownItem(item: DropdownItem, onItemClick: (String) -> Unit) {
     }
 }
 
-public sealed class BaseComponent {
+public sealed class BaseDropdownComponent {
     public data class Button(
         val label: String,
         val startIcon: FlamingoIcon? = null,
@@ -311,7 +318,7 @@ public sealed class BaseComponent {
         val disabled: Boolean = false,
         val fillMaxWidth: Boolean = false,
         val widthPolicy: ButtonWidthPolicy = ButtonWidthPolicy.MULTILINE
-    ) : BaseComponent()
+    ) : BaseDropdownComponent()
 
     public data class IconButton(
         val icon: FlamingoIcon,
@@ -322,22 +329,22 @@ public sealed class BaseComponent {
         val shape: IconButtonShape = IconButtonShape.CIRCLE,
         val loading: Boolean = false,
         val disabled: Boolean = false
-    ) : BaseComponent()
+    ) : BaseDropdownComponent()
 
     public data class Chip(
         val label: String,
         val startIcon: FlamingoIcon? = null,
         val selected: Boolean = false,
         val disabled: Boolean = false
-    ) : BaseComponent()
+    ) : BaseDropdownComponent()
 
     internal data class Tab(
         val label: String,
-        val variant: TabVariant,
-        val disabled: Boolean,
-        val selected: Boolean,
+        val variant: TabVariant = TabVariant.Contained,
+        val disabled: Boolean = false,
+        val selected: Boolean = false,
         val onTabSelect: () -> Unit
-    ) : BaseComponent()
+    ) : BaseDropdownComponent()
 }
 
 public data class DropdownItem(
@@ -348,3 +355,10 @@ public data class DropdownItem(
 
 private const val popupSetupDelay = 10L
 private const val animationDuration = 100L
+private val dropdownAnimation = spring(
+    stiffness = Spring.StiffnessMedium,
+    visibilityThreshold = IntSize.VisibilityThreshold
+)
+private val minDropdownWidth = 192.dp
+private val maxDropdownWidth = 224.dp
+private val maxDropdownHeight = 288.dp

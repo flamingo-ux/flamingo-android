@@ -72,7 +72,15 @@ public fun Chip(
     icon: FlamingoIcon? = null,
     disabled: Boolean = false,
 ) {
-    Chip(label, selected, onClick, onDelete, false, variant, color, icon, disabled)
+    Chip(
+        label = label,
+        selected = selected,
+        onClick = onClick,
+        onDelete = onDelete,
+        isDropdown = false,
+        icon = icon,
+        disabled = disabled
+    )
 }
 
 /**
@@ -105,8 +113,6 @@ private fun Chip(
     onClick: (() -> Unit)? = null,
     onDelete: (() -> Unit)? = null,
     isDropdown: Boolean = false,
-    variant: ChipVariant = CONTAINED,
-    color: ChipColor = PRIMARY,
     icon: FlamingoIcon? = null,
     disabled: Boolean = false,
     isDropdownExpanded: Boolean = false

@@ -42,7 +42,7 @@ import com.flamingo.components.BadgeColor
 import com.flamingo.components.BadgeSize
 import com.flamingo.components.FlamingoComponentBase
 import com.flamingo.components.Text
-import com.flamingo.components.dropdown.BaseComponent
+import com.flamingo.components.dropdown.BaseDropdownComponent
 import com.flamingo.components.dropdown.Dropdown
 import com.flamingo.components.dropdown.DropdownItem
 import com.flamingo.components.tabrow.TabVariant.Contained
@@ -52,7 +52,7 @@ import com.flamingo.components.tabrow.TabVariant.Contained
  * scrolling side of [TabRow].
  *
  * @param tabs size must be larger than 1
- * @param edgePadding to be removed, now uses 16.dp as default
+ * @param edgePadding is to be removed, now uses 16.dp as default
  *
  * @sample com.flamingo.playground.components.tabrow.TwoSmallTabs
  * @sample com.flamingo.playground.components.tabrow.ManyTabs
@@ -168,7 +168,7 @@ public fun TabRow(
                 }
             } else {
                 Dropdown(
-                    baseComponent = BaseComponent.Tab(
+                    baseDropdownComponent = BaseDropdownComponent.Tab(
                         tab.label,
                         variant,
                         tab.disabled,
@@ -177,8 +177,8 @@ public fun TabRow(
                         onTabSelect(index, -1)
                     },
                     items = tab.dropdownItems
-                ) { label ->
-                    onTabSelect(index, tab.dropdownItems.indexOfFirst { it.label == label })
+                ) { item ->
+                    onTabSelect(index, tab.dropdownItems.indexOfFirst { it.label == item.label })
                 }
             }
         }
