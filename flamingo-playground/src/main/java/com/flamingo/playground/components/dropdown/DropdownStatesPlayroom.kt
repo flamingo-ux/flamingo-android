@@ -10,7 +10,7 @@ import androidx.preference.DropDownPreference
 import androidx.preference.PreferenceFragmentCompat
 import com.flamingo.Flamingo
 import com.flamingo.components.button.ButtonSize
-import com.flamingo.components.dropdown.BaseComponent
+import com.flamingo.components.dropdown.BaseDropdownComponent
 import com.flamingo.components.dropdown.Dropdown
 import com.flamingo.components.dropdown.DropdownItem
 import com.flamingo.demoapi.DemoPreference
@@ -20,6 +20,7 @@ import com.flamingo.demoapi.findPreference
 import com.flamingo.demoapi.initPref
 import com.flamingo.demoapi.onChange
 import com.flamingo.playground.R
+import com.flamingo.playground.components.tabrow.TabsWithDropdown
 import com.flamingo.playground.utils.Boast
 
 @StatesPlayroomDemo
@@ -32,7 +33,7 @@ class DropdownStatesPlayroom : PreferenceFragmentCompat() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        var baseComponent: BaseComponent by mutableStateOf(BaseComponent.Button("button"))
+        var baseDropdownComponent: BaseDropdownComponent by mutableStateOf(BaseDropdownComponent.Button("button"))
         val items = listOf(
             DropdownItem("item 1", Flamingo.icons.Bell),
             DropdownItem("long long long long long long long long item", Flamingo.icons.Aperture),
@@ -48,16 +49,21 @@ class DropdownStatesPlayroom : PreferenceFragmentCompat() {
             DropdownItem("item 12", Flamingo.icons.Bell),
             DropdownItem("item 13", Flamingo.icons.Bell),
         )
+        var baseComponentDemo: BaseComponentDemo by mutableStateOf(BaseComponentDemo.Button)
 
         findPreference<DemoPreference>("component")?.setComposeDesignComponent {
             val context = LocalContext.current
-            Dropdown(
-                baseComponent = baseComponent,
-                items = items,
-                onDropdownItemSelected = {
-                    Boast.makeText(context, "clicked on $it")
-                }
-            )
+            if (baseComponentDemo == BaseComponentDemo.TabRow) {
+                TabsWithDropdown()
+            } else {
+                Dropdown(
+                    baseDropdownComponent = baseDropdownComponent,
+                    items = items,
+                    onDropdownItemSelected = {
+                        Boast.makeText(context, "clicked on ${it.label}")
+                    }
+                )
+            }
         }
 
         configurePreference<DropDownPreference>("baseComponent") {
@@ -65,19 +71,21 @@ class DropdownStatesPlayroom : PreferenceFragmentCompat() {
             entryValues = entries
             onChange { newValue ->
                 val demo = BaseComponentDemo.valueOf(newValue)
-                baseComponent = when (demo) {
-                    BaseComponentDemo.Button -> BaseComponent.Button("button")
-                    BaseComponentDemo.ButtonWithIcon -> BaseComponent.Button(
+                baseComponentDemo = demo
+                baseDropdownComponent = when (demo) {
+                    BaseComponentDemo.Button -> BaseDropdownComponent.Button("button")
+                    BaseComponentDemo.ButtonWithIcon -> BaseDropdownComponent.Button(
                         "button 2",
                         Flamingo.icons.Bell,
                         ButtonSize.SMALL
                     )
-                    BaseComponentDemo.Chip -> BaseComponent.Chip("chip")
-                    BaseComponentDemo.ChipWithIcon -> BaseComponent.Chip(
+                    BaseComponentDemo.Chip -> BaseDropdownComponent.Chip("chip")
+                    BaseComponentDemo.ChipWithIcon -> BaseDropdownComponent.Chip(
                         "chip",
                         Flamingo.icons.Share
                     )
-                    BaseComponentDemo.IconButton -> BaseComponent.IconButton(Flamingo.icons.Edit)
+                    BaseComponentDemo.IconButton -> BaseDropdownComponent.IconButton(Flamingo.icons.Edit)
+                    BaseComponentDemo.TabRow -> BaseDropdownComponent.Button("null") // placeholder
                 }
                 true
             }
@@ -90,6 +98,7 @@ class DropdownStatesPlayroom : PreferenceFragmentCompat() {
         ButtonWithIcon,
         Chip,
         ChipWithIcon,
-        IconButton
+        IconButton,
+        TabRow
     }
 }

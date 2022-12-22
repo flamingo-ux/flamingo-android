@@ -3,7 +3,7 @@ package com.flamingo.playground.preview
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
 import com.flamingo.Flamingo
-import com.flamingo.components.dropdown.BaseComponent
+import com.flamingo.components.dropdown.BaseDropdownComponent
 import com.flamingo.components.dropdown.Dropdown
 import com.flamingo.components.dropdown.DropdownItem
 
@@ -11,7 +11,7 @@ import com.flamingo.components.dropdown.DropdownItem
 @Composable
 fun DropdownPreview() {
     Dropdown(
-        baseComponent = BaseComponent.Button("dropdown"),
+        baseDropdownComponent = BaseDropdownComponent.Button("dropdown"),
         items = listOf(
             DropdownItem("item 1", Flamingo.icons.Bell),
             DropdownItem("long long long long long long long long item", Flamingo.icons.Aperture),
