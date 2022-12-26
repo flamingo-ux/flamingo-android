@@ -44,6 +44,7 @@ import com.flamingo.alpha
 import com.flamingo.annotations.FlamingoComponent
 import com.flamingo.components.ChipColor.PRIMARY
 import com.flamingo.components.ChipVariant.CONTAINED
+import com.flamingo.components.dropdown.Dropdown
 import com.flamingo.theme.FlamingoIcon
 
 /**

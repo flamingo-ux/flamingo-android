@@ -45,6 +45,7 @@ import com.flamingo.Flamingo
 import com.flamingo.alpha
 import com.flamingo.annotations.FlamingoComponent
 import com.flamingo.components.Card
+import com.flamingo.components.Chip
 import com.flamingo.components.CornerRadius
 import com.flamingo.components.DropdownChip
 import com.flamingo.components.Elevation
@@ -62,6 +63,7 @@ import com.flamingo.components.button.ButtonSize
 import com.flamingo.components.button.ButtonVariant
 import com.flamingo.components.button.ButtonWidthPolicy
 import com.flamingo.components.tabrow.Tab
+import com.flamingo.components.tabrow.TabRow
 import com.flamingo.components.tabrow.TabVariant
 import com.flamingo.components.tabrow.getTabTextColor
 import com.flamingo.theme.FlamingoIcon
