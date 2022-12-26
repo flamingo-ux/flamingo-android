@@ -1,19 +1,4 @@
-@file:Suppress(
-    "ModifierOrdering",
-    "CommentSpacing",
-    "NoBlankLineBeforeRbrace",
-    "ModifierOrdering",
-    "NoConsecutiveBlankLines",
-    "MagicNumber",
-    "FunctionName",
-    "MatchingDeclarationName",
-    "LongParameterList",
-    "LongMethod",
-    "ComplexMethod",
-    "SpacingAroundParens"
-)
-
-package com.flamingo.playground.components.tabrow
+package com.flamingo.playground.components.dropdown
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -29,27 +14,26 @@ import androidx.compose.ui.unit.dp
 import androidx.fragment.app.Fragment
 import com.flamingo.demoapi.TypicalUsageDemo
 import com.flamingo.playground.Compose
+import com.flamingo.playground.components.tabrow.TabsWithDropdown
 
 @TypicalUsageDemo
-class TabRowTypicalUsage : Fragment() {
+class DropdownTypicalUsage : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?,
-    ) = Compose { Box { TabRowSamples() } }
+    ) = Compose { Box { DropdownSamples() } }
 
     @Preview
     @Composable
-    private fun TabRowSamples() = Column(
+    private fun DropdownSamples() = Column(
         modifier = Modifier.padding(vertical = 16.dp),
         verticalArrangement = Arrangement.spacedBy(16.dp)
     ) {
-        TwoSmallTabs()
-        ManyTabs()
-        ComplexTabs()
-        LinedTabs()
-        ComplexLinedTabs()
+        ButtonDropdownWithChangingLabel()
+        IconButtonDropdown()
+        ChipDropdown()
         TabsWithDropdown()
     }
 }

@@ -17,6 +17,7 @@ package com.flamingo.components.button
 
 import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.core.SpringSpec
+import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.spring
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -31,6 +32,7 @@ import androidx.compose.runtime.Immutable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.layoutId
@@ -193,7 +195,8 @@ public fun Button(
                         modifier = Modifier
                             .layoutId("endItem")
                             .padding(end = paddings.iconEnd)
-                            .requiredSize(16.dp),
+                            .requiredSize(16.dp)
+                            .rotate(animateFloatAsState(endItem.rotation).value),
                         tint = onColor,
                         icon = endItem.icon,
                         contentDescription = null
@@ -244,6 +247,6 @@ public sealed class ButtonColor {
 private fun buttonShape(size: ButtonSize) = RoundedCornerShape(if (size == LARGE) 12.dp else 8.dp)
 
 public sealed class ButtonEndItem {
-    public data class Icon(val icon: FlamingoIcon) : ButtonEndItem()
+    public data class Icon(val icon: FlamingoIcon, val rotation: Float = 0f) : ButtonEndItem()
     public data class Badge(val label: String) : ButtonEndItem()
 }
