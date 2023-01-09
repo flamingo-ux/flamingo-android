@@ -21,7 +21,6 @@ import androidx.compose.foundation.layout.requiredSize
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.flamingo.components.Avatar
@@ -35,7 +34,6 @@ import com.flamingo.playground.boast
 @Preview
 @Composable
 fun ListItemPreview() {
-    val context = LocalContext.current
     ListItem(
         start = {
             Avatar(
@@ -59,24 +57,32 @@ fun ListItemPreview() {
 fun AdvancedListItemPreview() {
     AdvancedListItem(
         start = {
-            Box(modifier = Modifier
-                .requiredSize(70.dp)
-                .background(Color.Red))
+            Box(
+                modifier = Modifier
+                    .requiredSize(70.dp)
+                    .background(Color.Red)
+            )
         },
         title = {
-            Box(modifier = Modifier
-                .requiredSize(width = 100.dp, height = 60.dp)
-                .background(Color.Green))
+            Box(
+                modifier = Modifier
+                    .requiredSize(width = 100.dp, height = 60.dp)
+                    .background(Color.Green)
+            )
         },
         subtitle = {
-            Box(modifier = Modifier
-                .requiredSize(width = 110.dp, height = 60.dp)
-                .background(Color.Blue))
+            Box(
+                modifier = Modifier
+                    .requiredSize(width = 110.dp, height = 60.dp)
+                    .background(Color.Blue)
+            )
         },
         end = {
-            Box(modifier = Modifier
-                .requiredSize(50.dp)
-                .background(Color.Cyan))
+            Box(
+                modifier = Modifier
+                    .requiredSize(50.dp)
+                    .background(Color.Cyan)
+            )
         },
         isEndSlotClickableWhenDisabled = true,
         disabled = false,
