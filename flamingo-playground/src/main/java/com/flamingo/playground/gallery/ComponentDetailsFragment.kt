@@ -76,8 +76,8 @@ import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import com.flamingo.Flamingo
 import com.flamingo.annotations.view.FlamingoComponent
-import com.flamingo.components.AlertMessage
-import com.flamingo.components.AlertMessageVariant
+import com.flamingo.components.alertmessage.AlertMessage
+import com.flamingo.components.alertmessage.AlertMessageVariant
 import com.flamingo.components.IconButton
 import com.flamingo.components.IconButtonVariant
 import com.flamingo.components.Text
