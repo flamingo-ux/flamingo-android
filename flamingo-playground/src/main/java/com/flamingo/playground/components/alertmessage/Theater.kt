@@ -14,8 +14,8 @@ import androidx.compose.ui.unit.Density
 import androidx.compose.ui.unit.dp
 import com.flamingo.components.Action
 import com.flamingo.components.ActionGroup
-import com.flamingo.components.AlertMessage
-import com.flamingo.components.AlertMessageVariant
+import com.flamingo.components.alertmessage.AlertMessage
+import com.flamingo.components.alertmessage.AlertMessageVariant
 import com.flamingo.loremIpsum
 import com.flamingo.playground.theater.Director
 import com.flamingo.playground.theater.EndScreenActor

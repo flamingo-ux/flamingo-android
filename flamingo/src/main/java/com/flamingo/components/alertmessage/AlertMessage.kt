@@ -11,7 +11,7 @@
     "SpacingAroundParens"
 )
 
-package com.flamingo.components
+package com.flamingo.components.alertmessage
 
 import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.animateContentSize
@@ -21,10 +21,8 @@ import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.requiredWidth
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.ClickableText
 import androidx.compose.runtime.Composable
@@ -33,10 +31,18 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.graphicsLayer
+import androidx.compose.ui.layout.layoutId
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.unit.dp
 import com.flamingo.Flamingo
 import com.flamingo.annotations.FlamingoComponent
+import com.flamingo.components.ActionGroup
+import com.flamingo.components.FlamingoComponentBase
+import com.flamingo.components.Icon
+import com.flamingo.components.IconButton
+import com.flamingo.components.IconButtonVariant
+import com.flamingo.components.Link
+import com.flamingo.components.LinkSize
 import com.flamingo.components.button.ButtonColor
 import com.flamingo.components.button.ButtonWidthPolicy
 import com.flamingo.theme.FlamingoIcon
@@ -134,33 +140,22 @@ private fun Actions(
     actions: ActionGroup,
     variant: AlertMessageVariant,
 ) = with(actions) {
-    Row(modifier = modifier) {
-        if (secondAction == null) {
-            Box {
-                with(firstAction) {
-                    Link(
-                        label = label,
-                        onClick = onClick,
-                        size = LinkSize.SMALL,
-                        color = Flamingo.colors.textPrimary,
-                        loading = loading,
-                        disabled = disabled
-                    )
-                }
-            }
-        } else {
-            Box(modifier = Modifier.weight(1f, fill = false)) {
+    AlertMessageActionsLayout(modifier) {
+        Box(modifier = Modifier.layoutId("firstAction")) {
+            with(firstAction) {
                 Link(
-                    label = firstAction.label,
-                    onClick = firstAction.onClick,
+                    label = label,
+                    onClick = onClick,
                     size = LinkSize.SMALL,
                     color = Flamingo.colors.textPrimary,
-                    loading = firstAction.loading,
-                    disabled = firstAction.disabled
+                    loading = loading,
+                    disabled = disabled
                 )
             }
-            Spacer(modifier = Modifier.requiredWidth(24.dp))
-            Box(modifier = Modifier.weight(1f, fill = false)) {
+        }
+
+        if (secondAction != null) {
+            Box(modifier = Modifier.layoutId("secondAction")) {
                 Link(
                     label = secondAction.label,
                     onClick = secondAction.onClick,

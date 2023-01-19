@@ -12,8 +12,8 @@ import androidx.preference.PreferenceFragmentCompat
 import androidx.preference.SwitchPreferenceCompat
 import com.flamingo.components.Action
 import com.flamingo.components.ActionGroup
-import com.flamingo.components.AlertMessage
-import com.flamingo.components.AlertMessageVariant
+import com.flamingo.components.alertmessage.AlertMessage
+import com.flamingo.components.alertmessage.AlertMessageVariant
 import com.flamingo.demoapi.*
 import com.flamingo.loremIpsum
 import com.flamingo.playground.R
