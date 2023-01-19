@@ -15,20 +15,28 @@
 
 package com.flamingo.components
 
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.interaction.MutableInteractionSource
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.requiredSize
 import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.LocalMinimumTouchTargetEnforcement
-import androidx.compose.material.RadioButtonDefaults
+import androidx.compose.material.ripple.rememberRipple
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
+import androidx.compose.runtime.remember
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.unit.dp
-import com.flamingo.ALPHA_DISABLED
 import com.flamingo.Flamingo
+import com.flamingo.alpha
 import com.flamingo.annotations.FlamingoComponent
 import com.flamingo.annotations.UsedInsteadOf
+import com.flamingo.components.button.animateButtonColor
+import com.flamingo.theme.FlamingoRippleTheme
 
 /**
  * Radio buttons allow users to select one option from a set.
@@ -65,29 +73,42 @@ public fun RadioButton(
     disabled: Boolean = false,
 ): Unit = FlamingoComponentBase {
     CompositionLocalProvider(LocalMinimumTouchTargetEnforcement provides false) {
-        androidx.compose.material.RadioButton(
-            modifier = Modifier.requiredSize(40.dp),
-            selected = selected,
-            onClick = onClick,
-            enabled = !disabled,
-            colors = radioButtonColors()
-        )
+        Box(
+            modifier = Modifier
+                .requiredSize(40.dp)
+                .alpha(disabled, animate = true)
+                .run {
+                    if (onClick != null) {
+                        clickable(
+                            onClick = onClick,
+                            enabled = !disabled,
+                            role = Role.Button,
+                            interactionSource = remember { MutableInteractionSource() },
+                            indication = rememberRipple(
+                                bounded = false,
+                                color = FlamingoRippleTheme.defaultColor()
+                            ),
+                        )
+                    } else {
+                        this
+                    }
+                },
+            contentAlignment = Alignment.Center
+        ) {
+            Icon(
+                modifier = Modifier.requiredSize(24.dp),
+                icon = if (selected) Flamingo.icons.CheckCircleV3 else Flamingo.icons.CircleV2,
+                tint = radioButtonColors(selected = selected)
+            )
+        }
     }
 }
 
 @Composable
-private fun radioButtonColors() = with(Flamingo) {
+private fun radioButtonColors(selected: Boolean) = with(Flamingo) {
     if (isWhiteMode) {
-        RadioButtonDefaults.colors(
-            selectedColor = palette.white,
-            unselectedColor = palette.white,
-            disabledColor = palette.white.copy(alpha = ALPHA_DISABLED),
-        )
+        palette.white
     } else {
-        RadioButtonDefaults.colors(
-            selectedColor = colors.primary,
-            unselectedColor = colors.textSecondary,
-            disabledColor = colors.textSecondary.copy(alpha = ALPHA_DISABLED),
-        )
-    }
+        if (selected) colors.primary else colors.outlineDark
+    }.animateButtonColor()
 }
