@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <com.flamingo.demoapi.DemoPreference app:key="component" />
+
+    <Preference
+        app:iconSpaceReserved="false"
+        app:persistent="false"
+        app:summary="@string/states_playroom_text_filed_null_in_text" />
+
+    <SeekBarPreference
+        app:iconSpaceReserved="false"
+        app:key="chips"
+        app:persistent="false"
+        app:title="Chips"
+        app:seekBarIncrement="1"
+        app:showSeekBarValue="true"/>
+
+    <Preference
+        app:iconSpaceReserved="false"
+        app:persistent="false"
+        app:key="shuffle"
+        app:summary="Click to shuffle chips" />
+
+    <EditTextPreference
+        app:iconSpaceReserved="false"
+        app:key="label"
+        app:persistent="false"
+        app:title="Label" />
+
+    <SwitchPreferenceCompat
+        app:iconSpaceReserved="false"
+        app:key="required"
+        app:persistent="false"
+        app:title="Required" />
+
+    <EditTextPreference
+        app:iconSpaceReserved="false"
+        app:key="description"
+        app:persistent="false"
+        app:title="Description" />
+
+    <EditTextPreference
+        app:iconSpaceReserved="false"
+        app:key="errorText"
+        app:persistent="false"
+        app:title="Error Text" />
+
+    <SwitchPreferenceCompat
+        app:iconSpaceReserved="false"
+        app:key="disabled"
+        app:persistent="false"
+        app:title="Disabled" />
+
+</PreferenceScreen>

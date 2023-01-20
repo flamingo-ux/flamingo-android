@@ -12,10 +12,24 @@ import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
 import com.flamingo.Flamingo
 import com.flamingo.alpha
+import com.flamingo.annotations.FlamingoComponent
+import com.flamingo.components.Chip
 import com.flamingo.components.Text
+import com.flamingo.theme.FlamingoIcon
 
+/**
+ * TODO
+ */
+@FlamingoComponent(
+    preview = "com.flamingo.playground.preview.ChipGroupPreview",
+    figma = "https://www.f.com/file/6qbNsEofr4vu0p8bAGCM65?node-id=29772%3A212196&t=bMX2TdeC3B6yZcWi-0",
+    specification = "https://confluence.companyname.ru/x/5AA0VQI",
+    demo = ["com.flamingo.playground.components.chipgroup.ChipGroupStatesPlayroom"],
+    supportsWhiteMode = false,
+)
 @Composable
 public fun ChipGroup(
+    chips: List<ChipData>,
     label: String? = null,
     required: Boolean = false,
     disabled: Boolean = false,
@@ -28,7 +42,16 @@ public fun ChipGroup(
         ChipGroupContentLayout(
             modifier = Modifier.padding(vertical = 8.dp)
         ) {
-            // todo
+            chips.forEach {
+                Chip(
+                    label = it.label,
+                    selected = it.selected,
+                    onClick = it.onClick,
+                    onDelete = it.onDelete,
+                    icon = it.icon,
+                    disabled = it.disabled
+                )
+            }
         }
 
         if ((description != null && description.isNotBlank()) ||
@@ -64,5 +87,14 @@ private fun Description(text: String, isError: Boolean) {
         style = Flamingo.typography.caption2
     )
 }
+
+public data class ChipData(
+    val label: String,
+    val selected: Boolean = false,
+    val onClick: (() -> Unit)? = null,
+    val onDelete: (() -> Unit)? = null,
+    val icon: FlamingoIcon? = null,
+    val disabled: Boolean = false,
+)
 
 private const val SPRING_STIFFNESS = 700f
