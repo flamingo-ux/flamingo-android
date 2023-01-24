@@ -1,15 +1,15 @@
 package com.flamingo.components.chipgroup
 
-import android.util.Log
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.Layout
 import androidx.compose.ui.unit.Constraints
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.util.fastMap
+import com.flamingo.components.Chip
 
 /**
- * TODO
+ * Layout for Chips inside [ChipGroup]. It should have at least one [Chip] inside.
  * __NOTE__ Components inside [content] should have the same height for layout to work properly
  */
 @Composable
@@ -29,14 +29,13 @@ internal fun ChipGroupContentLayout(
     val horizontalPaddingPx = 8.dp.roundToPx()
     val verticalPaddingPx = 12.dp.roundToPx()
 
-    // todo количество строк не всегда правильно считается, проверить! (если перемешивать чипы в плейграунде, можно наткнуться на этот баг)
     var totalRows = 1
     var tmpWidth = 0
     placeables.forEachIndexed { index, placeable ->
         tmpWidth += placeable.width
         if (tmpWidth > constraints.maxWidth) {
             totalRows++
-            tmpWidth = placeable.width
+            tmpWidth = placeable.width + horizontalPaddingPx
         } else if (tmpWidth == constraints.maxWidth && index != placeables.size - 1) {
             totalRows++
             tmpWidth = 0
@@ -44,8 +43,6 @@ internal fun ChipGroupContentLayout(
             tmpWidth += horizontalPaddingPx
         }
     }
-
-    Log.d("qwerty", "totalRows $totalRows")
 
     // NOTE Only works if placeables have the same height!
     val maxHeight = placeables.maxBy { it.height }.height
