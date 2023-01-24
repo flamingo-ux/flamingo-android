@@ -20,6 +20,7 @@ import com.flamingo.demoapi.findPreference
 import com.flamingo.demoapi.initPref
 import com.flamingo.demoapi.onChange
 import com.flamingo.demoapi.parceNull
+import com.flamingo.demoapi.wrapWithBraces
 import com.flamingo.playground.R
 
 
@@ -90,7 +91,7 @@ class ChipGroupStatesPlayroom : PreferenceFragmentCompat() {
         configurePreference<EditTextPreference>("label") {
             onChange { newValue ->
                 label = newValue.parceNull()
-                summary = label
+                summary = label?.wrapWithBraces() ?: "null"
                 true
             }
             initPref(savedInstanceState, defVal = "null")
@@ -99,7 +100,7 @@ class ChipGroupStatesPlayroom : PreferenceFragmentCompat() {
         configurePreference<EditTextPreference>("description") {
             onChange { newValue ->
                 description = newValue.parceNull()
-                summary = description
+                summary = description?.wrapWithBraces() ?: "null"
                 true
             }
             initPref(savedInstanceState, defVal = "null")
@@ -108,7 +109,7 @@ class ChipGroupStatesPlayroom : PreferenceFragmentCompat() {
         configurePreference<EditTextPreference>("errorText") {
             onChange { newValue ->
                 errorText = newValue.parceNull()
-                summary = errorText
+                summary = errorText?.wrapWithBraces() ?: "null"
                 true
             }
             initPref(savedInstanceState, defVal = "null")

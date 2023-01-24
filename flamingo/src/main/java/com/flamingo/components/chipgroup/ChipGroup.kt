@@ -18,7 +18,17 @@ import com.flamingo.components.Text
 import com.flamingo.theme.FlamingoIcon
 
 /**
- * TODO
+ * [ChipGroup] displays Chips in an uneven grid to use as few rows as possible.
+ * Keep in mind that Chips display in order they were declared, and not in the order using the
+ * least amount of space.
+ *
+ * @param chips list of params, used in each [Chip]
+ * @param label optional, may contain asterisk if [required] == true
+ * @param description optional, displays additional info below Chips
+ * @param errorText optional. If not empty, it will replace [description] text and
+ * color it as an error
+ *
+ * @sample com.flamingo.playground.preview.ChipGroupPreview
  */
 @FlamingoComponent(
     preview = "com.flamingo.playground.preview.ChipGroupPreview",
@@ -36,8 +46,12 @@ public fun ChipGroup(
     description: String? = null,
     errorText: String? = null
 ) {
-    Column(Modifier.alpha(disabled = disabled, animate = true)) {
-        if (label != null && label.isNotBlank()) Label(label = label, required = required)
+    Column {
+        if (label != null && label.isNotBlank()) Label(
+            label = label,
+            required = required,
+            disabled = disabled
+        )
 
         ChipGroupContentLayout(
             modifier = Modifier.padding(vertical = 8.dp)
@@ -49,7 +63,7 @@ public fun ChipGroup(
                     onClick = it.onClick,
                     onDelete = it.onDelete,
                     icon = it.icon,
-                    disabled = it.disabled
+                    disabled = if (disabled) disabled else it.disabled
                 )
             }
         }
@@ -58,15 +72,20 @@ public fun ChipGroup(
             (errorText != null && errorText.isNotBlank())
         ) {
             // NOTE! We are sure one of these strings is not empty and will be displayed
-            Description(text = errorText ?: description!!, isError = errorText != null)
+            Description(
+                text = errorText ?: description!!,
+                isError = errorText != null,
+                disabled = disabled
+            )
         }
     }
 }
 
 @Composable
-private fun Label(label: String, required: Boolean) {
+private fun Label(label: String, required: Boolean, disabled: Boolean) {
     Text(
         modifier = Modifier
+            .alpha(disabled = disabled, animate = true)
             .padding(bottom = 8.dp)
             .animateContentSize(spring(stiffness = SPRING_STIFFNESS)),
         text = buildAnnotatedString {
@@ -79,9 +98,11 @@ private fun Label(label: String, required: Boolean) {
 }
 
 @Composable
-private fun Description(text: String, isError: Boolean) {
+private fun Description(text: String, isError: Boolean, disabled: Boolean) {
     Text(
-        modifier = Modifier.padding(bottom = 8.dp),
+        modifier = Modifier
+            .alpha(disabled = disabled, animate = true)
+            .padding(bottom = 8.dp),
         text = text,
         color = if (isError) Flamingo.colors.error else Flamingo.colors.textSecondary,
         style = Flamingo.typography.caption2
