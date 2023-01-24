@@ -1,20 +1,9 @@
 package com.flamingo.components.chipgroup
 
-import androidx.compose.animation.animateContentSize
-import androidx.compose.animation.core.spring
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.text.SpanStyle
-import androidx.compose.ui.text.buildAnnotatedString
-import androidx.compose.ui.text.withStyle
-import androidx.compose.ui.unit.dp
-import com.flamingo.Flamingo
-import com.flamingo.alpha
 import com.flamingo.annotations.FlamingoComponent
 import com.flamingo.components.Chip
-import com.flamingo.components.Text
+import com.flamingo.components.GroupComponentsBase
 import com.flamingo.theme.FlamingoIcon
 
 /**
@@ -46,16 +35,14 @@ public fun ChipGroup(
     description: String? = null,
     errorText: String? = null
 ) {
-    Column {
-        if (label != null && label.isNotBlank()) Label(
-            label = label,
-            required = required,
-            disabled = disabled
-        )
-
-        ChipGroupContentLayout(
-            modifier = Modifier.padding(vertical = 8.dp)
-        ) {
+    GroupComponentsBase(
+        label = label,
+        required = required,
+        disabled = disabled,
+        description = description,
+        errorText = errorText
+    ) {
+        ChipGroupContentLayout() {
             chips.forEach {
                 Chip(
                     label = it.label,
@@ -67,46 +54,7 @@ public fun ChipGroup(
                 )
             }
         }
-
-        if ((description != null && description.isNotBlank()) ||
-            (errorText != null && errorText.isNotBlank())
-        ) {
-            // NOTE! We are sure one of these strings is not empty and will be displayed
-            Description(
-                text = errorText ?: description!!,
-                isError = errorText != null,
-                disabled = disabled
-            )
-        }
     }
-}
-
-@Composable
-private fun Label(label: String, required: Boolean, disabled: Boolean) {
-    Text(
-        modifier = Modifier
-            .alpha(disabled = disabled, animate = true)
-            .padding(bottom = 8.dp)
-            .animateContentSize(spring(stiffness = SPRING_STIFFNESS)),
-        text = buildAnnotatedString {
-            append(label)
-            if (required) withStyle(SpanStyle(color = Flamingo.colors.error)) { append("*") }
-        },
-        color = Flamingo.colors.textSecondary,
-        style = Flamingo.typography.caption2
-    )
-}
-
-@Composable
-private fun Description(text: String, isError: Boolean, disabled: Boolean) {
-    Text(
-        modifier = Modifier
-            .alpha(disabled = disabled, animate = true)
-            .padding(bottom = 8.dp),
-        text = text,
-        color = if (isError) Flamingo.colors.error else Flamingo.colors.textSecondary,
-        style = Flamingo.typography.caption2
-    )
 }
 
 public data class ChipData(
@@ -117,5 +65,3 @@ public data class ChipData(
     val icon: FlamingoIcon? = null,
     val disabled: Boolean = false,
 )
-
-private const val SPRING_STIFFNESS = 700f
