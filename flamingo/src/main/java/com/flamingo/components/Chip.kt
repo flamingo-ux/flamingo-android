@@ -20,11 +20,8 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.IntrinsicSize
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.aspectRatio
-import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.requiredHeight
 import androidx.compose.foundation.layout.requiredSize
@@ -128,7 +125,6 @@ private fun Chip(
 
     Row(
         modifier = Modifier
-            .requiredHeight(intrinsicSize = IntrinsicSize.Min)
             .alpha(disabled, animate = true)
             .clip(CircleShape)
             .background(backgroundColor, CircleShape)
@@ -156,9 +152,10 @@ private fun Chip(
             modifier = Modifier
                 .padding(
                     start = if (icon == null) 12.dp else 8.dp,
-                    end = if (onDelete == null && !isDropdown) 12.dp else 0.dp,
+                    end = if (onDelete == null && !isDropdown) 12.dp else 4.dp,
                 )
-                .align(BiasAlignment.Vertical(-0.18f)),
+                .align(BiasAlignment.Vertical(-0.18f))
+                .weight(1f, false),
             text = label.replace("\n", " "),
             color = contentColor,
             style = Flamingo.typography.body2,
@@ -167,27 +164,20 @@ private fun Chip(
         )
 
         if (isDropdown) {
-            Box(
+            Icon(
                 modifier = Modifier
-                    .fillMaxHeight()
-                    .aspectRatio(1f, matchHeightConstraintsFirst = true),
-                contentAlignment = Alignment.Center
-            ) {
-                Icon(
-                    modifier = Modifier
-                        .requiredSize(16.dp)
-                        .rotate(animateFloatAsState(if (isDropdownExpanded) 180f else 0f).value),
-                    icon = Flamingo.icons.ChevronDown,
-                    tint = contentColor
-                )
-            }
+                    .requiredSize(16.dp)
+                    .padding(end = 8.dp)
+                    .rotate(animateFloatAsState(if (isDropdownExpanded) 180f else 0f).value),
+                icon = Flamingo.icons.ChevronDown,
+                tint = contentColor
+            )
         }
 
         if (onDelete != null) {
             Box(
                 modifier = Modifier
-                    .fillMaxHeight()
-                    .aspectRatio(1f, matchHeightConstraintsFirst = true)
+                    .padding(end = 8.dp)
                     .clickable(
                         role = Role.Button,
                         indication = null,
