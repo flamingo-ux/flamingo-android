@@ -22,13 +22,23 @@ import com.flamingo.components.Text
 import com.flamingo.theme.FlamingoRippleTheme
 
 /**
- * TODO
- * __NOTE__. [checkBoxes] must have at least 2 items!
+ * [CheckBoxGroup] displays Checkboxes in a column, in order they were declared
+ *
+ * @param checkBoxes list of params, used to display each [Checkbox].
+ * __NOTE__ [checkBoxes] must have at least 2 items!
+ *
+ * @param label optional, may contain asterisk if [required] == true
+ * @param description optional, displays additional info below Chips
+ * @param errorText optional. If not empty, it will replace [description] text and
+ * color it as an error
+ *
+ * @sample com.flamingo.playground.preview.CheckBoxGroupPreview
+ *
  */
 @FlamingoComponent(
     preview = "com.flamingo.playground.preview.CheckBoxGroupPreview",
     figma = "https://www.f.com/file/6qbNsEofr4vu0p8bAGCM65?node-id=29839%3A212347&t=L90EwFHSoHrWu4Bj-1",
-    specification = "https://confluence.companyname.ru/x/", //todo
+    specification = "https://confluence.companyname.ru/x/8gaUWAI",
     demo = ["com.flamingo.playground.components.checkboxgroup.CheckBoxGroupStatesPlayroom"],
     supportsWhiteMode = false,
 )
