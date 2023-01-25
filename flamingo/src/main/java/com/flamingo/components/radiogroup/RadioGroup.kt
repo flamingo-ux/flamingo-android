@@ -1,4 +1,4 @@
-package com.flamingo.components.checkboxgroup
+package com.flamingo.components.radiogroup
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
@@ -15,43 +15,42 @@ import androidx.compose.ui.unit.dp
 import com.flamingo.Flamingo
 import com.flamingo.alpha
 import com.flamingo.annotations.FlamingoComponent
-import com.flamingo.components.CheckBoxState
-import com.flamingo.components.Checkbox
 import com.flamingo.components.GroupComponentsBase
+import com.flamingo.components.RadioButton
 import com.flamingo.components.Text
 import com.flamingo.theme.FlamingoRippleTheme
 
 /**
- * [CheckBoxGroup] displays Checkboxes in a column, in order they were declared
+ * [RadioGroup] displays RadioButtons in a column, in order they were declared
  *
- * @param checkBoxes list of params, used to display each [Checkbox].
- * __NOTE__ [checkBoxes] must have at least 2 items!
+ * @param radioButtons list of params, used to display each [RadioButton].
+ * __NOTE__ [radioButtons] must have at least 2 items!
  *
  * @param label optional, may contain asterisk if [required] == true
  * @param description optional, displays additional info below Chips
  * @param errorText optional. If not empty, it will replace [description] text and
  * color it as an error
  *
- * @sample com.flamingo.playground.preview.CheckBoxGroupPreview
+ * @sample com.flamingo.playground.preview.RadioGroupPreview
  *
  */
 @FlamingoComponent(
-    preview = "com.flamingo.playground.preview.CheckBoxGroupPreview",
-    figma = "https://www.f.com/file/6qbNsEofr4vu0p8bAGCM65?node-id=29839%3A212347&t=L90EwFHSoHrWu4Bj-1",
-    specification = "https://confluence.companyname.ru/x/8gaUWAI",
-    demo = ["com.flamingo.playground.components.checkboxgroup.CheckBoxGroupStatesPlayroom"],
+    preview = "com.flamingo.playground.preview.RadioGroupPreview",
+    figma = "https://www.f.com/file/6qbNsEofr4vu0p8bAGCM65?node-id=29839%3A212347&t=uYoTklJt7UFANDED-1",
+    specification = "https://confluence.companyname.ru/x/cQeUWAI",
+    demo = ["com.flamingo.playground.components.radiogroup.RadioGroupStatesPlayroom"],
     supportsWhiteMode = false,
 )
 @Composable
-public fun CheckBoxGroup(
-    checkBoxes: List<CheckBoxData>,
+public fun RadioGroup(
+    radioButtons: List<RadioButtonData>,
     label: String? = null,
     required: Boolean = false,
     disabled: Boolean = false,
     description: String? = null,
     errorText: String? = null
 ) {
-    require(checkBoxes.size > 1) { "CheckBoxGroup must have at least 2 items!" }
+    require(radioButtons.size > 1) { "RadioGroup must have at least 2 items!" }
 
     GroupComponentsBase(
         label = label,
@@ -60,20 +59,20 @@ public fun CheckBoxGroup(
         description = description,
         errorText = errorText
     ) {
-        checkBoxes.forEach {
-            CheckBoxItem(item = it, disabled = disabled)
+        radioButtons.forEach {
+            RadioButtonItem(item = it, disabled = disabled)
         }
     }
 }
 
 @Composable
-private fun CheckBoxItem(item: CheckBoxData, disabled: Boolean) {
+private fun RadioButtonItem(item: RadioButtonData, disabled: Boolean) {
     val isDisabled = if (disabled) disabled else item.disabled
     Row(
         modifier = Modifier
             .fillMaxWidth()
             .run {
-                if (item.onCheckedChange != null) {
+                if (item.onClick != null) {
                     clickable(
                         enabled = !isDisabled,
                         role = Role.Checkbox,
@@ -82,9 +81,7 @@ private fun CheckBoxItem(item: CheckBoxData, disabled: Boolean) {
                             color = FlamingoRippleTheme.defaultColor()
                         ),
                         interactionSource = remember { MutableInteractionSource() },
-                        onClick = {
-                            item.onCheckedChange.invoke(!item.checked)
-                        }
+                        onClick = item.onClick
                     )
                 } else {
                     this
@@ -92,12 +89,7 @@ private fun CheckBoxItem(item: CheckBoxData, disabled: Boolean) {
             }
     ) {
         Box(modifier = Modifier.padding(vertical = 12.dp)) {
-            Checkbox(
-                checked = item.checked,
-                onCheckedChange = null,
-                disabled = isDisabled,
-                state = item.state
-            )
+            RadioButton(selected = item.selected, onClick = null, disabled = isDisabled)
         }
         Text(
             modifier = Modifier
@@ -110,10 +102,9 @@ private fun CheckBoxItem(item: CheckBoxData, disabled: Boolean) {
     }
 }
 
-public data class CheckBoxData(
+public data class RadioButtonData(
     val label: String,
-    val checked: Boolean = false,
-    val onCheckedChange: ((Boolean) -> Unit)? = null,
-    val state: CheckBoxState = CheckBoxState.DEFAULT,
+    val selected: Boolean = false,
+    val onClick: (() -> Unit)? = null,
     val disabled: Boolean = false,
 )
