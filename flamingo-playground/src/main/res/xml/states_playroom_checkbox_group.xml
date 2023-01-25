@@ -10,17 +10,11 @@
 
     <SeekBarPreference
         app:iconSpaceReserved="false"
-        app:key="chips"
+        app:key="checkboxes"
         app:persistent="false"
-        app:title="Chips"
+        app:title="Checkboxes"
         app:seekBarIncrement="1"
         app:showSeekBarValue="true"/>
-
-    <Preference
-        app:iconSpaceReserved="false"
-        app:persistent="false"
-        app:key="shuffle"
-        app:summary="Click to shuffle chips" />
 
     <EditTextPreference
         app:iconSpaceReserved="false"
