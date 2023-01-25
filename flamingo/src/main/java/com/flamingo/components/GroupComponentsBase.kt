@@ -15,10 +15,12 @@ import com.flamingo.Flamingo
 import com.flamingo.alpha
 import com.flamingo.components.checkboxgroup.CheckBoxGroup
 import com.flamingo.components.chipgroup.ChipGroup
+import com.flamingo.components.radiogroup.RadioGroup
+import com.flamingo.components.switchgroup.SwitchGroup
 
 /**
  * Intended to use with components, that have groups of other components
- * such as [ChipGroup], [CheckBoxGroup], [], []
+ * such as [ChipGroup], [CheckBoxGroup], [RadioGroup], [SwitchGroup]
  */
 @Composable
 internal fun GroupComponentsBase(
