@@ -1,4 +1,4 @@
-package com.flamingo.playground.components.checkboxgroup
+package com.flamingo.playground.components.switchgroup
 
 import android.os.Bundle
 import android.view.View
@@ -9,8 +9,8 @@ import androidx.preference.EditTextPreference
 import androidx.preference.PreferenceFragmentCompat
 import androidx.preference.SeekBarPreference
 import androidx.preference.SwitchPreferenceCompat
-import com.flamingo.components.checkboxgroup.CheckBoxData
-import com.flamingo.components.checkboxgroup.CheckBoxGroup
+import com.flamingo.components.switchgroup.SwitchData
+import com.flamingo.components.switchgroup.SwitchGroup
 import com.flamingo.demoapi.DemoPreference
 import com.flamingo.demoapi.StatesPlayroomDemo
 import com.flamingo.demoapi.configurePreference
@@ -22,25 +22,21 @@ import com.flamingo.demoapi.wrapWithBraces
 import com.flamingo.playground.R
 
 @StatesPlayroomDemo
-class CheckBoxGroupStatesPlayroom : PreferenceFragmentCompat() {
+class SwitchGroupStatesPlayroom : PreferenceFragmentCompat() {
 
-    private val checkboxList = listOf(
-        CheckBoxData(label = "checkbox", checked = true, onCheckedChange = {}),
-        CheckBoxData(label = "long checkbox", onCheckedChange = {}),
-        CheckBoxData(
-            label = "long long long long long long long long long long checkbox",
+    private val switchList = listOf(
+        SwitchData(label = "switch", checked = true, onCheckedChange = {}),
+        SwitchData(label = "long switch", onCheckedChange = {}),
+        SwitchData(
+            label = "long long long long long long long long long long switch",
             onCheckedChange = {}),
-        CheckBoxData(
-            label = "long checkbox",
-            checked = true,
-            disabled = true,
-            onCheckedChange = {}),
-        CheckBoxData(label = "long long long long checkbox", disabled = true, onCheckedChange = {}),
-        CheckBoxData(label = "long checkbox", onCheckedChange = {}),
+        SwitchData(label = "long switch", checked = true, disabled = true, onCheckedChange = {}),
+        SwitchData(label = "long long long long switch", disabled = true, onCheckedChange = {}),
+        SwitchData(label = "long switch", onCheckedChange = {}),
     )
 
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
-        setPreferencesFromResource(R.xml.states_playroom_checkbox_group, rootKey)
+        setPreferencesFromResource(R.xml.states_playroom_switch_group, rootKey)
     }
 
     @Suppress("LongMethod")
@@ -52,11 +48,11 @@ class CheckBoxGroupStatesPlayroom : PreferenceFragmentCompat() {
         var errorText: String? by mutableStateOf(null)
         var required by mutableStateOf(false)
         var disabled by mutableStateOf(false)
-        var checkboxAmount by mutableStateOf(2)
+        var switchAmount by mutableStateOf(2)
 
         findPreference<DemoPreference>("component")?.setComposeDesignComponent {
-            CheckBoxGroup(
-                checkBoxes = checkboxList.take(checkboxAmount),
+            SwitchGroup(
+                switches = switchList.take(switchAmount),
                 label = label,
                 required = required,
                 disabled = disabled,
@@ -65,9 +61,9 @@ class CheckBoxGroupStatesPlayroom : PreferenceFragmentCompat() {
             )
         }
 
-        configurePreference<SeekBarPreference>("checkboxes") {
+        configurePreference<SeekBarPreference>("switches") {
             onChange { newValue ->
-                checkboxAmount = newValue
+                switchAmount = newValue
                 true
             }
             initPref(savedInstanceState, defVal = 2)
