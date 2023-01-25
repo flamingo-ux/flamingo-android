@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <com.flamingo.demoapi.DemoPreference app:key="component" />
+
+    <Preference
+        app:iconSpaceReserved="false"
+        app:persistent="false"
+        app:summary="@string/states_playroom_text_filed_null_in_text" />
+
+    <SeekBarPreference
+        app:iconSpaceReserved="false"
+        app:key="radios"
+        app:persistent="false"
+        app:seekBarIncrement="1"
+        app:showSeekBarValue="true"
+        app:title="RadioButtons" />
+
+    <EditTextPreference
+        app:iconSpaceReserved="false"
+        app:key="label"
+        app:persistent="false"
+        app:title="Label" />
+
+    <SwitchPreferenceCompat
+        app:iconSpaceReserved="false"
+        app:key="required"
+        app:persistent="false"
+        app:title="Required" />
+
+    <EditTextPreference
+        app:iconSpaceReserved="false"
+        app:key="description"
+        app:persistent="false"
+        app:title="Description" />
+
+    <EditTextPreference
+        app:iconSpaceReserved="false"
+        app:key="errorText"
+        app:persistent="false"
+        app:title="Error Text" />
+
+    <SwitchPreferenceCompat
+        app:iconSpaceReserved="false"
+        app:key="disabled"
+        app:persistent="false"
+        app:title="Disabled" />
+
+</PreferenceScreen>
