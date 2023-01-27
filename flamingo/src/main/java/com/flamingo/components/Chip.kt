@@ -166,8 +166,8 @@ private fun Chip(
         if (isDropdown) {
             Icon(
                 modifier = Modifier
-                    .requiredSize(16.dp)
                     .padding(end = 8.dp)
+                    .requiredSize(16.dp)
                     .rotate(animateFloatAsState(if (isDropdownExpanded) 180f else 0f).value),
                 icon = Flamingo.icons.ChevronDown,
                 tint = contentColor
