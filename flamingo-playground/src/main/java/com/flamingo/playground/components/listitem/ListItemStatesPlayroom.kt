@@ -99,30 +99,40 @@ class ListItemStatesPlayroom : PreferenceFragmentCompat() {
 
         findPreference<DemoPreference>("component")?.setComposeDesignComponent {
             WhiteModeDemo(white = white) {
+
                 ListItemPreview(
                     start = startSlot,
                     title = title,
                     titleWrapper = TextWrapper(
                         text = "",
                         padding = PaddingValues(if (titlePadding) 10.dp else 0.dp),
-                        icon = titleIcon,
-                        iconTint = getColorByName(titleIconTint),
+                        icon = titleIcon?.let { icon ->
+                            getColorByName(titleIconTint)?.let { color ->
+                                TextWrapper.IconWrapper(icon, color)
+                            }
+                        },
                         iconPosition = titleIconPosition
                     ),
                     subtitle = subtitle,
                     subtitleWrapper = TextWrapper(
                         text = "",
                         padding = PaddingValues(if (subtitlePadding) 10.dp else 0.dp),
-                        icon = subtitleIcon,
-                        iconTint = getColorByName(subtitleIconTint),
+                        icon = subtitleIcon?.let { icon ->
+                            getColorByName(subtitleIconTint)?.let { color ->
+                                TextWrapper.IconWrapper(icon, color)
+                            }
+                        },
                         iconPosition = subtitleIconPosition
                     ),
                     description = description,
                     descriptionWrapper = TextWrapper(
                         text = "",
                         padding = PaddingValues(if (descriptionPadding) 10.dp else 0.dp),
-                        icon = descriptionIcon,
-                        iconTint = getColorByName(descriptionIconTint),
+                        icon = descriptionIcon?.let { icon ->
+                            getColorByName(descriptionIconTint)?.let { color ->
+                                TextWrapper.IconWrapper(icon, color)
+                            }
+                        },
                         iconPosition = descriptionIconPosition
                     ),
                     date = date,
@@ -478,11 +488,10 @@ class ListItemStatesPlayroom : PreferenceFragmentCompat() {
                 Text.ONE_LINE -> TextWrapper("ListItem " + "Title ")
                 Text.MULTILINE -> TextWrapper("ListItem " + "Title ".repeat(30))
                 Text.TEXT_WRAPPER -> TextWrapper(
-                    text = "ListItem " + "Title ",
+                    text = AnnotatedString("ListItem " + "Title "),
                     padding = titleWrapper.padding,
-                    icon = titleWrapper.icon,
-                    iconTint = titleWrapper.iconTint,
-                    iconPosition = titleWrapper.iconPosition
+                    composable = titleWrapper.composable,
+                    composablePosition = titleWrapper.composablePosition
                 )
             },
             subtitle = when (subtitle) {
@@ -490,11 +499,10 @@ class ListItemStatesPlayroom : PreferenceFragmentCompat() {
                 Text.ONE_LINE -> TextWrapper("ListItem " + "Subtitle ")
                 Text.MULTILINE -> TextWrapper("ListItem " + "Subtitle ".repeat(7))
                 Text.TEXT_WRAPPER -> TextWrapper(
-                    text = "ListItem " + "Subtitle ",
+                    text = AnnotatedString("ListItem " + "Subtitle "),
                     padding = subtitleWrapper.padding,
-                    icon = subtitleWrapper.icon,
-                    iconTint = subtitleWrapper.iconTint,
-                    iconPosition = subtitleWrapper.iconPosition
+                    composable = subtitleWrapper.composable,
+                    composablePosition = subtitleWrapper.composablePosition
                 )
             },
             description = when (description) {
@@ -502,11 +510,10 @@ class ListItemStatesPlayroom : PreferenceFragmentCompat() {
                 Text.ONE_LINE -> TextWrapper("ListItem " + "Description ")
                 Text.MULTILINE -> TextWrapper("ListItem " + "Description ".repeat(7))
                 Text.TEXT_WRAPPER -> TextWrapper(
-                    text = "ListItem " + "Description ",
+                    text = AnnotatedString("ListItem " + "Description "),
                     padding = descriptionWrapper.padding,
-                    icon = descriptionWrapper.icon,
-                    iconTint = descriptionWrapper.iconTint,
-                    iconPosition = descriptionWrapper.iconPosition
+                    composable = descriptionWrapper.composable,
+                    composablePosition = descriptionWrapper.composablePosition
                 )
             },
             date = when (date) {
