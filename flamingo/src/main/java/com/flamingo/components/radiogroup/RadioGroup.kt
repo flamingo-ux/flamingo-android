@@ -38,6 +38,7 @@ import com.flamingo.theme.FlamingoRippleTheme
     preview = "com.flamingo.playground.preview.RadioGroupPreview",
     figma = "https://www.f.com/file/6qbNsEofr4vu0p8bAGCM65?node-id=29839%3A212347&t=uYoTklJt7UFANDED-1",
     specification = "https://confluence.companyname.ru/x/cQeUWAI",
+    theaterPackage = "com.flamingo.playground.components.radiogroup.TheaterPkg",
     demo = ["com.flamingo.playground.components.radiogroup.RadioGroupStatesPlayroom"],
     supportsWhiteMode = false,
 )
@@ -51,7 +52,6 @@ public fun RadioGroup(
     errorText: String? = null
 ) {
     require(radioButtons.size > 1) { "RadioGroup must have at least 2 items!" }
-
     GroupComponentsBase(
         label = label,
         required = required,

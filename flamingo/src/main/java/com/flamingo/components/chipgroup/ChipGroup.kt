@@ -26,6 +26,7 @@ import com.flamingo.theme.FlamingoIcon
     preview = "com.flamingo.playground.preview.ChipGroupPreview",
     figma = "https://www.f.com/file/6qbNsEofr4vu0p8bAGCM65?node-id=29772%3A212196&t=bMX2TdeC3B6yZcWi-0",
     specification = "https://confluence.companyname.ru/x/5AA0VQI",
+    theaterPackage = "com.flamingo.playground.components.chipgroup.TheaterPkg",
     demo = ["com.flamingo.playground.components.chipgroup.ChipGroupStatesPlayroom"],
     supportsWhiteMode = false,
 )
