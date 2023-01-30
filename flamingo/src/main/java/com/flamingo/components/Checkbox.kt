@@ -15,20 +15,26 @@
 
 package com.flamingo.components
 
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.interaction.MutableInteractionSource
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.requiredSize
-import androidx.compose.material.CheckboxDefaults
 import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.LocalMinimumTouchTargetEnforcement
-import androidx.compose.material.TriStateCheckbox
+import androidx.compose.material.ripple.rememberRipple
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
+import androidx.compose.runtime.remember
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.state.ToggleableState
+import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.unit.dp
-import com.flamingo.ALPHA_DISABLED
 import com.flamingo.Flamingo
+import com.flamingo.alpha
 import com.flamingo.annotations.FlamingoComponent
 import com.flamingo.annotations.UsedInsteadOf
+import com.flamingo.components.button.animateButtonColor
+import com.flamingo.theme.FlamingoRippleTheme
 import com.flamingo.theme.FlamingoTheme
 
 /**
@@ -80,27 +86,52 @@ private fun InternalCheckBox(
     disabled: Boolean,
     state: CheckBoxState
 ) {
-    TriStateCheckbox(
-        modifier = Modifier.requiredSize(40.dp),
-        state = if (checked) state.toggleableState else ToggleableState.Off,
-        onClick = if (onCheckedChange != null) ({ onCheckedChange.invoke(!checked) }) else null,
-        enabled = !disabled,
-        colors = checkboxColors()
-    )
+    Box(
+        modifier = Modifier
+            .requiredSize(40.dp)
+            .alpha(disabled, animate = true)
+            .run {
+                if (onCheckedChange != null) {
+                    clickable(
+                        onClick = {
+                            onCheckedChange.invoke(!checked)
+                        },
+                        enabled = !disabled,
+                        role = Role.Button,
+                        interactionSource = remember { MutableInteractionSource() },
+                        indication = rememberRipple(
+                            bounded = false,
+                            color = FlamingoRippleTheme.defaultColor()
+                        ),
+                    )
+                } else {
+                    this
+                }
+            },
+        contentAlignment = Alignment.Center
+    ) {
+        Icon(
+            modifier = Modifier.requiredSize(24.dp),
+            icon = if (checked) {
+                if (state == CheckBoxState.DEFAULT) {
+                    Flamingo.icons.CheckSquareV3
+                } else {
+                    Flamingo.icons.CheckSquareMinusV3
+                }
+            } else {
+                Flamingo.icons.SquareV2
+            },
+            tint = checkboxColors(checked)
+        )
+    }
 }
 
 @Composable
-private fun checkboxColors() = with(Flamingo) {
-    CheckboxDefaults.colors(
-        checkedColor = colors.primary,
-        uncheckedColor = colors.textSecondary,
-        checkmarkColor = colors.global.light.backgroundPrimary,
-        disabledColor = colors.textSecondary.copy(alpha = ALPHA_DISABLED),
-        disabledIndeterminateColor = colors.textSecondary.copy(alpha = ALPHA_DISABLED),
-    )
+private fun checkboxColors(checked: Boolean) = with(Flamingo) {
+    (if (checked) colors.primary else colors.textSecondary).animateButtonColor()
 }
 
-public enum class CheckBoxState(public val toggleableState: ToggleableState) {
-    DEFAULT(ToggleableState.On),
-    MINUS(ToggleableState.Indeterminate)
+public enum class CheckBoxState {
+    DEFAULT,
+    MINUS
 }

@@ -18,8 +18,8 @@ internal fun ListItemTextLayout(
     }
 
     val textMeasurable = measurables.fastFirstOrNull { it.layoutId == "text" }
-    val startIconMeasurable = measurables.fastFirstOrNull { it.layoutId == "textIconStart" }
-    val endIconMeasurable = measurables.fastFirstOrNull { it.layoutId == "textIconEnd" }
+    val startIconMeasurable = measurables.fastFirstOrNull { it.layoutId == "composableStart" }
+    val endIconMeasurable = measurables.fastFirstOrNull { it.layoutId == "composableEnd" }
 
     val sideSlotConstraints = Constraints()
 

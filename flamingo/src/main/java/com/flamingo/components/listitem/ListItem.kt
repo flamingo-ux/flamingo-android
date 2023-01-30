@@ -287,9 +287,6 @@ public fun ListItem(
             "titleMaxLines can only be equal to 1, 2 or Int.MAX_VALUE"
         )
     }
-    val titleColor = Flamingo.colors.textPrimary
-    val descriptionColor = Flamingo.colors.textSecondary
-    val subtitleColor = Flamingo.typography.body2.color
     AdvancedListItem(
         start = start,
         title = title?.let {
@@ -302,7 +299,7 @@ public fun ListItem(
                 )
             }
             return@let {
-                TextByTextWrapper(text, it, titleColor)
+                TextByTextWrapper(text, it)
             }
         },
         subtitle = subtitle?.let {
@@ -313,7 +310,7 @@ public fun ListItem(
                 )
             }
             return@let {
-                TextByTextWrapper(text, it, subtitleColor)
+                TextByTextWrapper(text, it)
             }
         },
         description = description?.let {
@@ -324,7 +321,7 @@ public fun ListItem(
                 )
             }
             return@let {
-                TextByTextWrapper(text, it, descriptionColor)
+                TextByTextWrapper(text, it)
             }
         },
         date = date,
@@ -342,8 +339,7 @@ public fun ListItem(
 @Composable
 private fun TextByTextWrapper(
     text: @Composable RowScope.() -> Unit,
-    textWrapper: TextWrapper,
-    defaultIconTint: Color
+    textWrapper: TextWrapper
 ) {
     Row(
         verticalAlignment = Alignment.CenterVertically,
@@ -351,29 +347,29 @@ private fun TextByTextWrapper(
         modifier = Modifier.padding(textWrapper.padding)
     ) {
         ListItemTextLayout() {
-            if (textWrapper.icon == null) {
+            if (textWrapper.composable == null) {
                 text()
             } else {
-                if (textWrapper.iconPosition == TextWrapper.TextIconPosition.START) {
-                    Icon(
-                        icon = textWrapper.icon,
-                        tint = textWrapper.iconTint ?: defaultIconTint,
+                if (textWrapper.composablePosition == TextWrapper.TextIconPosition.START) {
+                    Box(
                         modifier = Modifier
                             .padding(end = 4.dp)
                             .size(16.dp)
-                            .layoutId("textIconStart")
-                    )
+                            .layoutId("composableStart")
+                    ) {
+                        textWrapper.composable.invoke()
+                    }
                     text()
                 } else {
                     text()
-                    Icon(
-                        icon = textWrapper.icon,
-                        tint = textWrapper.iconTint ?: defaultIconTint,
+                    Box(
                         modifier = Modifier
                             .padding(start = 4.dp)
                             .size(16.dp)
-                            .layoutId("textIconEnd")
-                    )
+                            .layoutId("composableEnd")
+                    ) {
+                        textWrapper.composable.invoke()
+                    }
                 }
             }
         }
@@ -618,28 +614,55 @@ private fun Actions(modifier: Modifier = Modifier, actions: ActionGroup) = with(
 }
 
 /**
- * Used to add padding and icons to [Text] inside [ListItem]
- * if [iconTint] == null, text color will be used for icon tint
+ * Used to add padding and custom composable to [Text] inside [ListItem]
+ * Padding is applied to the whole [Row]
+ *
+ * __Note!__ [composable] size is limited to 16.dp!
  */
 public data class TextWrapper(
     val text: AnnotatedString,
     val padding: PaddingValues = PaddingValues(0.dp),
-    val icon: FlamingoIcon? = null,
-    val iconTint: Color? = null,
-    val iconPosition: TextIconPosition = TextIconPosition.START
+    val composablePosition: TextIconPosition = TextIconPosition.START,
+    val composable: @Composable (() -> Unit)? = null
 ) {
+    /**
+     * Used to add padding and icons to [Text] inside [ListItem]
+     */
+    public constructor(
+        text: AnnotatedString,
+        padding: PaddingValues = PaddingValues(0.dp),
+        icon: IconWrapper? = null,
+        iconPosition: TextIconPosition = TextIconPosition.START
+    ) : this(text, padding, iconPosition, icon?.let {
+        val iconComposable: @Composable () -> Unit = {
+            Icon(
+                icon = icon.icon,
+                tint = icon.tint,
+                modifier = Modifier.size(16.dp)
+            )
+        }
+        iconComposable
+    })
+
+    /**
+     * Used to add padding and icons to [Text] inside [ListItem]
+     */
     public constructor(
         text: String,
         padding: PaddingValues = PaddingValues(0.dp),
-        icon: FlamingoIcon? = null,
-        iconTint: Color? = null,
+        icon: IconWrapper? = null,
         iconPosition: TextIconPosition = TextIconPosition.START
-    ) : this(AnnotatedString(text), padding, icon, iconTint, iconPosition)
+    ) : this(AnnotatedString(text), padding, icon, iconPosition)
 
     public enum class TextIconPosition {
         START,
         END
     }
+
+    public data class IconWrapper(
+        val icon: FlamingoIcon,
+        val tint: Color
+    )
 }
 
 
