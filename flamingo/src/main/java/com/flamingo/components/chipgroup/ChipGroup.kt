@@ -4,6 +4,9 @@ import androidx.compose.runtime.Composable
 import com.flamingo.annotations.FlamingoComponent
 import com.flamingo.components.Chip
 import com.flamingo.components.GroupComponentsBase
+import com.flamingo.components.dropdown.BaseDropdownComponent
+import com.flamingo.components.dropdown.Dropdown
+import com.flamingo.components.dropdown.DropdownItem
 import com.flamingo.theme.FlamingoIcon
 
 /**
@@ -23,6 +26,7 @@ import com.flamingo.theme.FlamingoIcon
     preview = "com.flamingo.playground.preview.ChipGroupPreview",
     figma = "https://www.f.com/file/6qbNsEofr4vu0p8bAGCM65?node-id=29772%3A212196&t=bMX2TdeC3B6yZcWi-0",
     specification = "https://confluence.companyname.ru/x/5AA0VQI",
+    theaterPackage = "com.flamingo.playground.components.chipgroup.TheaterPkg",
     demo = ["com.flamingo.playground.components.chipgroup.ChipGroupStatesPlayroom"],
     supportsWhiteMode = false,
 )
@@ -44,19 +48,35 @@ public fun ChipGroup(
     ) {
         ChipGroupContentLayout() {
             chips.forEach {
-                Chip(
-                    label = it.label,
-                    selected = it.selected,
-                    onClick = it.onClick,
-                    onDelete = it.onDelete,
-                    icon = it.icon,
-                    disabled = if (disabled) disabled else it.disabled
-                )
+                if (it.dropdownItems.isNotEmpty()) {
+                    Dropdown(
+                        baseDropdownComponent = BaseDropdownComponent.Chip(
+                            label = it.label,
+                            startIcon = it.icon,
+                            selected = it.selected,
+                            disabled = it.disabled
+                        ),
+                        items = it.dropdownItems,
+                        onDropdownItemSelected = it.onDropdownItemSelected ?: {}
+                    )
+                } else {
+                    Chip(
+                        label = it.label,
+                        selected = it.selected,
+                        onClick = it.onClick,
+                        onDelete = it.onDelete,
+                        icon = it.icon,
+                        disabled = if (disabled) disabled else it.disabled
+                    )
+                }
             }
         }
     }
 }
 
+/**
+ * if [dropdownItems] is not empty, [onDelete] will be ignored
+ */
 public data class ChipData(
     val label: String,
     val selected: Boolean = false,
@@ -64,4 +84,6 @@ public data class ChipData(
     val onDelete: (() -> Unit)? = null,
     val icon: FlamingoIcon? = null,
     val disabled: Boolean = false,
+    val dropdownItems: List<DropdownItem> = listOf(),
+    val onDropdownItemSelected: ((DropdownItem) -> Unit)? = null
 )

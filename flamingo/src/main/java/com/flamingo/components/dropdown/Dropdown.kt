@@ -42,6 +42,7 @@ import androidx.compose.ui.unit.IntSize
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Popup
 import com.flamingo.Flamingo
+import com.flamingo.InternalComponents
 import com.flamingo.alpha
 import com.flamingo.annotations.FlamingoComponent
 import com.flamingo.components.Card
@@ -66,6 +67,7 @@ import com.flamingo.components.tabrow.Tab
 import com.flamingo.components.tabrow.TabRow
 import com.flamingo.components.tabrow.TabVariant
 import com.flamingo.components.tabrow.getTabTextColor
+import com.flamingo.internalComponents
 import com.flamingo.theme.FlamingoIcon
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -89,6 +91,7 @@ import kotlinx.coroutines.launch
     preview = "com.flamingo.playground.preview.DropdownPreview",
     figma = "https://f.com/file/6qbNsEofr4vu0p8bAGCM65?node-id=666%3A371&t=XAfutUOhgSNQfY6x-1",
     specification = "https://confluence.companyname.ru/x/-YlCQgI",
+    theaterPackage = "com.flamingo.playground.components.dropdown.TheaterPkg",
     demo = [
         "com.flamingo.playground.components.dropdown.DropdownStatesPlayroom",
         "com.flamingo.playground.components.dropdown.DropdownTypicalUsage"
@@ -100,6 +103,28 @@ public fun Dropdown(
     modifier: Modifier = Modifier,
     baseDropdownComponent: BaseDropdownComponent,
     items: List<DropdownItem>,
+    onDropdownItemSelected: (DropdownItem) -> Unit
+) {
+    internalComponents.Dropdown(
+        baseDropdownComponent = baseDropdownComponent,
+        items = items,
+        onDropdownItemSelected = onDropdownItemSelected,
+        modifier = modifier,
+        isDropdownShown = false
+    )
+}
+
+/**
+ * This is an Internal copy of [Dropdown] that is used to show dropdown expanding
+ * without user clicking on it
+ * __NOT INTENDED__ to use outside [Flamingo] library and flamingo-playground module.
+ */
+@Composable
+public fun InternalComponents.Dropdown(
+    modifier: Modifier = Modifier,
+    baseDropdownComponent: BaseDropdownComponent,
+    items: List<DropdownItem>,
+    isDropdownShown: Boolean = false,
     onDropdownItemSelected: (DropdownItem) -> Unit
 ) {
     require(items.isNotEmpty()) { "items should not be empty!" }
@@ -114,7 +139,7 @@ public fun Dropdown(
             isExpanded.value = true
         }
 
-        if (isExpanded.value) {
+        if (isExpanded.value || isDropdownShown) {
             DropdownMenu(offset, isExpanded, items, onDropdownItemSelected)
         }
     }
