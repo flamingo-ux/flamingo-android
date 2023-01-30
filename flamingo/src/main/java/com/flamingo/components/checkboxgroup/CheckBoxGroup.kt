@@ -39,6 +39,7 @@ import com.flamingo.theme.FlamingoRippleTheme
     preview = "com.flamingo.playground.preview.CheckBoxGroupPreview",
     figma = "https://www.f.com/file/6qbNsEofr4vu0p8bAGCM65?node-id=29839%3A212347&t=L90EwFHSoHrWu4Bj-1",
     specification = "https://confluence.companyname.ru/x/8gaUWAI",
+    theaterPackage = "com.flamingo.playground.components.checkboxgroup.TheaterPkg",
     demo = ["com.flamingo.playground.components.checkboxgroup.CheckBoxGroupStatesPlayroom"],
     supportsWhiteMode = false,
 )
