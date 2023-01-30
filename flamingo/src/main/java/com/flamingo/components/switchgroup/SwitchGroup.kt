@@ -38,6 +38,7 @@ import com.flamingo.theme.FlamingoRippleTheme
     preview = "com.flamingo.playground.preview.SwitchGroupPreview",
     figma = "https://www.f.com/file/6qbNsEofr4vu0p8bAGCM65?node-id=29839%3A212374&t=28iWuWmTI1Aitya2-4",
     specification = "https://confluence.companyname.ru/x/cQeUWAI",
+    theaterPackage = "com.flamingo.playground.components.switchgroup.TheaterPkg",
     demo = ["com.flamingo.playground.components.switchgroup.SwitchGroupStatesPlayroom"],
     supportsWhiteMode = false,
 )

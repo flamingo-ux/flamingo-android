@@ -13,6 +13,7 @@ import androidx.preference.SwitchPreferenceCompat
 import com.flamingo.Flamingo
 import com.flamingo.components.chipgroup.ChipData
 import com.flamingo.components.chipgroup.ChipGroup
+import com.flamingo.components.dropdown.DropdownItem
 import com.flamingo.demoapi.DemoPreference
 import com.flamingo.demoapi.StatesPlayroomDemo
 import com.flamingo.demoapi.configurePreference
@@ -32,7 +33,11 @@ class ChipGroupStatesPlayroom : PreferenceFragmentCompat() {
         ChipData(label = "Long Long Chip", onClick = {}),
         ChipData(label = "Long Chip", onClick = {}, disabled = true, onDelete = {}),
         ChipData(label = "Long Long Long Long Long Long Long Long Chip", onClick = {}),
-        ChipData(label = "Loooong Chip", onClick = {}, selected = true),
+        ChipData(label = "dropdown Chip", onClick = {}, selected = true, dropdownItems = listOf(
+            DropdownItem(label = "item 1"),
+            DropdownItem(label = "item 2", icon = Flamingo.icons.Bell),
+            DropdownItem(label = "long long item 3"),
+        )),
         ChipData(label = "Long Long Long Chip", onClick = {}),
         ChipData(label = "Chip", icon = Flamingo.icons.Bell, onClick = {}),
         ChipData(label = "Chip", onClick = {}),
