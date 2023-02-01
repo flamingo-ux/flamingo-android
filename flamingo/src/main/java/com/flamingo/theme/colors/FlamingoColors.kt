@@ -30,6 +30,16 @@ public data class FlamingoColors internal constructor(
     public val info: Color,
 
     /**
+     * [figma](https://f.com/file/OvrFgcI8VcGcL8Bw24pK5e?node-id=13978%3A22650&t=q9NnDQaHEiq4AtQr-1)
+     */
+    public val infoSecondary: Color,
+
+    /**
+     * [figma](https://f.com/file/OvrFgcI8VcGcL8Bw24pK5e?node-id=13978%3A22650&t=xhIpKThU0lJp2rZz-1)
+     */
+    public val infoTertiary: Color,
+
+    /**
      * Предупреждение
      * [figma](https://f.com/file/siTvBrYyUPigpjkZfOhJ1h?node-id=714%3A47)
      */
