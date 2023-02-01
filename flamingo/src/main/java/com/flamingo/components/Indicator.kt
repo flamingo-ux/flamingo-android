@@ -100,7 +100,7 @@ internal fun Indicator(
 }
 
 public enum class IndicatorColor {
-    DEFAULT, PRIMARY, ERROR, SECONDARY, WARNING;
+    DEFAULT, PRIMARY, ERROR, SECONDARY, WARNING, SUCCESS, INFO, INFO_SECONDARY, INFO_TERTIARY;
 
     internal val backgroundColor: Color
         @ReadOnlyComposable
@@ -111,6 +111,10 @@ public enum class IndicatorColor {
             ERROR -> Flamingo.colors.error
             SECONDARY -> Flamingo.colors.secondary
             WARNING -> Flamingo.colors.warning
+            SUCCESS -> Flamingo.colors.success
+            INFO -> Flamingo.colors.info
+            INFO_SECONDARY -> Flamingo.colors.infoSecondary
+            INFO_TERTIARY -> Flamingo.colors.infoTertiary
         }
 
     internal val iconColor: Color
