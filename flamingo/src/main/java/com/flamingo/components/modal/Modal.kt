@@ -3,12 +3,14 @@ package com.flamingo.components.modal
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.layoutId
@@ -28,16 +30,29 @@ import com.flamingo.components.button.ButtonColor
 
 
 /**
- * TODO
+ *  Displays custom [content] as a dialog with optional header and action buttons.
+ *  Height of the dialog is capped at 600dp. [content] will scroll vertically if the limit is
+ *  exceeded.
+ *
+ *  @param isVisible handles visibility of the [Modal] dialog
+ *  @param title optional header title
+ *  @param hasCloseButton optional button inside header, that invokes [onDismissRequest]
+ *  @param onDismissRequest callback that is called when user tries to dismiss the dialog.
+ *  It is __needed__ to include [isVisible] change inside this callback to properly close [Modal]
+ *  @param properties default [Dialog] properties. __NOTE__ usePlatformDefaultWidth is ignored,
+ *  because it is defaulted to false to avoid width issues.
+ *  @param primaryButtonParams optional action button
+ *  @param secondaryButtonParams secondary action button that is always present
+ *  @param content content of the [Modal] dialog
+ *
  * @sample com.flamingo.playground.preview.ModalPreview
  */
+@OptIn(ExperimentalComposeUiApi::class)
 @FlamingoComponent(
     preview = "com.flamingo.playground.preview.ModalPreview",
     figma = "https://f.com/file/6qbNsEofr4vu0p8bAGCM65?node-id=628%3A13&t=w1SoH0wu86xPKMre-1",
     specification = "https://confluence.companyname.ru/x/j4cjKQE",
-    demo = [
-        //"com.flamingo.playground.components.button.ButtonComposeStatesPlayroom",
-    ],
+    demo = ["com.flamingo.playground.components.modal.ModalStatesPlayroom"],
     supportsWhiteMode = false,
 )
 @Composable
@@ -52,15 +67,22 @@ public fun Modal(
     content: @Composable () -> Unit
 ) {
     if (isVisible) {
-        Dialog(onDismissRequest = onDismissRequest, properties = properties) {
+        Dialog(
+            onDismissRequest = onDismissRequest,
+            properties = DialogProperties(
+                dismissOnClickOutside = properties.dismissOnClickOutside,
+                dismissOnBackPress = properties.dismissOnBackPress,
+                securePolicy = properties.securePolicy,
+                usePlatformDefaultWidth = false
+            )
+        ) {
             Column(
                 Modifier
-                    .padding(horizontal = 44.dp)
                     .heightIn(max = 600.dp)
+                    .fillMaxWidth(0.77f)
                     .background(Flamingo.colors.background)
                     .clip(RoundedCornerShape(20.dp))
             ) {
-
                 ModalHeaderLayout(Modifier.padding(horizontal = 8.dp)) {
                     if (title != null) Text(
                         modifier = Modifier
@@ -91,7 +113,7 @@ public fun Modal(
 
                 Box(
                     Modifier
-                        .padding(start = 10.dp, end = 10.dp, bottom = 16.dp)
+                        .padding(top = 10.dp, bottom = 26.dp)
                         .weight(1f, fill = false)
                         .verticalScroll(rememberScrollState())
                 ) {
