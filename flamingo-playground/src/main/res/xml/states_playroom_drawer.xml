@@ -28,13 +28,6 @@
         app:title="Dismiss on click outside" />
 
     <SwitchPreferenceCompat
-        app:allowDividerAbove="true"
-        app:iconSpaceReserved="false"
-        app:key="hasPrimaryButton"
-        app:persistent="false"
-        app:title="Has primary button" />
-
-    <SwitchPreferenceCompat
         app:iconSpaceReserved="false"
         app:key="isLTRAnimation"
         app:persistent="false"
@@ -46,6 +39,13 @@
         app:persistent="false"
         app:showSeekBarValue="false"
         app:title="Width fraction" />
+
+    <SwitchPreferenceCompat
+        app:allowDividerAbove="true"
+        app:iconSpaceReserved="false"
+        app:key="hasPrimaryButton"
+        app:persistent="false"
+        app:title="Has primary button" />
 
     <EditTextPreference
         app:iconSpaceReserved="false"
