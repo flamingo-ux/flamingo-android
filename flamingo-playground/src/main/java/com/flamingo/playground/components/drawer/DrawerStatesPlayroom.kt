@@ -120,14 +120,6 @@ class DrawerStatesPlayroom : PreferenceFragmentCompat() {
             initPref(savedInstanceState, defVal = true)
         }
 
-        configurePreference<SwitchPreferenceCompat>("hasPrimaryButton") {
-            onChange { newValue ->
-                hasPrimaryButton = newValue as? Boolean ?: return@onChange false
-                true
-            }
-            initPref(savedInstanceState, defVal = true)
-        }
-
         configurePreference<SwitchPreferenceCompat>("isLTRAnimation") {
             onChange { newValue ->
                 isLTRAnimation = newValue as? Boolean ?: return@onChange false
@@ -145,6 +137,14 @@ class DrawerStatesPlayroom : PreferenceFragmentCompat() {
             initPref(savedInstanceState, defVal = 10)
             max = 10
             min = 5
+        }
+
+        configurePreference<SwitchPreferenceCompat>("hasPrimaryButton") {
+            onChange { newValue ->
+                hasPrimaryButton = newValue as? Boolean ?: return@onChange false
+                true
+            }
+            initPref(savedInstanceState, defVal = true)
         }
 
         configurePreference<EditTextPreference>("primaryButtonLabel") {
