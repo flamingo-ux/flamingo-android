@@ -76,80 +76,99 @@ public fun Modal(
                 usePlatformDefaultWidth = false
             )
         ) {
-            Column(
-                Modifier
+            ModalBase(
+                modifier = Modifier
                     .heightIn(max = 600.dp)
                     .fillMaxWidth(0.77f)
                     .background(Flamingo.colors.background)
-                    .clip(RoundedCornerShape(20.dp))
+                    .clip(RoundedCornerShape(20.dp)),
+                title = title,
+                hasCloseButton = hasCloseButton,
+                onDismissRequest = onDismissRequest,
+                primaryButtonParams = primaryButtonParams,
+                secondaryButtonParams = secondaryButtonParams,
+                content = content
+            )
+        }
+    }
+}
+
+@Composable
+internal fun ModalBase(
+    modifier: Modifier,
+    title: String?,
+    hasCloseButton: Boolean,
+    onDismissRequest: () -> Unit,
+    primaryButtonParams: ButtonParams?,
+    secondaryButtonParams: ButtonParams,
+    content: @Composable () -> Unit
+) {
+    Column(modifier) {
+        ModalHeaderLayout(Modifier.padding(horizontal = 8.dp)) {
+            if (title != null) Text(
+                modifier = Modifier
+                    .layoutId("title")
+                    .padding(vertical = 14.dp, horizontal = 8.dp),
+                text = title,
+                style = Flamingo.typography.h6,
+                color = Flamingo.colors.textPrimary,
+                maxLines = 1,
+                overflow = TextOverflow.Ellipsis
+            )
+
+            if (hasCloseButton) Box(
+                modifier = Modifier
+                    .layoutId("close")
+                    .padding(vertical = 4.dp)
             ) {
-                ModalHeaderLayout(Modifier.padding(horizontal = 8.dp)) {
-                    if (title != null) Text(
-                        modifier = Modifier
-                            .layoutId("title")
-                            .padding(vertical = 14.dp, horizontal = 8.dp),
-                        text = title,
-                        style = Flamingo.typography.h6,
-                        color = Flamingo.colors.textPrimary,
-                        maxLines = 1,
-                        overflow = TextOverflow.Ellipsis
-                    )
-
-                    if (hasCloseButton) Box(
-                        modifier = Modifier
-                            .layoutId("close")
-                            .padding(vertical = 4.dp)
-                    ) {
-                        IconButton(
-                            onClick = onDismissRequest,
-                            icon = Flamingo.icons.X,
-                            contentDescription = null,
-                            variant = IconButtonVariant.TEXT,
-                            size = IconButtonSize.MEDIUM,
-                            color = IconButtonColor.DEFAULT
-                        )
-                    }
-                }
-
-                Box(
-                    Modifier
-                        .padding(top = 10.dp, bottom = 26.dp)
-                        .weight(1f, fill = false)
-                        .verticalScroll(rememberScrollState())
-                ) {
-                    content()
-                }
-
-                if (primaryButtonParams != null) {
-                    Box(modifier = Modifier.padding(start = 16.dp, end = 16.dp, bottom = 8.dp)) {
-                        Button(
-                            onClick = primaryButtonParams.onClick,
-                            label = primaryButtonParams.label,
-                            color = ButtonColor.Primary,
-                            fillMaxWidth = true,
-                            disabled = primaryButtonParams.disabled,
-                            loading = primaryButtonParams.loading
-                        )
-                    }
-                }
-
-                Box(
-                    modifier = Modifier.padding(
-                        start = 16.dp,
-                        end = 16.dp,
-                        bottom = 16.dp
-                    )
-                ) {
-                    Button(
-                        onClick = secondaryButtonParams.onClick,
-                        label = secondaryButtonParams.label,
-                        color = ButtonColor.Default,
-                        fillMaxWidth = true,
-                        disabled = secondaryButtonParams.disabled,
-                        loading = secondaryButtonParams.loading
-                    )
-                }
+                IconButton(
+                    onClick = onDismissRequest,
+                    icon = Flamingo.icons.X,
+                    contentDescription = null,
+                    variant = IconButtonVariant.TEXT,
+                    size = IconButtonSize.MEDIUM,
+                    color = IconButtonColor.DEFAULT
+                )
             }
+        }
+
+        Box(
+            Modifier
+                .padding(top = 10.dp, bottom = 26.dp)
+                .weight(1f, fill = false)
+                .verticalScroll(rememberScrollState())
+        ) {
+            content()
+        }
+
+        if (primaryButtonParams != null) {
+            Box(modifier = Modifier.padding(start = 16.dp, end = 16.dp, bottom = 8.dp)) {
+                Button(
+                    onClick = primaryButtonParams.onClick,
+                    label = primaryButtonParams.label,
+                    color = ButtonColor.Primary,
+                    fillMaxWidth = true,
+                    disabled = primaryButtonParams.disabled,
+                    loading = primaryButtonParams.loading
+                )
+            }
+        }
+
+        Box(
+            modifier = Modifier.padding(
+                start = 16.dp,
+                end = 16.dp,
+                bottom = 16.dp
+            )
+        ) {
+            Button(
+                onClick = secondaryButtonParams.onClick,
+                label = secondaryButtonParams.label,
+                color = ButtonColor.Default,
+                fillMaxWidth = true,
+                disabled = secondaryButtonParams.disabled,
+                loading = secondaryButtonParams.loading
+            )
         }
     }
 }
