@@ -20,11 +20,13 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.IntrinsicSize
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.requiredHeight
 import androidx.compose.foundation.layout.requiredSize
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
@@ -125,6 +127,7 @@ private fun Chip(
 
     Row(
         modifier = Modifier
+            .width(IntrinsicSize.Max)
             .alpha(disabled, animate = true)
             .clip(CircleShape)
             .background(backgroundColor, CircleShape)
@@ -136,7 +139,7 @@ private fun Chip(
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.Center,
     ) {
-        Spacer(modifier = Modifier.requiredHeight(32.dp)) // for min size of the chip
+        Spacer(modifier = Modifier.requiredHeight(32.dp)) // for min height of the chip
 
         if (icon != null) {
             Icon(
