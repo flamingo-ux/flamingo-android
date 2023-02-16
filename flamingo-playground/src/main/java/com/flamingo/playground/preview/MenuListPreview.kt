@@ -1,41 +1,56 @@
 package com.flamingo.playground.preview
 
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.tooling.preview.Preview
 import com.flamingo.Flamingo
 import com.flamingo.components.menulist.MenuList
 import com.flamingo.components.menulist.MenuListItem
-import com.flamingo.components.menulist.MenuListSubItem
+import com.flamingo.components.menulist.MenuListItemParams
+import com.flamingo.components.menulist.SelectedMenuListItem
 import com.flamingo.components.menulist.TextButtonParams
 
 @Preview
 @Composable
 fun MenuListPreview() {
+    var selectedItem by remember {
+        mutableStateOf(
+            SelectedMenuListItem(
+                MenuListItemParams(label = "second"),
+                null
+            )
+        )
+    }
     MenuList(
-        icon = Flamingo.icons.Menu,
         disabled = false,
         dialogTitle = "dialog title",
         items = listOf(
-            //MenuListItem(label = "first"),
+            MenuListItem(params = MenuListItemParams(label = "first")),
             MenuListItem(
-                label = "second",
+                params = MenuListItemParams(label = "second"),
                 list = listOf(
-                    MenuListSubItem("sub item 1"),
-                    MenuListSubItem("long long long long long long long long long long long sub item 2", disabled = true),
-                    MenuListSubItem("sub item 3")
+                    MenuListItemParams("sub item 1"),
+                    MenuListItemParams(
+                        "long long long long long long long long long long long sub item 2",
+                        disabled = true
+                    ),
+                    MenuListItemParams("sub item 3")
                 )
             ),
-            MenuListItem(label = "first"),
-            MenuListItem(icon = Flamingo.icons.Menu, label = "third"),
+            MenuListItem(params = MenuListItemParams(label = "third", icon = Flamingo.icons.Menu)),
             MenuListItem(
-                label = "fourth", list = listOf(
-                    MenuListSubItem("sub item 1"),
-                    MenuListSubItem("long long long long long long long long long long long long long long long long long long long long long sub item 2"),
-                    MenuListSubItem("sub item 3")
+                params = MenuListItemParams(label = "fourth"), list = listOf(
+                    MenuListItemParams("sub item 1"),
+                    MenuListItemParams("long long long long long long long long long long long long long long long long long long long long long sub item 2"),
+                    MenuListItemParams("sub item 3")
                 )
             ),
-            MenuListItem(label = "fifth"),
+            MenuListItem(params = MenuListItemParams(label = "fifth")),
         ),
+        selectedItem = selectedItem,
         textButtonParams = TextButtonParams(
             label = "asdsadasd",
 
@@ -43,7 +58,7 @@ fun MenuListPreview() {
 
         },
         onItemSelected = {
-
+            selectedItem = it
         }
     )
 }

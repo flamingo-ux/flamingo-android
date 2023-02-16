@@ -1,6 +1,5 @@
 package com.flamingo.components.menulist
 
-import android.util.Log
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.foundation.background
@@ -53,36 +52,44 @@ import com.flamingo.theme.FlamingoRippleTheme
 
 /**
  * Displays the dialog with list of items that can be selected and displayed as the button outside
- * dialog. If none of the items inside [items] is selected, the first item is selected by default
+ * dialog. If none of the items inside [items] is selected, the first item is selected by default,
+ * with first subItem selected as well if applicable.
+ *
+ * @param dialogTitle text inside header of the dialog
+ * @param items list of MenuList items, __should not__ be empty!
+ * @param selectedItem default selected item. It is __not__ necessary to update this after
+ * new item has been selected
+ * @param disabled button disabled flag
+ * @param textButtonParams parameters of the optional button inside MenuList dialog
+ * @param onItemSelected callback, that returns selected item with its subItem if it exists
  */
 @FlamingoComponent(
     preview = "com.flamingo.playground.preview.MenuListPreview",
     figma = "https://f.com/file/6qbNsEofr4vu0p8bAGCM65?node-id=23080%3A121341&t=M6lVgZqL4gNEVkdG-0",
     specification = "https://confluence.companyname.ru/x/-YlCQgI",
-    demo = [
-        "",
-    ],
+    demo = ["com.flamingo.playground.components.menulist.MenuListStatesPlayroom"],
     supportsWhiteMode = false,
 )
 @Composable
 public fun MenuList(
     dialogTitle: String?,
     items: List<MenuListItem>,
-    icon: FlamingoIcon? = null,
+    selectedItem: SelectedMenuListItem = SelectedMenuListItem(
+        items.first().params,
+        items.first().list.firstOrNull()
+    ),
     disabled: Boolean = false,
     textButtonParams: TextButtonParams? = null,
-    onItemSelected: (MenuListItem) -> Unit
+    onItemSelected: (SelectedMenuListItem) -> Unit
 ) {
     require(items.isNotEmpty()) { "MenuList should contain at least 1 item!" }
 
     var isVisible by remember { mutableStateOf(false) }
-    var selectedItem by remember {
-        mutableStateOf(items.firstOrNull { it.selected } ?: items.first())
-    }
+    var selectedMenuItem by remember(selectedItem) { mutableStateOf(selectedItem) }
 
     MenuListButton(
-        icon = icon,
-        title = selectedItem.label,
+        icon = selectedMenuItem.mainItem.icon,
+        title = selectedMenuItem.mainItem.label,
         disabled = disabled
     ) {
         isVisible = true
@@ -92,13 +99,13 @@ public fun MenuList(
         MenuListDialog(
             dialogTitle = dialogTitle,
             items = items,
-            selectedItem = selectedItem,
+            selectedItem = selectedMenuItem,
             textButtonParams = textButtonParams,
             onDismissRequest = {
                 isVisible = false
             },
             onItemClick = {
-                selectedItem = it
+                selectedMenuItem = it
                 isVisible = false
                 onItemSelected(it)
             })
@@ -160,10 +167,10 @@ private fun MenuListButton(
 private fun MenuListDialog(
     dialogTitle: String?,
     items: List<MenuListItem>,
-    selectedItem: MenuListItem,
+    selectedItem: SelectedMenuListItem,
     textButtonParams: TextButtonParams?,
     onDismissRequest: () -> Unit,
-    onItemClick: (MenuListItem) -> Unit
+    onItemClick: (SelectedMenuListItem) -> Unit
 ) {
     Dialog(onDismissRequest = onDismissRequest) {
         Column(
@@ -179,7 +186,7 @@ private fun MenuListDialog(
                 ) {
                     IconButton(
                         onClick = onDismissRequest,
-                        icon = Flamingo.icons.ChevronLeft,
+                        icon = Flamingo.icons.ArrowLeft,
                         contentDescription = null,
                         variant = IconButtonVariant.TEXT,
                         size = IconButtonSize.MEDIUM,
@@ -199,8 +206,8 @@ private fun MenuListDialog(
                 )
             }
 
-            val expandedItem: MutableState<MenuListItem?> =
-                remember { mutableStateOf(selectedItem) }
+            val expandedItem: MutableState<MenuListItemParams?> =
+                remember { mutableStateOf(selectedItem.mainItem) }
 
             LazyColumn {
                 items(items) {
@@ -242,18 +249,18 @@ private fun MenuListDialog(
 @Composable
 private fun ColumnScope.MenuListItem(
     item: MenuListItem,
-    selectedItem: MenuListItem,
-    expandedItem: MutableState<MenuListItem?>,
-    onItemClick: (MenuListItem) -> Unit
+    selectedItem: SelectedMenuListItem,
+    expandedItem: MutableState<MenuListItemParams?>,
+    onItemClick: (SelectedMenuListItem) -> Unit
 ) {
-    var expanded by remember { mutableStateOf(expandedItem.value?.label == item.label) }
-    if (expandedItem.value?.label != item.label) {
+    var expanded by remember { mutableStateOf(expandedItem.value?.label == item.params.label) }
+    if (expandedItem.value?.label != item.params.label) {
         expanded = false
     }
-    val isMainItemSelected = selectedItem.label == item.label && item.list.isEmpty()
+    val isMainItemSelected = selectedItem.mainItem.label == item.params.label && item.list.isEmpty()
     Row(
         modifier = Modifier
-            .alpha(item.disabled, animate = true)
+            .alpha(item.params.disabled, animate = true)
             .padding(horizontal = 16.dp)
             .clip(ItemShape)
             .run {
@@ -265,25 +272,25 @@ private fun ColumnScope.MenuListItem(
                     if (item.list.isNotEmpty()) {
                         expanded = !expanded
                         if (expanded) {
-                            expandedItem.value = item
+                            expandedItem.value = item.params
                         }
                     } else {
-                        onItemClick(item.copy(selected = true))
+                        onItemClick(SelectedMenuListItem(mainItem = item.params, subItem = null))
                     }
                 },
-                enabled = !item.disabled,
+                enabled = !item.params.disabled,
                 role = Role.Button,
                 interactionSource = remember { MutableInteractionSource() },
                 indication = rememberRipple(color = FlamingoRippleTheme.defaultColor())
             ),
         verticalAlignment = Alignment.CenterVertically
     ) {
-        if (item.icon != null) {
+        if (item.params.icon != null) {
             Icon(
                 modifier = Modifier
                     .padding(top = 16.dp, bottom = 16.dp, start = 16.dp)
                     .requiredSize(24.dp),
-                icon = item.icon,
+                icon = item.params.icon,
                 tint = Flamingo.colors.textSecondary
             )
         }
@@ -292,7 +299,7 @@ private fun ColumnScope.MenuListItem(
             modifier = Modifier
                 .padding(start = 16.dp, top = 18.dp, bottom = 18.dp)
                 .weight(1f),
-            text = item.label,
+            text = item.params.label,
             color = Flamingo.colors.textPrimary,
             style = if (isMainItemSelected) Flamingo.typography.subtitle2 else Flamingo.typography.body2,
             maxLines = 4,
@@ -310,13 +317,13 @@ private fun ColumnScope.MenuListItem(
             )
         }
     }
-
     AnimatedVisibility(visible = expanded) {
         Column {
-            val selectedSubItem = selectedItem.list.find { it.selected }
-            item.list.forEachIndexed { index, subItem ->
+            val selectedSubItem = selectedItem.subItem
+                ?: if (selectedItem.mainItem.label == item.params.label) item.list.firstOrNull() else null
+            item.list.forEach { subItem ->
                 val isSelected =
-                    selectedItem.label == item.label && selectedSubItem?.label == subItem.label
+                    selectedItem.mainItem.label == item.params.label && selectedSubItem?.label == subItem.label
                 Box(
                     modifier = Modifier
                         .alpha(subItem.disabled, animate = true)
@@ -328,11 +335,12 @@ private fun ColumnScope.MenuListItem(
                         .fillMaxWidth()
                         .clickable(
                             onClick = {
-                                val newList = item.list.mapIndexed { mapIndex, menuListSubItem ->
-                                    menuListSubItem.copy(selected = mapIndex == index)
-                                }
-
-                                onItemClick(item.copy(selected = true, list = newList))
+                                onItemClick(
+                                    SelectedMenuListItem(
+                                        mainItem = item.params,
+                                        subItem = subItem
+                                    )
+                                )
                             },
                             enabled = !subItem.disabled,
                             role = Role.Button,
@@ -354,26 +362,24 @@ private fun ColumnScope.MenuListItem(
     }
 }
 
-//todo maybe rework (возможно избавиться от selected поля и возвращать в колбеке основной элемент и выбранный подпункт, если он есть)
 /**
- * [label] serves as the unique ID for the item!
- *
- * if [selected] == true, then either the main item is selected (if [list] is empty),
- * or one of the sub-items is selected and the corresponding [MenuListSubItem.selected] field
- * will be true
+ * [MenuListItemParams.label] serves as the unique ID for the item!
+ * __NOTE__ in [list], [MenuListItemParams.icon] is ignored!
  */
 public data class MenuListItem(
-    val label: String,
-    val icon: FlamingoIcon? = null,
-    val disabled: Boolean = false,
-    val selected: Boolean = false,
-    val list: List<MenuListSubItem> = listOf()
+    val params: MenuListItemParams,
+    val list: List<MenuListItemParams> = listOf()
 )
 
-public data class MenuListSubItem(
+public data class MenuListItemParams(
     val label: String,
     val disabled: Boolean = false,
-    val selected: Boolean = false
+    val icon: FlamingoIcon? = null
+)
+
+public data class SelectedMenuListItem(
+    val mainItem: MenuListItemParams,
+    val subItem: MenuListItemParams?
 )
 
 public data class TextButtonParams(
@@ -393,26 +399,26 @@ public fun MenuListDialogPreview() {
         dialogTitle = "title",
         onDismissRequest = { },
         items = listOf(
-            MenuListItem(label = "first"),
+            MenuListItem(params = MenuListItemParams(label = "first")),
             MenuListItem(
-                label = "second",
+                params = MenuListItemParams(label = "second"),
                 list = listOf(
-                    MenuListSubItem("adasdasd"),
-                    MenuListSubItem("adasdasd"),
-                    MenuListSubItem("adasdasd")
+                    MenuListItemParams("adasdasd"),
+                    MenuListItemParams("adasdasd"),
+                    MenuListItemParams("adasdasd")
                 )
             ),
-            MenuListItem(icon = Flamingo.icons.Menu, label = "third"),
+            MenuListItem(params = MenuListItemParams(label = "third", icon = Flamingo.icons.Menu)),
             MenuListItem(
-                label = "fourth", list = listOf(
-                    MenuListSubItem("adasdasd"),
-                    MenuListSubItem("adasdasd"),
-                    MenuListSubItem("adasdasd")
+                params = MenuListItemParams(label = "fourth"), list = listOf(
+                    MenuListItemParams("adasdasd"),
+                    MenuListItemParams("adasdasd"),
+                    MenuListItemParams("adasdasd")
                 )
             ),
-            MenuListItem(label = "fifth"),
+            MenuListItem(params = MenuListItemParams(label = "fifth")),
         ),
-        selectedItem = MenuListItem(label = "first"),
+        selectedItem = SelectedMenuListItem(MenuListItemParams(label = "first"), null),
         onItemClick = {
 
         },
