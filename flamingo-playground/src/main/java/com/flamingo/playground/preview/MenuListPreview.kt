@@ -28,10 +28,10 @@ fun MenuListPreview() {
         disabled = false,
         dialogTitle = "dialog title",
         items = listOf(
-            MenuListItem(params = MenuListItemParams(label = "first")),
+            MenuListItem(mainItem = MenuListItemParams(label = "first")),
             MenuListItem(
-                params = MenuListItemParams(label = "second"),
-                list = listOf(
+                mainItem = MenuListItemParams(label = "second"),
+                subItems = listOf(
                     MenuListItemParams("sub item 1"),
                     MenuListItemParams(
                         "long long long long long long long long long long long sub item 2",
@@ -40,15 +40,20 @@ fun MenuListPreview() {
                     MenuListItemParams("sub item 3")
                 )
             ),
-            MenuListItem(params = MenuListItemParams(label = "third", icon = Flamingo.icons.Menu)),
             MenuListItem(
-                params = MenuListItemParams(label = "fourth"), list = listOf(
+                mainItem = MenuListItemParams(
+                    label = "third",
+                    icon = Flamingo.icons.Menu
+                )
+            ),
+            MenuListItem(
+                mainItem = MenuListItemParams(label = "fourth"), subItems = listOf(
                     MenuListItemParams("sub item 1"),
                     MenuListItemParams("long long long long long long long long long long long long long long long long long long long long long sub item 2"),
                     MenuListItemParams("sub item 3")
                 )
             ),
-            MenuListItem(params = MenuListItemParams(label = "fifth")),
+            MenuListItem(mainItem = MenuListItemParams(label = "fifth")),
         ),
         selectedItem = selectedItem,
         textButtonParams = TextButtonParams(

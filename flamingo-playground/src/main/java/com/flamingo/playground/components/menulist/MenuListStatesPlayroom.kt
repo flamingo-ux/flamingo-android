@@ -38,10 +38,10 @@ class MenuListStatesPlayroom : PreferenceFragmentCompat() {
         super.onViewCreated(view, savedInstanceState)
 
         val items = listOf(
-            MenuListItem(params = MenuListItemParams(label = "first")),
+            MenuListItem(mainItem = MenuListItemParams(label = "first")),
             MenuListItem(
-                params = MenuListItemParams(label = "second", icon = Flamingo.icons.Airplay),
-                list = listOf(
+                mainItem = MenuListItemParams(label = "second", icon = Flamingo.icons.Airplay),
+                subItems = listOf(
                     MenuListItemParams("sub item 1"),
                     MenuListItemParams(
                         "long long long long long long long long long long long sub item 2",
@@ -50,15 +50,20 @@ class MenuListStatesPlayroom : PreferenceFragmentCompat() {
                     MenuListItemParams("sub item 3")
                 )
             ),
-            MenuListItem(params = MenuListItemParams(label = "third", icon = Flamingo.icons.Menu)),
             MenuListItem(
-                params = MenuListItemParams(label = "fourth"), list = listOf(
+                mainItem = MenuListItemParams(
+                    label = "third",
+                    icon = Flamingo.icons.Menu
+                )
+            ),
+            MenuListItem(
+                mainItem = MenuListItemParams(label = "fourth"), subItems = listOf(
                     MenuListItemParams("sub item 1"),
                     MenuListItemParams("long long long long long long long long long long long long long long long long long long long long long sub item 2"),
                     MenuListItemParams("sub item 3")
                 )
             ),
-            MenuListItem(params = MenuListItemParams(label = "long long long long long fifth item")),
+            MenuListItem(mainItem = MenuListItemParams(label = "long long long long long fifth item")),
         )
 
         var dialogTitle by mutableStateOf("title")
