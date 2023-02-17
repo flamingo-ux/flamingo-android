@@ -137,6 +137,12 @@ public data class FlamingoColors internal constructor(
      */
     public val greenHover: Color,
 
+    /**
+     * Используется для выделения выбора
+     * [figma](https://f.com/file/OvrFgcI8VcGcL8Bw24pK5e?node-id=13978%3A22650&t=uO9EjPFRI3gvpCYk-1)
+     */
+    public val selected: Color,
+
     public val global: GlobalColors,
     public val inverse: InverseColors,
     public val extensions: ExtensionColors,

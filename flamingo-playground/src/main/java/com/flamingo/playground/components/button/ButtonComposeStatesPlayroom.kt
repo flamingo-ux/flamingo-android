@@ -1,7 +1,6 @@
 package com.flamingo.playground.components.button
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -128,7 +127,6 @@ class ButtonComposeStatesPlayroom : PreferenceFragmentCompat() {
             entries = endItemClasses
             entryValues = endItemClasses
             onChange { newValue ->
-                Log.d("qwerty", "endICon $endIcon")
                 endItem = when (newValue) {
                     "null" -> null
                     "Icon" -> ButtonEndItem.Icon(endIcon ?: Flamingo.icons.Bell)
