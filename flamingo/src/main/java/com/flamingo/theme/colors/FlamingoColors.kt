@@ -143,6 +143,11 @@ public data class FlamingoColors internal constructor(
      */
     public val selected: Color,
 
+    /**
+     * [figma](https://www.f.com/file/OvrFgcI8VcGcL8Bw24pK5e?node-id=13978%3A22650&t=aEpHxIfeal6BgtKa-0)
+     */
+    public val active: Color,
+
     public val global: GlobalColors,
     public val inverse: InverseColors,
     public val extensions: ExtensionColors,
