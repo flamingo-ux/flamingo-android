@@ -149,9 +149,12 @@ public fun IconButton(
                 ),
             contentAlignment = Alignment.Center
         ) {
+            val iconSize = if (size == IconButtonSize.SMALL) 16.dp else 24.dp
             if (loading) CircularLoader(size = CircularLoaderSize.SMALL, color = iconColor)
             Icon(
-                modifier = Modifier.graphicsLayer { alpha = iconAlpha },
+                modifier = Modifier
+                    .requiredSize(iconSize.animateDp())
+                    .graphicsLayer { alpha = iconAlpha },
                 icon = icon,
                 tint = iconColor,
                 contentDescription = contentDescription
