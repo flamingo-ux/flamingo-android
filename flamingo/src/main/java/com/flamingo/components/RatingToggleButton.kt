@@ -22,10 +22,9 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.graphicsLayer
-import kotlinx.coroutines.launch
 import com.flamingo.Flamingo
 import com.flamingo.annotations.FlamingoComponent
-import com.flamingo.internalComponents
+import kotlinx.coroutines.launch
 
 /**
  * @param sameColor if true, an icon will have the same tint in checked and unchecked states, else –
@@ -48,6 +47,7 @@ public fun RatingToggleButton(
     onCheckedChange: (Boolean) -> Unit,
     sameColor: Boolean = false,
     disabled: Boolean = false,
+    size: IconToggleButtonSize = IconToggleButtonSize.MEDIUM
 ): Unit = FlamingoComponentBase {
     val starSymmetries = 5f
     var isFirst by remember { mutableStateOf(true) }
@@ -62,10 +62,11 @@ public fun RatingToggleButton(
         scale.animateTo(1.2f)
         scale.animateTo(1f)
     }
-    internalComponents.IconToggleButton(
+    IconToggleButton(
         checked = checked,
         onCheckedChange = onCheckedChange,
         disabled = disabled,
+        size = size,
         checkedIcon = Flamingo.icons.StarFilled,
         uncheckedIcon = Flamingo.icons.Star,
         checkedTint = Flamingo.colors.rating,

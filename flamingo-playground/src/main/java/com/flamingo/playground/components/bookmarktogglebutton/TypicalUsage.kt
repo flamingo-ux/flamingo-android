@@ -34,6 +34,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.fragment.app.Fragment
 import com.flamingo.components.BookmarkToggleButton
+import com.flamingo.components.IconToggleButtonSize
 import com.flamingo.components.Text
 import com.flamingo.playground.Compose
 import com.flamingo.demoapi.TypicalUsageDemo
@@ -60,6 +61,7 @@ class TypicalUsage : Fragment() {
         BookmarkToggleButton(
             checked = state,
             onCheckedChange = { state = it },
+            size = IconToggleButtonSize.SMALL
         )
 
         Text(text = "Off by default", textAlign = TextAlign.Center)
