@@ -489,7 +489,7 @@ internal fun ListItemScope.StartSlot(
     start: (@Composable () -> Unit),
 ) = Box(
     modifier = modifier
-        .padding(end = 12.dp)
+        .padding(end = 8.dp)
         .alpha(disabled)
         .pointerInteropFilter { disabled },
     contentAlignment = Alignment.Center
@@ -533,9 +533,18 @@ private fun TextBlock(
     val titleStyle = body1.copy(color = Flamingo.colors.textPrimary)
     val descriptionStyle = caption2.copy(color = Flamingo.colors.textSecondary)
 
-    if (invertTitleAndSubtitle && subtitle != null) ProvideTextStyle(body2) { subtitle() }
-    if (title != null) ProvideTextStyle(titleStyle) { title() }
-    if (!invertTitleAndSubtitle && subtitle != null) ProvideTextStyle(body2) { subtitle() }
+    if (invertTitleAndSubtitle && subtitle != null) ProvideTextStyle(body2) {
+        subtitle()
+        Spacer(modifier = Modifier.size(2.dp))
+    }
+    if (title != null) ProvideTextStyle(titleStyle) {
+        title()
+        Spacer(modifier = Modifier.size(2.dp))
+    }
+    if (!invertTitleAndSubtitle && subtitle != null) ProvideTextStyle(body2) {
+        subtitle()
+        Spacer(modifier = Modifier.size(2.dp))
+    }
     if (description != null) ProvideTextStyle(descriptionStyle) { description() }
 }
 
@@ -569,7 +578,7 @@ internal fun ListItemScope.EndSlot(
  */
 internal object ListItemScope {
     val vPadding = 12.dp
-    val hPadding = 16.dp
+    val hPadding = 8.dp
 }
 
 @Composable
