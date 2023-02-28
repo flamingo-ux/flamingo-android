@@ -31,12 +31,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.semantics.Role
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import com.flamingo.InternalComponents
 import com.flamingo.alpha
 import com.flamingo.annotations.FlamingoComponent
 import com.flamingo.annotations.UsedInsteadOf
-import com.flamingo.internalComponents
 import com.flamingo.theme.FlamingoIcon
 import com.flamingo.theme.FlamingoIcon.FlamingoIcons
 
@@ -57,19 +56,21 @@ import com.flamingo.theme.FlamingoIcon.FlamingoIcons
 )
 @UsedInsteadOf("androidx.compose.material.IconToggleButton")
 @Composable
-public fun InternalComponents.IconToggleButton(
+public fun IconToggleButton(
     checked: Boolean,
     onCheckedChange: ((Boolean) -> Unit)? = null,
     disabled: Boolean = false,
+    size: IconToggleButtonSize = IconToggleButtonSize.MEDIUM,
     checkedIcon: FlamingoIcon,
     uncheckedIcon: FlamingoIcon,
     checkedTint: Color,
     uncheckedTint: Color,
     crossfadeAnimSpec: FiniteAnimationSpec<Float> = tween(),
-): Unit = internalComponents.IconToggleButton(
+): Unit = IconToggleButton(
     checked = checked,
     onCheckedChange = onCheckedChange,
     disabled = disabled,
+    size = size,
     checkedIcon = checkedIcon,
     uncheckedIcon = uncheckedIcon,
     checkedTint = checkedTint,
@@ -80,10 +81,11 @@ public fun InternalComponents.IconToggleButton(
 
 @Suppress("ModifierParameter")
 @Composable
-public fun InternalComponents.IconToggleButton(
+public fun IconToggleButton(
     checked: Boolean,
     onCheckedChange: ((Boolean) -> Unit)? = null,
     disabled: Boolean = false,
+    size: IconToggleButtonSize = IconToggleButtonSize.MEDIUM,
     checkedIcon: FlamingoIcon,
     uncheckedIcon: FlamingoIcon,
     checkedTint: Color,
@@ -94,7 +96,7 @@ public fun InternalComponents.IconToggleButton(
     val tint = if (checked) checkedTint else uncheckedTint
     Box(
         modifier = Modifier
-            .requiredSize(40.dp)
+            .requiredSize(size.size)
             .clip(CircleShape)
             .alpha(disabled, animate = true)
             .run {
@@ -115,10 +117,18 @@ public fun InternalComponents.IconToggleButton(
             animationSpec = crossfadeAnimSpec
         ) { checked ->
             Icon(
-                modifier = Modifier.requiredSize(24.dp),
+                modifier = Modifier.requiredSize(size.iconSize),
                 icon = if (checked) checkedIcon else uncheckedIcon,
                 tint = tint,
             )
         }
     }
+}
+
+public enum class IconToggleButtonSize(
+    internal val size: Dp,
+    internal val iconSize: Dp,
+) {
+    SMALL(32.dp, 16.dp),
+    MEDIUM(40.dp, 24.dp)
 }

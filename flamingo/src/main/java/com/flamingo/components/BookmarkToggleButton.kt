@@ -24,7 +24,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.graphicsLayer
 import com.flamingo.Flamingo
 import com.flamingo.annotations.FlamingoComponent
-import com.flamingo.internalComponents
 
 @FlamingoComponent(
     displayName = "Bookmark Toggle Button",
@@ -39,6 +38,7 @@ public fun BookmarkToggleButton(
     checked: Boolean,
     onCheckedChange: (Boolean) -> Unit,
     disabled: Boolean = false,
+    size: IconToggleButtonSize = IconToggleButtonSize.MEDIUM
 ): Unit = FlamingoComponentBase {
     var isFirst by remember { mutableStateOf(true) }
     val scale = remember { Animatable(1f) }
@@ -50,10 +50,11 @@ public fun BookmarkToggleButton(
         scale.animateTo(1.2f)
         scale.animateTo(1f)
     }
-    internalComponents.IconToggleButton(
+    IconToggleButton(
         checked = checked,
         onCheckedChange = onCheckedChange,
         disabled = disabled,
+        size = size,
         checkedIcon = Flamingo.icons.BookmarkFilled,
         uncheckedIcon = Flamingo.icons.Bookmark,
         checkedTint = Flamingo.colors.rating,
