@@ -33,6 +33,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.fragment.app.Fragment
+import com.flamingo.components.IconToggleButtonSize
 import com.flamingo.components.RatingToggleButton
 import com.flamingo.components.Text
 import com.flamingo.playground.Compose
@@ -60,6 +61,7 @@ class TypicalUsage : Fragment() {
         RatingToggleButton(
             checked = state,
             onCheckedChange = { state = it },
+            size = IconToggleButtonSize.SMALL
         )
 
         Text(text = "Off by default", textAlign = TextAlign.Center)
