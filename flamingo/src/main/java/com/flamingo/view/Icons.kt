@@ -10,7 +10,7 @@ internal val Int.dsIcon: Int
 
 @DsIconSet
 public fun requireDsIcon(@DrawableRes iconRes: Int): Int {
-    require(designSystemIcons.contains(iconRes)) {
+    require(designSystemIcons.contains(iconRes) || designSystemLogos.contains(iconRes)) {
         "Icon $iconRes is not part of the design system icon set"
     }
     return iconRes
@@ -372,4 +372,27 @@ private val designSystemIcons = intArrayOf(
     R.drawable.ds_ic_zap_v2,
     R.drawable.ds_ic_zoom_in,
     R.drawable.ds_ic_zoom_out,
+)
+
+/** Sorted alphabetically, use [https://plugins.jetbrains.com/plugin/2162-string-manipulation] */
+private val designSystemLogos = intArrayOf(
+    R.drawable.logo_addressbook,
+    R.drawable.logo_apps,
+    R.drawable.logo_friend,
+    R.drawable.logo_mail,
+    R.drawable.logo_media,
+    R.drawable.logo_otp,
+    R.drawable.logo_sber_hd,
+    R.drawable.logo_sber_hed,
+    R.drawable.logo_sber_heg,
+    R.drawable.logo_sber_hew,
+    R.drawable.logo_sber_hg,
+    R.drawable.logo_sber_hrd,
+    R.drawable.logo_sber_hrg,
+    R.drawable.logo_sber_hrw,
+    R.drawable.logo_sber_hw,
+    R.drawable.logo_sber_vrd,
+    R.drawable.logo_sber_vrg,
+    R.drawable.logo_sber_vrw,
+    R.drawable.logo_video,
 )

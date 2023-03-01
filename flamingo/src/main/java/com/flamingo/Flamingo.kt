@@ -58,6 +58,8 @@ public object Flamingo {
 
     public val icons: FlamingoIcon.FlamingoIcons = FlamingoIcon.FlamingoIcons()
 
+    public val logos: FlamingoIcon.FlamingoLogos = FlamingoIcon.FlamingoLogos()
+
     /**
      * Some flamingo components support white mode, in which colors of the component become clearly
      * visible on dark backgrounds, images and videos.
