@@ -44,6 +44,7 @@ import com.flamingo.uiTestingTag
  * Icon component that draws [FlamingoIcon] using [tint], defaulting to
  * [FlamingoColors.textSecondary]. Does not support [clickable] modifier. For a clickable icon, see
  * [IconButton].
+ * __NOTE__ If [FlamingoIcon.FlamingoLogos] is used, [tint] must be [Color.Unspecified]
  *
  * @param contentDescription text used by accessibility services to describe what this icon
  * represents. This should always be provided unless this icon is used for decorative purposes,
@@ -66,7 +67,7 @@ public fun Icon(
     tint: Color =
         if (Flamingo.isWhiteMode) Flamingo.palette.white else Flamingo.colors.textSecondary,
 ) {
-    val colorFilter = if (tint == Color.Unspecified) null else ColorFilter.tint(tint)
+    val colorFilter = if (tint == Color.Unspecified || icon.isLogo) null else ColorFilter.tint(tint)
     val semantics = if (contentDescription != null && !Flamingo.uiTestingTagsEnabled) {
         Modifier.semantics {
             this.contentDescription = contentDescription
