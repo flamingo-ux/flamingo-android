@@ -212,4 +212,5 @@
     <string name="flamingo_version">Version of the Flamingo Design System</string>
     <string translatable="false" name="flamingo_github_release">https://github.com/flamingo-ux/flamingo-android/releases/tag/%1$s</string>
     <string name="theater_director_aleksey_bublyaev">Aleksey Bublyaev</string>
+    <string name="design_demo_logos_title">Logos</string>
 </resources>

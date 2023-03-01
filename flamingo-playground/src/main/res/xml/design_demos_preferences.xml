@@ -63,6 +63,11 @@
             app:title="@string/design_demo_icons_title" />
 
         <Preference
+            app:fragment="com.flamingo.playground.LogosDemoFragment"
+            app:icon="@drawable/ic_alpha_i_circle"
+            app:title="@string/design_demo_logos_title" />
+
+        <Preference
             app:fragment="com.flamingo.playground.IllustrationsDemoFragment"
             app:icon="@drawable/ic_baseline_image_24"
             app:title="@string/design_demo_illustrations_title" />
