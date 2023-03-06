@@ -48,7 +48,7 @@ private fun WidgetCardGroupScope.WidgetCardInGroupPreview() = WidgetCard(
     title = loremIpsum(3),
     subtitle = loremIpsum(6),
     textAtTheTop = true,
-    backgroundImage = painterResource(R.drawable.example_doctor),
+    srcImage = painterResource(R.drawable.example_doctor),
     loading = false,
     avatar = {
         Avatar(

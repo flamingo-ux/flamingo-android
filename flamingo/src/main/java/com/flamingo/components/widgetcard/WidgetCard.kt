@@ -20,8 +20,8 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.runtime.Composable
@@ -34,6 +34,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.painter.Painter
+import androidx.compose.ui.layout.ContentScale.Companion.Crop
 import androidx.compose.ui.layout.ContentScale.Companion.FillBounds
 import androidx.compose.ui.layout.layout
 import androidx.compose.ui.layout.layoutId
@@ -77,6 +78,7 @@ public fun WidgetCardGroupScope.WidgetCard(
     textAtTheTop: Boolean = true,
     backgroundColor: Color = Flamingo.colors.backgroundSecondary,
     backgroundImage: Painter? = null,
+    srcImage: Painter? = null,
     loading: Boolean = false,
     avatar: (@Composable () -> Unit)? = null,
     indicator: (@Composable () -> Unit)? = null,
@@ -84,8 +86,8 @@ public fun WidgetCardGroupScope.WidgetCard(
     onClick: (() -> Unit)? = null,
 ): Unit = WidgetCard(
     modifier = Modifier.layoutId(WidgetCardLayoutId), sizeModifier = Modifier.fillMaxSize(),
-    title, subtitle, textColor, textAtTheTop, backgroundColor, backgroundImage, loading, avatar,
-    indicator, iconButton, onClick,
+    title, subtitle, textColor, textAtTheTop, backgroundColor, backgroundImage, srcImage,
+    loading, avatar, indicator, iconButton, onClick,
 )
 
 @Composable
@@ -97,6 +99,7 @@ public fun InternalComponents.WidgetCard(
     textAtTheTop: Boolean = true,
     backgroundColor: Color = Flamingo.colors.backgroundSecondary,
     backgroundImage: Painter? = null,
+    srcImage: Painter? = null,
     loading: Boolean = false,
     avatar: (@Composable () -> Unit)? = null,
     indicator: (@Composable () -> Unit)? = null,
@@ -104,8 +107,8 @@ public fun InternalComponents.WidgetCard(
     onClick: (() -> Unit)? = null,
 ): Unit = WidgetCard(
     modifier = Modifier, sizeModifier = Modifier.cardSize(size),
-    title, subtitle, textColor, textAtTheTop, backgroundColor, backgroundImage, loading, avatar,
-    indicator, iconButton, onClick,
+    title, subtitle, textColor, textAtTheTop, backgroundColor, backgroundImage, srcImage,
+    loading, avatar, indicator, iconButton, onClick,
 )
 
 @Composable
@@ -118,6 +121,7 @@ internal fun WidgetCard(
     textAtTheTop: Boolean = true,
     backgroundColor: Color = Flamingo.colors.backgroundSecondary,
     backgroundImage: Painter? = null,
+    srcImage: Painter? = null,
     loading: Boolean = false,
     avatar: (@Composable () -> Unit)? = null,
     indicator: (@Composable () -> Unit)? = null,
@@ -142,8 +146,8 @@ internal fun WidgetCard(
                     )
                 } else {
                     CardContent(
-                        sizeModifier, backgroundColor, onClick, backgroundImage, textAtTheTop,
-                        title, subtitle, textColor, avatar, indicator, iconButton
+                        sizeModifier, backgroundColor, onClick, backgroundImage, srcImage,
+                        textAtTheTop, title, subtitle, textColor, avatar, indicator, iconButton
                     )
                 }
 
@@ -166,6 +170,7 @@ private fun CardContent(
     backgroundColor: Color,
     onClick: (() -> Unit)?,
     backgroundImage: Painter?,
+    srcImage: Painter?,
     textAtTheTop: Boolean,
     title: String?,
     subtitle: String?,
@@ -179,15 +184,25 @@ private fun CardContent(
             .background(backgroundColor, WidgetCardShape)
             .clip(WidgetCardShape)
             .run { if (onClick != null) clickable(onClick = onClick) else this },
+        contentAlignment = if (textAtTheTop) Alignment.BottomEnd else Alignment.TopEnd
     ) {
-        if (backgroundImage != null) Image(
-            modifier = Modifier
-                .matchParentSize()
-                .imageLayout(textAtTheTop),
-            painter = backgroundImage,
-            contentDescription = null,
-            contentScale = FillBounds
-        )
+        if (backgroundImage != null) {
+            Image(
+                modifier = Modifier.matchParentSize(),
+                painter = backgroundImage,
+                contentDescription = null,
+                contentScale = FillBounds
+            )
+        } else if (srcImage != null) {
+            Image(
+                modifier = Modifier
+                    .aspectRatio(1f)
+                    .imageLayout(textAtTheTop),
+                painter = srcImage,
+                contentDescription = null,
+                contentScale = Crop
+            )
+        }
         Column(modifier = Modifier.padding(16.dp)) {
             if (textAtTheTop) TextBlock(Modifier.weight(1f), title, subtitle, textColor)
             if (avatar != null || indicator != null || iconButton != null) {
