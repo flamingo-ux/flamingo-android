@@ -23,8 +23,11 @@ import com.flamingo.annotations.view.DsIconSet
 import com.flamingo.components.Icon
 import com.flamingo.view.requireDsIcon
 
-@JvmInline
-public value class FlamingoIcon private constructor(@DsIconSet private val resId: Int) {
+
+public class FlamingoIcon private constructor(
+    @DsIconSet private val resId: Int,
+    public val isLogo: Boolean = false
+) {
     /**
      * Typically, you need to use a flamingo component, which directly consumes [FlamingoIcon]. For
      * example, use [Icon] composable instead of a material one. Use this function with care!
@@ -34,27 +37,29 @@ public value class FlamingoIcon private constructor(@DsIconSet private val resId
     public fun toPainter(): Painter = painterResource(resId)
 
     /**
-     * @return name of the icon in snake case without [DRAWABLE_NAME_PREFIX]
+     * @return name of the icon in snake case without [ICON_NAME_PREFIX] or [LOGO_NAME_PREFIX]
      */
     public fun getName(context: Context): String {
-        return context.resources.getResourceEntryName(resId).removePrefix(DRAWABLE_NAME_PREFIX)
+        return context.resources.getResourceEntryName(resId).removePrefix(ICON_NAME_PREFIX)
+            .removePrefix(LOGO_NAME_PREFIX)
     }
 
     private companion object {
-        private const val DRAWABLE_NAME_PREFIX: String = "ds_ic_"
+        private const val ICON_NAME_PREFIX: String = "ds_ic_"
+        private const val LOGO_NAME_PREFIX: String = "logo_"
     }
 
     @Suppress("VariableNaming")
     public class FlamingoIcons internal constructor() {
-        public val DRAWABLE_NAME_PREFIX: String = FlamingoIcon.DRAWABLE_NAME_PREFIX
+        public val DRAWABLE_NAME_PREFIX: String = FlamingoIcon.ICON_NAME_PREFIX
 
         public fun fromId(@DsIconSet resId: Int): FlamingoIcon {
             requireDsIcon(resId)
-            return FlamingoIcon(resId)
+            return FlamingoIcon(resId, false)
         }
 
         /**
-         * @param name of the icon in snake case, with or without [DRAWABLE_NAME_PREFIX]
+         * @param name of the icon in snake case, with or without [ICON_NAME_PREFIX]
          */
         public fun fromName(context: Context, name: String): FlamingoIcon = FlamingoIcon(
             resId = context.resources.getIdentifier(
@@ -68,7 +73,7 @@ public value class FlamingoIcon private constructor(@DsIconSet private val resId
          * All properties call private constructor of the [FlamingoIcon] ([I] for short).
          */
         @Suppress("NOTHING_TO_INLINE")
-        private inline fun I(@DsIconSet resId: Int) = FlamingoIcon(resId)
+        private inline fun I(@DsIconSet resId: Int) = FlamingoIcon(resId, false)
 
         // Sorted alphabetically, use https://plugins.jetbrains.com/plugin/2162-string-manipulation
 
@@ -426,6 +431,53 @@ public value class FlamingoIcon private constructor(@DsIconSet private val resId
         public val ZapV2: FlamingoIcon = I(R.drawable.ds_ic_zap_v2)
         public val ZoomIn: FlamingoIcon = I(R.drawable.ds_ic_zoom_in)
         public val ZoomOut: FlamingoIcon = I(R.drawable.ds_ic_zoom_out)
+    }
+
+    @Suppress("VariableNaming")
+    public class FlamingoLogos internal constructor() {
+        public val DRAWABLE_NAME_PREFIX: String = FlamingoIcon.LOGO_NAME_PREFIX
+
+        public fun fromId(@DsIconSet resId: Int): FlamingoIcon {
+            requireDsIcon(resId)
+            return FlamingoIcon(resId, true)
+        }
+
+        /**
+         * @param name of the icon in snake case, with or without [LOGO_NAME_PREFIX]
+         */
+        public fun fromName(context: Context, name: String): FlamingoIcon = FlamingoIcon(
+            resId = context.resources.getIdentifier(
+                DRAWABLE_NAME_PREFIX + name.removePrefix(DRAWABLE_NAME_PREFIX),
+                "drawable",
+                context.packageName
+            )
+        )
+
+        /**
+         * All properties call private constructor of the [FlamingoIcon] Logos ([L] for short).
+         */
+        @Suppress("NOTHING_TO_INLINE")
+        private inline fun L(@DsIconSet resId: Int) = FlamingoIcon(resId, true)
+
+        public val Addressbook: FlamingoIcon = L(R.drawable.logo_addressbook)
+        public val Apps: FlamingoIcon = L(R.drawable.logo_apps)
+        public val Friend: FlamingoIcon = L(R.drawable.logo_friend)
+        public val Mail: FlamingoIcon = L(R.drawable.logo_mail)
+        public val Media: FlamingoIcon = L(R.drawable.logo_media)
+        public val Otp: FlamingoIcon = L(R.drawable.logo_otp)
+        public val SberHD: FlamingoIcon = L(R.drawable.logo_sber_hd)
+        public val SberHED: FlamingoIcon = L(R.drawable.logo_sber_hed)
+        public val SberHEG: FlamingoIcon = L(R.drawable.logo_sber_heg)
+        public val SberHEW: FlamingoIcon = L(R.drawable.logo_sber_hew)
+        public val SberHG: FlamingoIcon = L(R.drawable.logo_sber_hg)
+        public val SberHRD: FlamingoIcon = L(R.drawable.logo_sber_hrd)
+        public val SberHRG: FlamingoIcon = L(R.drawable.logo_sber_hrg)
+        public val SberHRW: FlamingoIcon = L(R.drawable.logo_sber_hrw)
+        public val SberHW: FlamingoIcon = L(R.drawable.logo_sber_hw)
+        public val SberVRD: FlamingoIcon = L(R.drawable.logo_sber_vrd)
+        public val SberVRG: FlamingoIcon = L(R.drawable.logo_sber_vrg)
+        public val SberVRW: FlamingoIcon = L(R.drawable.logo_sber_vrw)
+        public val Video: FlamingoIcon = L(R.drawable.logo_video)
     }
 }
 
