@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <com.flamingo.demoapi.DemoPreference app:key="component" />
+
+    <EditTextPreference
+        app:iconSpaceReserved="false"
+        app:key="count"
+        app:persistent="false"
+        app:title="Count" />
+
+    <EditTextPreference
+        app:iconSpaceReserved="false"
+        app:key="maxCount"
+        app:persistent="false"
+        app:title="Max count" />
+
+    <SwitchPreferenceCompat
+        app:iconSpaceReserved="false"
+        app:key="loading"
+        app:persistent="false"
+        app:title="Loading" />
+
+    <SwitchPreferenceCompat
+        app:iconSpaceReserved="false"
+        app:key="minusDisabled"
+        app:persistent="false"
+        app:title="Minus disabled" />
+
+    <SwitchPreferenceCompat
+        app:iconSpaceReserved="false"
+        app:key="plusDisabled"
+        app:persistent="false"
+        app:title="Plus disabled" />
+</PreferenceScreen>

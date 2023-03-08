@@ -17,6 +17,10 @@ package com.flamingo.components
 import android.content.Intent
 import android.net.Uri
 import androidx.annotation.DrawableRes
+import androidx.compose.animation.animateColorAsState
+import androidx.compose.animation.core.SpringSpec
+import androidx.compose.animation.core.spring
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.padding
@@ -72,7 +76,13 @@ public fun Badge(
         Box(
             modifier = Modifier
                 .matchParentSize()
-                .paint(color.toPainter(), contentScale = ContentScale.FillBounds)
+                .run {
+                    if (color is BadgeColor.Gradient) {
+                        paint(color.toPainter(), contentScale = ContentScale.FillBounds)
+                    } else {
+                        background(color.toColor())
+                    }
+                }
         )
         UniversalText(
             modifier = Modifier
@@ -105,6 +115,8 @@ public sealed interface BadgeColor {
     public object Default : BadgeColor
     public object Error : BadgeColor
     public object Info : BadgeColor
+    public object InfoSecondary : BadgeColor
+    public object InfoTertiary : BadgeColor
     public object Warning : BadgeColor
 
     @DelicateFlamingoApi
@@ -121,11 +133,16 @@ public sealed interface BadgeColor {
 }
 
 @Composable
+internal fun Color.animateBadgeColor(
+    animationSpec: SpringSpec<Color> = spring(stiffness = 700f),
+): Color = animateColorAsState(this, animationSpec = animationSpec).value
+
+@Composable
 private fun calculateTextColor(badgeColor: BadgeColor): Color = when (badgeColor) {
     BadgeColor.Default -> Flamingo.colors.textPrimary
     BadgeColor.White -> Flamingo.palette.black
     else -> Flamingo.palette.white
-}
+}.animateBadgeColor()
 
 @Suppress("ComplexMethod")
 @Composable
@@ -134,17 +151,27 @@ private fun BadgeColor.toPainter(): Painter = when (this) {
     BadgeColor.White -> ColorPainter(Flamingo.palette.white)
     BadgeColor.Error -> ColorPainter(Flamingo.colors.error)
     BadgeColor.Info -> ColorPainter(Flamingo.colors.info)
+    BadgeColor.InfoSecondary -> ColorPainter(Flamingo.colors.infoSecondary)
+    BadgeColor.InfoTertiary -> ColorPainter(Flamingo.colors.infoTertiary)
     BadgeColor.Primary -> ColorPainter(Flamingo.colors.primary)
     BadgeColor.Warning -> ColorPainter(Flamingo.colors.warning)
     BadgeColor.PickleRick -> ColorPainter(Flamingo.colors.primary)
-    BadgeColor.Gradient.BLUE -> painterResource(R.drawable.ds_gradient_blue)
-    BadgeColor.Gradient.GREEN -> painterResource(R.drawable.ds_gradient_green)
-    BadgeColor.Gradient.ORANGE -> painterResource(R.drawable.ds_gradient_orange)
-    BadgeColor.Gradient.RED -> painterResource(R.drawable.ds_gradient_red)
-    BadgeColor.Gradient.PURPLE -> painterResource(R.drawable.ds_gradient_purple)
-    BadgeColor.Gradient.PINK -> painterResource(R.drawable.ds_gradient_pink)
-    BadgeColor.Gradient.YELLOW -> painterResource(R.drawable.ds_gradient_yellow)
+    is BadgeColor.Gradient -> painterResource(drawableRes)
 }
+
+@Composable
+private fun BadgeColor.toColor(): Color = when (this) {
+    BadgeColor.Default -> Flamingo.colors.backgroundTertiary
+    BadgeColor.White -> Flamingo.palette.white
+    BadgeColor.Error -> Flamingo.colors.error
+    BadgeColor.Info -> Flamingo.colors.info
+    BadgeColor.InfoSecondary -> Flamingo.colors.infoSecondary
+    BadgeColor.InfoTertiary -> Flamingo.colors.infoTertiary
+    BadgeColor.Primary -> Flamingo.colors.primary
+    BadgeColor.Warning -> Flamingo.colors.warning
+    BadgeColor.PickleRick -> Flamingo.colors.primary
+    else -> throw IllegalStateException("Wrong state!")
+}.animateBadgeColor()
 
 private fun Modifier.pickleRick(): Modifier = composed {
     val targetAngle = remember { Random.nextInt(65, 90).toFloat() }

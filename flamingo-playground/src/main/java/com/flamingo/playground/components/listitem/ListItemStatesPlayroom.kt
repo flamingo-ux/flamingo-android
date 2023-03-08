@@ -17,12 +17,15 @@ package com.flamingo.playground.components.listitem
 
 import android.os.Bundle
 import android.view.View
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.requiredSize
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.unit.dp
 import androidx.preference.DropDownPreference
 import androidx.preference.PreferenceFragmentCompat
@@ -40,18 +43,21 @@ import com.flamingo.components.button.Button
 import com.flamingo.components.button.ButtonSize
 import com.flamingo.components.listitem.ListItem
 import com.flamingo.components.listitem.SideSlotsAlignment
-import com.flamingo.playground.R
-import com.flamingo.demoapi.StatesPlayroomDemo
-import com.flamingo.playground.boast
-import com.flamingo.demoapi.WhiteModeDemo
+import com.flamingo.components.listitem.TextWrapper
 import com.flamingo.demoapi.DemoPreference
+import com.flamingo.demoapi.StatesPlayroomDemo
+import com.flamingo.demoapi.WhiteModeDemo
 import com.flamingo.demoapi.configurePreference
-import com.flamingo.demoapi.initPref
 import com.flamingo.demoapi.findPreference
+import com.flamingo.demoapi.initPref
 import com.flamingo.demoapi.onChange
+import com.flamingo.demoapi.parceNull
+import com.flamingo.playground.R
+import com.flamingo.playground.boast
 import com.flamingo.playground.preview.CheckboxPreview
 import com.flamingo.playground.preview.RadioButtonPreview
 import com.flamingo.playground.preview.SwitchPreview
+import com.flamingo.theme.FlamingoIcon
 
 @StatesPlayroomDemo
 class ListItemStatesPlayroom : PreferenceFragmentCompat() {
@@ -65,9 +71,21 @@ class ListItemStatesPlayroom : PreferenceFragmentCompat() {
 
         var startSlot by mutableStateOf(Content.NO)
         var title by mutableStateOf(Text.ONE_LINE)
+        var titleIcon: FlamingoIcon? by mutableStateOf(null)
+        var titleIconTint by mutableStateOf(IconDemoColors.Null)
+        var titleIconPosition by mutableStateOf(TextWrapper.TextIconPosition.START)
+        var titlePadding by mutableStateOf(false)
         var subtitle by mutableStateOf(Text.NO)
+        var subtitleIcon: FlamingoIcon? by mutableStateOf(null)
+        var subtitleIconTint by mutableStateOf(IconDemoColors.Null)
+        var subtitleIconPosition by mutableStateOf(TextWrapper.TextIconPosition.START)
+        var subtitlePadding by mutableStateOf(false)
         var description by mutableStateOf(Text.NO)
-        var date by mutableStateOf(Text.NO)
+        var descriptionIcon: FlamingoIcon? by mutableStateOf(null)
+        var descriptionIconTint by mutableStateOf(IconDemoColors.Null)
+        var descriptionIconPosition by mutableStateOf(TextWrapper.TextIconPosition.START)
+        var descriptionPadding by mutableStateOf(false)
+        var date by mutableStateOf(Date.NO)
         var endSlot by mutableStateOf(Content.NO)
         var isEndSlotClickableWhenDisabled by mutableStateOf(false)
         var titleMaxLines by mutableStateOf(Int.MAX_VALUE)
@@ -81,11 +99,42 @@ class ListItemStatesPlayroom : PreferenceFragmentCompat() {
 
         findPreference<DemoPreference>("component")?.setComposeDesignComponent {
             WhiteModeDemo(white = white) {
+
                 ListItemPreview(
                     start = startSlot,
                     title = title,
+                    titleWrapper = TextWrapper(
+                        text = "",
+                        padding = PaddingValues(if (titlePadding) 10.dp else 0.dp),
+                        icon = titleIcon?.let { icon ->
+                            getColorByName(titleIconTint)?.let { color ->
+                                TextWrapper.IconWrapper(icon, color)
+                            }
+                        },
+                        iconPosition = titleIconPosition
+                    ),
                     subtitle = subtitle,
+                    subtitleWrapper = TextWrapper(
+                        text = "",
+                        padding = PaddingValues(if (subtitlePadding) 10.dp else 0.dp),
+                        icon = subtitleIcon?.let { icon ->
+                            getColorByName(subtitleIconTint)?.let { color ->
+                                TextWrapper.IconWrapper(icon, color)
+                            }
+                        },
+                        iconPosition = subtitleIconPosition
+                    ),
                     description = description,
+                    descriptionWrapper = TextWrapper(
+                        text = "",
+                        padding = PaddingValues(if (descriptionPadding) 10.dp else 0.dp),
+                        icon = descriptionIcon?.let { icon ->
+                            getColorByName(descriptionIconTint)?.let { color ->
+                                TextWrapper.IconWrapper(icon, color)
+                            }
+                        },
+                        iconPosition = descriptionIconPosition
+                    ),
                     date = date,
                     end = endSlot,
                     isEndSlotClickableWhenDisabled = isEndSlotClickableWhenDisabled,
@@ -117,9 +166,62 @@ class ListItemStatesPlayroom : PreferenceFragmentCompat() {
             entryValues = contents
             onChange { newValue ->
                 title = Text.valueOf(newValue)
+                findPreference("titleIcon").isVisible = title == Text.TEXT_WRAPPER
+                findPreference("titleIconTint").isVisible = title == Text.TEXT_WRAPPER
+                findPreference("titleIconPosition").isVisible = title == Text.TEXT_WRAPPER
+                findPreference("titlePadding").isVisible = title == Text.TEXT_WRAPPER
                 true
             }
             initPref(savedInstanceState, defVal = Text.ONE_LINE.toString())
+        }
+
+        configurePreference<DropDownPreference>("titleIcon") {
+            entries = arrayOf(
+                "null",
+                "Airplay",
+                "Bell",
+                "Aperture",
+            )
+            entryValues = arrayOf(
+                "null",
+                Flamingo.icons.Airplay.getName(context),
+                Flamingo.icons.Bell.getName(context),
+                Flamingo.icons.Aperture.getName(context),
+            )
+            onChange {
+                titleIcon =
+                    (it as? String)?.parceNull()?.let { Flamingo.icons.fromName(context, it) }
+                true
+            }
+            initPref(savedInstanceState, defVal = "null")
+        }
+
+        configurePreference<DropDownPreference>("titleIconTint") {
+            entries = IconDemoColors.values().map { it.name }.toTypedArray()
+            entryValues = entries
+            onChange { newValue ->
+                titleIconTint = IconDemoColors.valueOf(newValue)
+                true
+            }
+            initPref(savedInstanceState, defVal = IconDemoColors.Null)
+        }
+
+        configurePreference<DropDownPreference>("titleIconPosition") {
+            entries = TextWrapper.TextIconPosition.values().map { it.name }.toTypedArray()
+            entryValues = entries
+            onChange { newValue ->
+                titleIconPosition = TextWrapper.TextIconPosition.valueOf(newValue)
+                true
+            }
+            initPref(savedInstanceState, defVal = TextWrapper.TextIconPosition.START)
+        }
+
+        configurePreference<SwitchPreferenceCompat>("titlePadding") {
+            onChange { newValue ->
+                titlePadding = newValue as? Boolean ?: return@onChange false
+                true
+            }
+            initPref(savedInstanceState, defVal = false)
         }
 
         configurePreference<DropDownPreference>("subtitle") {
@@ -128,9 +230,62 @@ class ListItemStatesPlayroom : PreferenceFragmentCompat() {
             entryValues = texts
             onChange { newValue ->
                 subtitle = Text.valueOf(newValue)
+                findPreference("subtitleIcon").isVisible = subtitle == Text.TEXT_WRAPPER
+                findPreference("subtitleIconTint").isVisible = subtitle == Text.TEXT_WRAPPER
+                findPreference("subtitleIconPosition").isVisible = subtitle == Text.TEXT_WRAPPER
+                findPreference("subtitlePadding").isVisible = subtitle == Text.TEXT_WRAPPER
                 true
             }
             initPref(savedInstanceState, defVal = Text.NO.toString())
+        }
+
+        configurePreference<DropDownPreference>("subtitleIcon") {
+            entries = arrayOf(
+                "null",
+                "Airplay",
+                "Bell",
+                "Aperture",
+            )
+            entryValues = arrayOf(
+                "null",
+                Flamingo.icons.Airplay.getName(context),
+                Flamingo.icons.Bell.getName(context),
+                Flamingo.icons.Aperture.getName(context),
+            )
+            onChange {
+                subtitleIcon =
+                    (it as? String)?.parceNull()?.let { Flamingo.icons.fromName(context, it) }
+                true
+            }
+            initPref(savedInstanceState, defVal = "null")
+        }
+
+        configurePreference<DropDownPreference>("subtitleIconTint") {
+            entries = IconDemoColors.values().map { it.name }.toTypedArray()
+            entryValues = entries
+            onChange { newValue ->
+                subtitleIconTint = IconDemoColors.valueOf(newValue)
+                true
+            }
+            initPref(savedInstanceState, defVal = IconDemoColors.Null)
+        }
+
+        configurePreference<DropDownPreference>("subtitleIconPosition") {
+            entries = TextWrapper.TextIconPosition.values().map { it.name }.toTypedArray()
+            entryValues = entries
+            onChange { newValue ->
+                subtitleIconPosition = TextWrapper.TextIconPosition.valueOf(newValue)
+                true
+            }
+            initPref(savedInstanceState, defVal = TextWrapper.TextIconPosition.START)
+        }
+
+        configurePreference<SwitchPreferenceCompat>("subtitlePadding") {
+            onChange { newValue ->
+                subtitlePadding = newValue as? Boolean ?: return@onChange false
+                true
+            }
+            initPref(savedInstanceState, defVal = false)
         }
 
         configurePreference<DropDownPreference>("description") {
@@ -139,17 +294,71 @@ class ListItemStatesPlayroom : PreferenceFragmentCompat() {
             entryValues = texts
             onChange { newValue ->
                 description = Text.valueOf(newValue)
+                findPreference("descriptionIcon").isVisible = description == Text.TEXT_WRAPPER
+                findPreference("descriptionIconTint").isVisible = description == Text.TEXT_WRAPPER
+                findPreference("descriptionIconPosition").isVisible =
+                    description == Text.TEXT_WRAPPER
+                findPreference("descriptionPadding").isVisible = description == Text.TEXT_WRAPPER
                 true
             }
             initPref(savedInstanceState, defVal = Text.NO.toString())
         }
 
+        configurePreference<DropDownPreference>("descriptionIcon") {
+            entries = arrayOf(
+                "null",
+                "Airplay",
+                "Bell",
+                "Aperture",
+            )
+            entryValues = arrayOf(
+                "null",
+                Flamingo.icons.Airplay.getName(context),
+                Flamingo.icons.Bell.getName(context),
+                Flamingo.icons.Aperture.getName(context),
+            )
+            onChange {
+                descriptionIcon =
+                    (it as? String)?.parceNull()?.let { Flamingo.icons.fromName(context, it) }
+                true
+            }
+            initPref(savedInstanceState, defVal = "null")
+        }
+
+        configurePreference<DropDownPreference>("descriptionIconTint") {
+            entries = IconDemoColors.values().map { it.name }.toTypedArray()
+            entryValues = entries
+            onChange { newValue ->
+                descriptionIconTint = IconDemoColors.valueOf(newValue)
+                true
+            }
+            initPref(savedInstanceState, defVal = IconDemoColors.Null)
+        }
+
+        configurePreference<DropDownPreference>("descriptionIconPosition") {
+            entries = TextWrapper.TextIconPosition.values().map { it.name }.toTypedArray()
+            entryValues = entries
+            onChange { newValue ->
+                descriptionIconPosition = TextWrapper.TextIconPosition.valueOf(newValue)
+                true
+            }
+            initPref(savedInstanceState, defVal = TextWrapper.TextIconPosition.START)
+        }
+
+        configurePreference<SwitchPreferenceCompat>("descriptionPadding") {
+            onChange { newValue ->
+                descriptionPadding = newValue as? Boolean ?: return@onChange false
+                true
+            }
+            initPref(savedInstanceState, defVal = false)
+        }
+
         configurePreference<DropDownPreference>("date") {
-            val texts = Text.values().map { it.name }.toTypedArray()
+            val texts = Date.values().map { it.name }.toTypedArray()
             entries = texts
             entryValues = texts
             onChange { newValue ->
-                date = Text.valueOf(newValue)
+                date = Date.valueOf(newValue)
                 true
             }
             initPref(savedInstanceState, defVal = Text.NO.toString())
@@ -248,16 +457,20 @@ class ListItemStatesPlayroom : PreferenceFragmentCompat() {
         NO, AVATAR, ICON_BUTTON, SWITCH, RADIO_BUTTON, CHECKBOX, ICON, BUTTON,
     }
 
-    private enum class Text { NO, ONE_LINE, MULTILINE }
+    private enum class Text { NO, ONE_LINE, MULTILINE, TEXT_WRAPPER }
+    private enum class Date { NO, ONE_LINE, MULTILINE }
     private enum class Actions { NO, ONE, TWO }
 
     @Composable
     private fun ListItemPreview(
         start: Content,
         title: Text,
+        titleWrapper: TextWrapper,
         subtitle: Text,
+        subtitleWrapper: TextWrapper,
         description: Text,
-        date: Text,
+        descriptionWrapper: TextWrapper,
+        date: Date,
         end: Content,
         isEndSlotClickableWhenDisabled: Boolean,
         titleMaxLines: Int,
@@ -272,23 +485,41 @@ class ListItemStatesPlayroom : PreferenceFragmentCompat() {
             start = previewListItemContent(start),
             title = when (title) {
                 Text.NO -> null
-                Text.ONE_LINE -> "ListItem " + "Title "
-                Text.MULTILINE -> "ListItem " + "Title ".repeat(30)
+                Text.ONE_LINE -> TextWrapper("ListItem " + "Title ")
+                Text.MULTILINE -> TextWrapper("ListItem " + "Title ".repeat(30))
+                Text.TEXT_WRAPPER -> TextWrapper(
+                    text = AnnotatedString("ListItem " + "Title "),
+                    padding = titleWrapper.padding,
+                    composable = titleWrapper.composable,
+                    composablePosition = titleWrapper.composablePosition
+                )
             },
             subtitle = when (subtitle) {
                 Text.NO -> null
-                Text.ONE_LINE -> "ListItem " + "Subtitle "
-                Text.MULTILINE -> "ListItem " + "Subtitle ".repeat(7)
+                Text.ONE_LINE -> TextWrapper("ListItem " + "Subtitle ")
+                Text.MULTILINE -> TextWrapper("ListItem " + "Subtitle ".repeat(7))
+                Text.TEXT_WRAPPER -> TextWrapper(
+                    text = AnnotatedString("ListItem " + "Subtitle "),
+                    padding = subtitleWrapper.padding,
+                    composable = subtitleWrapper.composable,
+                    composablePosition = subtitleWrapper.composablePosition
+                )
             },
             description = when (description) {
                 Text.NO -> null
-                Text.ONE_LINE -> "ListItem " + "Description "
-                Text.MULTILINE -> "ListItem " + "Description ".repeat(7)
+                Text.ONE_LINE -> TextWrapper("ListItem " + "Description ")
+                Text.MULTILINE -> TextWrapper("ListItem " + "Description ".repeat(7))
+                Text.TEXT_WRAPPER -> TextWrapper(
+                    text = AnnotatedString("ListItem " + "Description "),
+                    padding = descriptionWrapper.padding,
+                    composable = descriptionWrapper.composable,
+                    composablePosition = descriptionWrapper.composablePosition
+                )
             },
             date = when (date) {
-                Text.NO -> null
-                Text.ONE_LINE -> "ListItem " + "Date "
-                Text.MULTILINE -> "ListItem " + "Date ".repeat(7)
+                Date.NO -> null
+                Date.ONE_LINE -> AnnotatedString("ListItem " + "Date ")
+                Date.MULTILINE -> AnnotatedString("ListItem " + "Date ".repeat(7))
             },
             end = previewListItemContent(end),
             isEndSlotClickableWhenDisabled = isEndSlotClickableWhenDisabled,
@@ -346,5 +577,23 @@ class ListItemStatesPlayroom : PreferenceFragmentCompat() {
                 }
             }
         }
+    }
+
+    // needed because Flamingo.colors is a @Composable function, that can't be called in configurePreference
+    @Composable
+    private fun getColorByName(color: IconDemoColors): Color? {
+        return when (color) {
+            IconDemoColors.Primary -> Flamingo.colors.primary
+            IconDemoColors.TextPrimary -> Flamingo.colors.textPrimary
+            IconDemoColors.TextSecondary -> Flamingo.colors.textSecondary
+            IconDemoColors.TextTertiary -> Flamingo.colors.textTertiary
+            IconDemoColors.Error -> Flamingo.colors.error
+            IconDemoColors.Warning -> Flamingo.colors.warning
+            IconDemoColors.Null -> null
+        }
+    }
+
+    private enum class IconDemoColors {
+        Null, Primary, TextPrimary, TextSecondary, TextTertiary, Error, Warning
     }
 }

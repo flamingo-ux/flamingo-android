@@ -33,18 +33,19 @@ import androidx.compose.ui.unit.dp
 import androidx.fragment.app.Fragment
 import com.flamingo.Flamingo
 import com.flamingo.components.IconToggleButton
-import com.flamingo.playground.Compose
+import com.flamingo.components.IconToggleButtonSize
 import com.flamingo.demoapi.TypicalUsageDemo
-import com.flamingo.playground.internalComponents
+import com.flamingo.playground.Compose
 
 @Preview
 @Composable
 fun Heart() {
     var checked by remember { mutableStateOf(false) }
-    internalComponents.IconToggleButton(
+    IconToggleButton(
         checked = checked,
         onCheckedChange = { checked = !checked },
         disabled = false,
+        size = IconToggleButtonSize.SMALL,
         checkedIcon = Flamingo.icons.HeartFilled,
         uncheckedIcon = Flamingo.icons.Heart,
         checkedTint = Flamingo.colors.error,
@@ -56,7 +57,7 @@ fun Heart() {
 @Composable
 fun Camera() {
     var checked by remember { mutableStateOf(false) }
-    internalComponents.IconToggleButton(
+    IconToggleButton(
         checked = checked,
         onCheckedChange = { checked = !checked },
         disabled = false,

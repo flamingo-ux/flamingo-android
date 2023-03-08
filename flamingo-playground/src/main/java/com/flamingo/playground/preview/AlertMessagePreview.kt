@@ -12,8 +12,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.core.view.updateLayoutParams
 import com.flamingo.components.Action
 import com.flamingo.components.ActionGroup
-import com.flamingo.components.AlertMessage
-import com.flamingo.components.AlertMessageVariant
+import com.flamingo.components.alertmessage.AlertMessage
+import com.flamingo.components.alertmessage.AlertMessageVariant
 import com.flamingo.loremIpsum
 import com.flamingo.playground.boast
 import com.flamingo.playground.utils.Boast

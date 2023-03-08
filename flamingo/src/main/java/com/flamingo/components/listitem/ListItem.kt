@@ -19,18 +19,22 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.requiredSize
 import androidx.compose.foundation.layout.requiredWidth
+import androidx.compose.foundation.layout.size
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.MutableState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.input.pointer.pointerInteropFilter
 import androidx.compose.ui.layout.layoutId
 import androidx.compose.ui.text.AnnotatedString
@@ -63,6 +67,7 @@ import com.flamingo.components.button.ButtonVariant.CONTAINED
 import com.flamingo.components.button.ButtonVariant.TEXT
 import com.flamingo.components.button.ButtonWidthPolicy
 import com.flamingo.overlay.LocalDebugOverlayImpl
+import com.flamingo.theme.FlamingoIcon
 import com.flamingo.theme.FlamingoTheme
 import com.flamingo.theme.colors.FlamingoColorPalette
 import com.flamingo.theme.colors.FlamingoColors
@@ -248,6 +253,130 @@ public fun ListItem(
 }
 
 /**
+ * Differs from the [ListItem] only in the type of [title], [subtitle], [description] parameters.
+ *
+ * [TextWrapper] enables to add [FlamingoIcon] to the start or the end of the text.
+ * Also [PaddingValues] can be added to separate texts
+ *
+ * __🚨WARNING🚨__: these customizations can greatly change the appearance of the component, be
+ * careful
+ *
+ * Rest of the docs can be found in [ListItem].
+ */
+@Suppress("RedundantUnitReturnType")
+@Composable
+public fun ListItem(
+    start: (@Composable () -> Unit)? = null,
+    title: TextWrapper? = null,
+    subtitle: TextWrapper? = null,
+    description: TextWrapper? = null,
+    date: AnnotatedString? = null,
+    end: (@Composable () -> Unit)? = null,
+    isEndSlotClickableWhenDisabled: Boolean = false,
+    titleMaxLines: Int = Int.MAX_VALUE,
+    sideSlotsAlignment: SideSlotsAlignment = SideSlotsAlignment.CENTER,
+    actions: ActionGroup? = null,
+    onClick: (() -> Unit)? = null,
+    showDivider: Boolean = true,
+    invertTitleAndSubtitle: Boolean = false,
+    disabled: Boolean = false,
+): @Suppress("NoUnitReturn") Unit = FlamingoComponentBase {
+    when (titleMaxLines) {
+        1, 2, Int.MAX_VALUE -> Unit
+        else -> throw IllegalArgumentException(
+            "titleMaxLines can only be equal to 1, 2 or Int.MAX_VALUE"
+        )
+    }
+    AdvancedListItem(
+        start = start,
+        title = title?.let {
+            val text: @Composable RowScope.() -> Unit = {
+                Text(
+                    text = it.text,
+                    maxLines = titleMaxLines,
+                    overflow = TextOverflow.Ellipsis,
+                    modifier = Modifier.layoutId("text")
+                )
+            }
+            return@let {
+                TextByTextWrapper(text, it)
+            }
+        },
+        subtitle = subtitle?.let {
+            val text: @Composable RowScope.() -> Unit = {
+                Text(
+                    text = it.text,
+                    modifier = Modifier.layoutId("text")
+                )
+            }
+            return@let {
+                TextByTextWrapper(text, it)
+            }
+        },
+        description = description?.let {
+            val text: @Composable RowScope.() -> Unit = {
+                Text(
+                    text = it.text,
+                    modifier = Modifier.layoutId("text")
+                )
+            }
+            return@let {
+                TextByTextWrapper(text, it)
+            }
+        },
+        date = date,
+        end = end,
+        isEndSlotClickableWhenDisabled = isEndSlotClickableWhenDisabled,
+        sideSlotsAlignment = sideSlotsAlignment,
+        actions = actions,
+        onClick = onClick,
+        showDivider = showDivider,
+        invertTitleAndSubtitle = invertTitleAndSubtitle,
+        disabled = disabled,
+    )
+}
+
+@Composable
+private fun TextByTextWrapper(
+    text: @Composable RowScope.() -> Unit,
+    textWrapper: TextWrapper
+) {
+    Row(
+        verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.Start,
+        modifier = Modifier.padding(textWrapper.padding)
+    ) {
+        ListItemTextLayout() {
+            if (textWrapper.composable == null) {
+                text()
+            } else {
+                if (textWrapper.composablePosition == TextWrapper.TextIconPosition.START) {
+                    Box(
+                        modifier = Modifier
+                            .padding(end = 4.dp)
+                            .size(16.dp)
+                            .layoutId("composableStart")
+                    ) {
+                        textWrapper.composable.invoke()
+                    }
+                    text()
+                } else {
+                    text()
+                    Box(
+                        modifier = Modifier
+                            .padding(start = 4.dp)
+                            .size(16.dp)
+                            .layoutId("composableEnd")
+                    ) {
+                        textWrapper.composable.invoke()
+                    }
+                }
+            }
+        }
+    }
+}
+
+/**
  * If constraints on the @[Composable] slots, described in [ListItem]'s docs, are violated,
  * __🚨NO GUARANTIES🚨__ are provided in terms of defined behaviour, backwards compatibility and
  * overall correctness of the [AdvancedListItem].
@@ -360,7 +489,7 @@ internal fun ListItemScope.StartSlot(
     start: (@Composable () -> Unit),
 ) = Box(
     modifier = modifier
-        .padding(end = 12.dp)
+        .padding(end = 8.dp)
         .alpha(disabled)
         .pointerInteropFilter { disabled },
     contentAlignment = Alignment.Center
@@ -404,9 +533,18 @@ private fun TextBlock(
     val titleStyle = body1.copy(color = Flamingo.colors.textPrimary)
     val descriptionStyle = caption2.copy(color = Flamingo.colors.textSecondary)
 
-    if (invertTitleAndSubtitle && subtitle != null) ProvideTextStyle(body2) { subtitle() }
-    if (title != null) ProvideTextStyle(titleStyle) { title() }
-    if (!invertTitleAndSubtitle && subtitle != null) ProvideTextStyle(body2) { subtitle() }
+    if (invertTitleAndSubtitle && subtitle != null) ProvideTextStyle(body2) {
+        subtitle()
+        Spacer(modifier = Modifier.size(2.dp))
+    }
+    if (title != null) ProvideTextStyle(titleStyle) {
+        title()
+        Spacer(modifier = Modifier.size(2.dp))
+    }
+    if (!invertTitleAndSubtitle && subtitle != null) ProvideTextStyle(body2) {
+        subtitle()
+        Spacer(modifier = Modifier.size(2.dp))
+    }
     if (description != null) ProvideTextStyle(descriptionStyle) { description() }
 }
 
@@ -440,7 +578,7 @@ internal fun ListItemScope.EndSlot(
  */
 internal object ListItemScope {
     val vPadding = 12.dp
-    val hPadding = 16.dp
+    val hPadding = 8.dp
 }
 
 @Composable
@@ -483,3 +621,57 @@ private fun Actions(modifier: Modifier = Modifier, actions: ActionGroup) = with(
         }
     }
 }
+
+/**
+ * Used to add padding and custom composable to [Text] inside [ListItem]
+ * Padding is applied to the whole [Row]
+ *
+ * __Note!__ [composable] size is limited to 16.dp!
+ */
+public data class TextWrapper(
+    val text: AnnotatedString,
+    val padding: PaddingValues = PaddingValues(0.dp),
+    val composablePosition: TextIconPosition = TextIconPosition.START,
+    val composable: @Composable (() -> Unit)? = null
+) {
+    /**
+     * Used to add padding and icons to [Text] inside [ListItem]
+     */
+    public constructor(
+        text: AnnotatedString,
+        padding: PaddingValues = PaddingValues(0.dp),
+        icon: IconWrapper? = null,
+        iconPosition: TextIconPosition = TextIconPosition.START
+    ) : this(text, padding, iconPosition, icon?.let {
+        val iconComposable: @Composable () -> Unit = {
+            Icon(
+                icon = icon.icon,
+                tint = icon.tint,
+                modifier = Modifier.size(16.dp)
+            )
+        }
+        iconComposable
+    })
+
+    /**
+     * Used to add padding and icons to [Text] inside [ListItem]
+     */
+    public constructor(
+        text: String,
+        padding: PaddingValues = PaddingValues(0.dp),
+        icon: IconWrapper? = null,
+        iconPosition: TextIconPosition = TextIconPosition.START
+    ) : this(AnnotatedString(text), padding, icon, iconPosition)
+
+    public enum class TextIconPosition {
+        START,
+        END
+    }
+
+    public data class IconWrapper(
+        val icon: FlamingoIcon,
+        val tint: Color
+    )
+}
+
+

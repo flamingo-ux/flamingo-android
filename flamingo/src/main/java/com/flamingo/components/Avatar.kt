@@ -75,7 +75,8 @@ import com.flamingo.utils.exhaustive
     figma = "https://f.com/file/sPbkUbBGkp5Mstc0IQYubk/4.1.-UI-Android-kit?node-id=830%3A17",
     specification = "https://confluence.companyname.ru/x/MhEnKQE",
     viewImplementation = "com.flamingo.view.components.Avatar",
-    demo = ["com.flamingo.playground.components.AvatarComposeStatesPlayroom"],
+    theaterPackage = "com.flamingo.playground.components.avatar.TheaterPkg",
+    demo = ["com.flamingo.playground.components.avatar.AvatarComposeStatesPlayroom"],
     supportsWhiteMode = false,
 )
 @Composable
@@ -97,10 +98,10 @@ public fun Avatar(
         if (indicator != null) AvatarIndicator(indicator, size, shape, cutoutRadius)
         Box(
             modifier = Modifier
-                .requiredSize(size.avatar)
+                .requiredSize(size.avatar.animateDp())
                 .clip(RoundedRectWithCutoutShape(
-                    cornerRadius = shape.cornerRadius,
-                    cutoutRadius = cutoutRadius,
+                    cornerRadius = shape.cornerRadius.animateDp(),
+                    cutoutRadius = cutoutRadius.animateDp(),
                     cutoutPlacement = CutoutPlacement.BottomEnd,
                 ))
                 .run {
@@ -111,7 +112,7 @@ public fun Avatar(
             when (content) {
                 is AvatarContent.Image -> Image(
                     modifier = Modifier
-                        .size(size.avatar)
+                        .size(size.avatar.animateDp())
                         .uiTestingTag("Image"),
                     painter = content.image,
                     contentDescription = contentDescription
@@ -120,7 +121,7 @@ public fun Avatar(
                     Background(background = content.background, size = size)
                     Icon(
                         modifier = Modifier
-                            .size(size.icon)
+                            .size(size.icon.animateDp())
                             .uiTestingTag("Icon"),
                         icon = content.icon,
                         contentDescription = contentDescription,
@@ -148,9 +149,9 @@ private fun AvatarIndicator(
     shape: AvatarShape,
     cutoutRadius: Dp,
 ) = Box(modifier = Modifier.circleOffset(
-    rectSize = DpSize(size.avatar, size.avatar),
-    cornerRadius = shape.cornerRadius,
-    circleRadius = cutoutRadius,
+    rectSize = DpSize(size.avatar.animateDp(), size.avatar.animateDp()),
+    cornerRadius = shape.cornerRadius.animateDp(),
+    circleRadius = cutoutRadius.animateDp(),
     cutoutPlacement = CutoutPlacement.BottomEnd,
 )) {
     Indicator(
@@ -165,7 +166,7 @@ private fun AvatarIndicator(
 private fun Background(background: AvatarBackground, size: AvatarSize) {
     Image(
         modifier = Modifier
-            .size(size.avatar)
+            .size(size.avatar.animateDp())
             .uiTestingTag("Background"),
         painter = background.toPainter(),
         contentDescription = null

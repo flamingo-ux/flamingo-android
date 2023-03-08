@@ -10,7 +10,7 @@ internal val Int.dsIcon: Int
 
 @DsIconSet
 public fun requireDsIcon(@DrawableRes iconRes: Int): Int {
-    require(designSystemIcons.contains(iconRes)) {
+    require(designSystemIcons.contains(iconRes) || designSystemLogos.contains(iconRes)) {
         "Icon $iconRes is not part of the design system icon set"
     }
     return iconRes
@@ -30,6 +30,7 @@ private val designSystemIcons = intArrayOf(
     R.drawable.ds_ic_align_left,
     R.drawable.ds_ic_align_right,
     R.drawable.ds_ic_anchor,
+    R.drawable.ds_ic_android,
     R.drawable.ds_ic_aperture,
     R.drawable.ds_ic_archive,
     R.drawable.ds_ic_arrow_down,
@@ -74,8 +75,11 @@ private val designSystemIcons = intArrayOf(
     R.drawable.ds_ic_chart_square,
     R.drawable.ds_ic_check,
     R.drawable.ds_ic_check_circle,
+    R.drawable.ds_ic_check_circle_v3,
     R.drawable.ds_ic_check_square,
     R.drawable.ds_ic_check_square_minus_v2,
+    R.drawable.ds_ic_check_square_minus_v3,
+    R.drawable.ds_ic_check_square_v3,
     R.drawable.ds_ic_chevron_down,
     R.drawable.ds_ic_chevron_left,
     R.drawable.ds_ic_chevron_right,
@@ -86,6 +90,7 @@ private val designSystemIcons = intArrayOf(
     R.drawable.ds_ic_chevron_up,
     R.drawable.ds_ic_chrome,
     R.drawable.ds_ic_circle,
+    R.drawable.ds_ic_circle_v2,
     R.drawable.ds_ic_clipboard,
     R.drawable.ds_ic_clock,
     R.drawable.ds_ic_cloud,
@@ -186,6 +191,7 @@ private val designSystemIcons = intArrayOf(
     R.drawable.ds_ic_incognito,
     R.drawable.ds_ic_info,
     R.drawable.ds_ic_instagram,
+    R.drawable.ds_ic_ios,
     R.drawable.ds_ic_italic,
     R.drawable.ds_ic_key,
     R.drawable.ds_ic_layers,
@@ -293,6 +299,7 @@ private val designSystemIcons = intArrayOf(
     R.drawable.ds_ic_sort,
     R.drawable.ds_ic_speaker,
     R.drawable.ds_ic_square,
+    R.drawable.ds_ic_square_v2,
     R.drawable.ds_ic_star,
     R.drawable.ds_ic_star_filled,
     R.drawable.ds_ic_star_half_filled,
@@ -349,9 +356,11 @@ private val designSystemIcons = intArrayOf(
     R.drawable.ds_ic_volume_off,
     R.drawable.ds_ic_volume_x,
     R.drawable.ds_ic_watch,
+    R.drawable.ds_ic_widget,
     R.drawable.ds_ic_wifi,
     R.drawable.ds_ic_wifi_off,
     R.drawable.ds_ic_wind,
+    R.drawable.ds_ic_windows,
     R.drawable.ds_ic_x,
     R.drawable.ds_ic_x_circle,
     R.drawable.ds_ic_x_octagon,
@@ -363,4 +372,27 @@ private val designSystemIcons = intArrayOf(
     R.drawable.ds_ic_zap_v2,
     R.drawable.ds_ic_zoom_in,
     R.drawable.ds_ic_zoom_out,
+)
+
+/** Sorted alphabetically, use [https://plugins.jetbrains.com/plugin/2162-string-manipulation] */
+private val designSystemLogos = intArrayOf(
+    R.drawable.logo_addressbook,
+    R.drawable.logo_apps,
+    R.drawable.logo_friend,
+    R.drawable.logo_mail,
+    R.drawable.logo_media,
+    R.drawable.logo_otp,
+    R.drawable.logo_sber_hd,
+    R.drawable.logo_sber_hed,
+    R.drawable.logo_sber_heg,
+    R.drawable.logo_sber_hew,
+    R.drawable.logo_sber_hg,
+    R.drawable.logo_sber_hrd,
+    R.drawable.logo_sber_hrg,
+    R.drawable.logo_sber_hrw,
+    R.drawable.logo_sber_hw,
+    R.drawable.logo_sber_vrd,
+    R.drawable.logo_sber_vrg,
+    R.drawable.logo_sber_vrw,
+    R.drawable.logo_video,
 )

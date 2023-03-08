@@ -30,6 +30,16 @@ public data class FlamingoColors internal constructor(
     public val info: Color,
 
     /**
+     * [figma](https://f.com/file/OvrFgcI8VcGcL8Bw24pK5e?node-id=13978%3A22650&t=q9NnDQaHEiq4AtQr-1)
+     */
+    public val infoSecondary: Color,
+
+    /**
+     * [figma](https://f.com/file/OvrFgcI8VcGcL8Bw24pK5e?node-id=13978%3A22650&t=xhIpKThU0lJp2rZz-1)
+     */
+    public val infoTertiary: Color,
+
+    /**
      * Предупреждение
      * [figma](https://f.com/file/siTvBrYyUPigpjkZfOhJ1h?node-id=714%3A47)
      */
@@ -96,6 +106,11 @@ public data class FlamingoColors internal constructor(
      */
     public val backgroundTextField: Color,
 
+    /**
+     * [figma](https://f.com/file/OvrFgcI8VcGcL8Bw24pK5e?node-id=13978%3A22650)
+     */
+    public val backgroundQuinary: Color,
+
     public val backdrop: Color,
 
     /**
@@ -121,6 +136,17 @@ public data class FlamingoColors internal constructor(
      * [figma](https://f.com/file/OvrFgcI8VcGcL8Bw24pK5e?node-id=13978%3A22650)
      */
     public val greenHover: Color,
+
+    /**
+     * Используется для выделения выбора
+     * [figma](https://f.com/file/OvrFgcI8VcGcL8Bw24pK5e?node-id=13978%3A22650&t=uO9EjPFRI3gvpCYk-1)
+     */
+    public val selected: Color,
+
+    /**
+     * [figma](https://www.f.com/file/OvrFgcI8VcGcL8Bw24pK5e?node-id=13978%3A22650&t=aEpHxIfeal6BgtKa-0)
+     */
+    public val active: Color,
 
     public val global: GlobalColors,
     public val inverse: InverseColors,

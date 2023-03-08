@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <com.flamingo.demoapi.DemoPreference app:key="component" />
+
+    <EditTextPreference
+        app:iconSpaceReserved="false"
+        app:key="title"
+        app:persistent="false"
+        app:title="Title" />
+
+    <SwitchPreferenceCompat
+        app:iconSpaceReserved="false"
+        app:key="hasCloseButton"
+        app:persistent="false"
+        app:title="Has close button" />
+
+    <SwitchPreferenceCompat
+        app:iconSpaceReserved="false"
+        app:key="dismissOnBackPress"
+        app:persistent="false"
+        app:title="Dismiss on back press" />
+
+    <SwitchPreferenceCompat
+        app:iconSpaceReserved="false"
+        app:key="dismissOnClickOutside"
+        app:persistent="false"
+        app:title="Dismiss on click outside" />
+
+    <SwitchPreferenceCompat
+        app:iconSpaceReserved="false"
+        app:key="isLTRAnimation"
+        app:persistent="false"
+        app:title="Is LTR animation" />
+
+    <SeekBarPreference
+        app:iconSpaceReserved="false"
+        app:key="widthFraction"
+        app:persistent="false"
+        app:showSeekBarValue="false"
+        app:title="Width fraction" />
+
+    <SwitchPreferenceCompat
+        app:allowDividerAbove="true"
+        app:iconSpaceReserved="false"
+        app:key="hasPrimaryButton"
+        app:persistent="false"
+        app:title="Has primary button" />
+
+    <EditTextPreference
+        app:iconSpaceReserved="false"
+        app:key="primaryButtonLabel"
+        app:persistent="false"
+        app:title="Primary button label" />
+
+    <SwitchPreferenceCompat
+        app:iconSpaceReserved="false"
+        app:key="primaryButtonDisabled"
+        app:persistent="false"
+        app:title="Primary button disabled" />
+
+    <SwitchPreferenceCompat
+        app:iconSpaceReserved="false"
+        app:key="primaryButtonLoading"
+        app:persistent="false"
+        app:title="Primary button loading" />
+
+    <EditTextPreference
+        app:allowDividerAbove="true"
+        app:iconSpaceReserved="false"
+        app:key="secondaryButtonLabel"
+        app:persistent="false"
+        app:title="Secondary button label" />
+
+    <SwitchPreferenceCompat
+        app:iconSpaceReserved="false"
+        app:key="secondaryButtonDisabled"
+        app:persistent="false"
+        app:title="Secondary button disabled" />
+
+    <SwitchPreferenceCompat
+        app:iconSpaceReserved="false"
+        app:key="secondaryButtonLoading"
+        app:persistent="false"
+        app:title="Secondary button loading" />
+</PreferenceScreen>

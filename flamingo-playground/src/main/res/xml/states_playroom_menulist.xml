@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <com.flamingo.demoapi.DemoPreference app:key="component" />
+
+    <EditTextPreference
+        app:iconSpaceReserved="false"
+        app:key="dialogTitle"
+        app:persistent="false"
+        app:title="Dialog title" />
+
+    <Preference
+        app:iconSpaceReserved="false"
+        app:key="manualSelection"
+        app:persistent="false"
+        app:title="Click to select first item manually" />
+
+    <SwitchPreferenceCompat
+        app:iconSpaceReserved="false"
+        app:key="disabled"
+        app:persistent="false"
+        app:title="Disabled" />
+
+    <SwitchPreferenceCompat
+        app:allowDividerAbove="true"
+        app:iconSpaceReserved="false"
+        app:key="hasTextButton"
+        app:persistent="false"
+        app:title="Has text button" />
+
+    <EditTextPreference
+        app:iconSpaceReserved="false"
+        app:key="textButtonLabel"
+        app:persistent="false"
+        app:title="Text button label" />
+
+    <DropDownPreference
+        app:iconSpaceReserved="false"
+        app:key="textButtonIcon"
+        app:persistent="false"
+        app:summary="%s"
+        app:title="Text button icon" />
+
+    <SwitchPreferenceCompat
+        app:iconSpaceReserved="false"
+        app:key="textButtonIconAtStart"
+        app:persistent="false"
+        app:title="Text button icon at start" />
+
+    <SwitchPreferenceCompat
+        app:iconSpaceReserved="false"
+        app:key="textButtonDisabled"
+        app:persistent="false"
+        app:title="Text button disabled" />
+</PreferenceScreen>

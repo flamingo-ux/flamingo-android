@@ -3,6 +3,7 @@ package com.flamingo.components.button
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
 import com.flamingo.Flamingo
+import com.flamingo.components.BadgeColor
 import com.flamingo.components.button.ButtonColor.Default
 import com.flamingo.components.button.ButtonColor.Error
 import com.flamingo.components.button.ButtonColor.Info
@@ -64,4 +65,24 @@ internal object ButtonColorCalculation {
             ButtonColor.TopAppBar -> Flamingo.colors.textSecondary
         }
     }.animateButtonColor()
+
+    @Composable
+    fun badgeColor(variant: ButtonVariant, color: ButtonColor) = when (variant) {
+        CONTAINED -> when (color) {
+            Default -> BadgeColor.Default
+            White -> BadgeColor.White
+            ButtonColor.TopAppBar -> error("This configuration is currently unsupported")
+            else -> BadgeColor.White
+        }
+        TEXT -> when (color) {
+            Default -> BadgeColor.Default
+            Primary -> BadgeColor.Primary
+            Warning -> BadgeColor.Warning
+            Error -> BadgeColor.Error
+            Info -> BadgeColor.Info
+            Success -> BadgeColor.Primary //todo Badge success
+            White -> BadgeColor.Default
+            ButtonColor.TopAppBar -> BadgeColor.Default //todo Badge TopAppBar
+        }
+    }
 }

@@ -23,8 +23,11 @@ import com.flamingo.annotations.view.DsIconSet
 import com.flamingo.components.Icon
 import com.flamingo.view.requireDsIcon
 
-@JvmInline
-public value class FlamingoIcon private constructor(@DsIconSet private val resId: Int) {
+
+public class FlamingoIcon private constructor(
+    @DsIconSet private val resId: Int,
+    public val isLogo: Boolean = false
+) {
     /**
      * Typically, you need to use a flamingo component, which directly consumes [FlamingoIcon]. For
      * example, use [Icon] composable instead of a material one. Use this function with care!
@@ -34,27 +37,29 @@ public value class FlamingoIcon private constructor(@DsIconSet private val resId
     public fun toPainter(): Painter = painterResource(resId)
 
     /**
-     * @return name of the icon in snake case without [DRAWABLE_NAME_PREFIX]
+     * @return name of the icon in snake case without [ICON_NAME_PREFIX] or [LOGO_NAME_PREFIX]
      */
     public fun getName(context: Context): String {
-        return context.resources.getResourceEntryName(resId).removePrefix(DRAWABLE_NAME_PREFIX)
+        return context.resources.getResourceEntryName(resId).removePrefix(ICON_NAME_PREFIX)
+            .removePrefix(LOGO_NAME_PREFIX)
     }
 
     private companion object {
-        private const val DRAWABLE_NAME_PREFIX: String = "ds_ic_"
+        private const val ICON_NAME_PREFIX: String = "ds_ic_"
+        private const val LOGO_NAME_PREFIX: String = "logo_"
     }
 
     @Suppress("VariableNaming")
     public class FlamingoIcons internal constructor() {
-        public val DRAWABLE_NAME_PREFIX: String = FlamingoIcon.DRAWABLE_NAME_PREFIX
+        public val DRAWABLE_NAME_PREFIX: String = FlamingoIcon.ICON_NAME_PREFIX
 
         public fun fromId(@DsIconSet resId: Int): FlamingoIcon {
             requireDsIcon(resId)
-            return FlamingoIcon(resId)
+            return FlamingoIcon(resId, false)
         }
 
         /**
-         * @param name of the icon in snake case, with or without [DRAWABLE_NAME_PREFIX]
+         * @param name of the icon in snake case, with or without [ICON_NAME_PREFIX]
          */
         public fun fromName(context: Context, name: String): FlamingoIcon = FlamingoIcon(
             resId = context.resources.getIdentifier(
@@ -68,7 +73,7 @@ public value class FlamingoIcon private constructor(@DsIconSet private val resId
          * All properties call private constructor of the [FlamingoIcon] ([I] for short).
          */
         @Suppress("NOTHING_TO_INLINE")
-        private inline fun I(@DsIconSet resId: Int) = FlamingoIcon(resId)
+        private inline fun I(@DsIconSet resId: Int) = FlamingoIcon(resId, false)
 
         // Sorted alphabetically, use https://plugins.jetbrains.com/plugin/2162-string-manipulation
 
@@ -84,6 +89,7 @@ public value class FlamingoIcon private constructor(@DsIconSet private val resId
         public val AlignLeft: FlamingoIcon = I(R.drawable.ds_ic_align_left)
         public val AlignRight: FlamingoIcon = I(R.drawable.ds_ic_align_right)
         public val Anchor: FlamingoIcon = I(R.drawable.ds_ic_anchor)
+        public val Android: FlamingoIcon = I(R.drawable.ds_ic_android)
         public val Aperture: FlamingoIcon = I(R.drawable.ds_ic_aperture)
         public val Archive: FlamingoIcon = I(R.drawable.ds_ic_archive)
         public val ArrowDown: FlamingoIcon = I(R.drawable.ds_ic_arrow_down)
@@ -128,8 +134,11 @@ public value class FlamingoIcon private constructor(@DsIconSet private val resId
         public val ChartSquare: FlamingoIcon = I(R.drawable.ds_ic_chart_square)
         public val Check: FlamingoIcon = I(R.drawable.ds_ic_check)
         public val CheckCircle: FlamingoIcon = I(R.drawable.ds_ic_check_circle)
+        public val CheckCircleV3: FlamingoIcon = I(R.drawable.ds_ic_check_circle_v3)
         public val CheckSquare: FlamingoIcon = I(R.drawable.ds_ic_check_square)
         public val CheckSquareMinusV2: FlamingoIcon = I(R.drawable.ds_ic_check_square_minus_v2)
+        public val CheckSquareMinusV3: FlamingoIcon = I(R.drawable.ds_ic_check_square_minus_v3)
+        public val CheckSquareV3: FlamingoIcon = I(R.drawable.ds_ic_check_square_v3)
         public val ChevronDown: FlamingoIcon = I(R.drawable.ds_ic_chevron_down)
         public val ChevronLeft: FlamingoIcon = I(R.drawable.ds_ic_chevron_left)
         public val ChevronRight: FlamingoIcon = I(R.drawable.ds_ic_chevron_right)
@@ -140,6 +149,7 @@ public value class FlamingoIcon private constructor(@DsIconSet private val resId
         public val ChevronUp: FlamingoIcon = I(R.drawable.ds_ic_chevron_up)
         public val Chrome: FlamingoIcon = I(R.drawable.ds_ic_chrome)
         public val Circle: FlamingoIcon = I(R.drawable.ds_ic_circle)
+        public val CircleV2: FlamingoIcon = I(R.drawable.ds_ic_circle_v2)
         public val Clipboard: FlamingoIcon = I(R.drawable.ds_ic_clipboard)
         public val Clock: FlamingoIcon = I(R.drawable.ds_ic_clock)
         public val Cloud: FlamingoIcon = I(R.drawable.ds_ic_cloud)
@@ -240,6 +250,7 @@ public value class FlamingoIcon private constructor(@DsIconSet private val resId
         public val Incognito: FlamingoIcon = I(R.drawable.ds_ic_incognito)
         public val Info: FlamingoIcon = I(R.drawable.ds_ic_info)
         public val Instagram: FlamingoIcon = I(R.drawable.ds_ic_instagram)
+        public val Ios: FlamingoIcon = I(R.drawable.ds_ic_ios)
         public val Italic: FlamingoIcon = I(R.drawable.ds_ic_italic)
         public val Key: FlamingoIcon = I(R.drawable.ds_ic_key)
         public val Layers: FlamingoIcon = I(R.drawable.ds_ic_layers)
@@ -347,6 +358,7 @@ public value class FlamingoIcon private constructor(@DsIconSet private val resId
         public val Sort: FlamingoIcon = I(R.drawable.ds_ic_sort)
         public val Speaker: FlamingoIcon = I(R.drawable.ds_ic_speaker)
         public val Square: FlamingoIcon = I(R.drawable.ds_ic_square)
+        public val SquareV2: FlamingoIcon = I(R.drawable.ds_ic_square_v2)
         public val Star: FlamingoIcon = I(R.drawable.ds_ic_star)
         public val StarFilled: FlamingoIcon = I(R.drawable.ds_ic_star_filled)
         public val StarHalfFilled: FlamingoIcon = I(R.drawable.ds_ic_star_half_filled)
@@ -403,9 +415,11 @@ public value class FlamingoIcon private constructor(@DsIconSet private val resId
         public val VolumeOff: FlamingoIcon = I(R.drawable.ds_ic_volume_off)
         public val VolumeX: FlamingoIcon = I(R.drawable.ds_ic_volume_x)
         public val Watch: FlamingoIcon = I(R.drawable.ds_ic_watch)
+        public val Widget: FlamingoIcon = I(R.drawable.ds_ic_widget)
         public val Wifi: FlamingoIcon = I(R.drawable.ds_ic_wifi)
         public val WifiOff: FlamingoIcon = I(R.drawable.ds_ic_wifi_off)
         public val Wind: FlamingoIcon = I(R.drawable.ds_ic_wind)
+        public val Windows: FlamingoIcon = I(R.drawable.ds_ic_windows)
         public val X: FlamingoIcon = I(R.drawable.ds_ic_x)
         public val XCircle: FlamingoIcon = I(R.drawable.ds_ic_x_circle)
         public val XOctagon: FlamingoIcon = I(R.drawable.ds_ic_x_octagon)
@@ -417,6 +431,53 @@ public value class FlamingoIcon private constructor(@DsIconSet private val resId
         public val ZapV2: FlamingoIcon = I(R.drawable.ds_ic_zap_v2)
         public val ZoomIn: FlamingoIcon = I(R.drawable.ds_ic_zoom_in)
         public val ZoomOut: FlamingoIcon = I(R.drawable.ds_ic_zoom_out)
+    }
+
+    @Suppress("VariableNaming")
+    public class FlamingoLogos internal constructor() {
+        public val DRAWABLE_NAME_PREFIX: String = FlamingoIcon.LOGO_NAME_PREFIX
+
+        public fun fromId(@DsIconSet resId: Int): FlamingoIcon {
+            requireDsIcon(resId)
+            return FlamingoIcon(resId, true)
+        }
+
+        /**
+         * @param name of the icon in snake case, with or without [LOGO_NAME_PREFIX]
+         */
+        public fun fromName(context: Context, name: String): FlamingoIcon = FlamingoIcon(
+            resId = context.resources.getIdentifier(
+                DRAWABLE_NAME_PREFIX + name.removePrefix(DRAWABLE_NAME_PREFIX),
+                "drawable",
+                context.packageName
+            )
+        )
+
+        /**
+         * All properties call private constructor of the [FlamingoIcon] Logos ([L] for short).
+         */
+        @Suppress("NOTHING_TO_INLINE")
+        private inline fun L(@DsIconSet resId: Int) = FlamingoIcon(resId, true)
+
+        public val Addressbook: FlamingoIcon = L(R.drawable.logo_addressbook)
+        public val Apps: FlamingoIcon = L(R.drawable.logo_apps)
+        public val Friend: FlamingoIcon = L(R.drawable.logo_friend)
+        public val Mail: FlamingoIcon = L(R.drawable.logo_mail)
+        public val Media: FlamingoIcon = L(R.drawable.logo_media)
+        public val Otp: FlamingoIcon = L(R.drawable.logo_otp)
+        public val SberHD: FlamingoIcon = L(R.drawable.logo_sber_hd)
+        public val SberHED: FlamingoIcon = L(R.drawable.logo_sber_hed)
+        public val SberHEG: FlamingoIcon = L(R.drawable.logo_sber_heg)
+        public val SberHEW: FlamingoIcon = L(R.drawable.logo_sber_hew)
+        public val SberHG: FlamingoIcon = L(R.drawable.logo_sber_hg)
+        public val SberHRD: FlamingoIcon = L(R.drawable.logo_sber_hrd)
+        public val SberHRG: FlamingoIcon = L(R.drawable.logo_sber_hrg)
+        public val SberHRW: FlamingoIcon = L(R.drawable.logo_sber_hrw)
+        public val SberHW: FlamingoIcon = L(R.drawable.logo_sber_hw)
+        public val SberVRD: FlamingoIcon = L(R.drawable.logo_sber_vrd)
+        public val SberVRG: FlamingoIcon = L(R.drawable.logo_sber_vrg)
+        public val SberVRW: FlamingoIcon = L(R.drawable.logo_sber_vrw)
+        public val Video: FlamingoIcon = L(R.drawable.logo_video)
     }
 }
 
