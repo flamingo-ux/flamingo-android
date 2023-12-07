@@ -151,7 +151,7 @@ graph TD;
     TRGT_APP --> FONT_CHOOSER;
     FONT_CHOOSER --> FL_ROBOTO;
     FONT_CHOOSER --> FL_SBSANS;
-%%    TRGT_APP_ST --> TRGT_APP;
+%%  TRGT_APP_ST --> TRGT_APP;
 
     click TH "https://github.com/flamingo-ux/theater" _blank
     click FL "https://github.com/flamingo-ux/flamingo-android/flamingo" _blank
