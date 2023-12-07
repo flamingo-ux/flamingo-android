@@ -5,7 +5,14 @@ It is an Android implementation of the Flamingo Design System.
 
 ## It Consists Of:
 
-Palette, theme colors, typography, icon set, illustrations, gradients and __UI components__.
+UI Components:
+
+![components-gallery.png](images/components-gallery-light.png#gh-light-mode-only)
+![components-gallery.png](images/components-gallery-dark.png#gh-dark-mode-only)
+
+Palette, theme colors, typography, icon set, illustrations and gradients:
+
+![Playground App Collage](images/playground-screens.png)
 
 ## Useful links
 
